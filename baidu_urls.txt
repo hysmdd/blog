@@ -1,3 +1,6 @@
+https://imqinhao.cn/2021/09/15/stock_15/
+https://imqinhao.cn/2021/09/14/stock_14/
+https://imqinhao.cn/2021/09/13/stock_13/
 https://imqinhao.cn/2021/09/12/stock_12/
 https://imqinhao.cn/2021/09/11/stock_11/
 https://imqinhao.cn/2021/09/10/stock_10/
@@ -95,6 +98,3 @@ https://imqinhao.cn/2020/03/06/wireless_word/
 https://imqinhao.cn/2020/03/06/mobile_communication/
 https://imqinhao.cn/2020/03/04/acl/
 https://imqinhao.cn/2020/02/27/computer_network_basics/
-https://imqinhao.cn/2020/02/27/MySQL8_basics/
-https://imqinhao.cn/2020/02/27/OLT_command/
-https://imqinhao.cn/2020/02/27/switchport-security/
