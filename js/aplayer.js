@@ -173,7 +173,8 @@ function updateTitle() {
 
 // 自动播放音乐
 function autoPlayMusic() {
-	let autoPlayMusic = getCookie('autoPlayMusic') == null ? true : false;
+	// let autoPlayMusic = getCookie('autoPlayMusic') == null ? true : false;
+	let autoPlayMusic = true;
 	setTimeout(function () {
 		if ($(window).width() > 500 && autoPlayMusic && APlayerController.autoPlay) {
 			let isplay = true;
