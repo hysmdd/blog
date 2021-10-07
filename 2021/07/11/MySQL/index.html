@@ -114,6 +114,95 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     </div>
 </noscript>
 
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+<!-- <script>
+window.oncontextmenu = function() {
+	event.preventDefault(); // 阻止默认事件行为
+    return false;
+}
+window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+	// 判断是否按下F12，F12键码为123
+	if (event.keyCode === 123) {
+		event.preventDefault(); // 阻止默认事件行为
+        window.event.returnValue = false;
+	}
+}
+  </script>
+
+<script>
+  (function noDebuger(){
+    function testDebuger(){
+        var d=new Date();
+        debugger;
+        if(new Date()-d>10){
+            
+            return true;
+        }
+        return false;
+    }
+ 
+    function start(){
+        while(testDebuger()){
+            testDebuger();
+        }
+    }
+    if(!testDebuger()) {
+        window.onblur = function(){
+            setTimeout(function(){
+                start();
+            },500)
+        }
+    }
+    else{
+        start();
+    }
+ 
+})();
+</script> -->
+
+
+<script>
+  (function(){
+  var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+  document.write('<script src="' + src + '" id="sozz"><\/script>');
+  })();
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b12d6ebf970df6ca518a9e55d5360ba9";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>  
+  
+
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+  
+  
 </head>
 
   <body>
@@ -387,10 +476,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg'><p>友链</p>
             </a>
           
-            <a href="/shuoshuo/"
+            <a href="/artitalk/"
               
               
-              id="shuoshuo">
+              id="artitalk">
               <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f37b.svg'><p>说说</p>
             </a>
           
@@ -2210,7 +2299,7 @@ document.addEventListener("pjax:success", listennSidebarTOC);
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
-        var banUrl = [""];
+        var banUrl = ["/artitalk/"];
         if (banUrl[0] != "") {
           banUrl.forEach(item => {
             if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
