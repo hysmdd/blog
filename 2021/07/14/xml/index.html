@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>XML基础 - 覃浩的博客</title>
+  
+
+  
+    <meta name="description" content="
+概念
+语法
+解析
+">
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://img.icons8.com/nolan/96/orca.png">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/logo-2.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/category/
+                  
+                  
+                  
+                    id="category"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/2019-nCoV/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="2019-nCoV"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>肺炎疫情
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="输入关键词搜索一下" />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/category/
+                  
+                  
+                  
+                    id="category"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/2019-nCoV/
+                  
+                  
+                    target="_blank"
+                  
+                  
+                    id="2019-nCoV"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>肺炎疫情
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div id='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">覃浩的博客</p>
+    
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>博文</p>
+            </a>
+          
+            <a href="/category/"
+              
+              
+              id="category">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>分类</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>归档</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg'><p>友链</p>
+            </a>
+          
+            <a href="/shuoshuo/"
+              
+              
+              id="shuoshuo">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f37b.svg'><p>说说</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        XML基础
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="https://www.imqinhao.cn" target="_blank" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/avatar-1.jpg">
+    <p>覃浩</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年7月14日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Java/">Java</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.5k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：6分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+<div class="new-meta-item comments-count">
+  
+  <a href="/2021/07/14/xml/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2021/07/14/xml/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+          
+        
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="XML基础" data-path="/2021/07/14/xml/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <ol>
+<li>概念</li>
+<li>语法</li>
+<li>解析</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="XML概念"><a href="#XML概念" class="headerlink" title="XML概念"></a><center>XML概念</center></h2><blockquote>
+<p>Extensible Markup Language 可扩展标记语言</p>
+</blockquote>
+<ul>
+<li>可扩展：标签都是自定义的。 <user>  <student></li>
+</ul>
+<h2 id="XML功能"><a href="#XML功能" class="headerlink" title="XML功能"></a><center>XML功能</center></h2><ul>
+<li>存储数据<ol>
+<li>配置文件</li>
+<li>在网络中传输</li>
+</ol>
+</li>
+</ul>
+<h2 id="xml与html的区别"><a href="#xml与html的区别" class="headerlink" title="xml与html的区别"></a><center>xml与html的区别</center></h2><ol>
+<li>xml标签都是自定义的，html标签是预定义。</li>
+<li>xml的语法严格，html语法松散</li>
+<li>xml是存储数据的，html是展示数据</li>
+</ol>
+<h2 id="XML语法"><a href="#XML语法" class="headerlink" title="XML语法"></a><center>XML语法</center></h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a><center>基本语法</center></h3><ol>
+<li>xml文档的后缀名 .xml</li>
+<li>xml第一行必须定义为文档声明</li>
+<li>xml文档中有且仅有一个根标签</li>
+<li>属性值必须使用引号(单双都可)引起来</li>
+<li>标签必须正确关闭</li>
+<li>xml标签名称区分大小写</li>
+</ol>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a><center>快速入门</center></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">users</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">user</span> <span class="attr">id</span>=<span class="string">'1'</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>zhangsan<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">age</span>&gt;</span>23<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gender</span>&gt;</span>male<span class="tag">&lt;/<span class="name">gender</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">user</span> <span class="attr">id</span>=<span class="string">'2'</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>lisi<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">age</span>&gt;</span>24<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gender</span>&gt;</span>female<span class="tag">&lt;/<span class="name">gender</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">users</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a><center>组成部分</center></h3><h4 id="文档声明"><a href="#文档声明" class="headerlink" title="文档声明"></a><center>文档声明</center></h4><div class="tabs" id="页面内不重复的id"><ul class="nav-tabs"><li class="tab active"><a class="#页面内不重复的id-1">格式</a></li><li class="tab"><a class="#页面内不重复的id-2">属性列表</a></li><li class="tab"><a class="#页面内不重复的id-3">指令</a></li><li class="tab"><a class="#页面内不重复的id-4">标签</a></li><li class="tab"><a class="#页面内不重复的id-5">属性</a></li><li class="tab"><a class="#页面内不重复的id-6">文本</a></li></ul><div class="tab-content"><div class="tab-pane active" id="页面内不重复的id-1"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml 属性列表 ?&gt;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="页面内不重复的id-2"><ul>
+<li>version：版本号，必须的属性</li>
+<li>encoding：编码方式。告知解析引擎当前文档使用的字符集，默认值：ISO-8859-1</li>
+<li>standalone：是否独立<ul>
+<li>取值：<ul>
+<li>yes：不依赖其他文件</li>
+<li>no：依赖其他文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="tab-pane" id="页面内不重复的id-3"><div class='checkbox yellow'><input type="radio" />
+            <p>结合css的</p>
+            </div>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml-stylesheet type="text/css" href="a.css" ?&gt;</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="页面内不重复的id-4"><div class='checkbox yellow'><input type="radio" />
+            <p>标签名称自定义的</p>
+            </div>
+
+<div class='checkbox yellow'><input type="radio" />
+            <p>规则</p>
+            </div>
+
+<ul>
+<li>名称可以包含字母、数字以及其他的字符 </li>
+<li>名称不能以数字或者标点符号开始 </li>
+<li>名称不能以字母 xml（或者 XML、Xml 等等）开始 </li>
+<li>名称不能包含空格 </li>
+</ul></div><div class="tab-pane" id="页面内不重复的id-5"><p>id属性值唯一</p></div><div class="tab-pane" id="页面内不重复的id-6"><p>CDATA区：在该区域中的数据会被原样展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;![CDATA[ 数据 ]]&gt;</span><br></pre></td></tr></table></figure></div></div></div>
+
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a><center>约束</center></h3><blockquote>
+<p>规定xml文档的书写规则</p>
+</blockquote>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a><center>分类</center></h4><ol>
+<li>DTD:一种简单的约束技术<ul>
+<li>内部dtd：将约束规则定义在xml文档中</li>
+<li>外部dtd：将约束的规则定义在外部的dtd文件中</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">本地：&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;</span><br><span class="line">网络：&lt;!DOCTYPE 根标签名 PUBLIC &quot;dtd文件名字&quot; &quot;dtd文件的位置URL&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Schema:一种复杂的约束技术</li>
+</ol>
+<pre><code>1.填写xml文档的根元素
+2.引入xsi前缀.  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+3.引入xsd文件命名空间.  xsi:schemaLocation=&quot;http://www.itcast.cn/xml  student.xsd&quot;
+4.为每一个xsd约束声明一个前缀,作为标识  xmlns=&quot;http://www.itcast.cn/xml&quot; 
+
+&lt;students   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xmlns=&quot;http://www.imqinhao.cn/xml&quot;
+xsi:schemaLocation=&quot;http://www.imqinhao.cn/xml  student.xsd&quot;&gt;</code></pre><h2 id="解析XML"><a href="#解析XML" class="headerlink" title="解析XML"></a><center>解析XML</center></h2><p>操作xml文档，将文档中的数据读取到内存中</p>
+<h3 id="操作xml文档"><a href="#操作xml文档" class="headerlink" title="操作xml文档"></a><center>操作xml文档</center></h3><ol>
+<li>解析(读取)：将文档中的数据读取到内存中</li>
+<li>写入：将内存中的数据保存到xml文档中。持久化的存储</li>
+</ol>
+<h3 id="解析xml的方式"><a href="#解析xml的方式" class="headerlink" title="解析xml的方式"></a><center>解析xml的方式</center></h3><h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a><center>DOM</center></h4><p>将标记语言文档一次性加载进内存，在内存中形成一颗dom树</p>
+<div class="note success"><p>优点：操作方便，可以对文档进行CRUD的所有操作</p></div>
+
+<div class="note danger"><p>缺点：占内存</p></div>
+
+<h4 id="SAX"><a href="#SAX" class="headerlink" title="SAX"></a><center>SAX</center></h4><p>逐行读取，基于事件驱动的。</p>
+<div class="note success"><p>优点：不占内存。</p></div>
+
+<div class="note danger"><p>缺点：只能读取，不能增删改</p></div>
+
+<p>​        </p>
+<h3 id="xml常见的解析器"><a href="#xml常见的解析器" class="headerlink" title="xml常见的解析器"></a><center>xml常见的解析器</center></h3><div class="timeline">
+<div class="timenode"><div class="meta"><p><p>JAXP</p>
+</p></div><div class="body"><p>sun公司提供的解析器，支持dom和sax两种思想</p></div></div>
+
+<div class="timenode"><div class="meta"><p><p>DOM4J</p>
+</p></div><div class="body"><p>一款非常优秀的解析器</p></div></div>
+
+<div class="timenode"><div class="meta"><p><p>Jsoup</p>
+</p></div><div class="body"><p>jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。</p></div></div>
+
+<div class="timenode"><div class="meta"><p><p>PULL</p>
+</p></div><div class="body"><p>Android操作系统内置的解析器，sax方式的。</p></div></div>
+</div>
+
+<h3 id="Jsoup"><a href="#Jsoup" class="headerlink" title="Jsoup"></a><center>Jsoup</center></h3><blockquote>
+<p>jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。</p>
+</blockquote>
+<div class="timeline">
+<div class="timenode"><div class="meta"><p><p>第一步</p>
+</p></div><div class="body"><p>导入jar包</p></div></div>
+
+<div class="timenode"><div class="meta"><p><p>第二步</p>
+</p></div><div class="body"><p>获取Document对象</p></div></div>
+
+<div class="timenode"><div class="meta"><p><p>第三步</p>
+</p></div><div class="body"><p>获取对应的标签Element对象</p></div></div>
+
+<div class="timenode"><div class="meta"><p><p>第四步</p>
+</p></div><div class="body"><p>获取数据</p></div></div>
+</div>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.1获取student.xml的path</span></span><br><span class="line">  String path = JsoupDemo1.class.getClassLoader().getResource("student.xml").getPath();</span><br><span class="line">  <span class="comment">//2.2解析xml文档，加载文档进内存，获取dom树---&gt;Document</span></span><br><span class="line">  Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line">  <span class="comment">//3.获取元素对象 Element</span></span><br><span class="line">  Elements elements = document.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line"></span><br><span class="line">  System.out.println(elements.size());</span><br><span class="line">  <span class="comment">//3.1获取第一个name的Element对象</span></span><br><span class="line">  Element element = elements.get(<span class="number">0</span>);</span><br><span class="line">  <span class="comment">//3.2获取数据</span></span><br><span class="line">  String name = element.text();</span><br><span class="line">  System.out.println(name);</span><br></pre></td></tr></table></figure>
+
+<h3 id="对象的使用"><a href="#对象的使用" class="headerlink" title="对象的使用"></a><center>对象的使用</center></h3><details cyan open><summary> parse：解析html或xml文档，返回Document </summary>
+              <div class='content'>
+              <ul><li>parse​(File in, String charsetName)：解析xml或html文件的。</li><li>parse​(String html)：解析xml或html字符串</li><li>parse​(URL url, int timeoutMillis)：通过网络路径获取指定的html或xml的文档对象</li></ul>
+              </div>
+            </details>
+
+<details cyan open><summary> 获取Element对象 </summary>
+              <div class='content'>
+              <ul><li>getElementById​(String id)：根据id属性值获取唯一的element对象</li><li>getElementsByTag​(String tagName)：根据标签名称获取元素对象集合</li><li>getElementsByAttribute​(String key)：根据属性名称获取元素对象集合</li><li>getElementsByAttributeValue​(String key, String value)：根据对应的属性名和属性值获取元素对象集合</li></ul>
+              </div>
+            </details>
+
+<details cyan open><summary> Elements </summary>
+              <div class='content'>
+              <p>元素Element对象的集合。可以当做 ArrayList<Element>来使用</p>
+              </div>
+            </details>
+
+<details cyan open><summary> Element：元素对象 </summary>
+              <div class='content'>
+              <ol><li><p>获取子元素对象</p><ul><li>getElementById​(String id)：根据id属性值获取唯一的element对象</li><li>getElementsByTag​(String tagName)：根据标签名称获取元素对象集合</li><li>getElementsByAttribute​(String key)：根据属性名称获取元素对象集合</li><li>getElementsByAttributeValue​(String key, String value)：根据对应的属性名和属性值获取元素对象集合</li></ul></li><li><p>获取属性值</p><ul><li>String attr(String key)：根据属性名称获取属性值</li></ul></li><li><p>获取文本内容</p><ul><li>String text():获取文本内容</li><li>String html():获取标签体的所有内容(包括字标签的字符串内容)</li></ul></li></ol>
+              </div>
+            </details>
+
+<details cyan open><summary> Node：节点对象 </summary>
+              <div class='content'>
+              <p>是Document和Element的父类</p>
+              </div>
+            </details>
+
+<h3 id="快捷查询方式"><a href="#快捷查询方式" class="headerlink" title="快捷查询方式"></a><center>快捷查询方式</center></h3><h4 id="selector选择器"><a href="#selector选择器" class="headerlink" title="selector选择器"></a><center>selector选择器</center></h4><blockquote>
+<p>使用的方法：Elements    select​(String cssQuery)</p>
+</blockquote>
+<h4 id="XPath"><a href="#XPath" class="headerlink" title="XPath"></a><center>XPath</center></h4><blockquote>
+<p>XPath即为XML路径语言，它是一种用来确定XML（标准通用标记语言的子集）文档中某部分位置的语言</p>
+</blockquote>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://queen999.github.io/2021/07/14/xml/>https://queen999.github.io/2021/07/14/xml/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-17T15:00:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年7月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://queen999.github.io/2021/07/14/xml/&title=XML基础 - 覃浩的博客&summary=
+概念
+语法
+解析
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://queen999.github.io/2021/07/14/xml/&title=XML基础 - 覃浩的博客&summary=
+概念
+语法
+解析
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://queen999.github.io/2021/07/14/xml/&title=XML基础 - 覃浩的博客&summary=
+概念
+语法
+解析
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/07/21/login_demo/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>登录页验证码小案例</p>
+          <p class='content'>案例需求：     1. 访问带有验证码的登录页面login.jsp     2. 用户输入用户名，密码以及验证码。
+&emsp;&emsp;如果用户名和密码输入有误，跳转登录页面，提示:用户名...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/07/12/JDBCTemplate/'>
+          <p class='title'>JDBC连接池&JDBCTemplate<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+数据库连接池
+
+Spring JDBC : JDBC Template
+
+
+
+
+数据库连接池1. 概念：其实就是一个容器(集合)，存放数据库连接的容器。
+        当系统初始化好后，容器...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#XML概念"><span class="toc-text">XML概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML功能"><span class="toc-text">XML功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml与html的区别"><span class="toc-text">xml与html的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML语法"><span class="toc-text">XML语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本语法"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速入门"><span class="toc-text">快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组成部分"><span class="toc-text">组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档声明"><span class="toc-text">文档声明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#约束"><span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析XML"><span class="toc-text">解析XML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作xml文档"><span class="toc-text">操作xml文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析xml的方式"><span class="toc-text">解析xml的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM"><span class="toc-text">DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SAX"><span class="toc-text">SAX</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml常见的解析器"><span class="toc-text">xml常见的解析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jsoup"><span class="toc-text">Jsoup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的使用"><span class="toc-text">对象的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷查询方式"><span class="toc-text">快捷查询方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#selector选择器"><span class="toc-text">selector选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XPath"><span class="toc-text">XPath</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="XML基础";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='tencent'
+      type='playlist'
+      id='8173412219'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+        </div>
+      
+    
+      
+        <i class="far fa-copyright" style="color: #333;">2019-2021</i>
+        <a href="https://imqinhao.cn/" target="_blank" style="color: #333;">
+          六特科技 </a>丨
+        <img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/icp.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/icp.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+        <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #333;">鄂ICP备19020398号-5</a> 丨
+        <!-- 网站运行时间 -->
+        <span id="timeDate">正在载入...</span><span id="times"><span><i class="fa fa-spinner fa-spin"> </i></span></span>
+        <script class="run">
+          var now = new Date();
+          function createtime() {
+            var grt = new Date("12/04/2019 20:13:14");
+            now.setTime(now.getTime() + 250);
+            days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+            hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+            if (String(hnum).length == 1) { hnum = "0" + hnum; } minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+            mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; }
+            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            snum = Math.round(seconds); if (String(snum).length == 1) { snum = "0" + snum; }
+            document.getElementById("timeDate").innerHTML = "本站已在风雨中度过了 "
+            document.getElementById("times").innerHTML = dnum + " 天 " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+            document.getElementById("timeDate").style.color = "#333";
+            document.getElementById("times").style.color = "#333";
+          }
+          setInterval("createtime()", 250);
+        </script>丨
+        <br>
+        <br>
+        <div class="github-badge">
+          <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span>
+        </div>
+        <div class="github-badge">
+          <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub & Coding</span>
+        </div>
+        <div class="github-badge">
+          <span class="badge-subject">DNS</span><span class="badge-value bg-red">Aliyun & DNSPod</span>
+        </div>
+        <div class="github-badge">
+          <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span>
+        </div>
+        <div class="github-badge">
+          <span class="badge-subject">PictureBed</span><span class="badge-value bg-blueviolet">jsDelivr</span>
+        </div>
+        <div class="github-badge">
+          <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span>
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+        var imgs=["https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-21.jpg", "https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-23.jpg", "https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-24.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+	  function Pjax_backstretch(){
+        
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        
+	  }
+	  loadScript("https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js",Pjax_backstretch)
+    </script>
+  
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>复制文本</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>复制链接</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>在新标签页打开</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>复制图片地址</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/category/
+        
+        
+        
+        
+          id="category"
+        >
+        <i class='fas fa-folder-open fa-fw'></i> 前往分类页
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/archives/
+        
+        
+        
+        
+          id="archives"
+        >
+        <i class='fas fa-archive fa-fw'></i> 前往归档页
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/friends/
+        
+        
+        
+        
+          id="friends"
+        >
+        <i class='fas fa-link fa-fw'></i> 我的朋友们
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=https://y.qq.com/n/ryqq/playlist/8173412219
+        
+        
+        
+        
+          id="https:yqqcomnryqqplaylist8173412219"
+        >
+        <i class='fa fa-code-branch fa-fw'></i> 我的歌单
+      </a>
+    </li>
+  
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' 
+        
+        
+        
+          onclick="document.execCommand('print')"
+        
+        >
+        <i class='fa fa-print fa-fw'></i> 打印页面
+      </a>
+    </li>
+  
+        
+      
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          if ('' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+      // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
+      
+      if(volantis.APlayerLoaded){ // APlayer加载完成？
+        // 如果有aplayer，初始化一下
+        checkAPlayer();
+      }
+      
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '8173412219';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  // APlayer 需要在  MetingJS 之前加载
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+  window.volantis.APlayerLoaded=0 // APlayer加载完成状态
+  var checkAPlayer = setInterval(function () {
+    if (!window.APlayer) return // APlayer加载完成？
+	  if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+    clearInterval(checkAPlayer)
+	  if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
+      window.volantis.APlayerLoaded=1 // APlayer加载完成
+      loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js") // 加载 MetingJS
+	  }
+  }, 2500) // 按照网速调节差分2.5s
+  // rightmenu see: layout/_partial/rightmenu.ejs
+
+  
+    loadScript("/js/aplayer.js")
+  
+
+</script>
+
+
+
+
+  
+  
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine/dist/Valine.min.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/HCLonely/Valine/dist/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://queen999.github.io' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://queen999.github.io' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://queen999.github.io' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
