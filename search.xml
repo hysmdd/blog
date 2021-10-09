@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>操作系统的运行机制</title>
+      <link href="/2021/10/03/system3/"/>
+      <url>/2021/10/03/system3/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211009170218565.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211009170218565.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211009170218565"></p><a id="more"></a><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a><center>指令</center></h2><p>“指令”就是处理器（CPU）能识别、执行的最基本命令。</p><h2 id="两种处理器状态"><a href="#两种处理器状态" class="headerlink" title="两种处理器状态"></a><center>两种处理器状态</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>两种处理器状态</p></p></div><div class="body"><p>CPU有两种状态，“<strong>内核态</strong>”和“<strong>用户态</strong>”。</p><hr><p>处于<strong>内核态时</strong>，说明此时正在<strong>运行的是内核程序</strong>，此时<strong>可以执行特权指令</strong>。</p><hr><p>处于<strong>用户态时</strong>，说明此时正在<strong>运行的是应用程序</strong>，此时<strong>只能执行非特权指令</strong>。</p></div></div><div class="timenode"><div class="meta"><p><p>别名</p></p></div><div class="body"><p>内核态=核心态=管态</p><hr><p>用户态=目态</p></div></div><div class="timenode"><div class="meta"><p><p>PSW</p></p></div><div class="body"><p>CPU中有一个寄存器叫程序状态寄存器（PSW），其中有个二进制位，1表示“内核态”，0表示“用户态”。</p></div></div></div><h2 id="如何变态"><a href="#如何变态" class="headerlink" title="如何变态"></a><center>如何变态</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>操作系统内核在让出CPU之前，会<strong>用一条特权指令把PSW的标志位设置为“用户态“</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><strong>CPU检测到中断信号后</strong>，会立即<strong>变为“核心态”</strong>，并停止运行当前的应用程序，转而运行处理中断信号的内核程序。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><kbd><strong>内核态->用户态</strong></kbd>：执行一条<strong>特权指令——修改PSW</strong>的标志位为“用户态”，这个动作意味着操作系统将主动让出CPU使用权。</p><hr><p><kbd><strong>用户态->内核态</strong></kbd>：由“<strong>中断</strong>”引发，<strong>硬件自动完成表态过程</strong>，触发中断信号意味着操作系统将强行夺回CPU的使用权。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>除了非法使用特权指令之外，还有很多事件会触发中断信号。一个共性是：<strong>但凡需要操作系统介入的地方，都会触发中断信号</strong>。</p></div></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统的发展与分类</title>
+      <link href="/2021/10/02/system2/"/>
+      <url>/2021/10/02/system2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211009125035222.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211009125035222.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211009125035222"></p><a id="more"></a><h2 id="手工操作阶段"><a href="#手工操作阶段" class="headerlink" title="手工操作阶段"></a><center>手工操作阶段</center></h2><blockquote><p>主要缺点：用户独占全机、人机速度矛盾导致资源利用率极低。</p></blockquote><h2 id="批处理阶段"><a href="#批处理阶段" class="headerlink" title="批处理阶段"></a><center>批处理阶段</center></h2><h3 id="单道批处理系统"><a href="#单道批处理系统" class="headerlink" title="单道批处理系统"></a><center>单道批处理系统</center></h3><div class="timeline"><div class="timenode"><div class="meta"><p><p>引入脱机输入/输出技术</p></p></div><div class="body"><p>引入脱机输入/输出技术（用外危机+磁带完成），并由<strong>监督程序</strong>负责控制作业的输入、输出。</p></div></div><div class="timenode"><div class="meta"><p><p>主要优点</p></p></div><div class="body"><p>缓解了一定程度的人机速度矛盾，资源利用率有所提升。</p></div></div><div class="timenode"><div class="meta"><p><p>主要缺点</p></p></div><div class="body"><p>内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待I/O完成。资源利用率依旧很低。</p></div></div></div><h3 id="多道批处理系统"><a href="#多道批处理系统" class="headerlink" title="多道批处理系统"></a><center>多道批处理系统</center></h3><div class="timeline"><div class="timenode"><div class="meta"><p><p>多道批处理系统</p></p></div><div class="body"><p>操作系统开始出现</p></div></div><div class="timenode"><div class="meta"><p><p>主要优点</p></p></div><div class="body"><p>多道程序<strong>并发</strong>执行，<strong>共享</strong>计算机资源。<strong>资源利用率大幅提升</strong>，CPU和其他资源更能保持“忙碌“状态，系统吞吐率增大。</p></div></div><div class="timenode"><div class="meta"><p><p>主要缺点</p></p></div><div class="body"><p>用户的响应时间长，没有人机交互功能（用户提交自己的作业之后就只能等待计算机处理完成，中间不能控制自己的作业执行。eg：无法调试程序/无法在程序运行过程中输入一些参数）。</p></div></div></div><h2 id="分时操作系统"><a href="#分时操作系统" class="headerlink" title="分时操作系统"></a><center>分时操作系统</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>分时操作系统</p></p></div><div class="body"><p>计算机以<strong>时间片</strong>为单位<strong>轮流为各个用户/作业服务</strong>，各个用户可通过终端与计算机进行交互。 </p></div></div><div class="timenode"><div class="meta"><p><p>主要优点</p></p></div><div class="body"><p>用户请求可以被即时响应，<strong>解决了人机交互问题</strong>。允许多个用户同时使用一台计算机，并且用户对计算机的操作相互独立，感受不到别人的存在。</p></div></div><div class="timenode"><div class="meta"><p><p>主要缺点</p></p></div><div class="body"><p>不能优先处理一些紧急任务。操作系统对各个用户/作业都是完全公平的，循环地为每个用户/作业服务一个时间片，不区分任务的紧急性。</p></div></div></div><h2 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a><center>实时操作系统</center></h2><blockquote><p>优点：能优先处理紧急任务</p></blockquote><h3 id="硬实时系统"><a href="#硬实时系统" class="headerlink" title="硬实时系统"></a><center>硬实时系统</center></h3><blockquote><p>必须在绝对严格的规定时间内完成处理，如：导弹控制系统、自动驾驶系统。</p></blockquote><h3 id="软实时系统"><a href="#软实时系统" class="headerlink" title="软实时系统"></a><center>软实时系统</center></h3><blockquote><p>能接受偶尔违反时间规定，如：12306火车订票系统。</p></blockquote><h2 id="网络操作系统"><a href="#网络操作系统" class="headerlink" title="网络操作系统"></a><center>网络操作系统</center></h2><blockquote><p>是伴随着计算机网络的发展而诞生的，能把网络中各个计算机有机地结合起来，<strong>实现数据传送等功能，实现网络中各种资源的共享（如文件共享）和各台计算机之间的通信</strong>。（如Windows  NT就是一种典型的网络操作系统，网站服务器就可以使用）。</p></blockquote><h2 id="分布式操作系统"><a href="#分布式操作系统" class="headerlink" title="分布式操作系统"></a><center>分布式操作系统</center></h2><blockquote><p>主要特点是<strong>分布性和并行性</strong>。系统中的各台计算机地位相同，<strong>任何工作都可以分布在这些计算机上，由它们并行、协同完成这个任务</strong>。</p></blockquote><h2 id="个人计算机操作系统"><a href="#个人计算机操作系统" class="headerlink" title="个人计算机操作系统"></a><center>个人计算机操作系统</center></h2><blockquote><p>如Windows  XP、Mac OS，方便个人使用。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统的四个特征</title>
+      <link href="/2021/10/01/system1/"/>
+      <url>/2021/10/01/system1/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20211009125756.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20211009125756.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt=""></p><a id="more"></a><h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a><center>并发</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>并发</p></p></div><div class="body"><p><strong>并发</strong>：指两个或多个事件在同一时间间隔内发生。这些事件<strong>宏观上是同时发生的</strong>，但<strong>微观上是交替发生</strong>的。 </p></div></div><div class="timenode"><div class="meta"><p><p>并行</p></p></div><div class="body"><p><strong>并行</strong>：指两个或多个事件在同一时刻同时发生。</p></div></div><div class="timenode"><div class="meta"><p><p>操作系统的并发性</p></p></div><div class="body"><div class='checkbox redchecked'><input type="checkbox" checked="checked"/>            <p>操作系统的并发性指计算机系统中”同时“运行着多个程序，这些程序宏观上看是同时运行着的，而微观上看是交替运行的。</p>            </div><hr><div class='checkbox redchecked'><input type="checkbox" checked="checked"/>            <p>操作系统就是伴随着“多道程序技术”而出现的。因此，<strong>操作系统和程序并发是一起诞生的</strong>。</p>            </div></div></div><div class="timenode"><div class="meta"><p><p>注意（重要考点）</p></p></div><div class="body"><div class='checkbox red checked'><input type="checkbox" checked="checked"/>            <p><strong>单核CPU</strong>同一时刻只能执行<strong>一个程序</strong>，各个程序只能<strong>并发</strong>地执行。</p>            </div><hr><div class='checkbox red checked'><input type="checkbox" checked="checked"/>            <p><strong>多核CPU</strong>同一时刻可以同时执行<strong>多个程序</strong>，多个程序可以<strong>并行</strong>地执行。</p>            </div></div></div></div><h2 id="共享"><a href="#共享" class="headerlink" title="共享"></a><center>共享</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>共享</p></p></div><div class="body"><p><strong>共享</strong>即资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用。</p></div></div><div class="timenode"><div class="meta"><p><p>资源共享方式</p></p></div><div class="body"><p>资源共享方式分为两种：</p><ol><li><kbd>互斥共享方式</kbd>：系统中的某些资源，虽然可以提供给多个进程使用，但<strong>一个时间段内只允许一个进程访问该资源</strong>。</li><li><kbd>同时共享方式</kbd>：系统中的某些资源，<strong>允许一个时间段内由多个进程“同时”对它们进行访问</strong>。</li></ol><hr><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>所谓的“同时”往往是宏观上的，而在微观上，这些进程可能是交替地对该资源进行访问的（即分时共享）。</p>            </div></div></div></div><h2 id="虚拟"><a href="#虚拟" class="headerlink" title="虚拟"></a><center>虚拟</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>虚拟概念</p></p></div><div class="body"><p>虚拟是指把一个物理上的实体变为若干个逻辑上的对应物。物理实体（前者）是实际存在的，而逻辑上对应物（后者）是用户感受到的。</p></div></div><div class="timenode"><div class="meta"><p><p>虚拟技术</p></p></div><div class="body"><p>① 空分复用技术（如虚拟存储器技术）</p><p>② 时分复用技术（如虚拟处理器）</p><hr><p>显然，如果失去了并发性，则一个时间段内系统中只需运行一道程序，那么就失去了实现虚拟性的意义。因此，<strong>没有并发性，就谈不上虚拟性</strong>。</p></div></div></div><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a><center>异步</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>异步概念</p></p></div><div class="body"><p><strong>异步</strong>是指在多道程序环境下，允许多个程序并发执行， 但由于资源有限，进程的执行不是一贯到底的，而是走走停停，以不可预知的速度往前推进，这就是进程的异步性。</p><hr><p>如果失去了并发性，即系统只能串行地运行各个程序，那么每个程序的执行会一贯到底。<strong>只有系统拥有并发性，才有可能导致异步性</strong>。</p></div></div></div><h2 id="并发性与共享性"><a href="#并发性与共享性" class="headerlink" title="并发性与共享性"></a><center>并发性与共享性</center></h2><blockquote><div class='checkbox redchecked'><input type="checkbox" checked="checked"/>            <p>并发性指计算机系统中同时存在着多个运行着的程序。</p>            </div><hr><div class='checkbox redchecked'><input type="checkbox" checked="checked"/>            <p>共享性是指系统中的资源可供内存中多个并发执行的进程共同使用。</p>            </div><hr><div class='checkbox redchecked'><input type="checkbox" checked="checked"/>            <p>如果失去并发性，则系统中只有一个程序正在运行，则共享性失去存在的意义。</p>            </div></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>DDE和BBD指标</title>
       <link href="/2021/09/15/stock_15/"/>
       <url>/2021/09/15/stock_15/</url>

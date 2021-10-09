@@ -1,3 +1,6 @@
+https://queen999.github.io/2021/10/03/system3/
+https://queen999.github.io/2021/10/02/system2/
+https://queen999.github.io/2021/10/01/system1/
 https://queen999.github.io/2021/09/15/stock_15/
 https://queen999.github.io/2021/09/14/stock_14/
 https://queen999.github.io/2021/09/13/stock_13/
@@ -95,6 +98,3 @@ https://queen999.github.io/2020/03/07/LTE/
 https://queen999.github.io/2020/03/07/3G/
 https://queen999.github.io/2020/03/07/GSM/
 https://queen999.github.io/2020/03/06/wireless_word/
-https://queen999.github.io/2020/03/06/mobile_communication/
-https://queen999.github.io/2020/03/04/acl/
-https://queen999.github.io/2020/02/27/computer_network_basics/
