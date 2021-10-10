@@ -1,3 +1,6 @@
+https://queen999.github.io/2021/10/06/system6/
+https://queen999.github.io/2021/10/05/system5/
+https://queen999.github.io/2021/10/04/system4/
 https://queen999.github.io/2021/10/03/system3/
 https://queen999.github.io/2021/10/02/system2/
 https://queen999.github.io/2021/10/01/system1/
@@ -95,6 +98,3 @@ https://queen999.github.io/2020/03/07/IP_Bearer_Network_basic/
 https://queen999.github.io/2020/03/07/NB-IoT/
 https://queen999.github.io/2020/03/07/wireless_radio/
 https://queen999.github.io/2020/03/07/LTE/
-https://queen999.github.io/2020/03/07/3G/
-https://queen999.github.io/2020/03/07/GSM/
-https://queen999.github.io/2020/03/06/wireless_word/

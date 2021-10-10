@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>操作系统的体系结构</title>
+      <link href="/2021/10/06/system6/"/>
+      <url>/2021/10/06/system6/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010120923152.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010120923152.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211010120923152"></p><a id="more"></a><h2 id="操作系统的内核"><a href="#操作系统的内核" class="headerlink" title="操作系统的内核"></a><center>操作系统的内核</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010114826079.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010114826079.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211010114826079"></p><blockquote><p><strong>内核</strong>是操作系统最基本、最核心的部分。</p><hr><p>实现操作系统内核功能的那些程序就是<strong>内核程序</strong>。</p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010115709894.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010115709894.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211010115709894"></p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010115909615.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010115909615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211010115909615"></p><div class="note success"><p><strong>注意</strong>：<strong>CPU的转态转换的过程是有成本的</strong>，要消耗不少时间，<strong>频繁地CPU的转态转换会降低系统性能</strong>。</p></div><h2 id="大内核-单内核-宏内核"><a href="#大内核-单内核-宏内核" class="headerlink" title="大内核/单内核/宏内核"></a><center>大内核/单内核/宏内核</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>将操作系统的主要功能模块都作为系统内核，运行在核心态</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>优点：高性能</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>缺点：内核代码庞大，结构混乱，难以维护</p></div></div></div><h2 id="微内核"><a href="#微内核" class="headerlink" title="微内核"></a><center>微内核</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>只把最基本的功能保留在内核</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>优点：内核功能少，结构清晰，方便维护</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>缺点：需要频繁地在核心态和用户态之间切换，性能低</p></div></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>系统调用</title>
+      <link href="/2021/10/05/system5/"/>
+      <url>/2021/10/05/system5/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010112931467.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010112931467.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211010112931467"></p><a id="more"></a><h2 id="什么是系统调用"><a href="#什么是系统调用" class="headerlink" title="什么是系统调用"></a><center>什么是系统调用</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务。主要包括命令接口和程序接口。其中，程序接口由一组<strong>系统调用</strong>组成。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>“系统调用”是操作系统提供给应用程序（程序员/编程人员）使用的接口，可以理解为一种可供应用程序调用的特殊函数，<strong>应用程序可以通过系统调用来请求获得操作系统内核的服务</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>应用程序通过<strong>系统调用</strong>请求操作系统的服务。而系统中的各种共享资源都由操作系统内核统一掌管，<strong>因此凡是与共享资源有关的操作（如存储分配、I/O操作、文件管理等）</strong>，<strong>都必须通过系统调用的方式向操作系统内核提出服务请求</strong>，由操作系统内核代为完成。这样<strong>可以保证系统的稳定性和安全性</strong>，防止用户进行非法操作。</p></div></div></div><h2 id="系统调用与库函数的区别"><a href="#系统调用与库函数的区别" class="headerlink" title="系统调用与库函数的区别"></a><center>系统调用与库函数的区别</center></h2><table><thead><tr><th>普通应用程序</th><th>可直接进行操作系统调用，也可使用库函数。有的库函数涉及系统调用，有的不涉及。</th></tr></thead><tbody><tr><td>编程语言</td><td>向上提供库函数。有时会将系统调用封装成库函数，以隐藏系统调用的一些细节，使程序员编程更加方便。</td></tr><tr><td>操作系统</td><td>向上提供系统调用，使得上层程序能请求内核的服务。</td></tr><tr><td>裸机</td><td></td></tr></tbody></table><h2 id="什么功能要用系统调用实现"><a href="#什么功能要用系统调用实现" class="headerlink" title="什么功能要用系统调用实现"></a><center>什么功能要用系统调用实现</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>设备管理</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>文件管理</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>进程管理</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>进程通信</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>内存管理</p></p></div><div class="body"></div></div></div><blockquote><p>凡是与共享资源有关的操作、会直接影响到其他进程的操作，就一定需要操作系统介入，就需要通过系统调用来实现。</p></blockquote><h2 id="系统调用的过程"><a href="#系统调用的过程" class="headerlink" title="系统调用的过程"></a><center>系统调用的过程</center></h2><blockquote><p>传递系统调用参数-&gt;执行陷入指令（<strong>用户态</strong>）-&gt;执行相应的内请求核程序处理系统调用（<strong>核心态</strong>）-&gt;返回应用程序</p></blockquote><div class="timeline"><div class="timenode"><div class="meta"><p><p>传参</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>陷入指令/trap/访管</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>由操作系统内核程序处理系统调用请求</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>返回应用程序</p></p></div><div class="body"></div></div></div><details cyan open><summary> 注意： </summary>              <div class='content'>              <div class="note warning"><p><strong>陷入指令</strong>是在<strong>用户态</strong>执行的，执行陷入指令之后立即引发一个<strong>内中断</strong>，使CPU进入<strong>核心态</strong>。</p></div><div class="note warning"><p><strong>发出系统调用请求</strong>是在<strong>用户态</strong>，而<strong>对系统调用的相应处理</strong>在<strong>核心态</strong>下进行。</p></div><div class="note warning"><p>别名：陷入指令=trap指令=访管指令</p></div>              </div>            </details>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>中断和异常</title>
+      <link href="/2021/10/04/system4/"/>
+      <url>/2021/10/04/system4/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010101748084.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211010101748084.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211010101748084"></p><a id="more"></a><h2 id="中断的作用"><a href="#中断的作用" class="headerlink" title="中断的作用"></a><center>中断的作用</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>CPU上会运行两种程序，一种是<strong>操作系统内核程序</strong>，一种是<strong>应用程序</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>“中断”是<strong>让操作系统内核夺回CPU使用权</strong>的唯一途径。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>“中断”会使CPU由用户态变为内核态，使操作系统重新夺回对CPU的控制权。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>如果没有“中断”机制，那么一旦应用程序上CPU运行，CPU就会一直运行这个应用程序。</p></div></div></div><h2 id="中断的分类"><a href="#中断的分类" class="headerlink" title="中断的分类"></a><center>中断的分类</center></h2><blockquote><p>“中断”特指狭义中的中断，即外中断。而内中断一般称为“异常“。</p></blockquote><h3 id="内中断"><a href="#内中断" class="headerlink" title="内中断"></a><center>内中断</center></h3><blockquote><p>也称异常、例外。</p><hr><p>与当前执行的指令<strong>有关</strong>，中断信号来源于CPU<strong>内部</strong></p><hr><p>有时候应用程序想请求操作系统内核的服务，此时会执行<strong>一条特殊的指令——陷入指令</strong>，该指令会引入一个内部中断信号。</p><hr><p>执行“陷入指令”，意味着应用程序主动的将CPU控制权还给操作系统内核。“系统调用”就是通过陷入指令完成的。</p></blockquote><div class="timeline"><div class="timenode"><div class="meta"><p><p>陷阱、陷入（trap）</p></p></div><div class="body"><p>由陷入指令引发，是应用程序故意引起的。</p></div></div><div class="timenode"><div class="meta"><p><p>故障（fault）</p></p></div><div class="body"><p>由错误条件引起的，可能被内核程序修复。内核程序修复故障后会把CPU使用权还给应用程序，让它继续执行下去。如：缺页故障。</p></div></div><div class="timenode"><div class="meta"><p><p>终止（abort）</p></p></div><div class="body"><p>由致命错误引起，内核程序无法修复该错误，因此一般不再将CPU使用权还给引发终止的应用程序，而是直接终止该应用程序。如：整数除0，非法使用特权指令。</p></div></div></div><h3 id="外中断"><a href="#外中断" class="headerlink" title="外中断"></a><center>外中断</center></h3><div class="timeline"><div class="timenode"><div class="meta"><p><p>也称“中断”。</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>与当前执行的指令<strong>无关</strong>，中断信号来源于CPU<strong>外部</strong></p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>时钟中断</p></p></div><div class="body"></div></div><div class="timenode"><div class="meta"><p><p>I/O中断请求</p></p></div><div class="body"></div></div></div><h2 id="中断机制的基本原理"><a href="#中断机制的基本原理" class="headerlink" title="中断机制的基本原理"></a><center>中断机制的基本原理</center></h2><div class="timeline"><p class='p h2'>检查中断信号</p><div class="timenode"><div class="meta"><p><p>内中断</p></p></div><div class="body"><p>CPU在执行指令时会检查是否有异常发生</p></div></div><div class="timenode"><div class="meta"><p><p>外中断</p></p></div><div class="body"><p>每个指令周期末尾，CPU都会检查是否有外中断信号需要处理</p></div></div></div><div class="timeline"><p class='p h2'>找到相应的中断处理程序</p><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>通过“中断向量表”实现</p></div></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统的运行机制</title>
       <link href="/2021/10/03/system3/"/>
       <url>/2021/10/03/system3/</url>
