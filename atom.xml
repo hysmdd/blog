@@ -5,9 +5,9 @@
   <subtitle>兴趣广泛的小菜鸟</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://queen999.github.io/"/>
-  <updated>2021-10-10T04:15:33.296Z</updated>
-  <id>https://queen999.github.io/</id>
+  <link href="https://www.imqinhao.cn/"/>
+  <updated>2021-10-13T00:46:54.951Z</updated>
+  <id>https://www.imqinhao.cn/</id>
   
   <author>
     <name>覃浩</name>
@@ -17,9 +17,51 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>进程的状态与转换</title>
+    <link href="https://www.imqinhao.cn/2021/10/08/system8/"/>
+    <id>https://www.imqinhao.cn/2021/10/08/system8/</id>
+    <published>2021-10-08T05:14:20.000Z</published>
+    <updated>2021-10-13T00:46:54.951Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211013083630437.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211013083630437.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211013083630437"></p><a id="more"></a><h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a><center>状态</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><strong>进程PCB中，会有一个变量state来表示进程的当前状态。</strong></p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>为了对同一状态下的各个进程进行统一的管理，操作系统会将各个进程的PCB组织起来。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>进程的整个生命周期中，大部分时间都处于三种基本状态。</p></div></div></div><h3 id="运行态"><a href="#运行态" class="headerlink" title="运行态"></a><center>运行态</center></h3><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>当CPU空闲时，操作系统就会选择一个就绪进程，让它上处理机运行。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>如果一个进程此时正在CPU上运行，那么这个进程处于“运行态”。CPU会执行该进程对应的程序（执行指令序列）</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>单CPU情况下，同一时刻只会有一个进程处于运行态，多核CPU情况下，可能有多个进程处于运行态。</p></div></div></div><h3 id="就绪态"><a href="#就绪态" class="headerlink" title="就绪态"></a><center>就绪态</center></h3><blockquote><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>当进程创建完成后，便进入“就绪态”，处于就绪态的进程已经具备运行条件 ，但由于没有空闲CPU，就暂时不能运行。</p>            </div><hr><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>系统中可能会有很多个进程都处于就绪态。</p>            </div></blockquote><h3 id="阻塞态"><a href="#阻塞态" class="headerlink" title="阻塞态"></a><center>阻塞态</center></h3><blockquote><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>在进程运行的过程中，可能会<strong>请求等待某个事件的发生</strong>（如等待某种系统资源的分配，或者等待其他进程的响应）。</p>            </div><hr><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>在这个事件发生之前，进程无法继续往下执行，此时操作系统会让这个进程下CPU，并让他它进入“<strong>阻塞态</strong>”。</p>            </div><hr><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>当CPU空闲时，又会选择另一个“就绪态”进程上CPU运行。</p>            </div></blockquote><h3 id="创建态"><a href="#创建态" class="headerlink" title="创建态"></a><center>创建态</center></h3><blockquote><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>进程正在被创建时，它的状态是“创建态”，在这个阶段操作系统会为进程分配资源、初始化PCB。</p>            </div></blockquote><h3 id="终止态"><a href="#终止态" class="headerlink" title="终止态"></a><center>终止态</center></h3><blockquote><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>一个进程可以执行exit系统调用，请求操作系统终止该进程。此时该进程会进入“<strong>终止态</strong>”，操作系统会让该进程下CPU，并回收内存空间等资源，最后还要回收该进程的PCB。</p>            </div><hr><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>当终止进程的工作完成之后，这个进程就彻底消失了。</p>            </div></blockquote><h2 id="状态间的切换"><a href="#状态间的切换" class="headerlink" title="状态间的切换"></a><center>状态间的切换</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p><p>就绪态 –&gt; 运行态</p></p></div><div class="body"><p>进程被调度</p></div></div><div class="timenode"><div class="meta"><p><p>运行态 –&gt; 就绪态</p></p></div><div class="body"><p>时间片到，或CPU被其他高优先级的进程抢占</p></div></div><div class="timenode"><div class="meta"><p><p>运行态 –&gt; 阻塞态</p></p></div><div class="body"><p>等待系统资源分配，或等待某事件发生（主动行为）</p></div></div><div class="timenode"><div class="meta"><p><p>阻塞态 –&gt; 就绪态</p></p></div><div class="body"><p>资源分配到位，等待的事件发生（被动行为）</p></div></div><div class="timenode"><div class="meta"><p><p>创建态 –&gt; 就绪态</p></p></div><div class="body"><p>系统完成创建进程相关的工作</p></div></div><div class="timenode"><div class="meta"><p><p>运行态 –&gt; 终止态</p></p></div><div class="body"><p>进程运行结束，或运行过程中遇到不可修复的错误</p></div></div></div><h2 id="进程状态的转换"><a href="#进程状态的转换" class="headerlink" title="进程状态的转换"></a><center>进程状态的转换</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211013074353318.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211013074353318.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211013074353318"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211013083630437.png&quot; class=&quot;lazyload&quot; data-srcset=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211013083630437.png&quot; srcset=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=&quot; alt=&quot;image-20211013083630437&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进程的概念和特征</title>
+    <link href="https://www.imqinhao.cn/2021/10/07/system7/"/>
+    <id>https://www.imqinhao.cn/2021/10/07/system7/</id>
+    <published>2021-10-07T05:14:20.000Z</published>
+    <updated>2021-10-11T11:47:35.730Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011194637627.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011194637627.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211011194637627"></p><a id="more"></a><h2 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a><center>进程的概念</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>程序：是<strong>静态的</strong>，就是个存放在磁盘里的可执行文件，就是一系列的指令集合。</p><hr><p>进程（Process）：是<strong>动态的</strong>，是程序的一次执行过程。同一个程序多次执行会对应多个进程。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>当进程被创建时，操作系统会为该进程分配一个<strong>唯一的、不重复</strong>的“身份证号”——<strong>PID</strong>（Process  ID，进程ID）。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>进程是进程实体的运行过程，是系统进程资源分配和调度的一个独立单位。</p></div></div></div><h2 id="进程的组成—PCB"><a href="#进程的组成—PCB" class="headerlink" title="进程的组成—PCB"></a><center>进程的组成—PCB</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>PCB是进程存在的唯一标志，当进程被创建时，操作系统为其创建PCB，当进程结束时，会回收其PCB。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>PCB是给操作系统用的。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>程序段、数据段是给进程自己用的。  </p></div></div></div><h2 id="进程实体"><a href="#进程实体" class="headerlink" title="进程实体"></a><center>进程实体</center></h2><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>一个<strong>进程实体（进程映像）</strong>由<strong>PCB、程序段、数据段</strong>组成。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><strong>进程</strong>是<strong>动态</strong>的，<strong>进程实体（进程映像）</strong>是<strong>静态</strong>的。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>PCB：一个程序开始运行前，需要创建对应的进程，也就要创建相应的PCB</p><hr><p>程序段：包含程序指令</p><hr><p>数据段：包含运行过程中产生的各种数据</p></div></div></div><p><strong>程序段、数据段、PCB</strong>三部分组成了<strong>进程实体（进程映像）</strong>。引入进程实体的概念后，可把进程定义为：</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011193117385.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011193117385.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211011193117385"></p><p><strong>进程</strong>是进程实体的<strong>运行过程</strong>，是系统进行<strong>资源分配</strong>和<strong>调度</strong>的一个独立单位。</p><div class="note success"><p>注意：PCB是进程存在的唯一标志。</p></div><blockquote><p>一个进程被“调度”，就是指操作系统决定让这个进程上CPU运行。</p></blockquote><h2 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a><center>进程的特征</center></h2><p>程序是静态的，进程是动态的，相比于程序，进程拥有以下特征：</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011193317943.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011193317943.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211011193317943"></p><blockquote><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>动态性是进程最基本的特征。</p>            </div><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>异步性会导致并发程序执行结果的不确定性。</p>            </div></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011194637627.png&quot; class=&quot;lazyload&quot; data-srcset=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211011194637627.png&quot; srcset=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=&quot; alt=&quot;image-20211011194637627&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>操作系统的体系结构</title>
-    <link href="https://queen999.github.io/2021/10/06/system6/"/>
-    <id>https://queen999.github.io/2021/10/06/system6/</id>
+    <link href="https://www.imqinhao.cn/2021/10/06/system6/"/>
+    <id>https://www.imqinhao.cn/2021/10/06/system6/</id>
     <published>2021-10-06T05:14:20.000Z</published>
     <updated>2021-10-10T04:15:33.296Z</updated>
     
@@ -32,15 +74,15 @@
     </summary>
     
     
-      <category term="操作系统" scheme="https://queen999.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>系统调用</title>
-    <link href="https://queen999.github.io/2021/10/05/system5/"/>
-    <id>https://queen999.github.io/2021/10/05/system5/</id>
+    <link href="https://www.imqinhao.cn/2021/10/05/system5/"/>
+    <id>https://www.imqinhao.cn/2021/10/05/system5/</id>
     <published>2021-10-05T05:14:20.000Z</published>
     <updated>2021-10-10T03:41:37.169Z</updated>
     
@@ -53,15 +95,15 @@
     </summary>
     
     
-      <category term="操作系统" scheme="https://queen999.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>中断和异常</title>
-    <link href="https://queen999.github.io/2021/10/04/system4/"/>
-    <id>https://queen999.github.io/2021/10/04/system4/</id>
+    <link href="https://www.imqinhao.cn/2021/10/04/system4/"/>
+    <id>https://www.imqinhao.cn/2021/10/04/system4/</id>
     <published>2021-10-04T05:14:20.000Z</published>
     <updated>2021-10-10T02:34:58.916Z</updated>
     
@@ -74,15 +116,15 @@
     </summary>
     
     
-      <category term="操作系统" scheme="https://queen999.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>操作系统的运行机制</title>
-    <link href="https://queen999.github.io/2021/10/03/system3/"/>
-    <id>https://queen999.github.io/2021/10/03/system3/</id>
+    <link href="https://www.imqinhao.cn/2021/10/03/system3/"/>
+    <id>https://www.imqinhao.cn/2021/10/03/system3/</id>
     <published>2021-10-03T05:14:20.000Z</published>
     <updated>2021-10-09T10:26:54.760Z</updated>
     
@@ -95,15 +137,15 @@
     </summary>
     
     
-      <category term="操作系统" scheme="https://queen999.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>操作系统的发展与分类</title>
-    <link href="https://queen999.github.io/2021/10/02/system2/"/>
-    <id>https://queen999.github.io/2021/10/02/system2/</id>
+    <link href="https://www.imqinhao.cn/2021/10/02/system2/"/>
+    <id>https://www.imqinhao.cn/2021/10/02/system2/</id>
     <published>2021-10-02T05:14:20.000Z</published>
     <updated>2021-10-09T04:58:45.178Z</updated>
     
@@ -116,15 +158,15 @@
     </summary>
     
     
-      <category term="操作系统" scheme="https://queen999.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>操作系统的四个特征</title>
-    <link href="https://queen999.github.io/2021/10/01/system1/"/>
-    <id>https://queen999.github.io/2021/10/01/system1/</id>
+    <link href="https://www.imqinhao.cn/2021/10/01/system1/"/>
+    <id>https://www.imqinhao.cn/2021/10/01/system1/</id>
     <published>2021-10-01T05:14:20.000Z</published>
     <updated>2021-10-09T04:58:12.540Z</updated>
     
@@ -137,15 +179,15 @@
     </summary>
     
     
-      <category term="操作系统" scheme="https://queen999.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>DDE和BBD指标</title>
-    <link href="https://queen999.github.io/2021/09/15/stock_15/"/>
-    <id>https://queen999.github.io/2021/09/15/stock_15/</id>
+    <link href="https://www.imqinhao.cn/2021/09/15/stock_15/"/>
+    <id>https://www.imqinhao.cn/2021/09/15/stock_15/</id>
     <published>2021-09-15T09:02:14.000Z</published>
     <updated>2021-09-26T12:35:55.705Z</updated>
     
@@ -159,15 +201,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>支撑线、压力线和趋势线</title>
-    <link href="https://queen999.github.io/2021/09/14/stock_14/"/>
-    <id>https://queen999.github.io/2021/09/14/stock_14/</id>
+    <link href="https://www.imqinhao.cn/2021/09/14/stock_14/"/>
+    <id>https://www.imqinhao.cn/2021/09/14/stock_14/</id>
     <published>2021-09-14T09:02:14.000Z</published>
     <updated>2021-09-26T10:57:19.253Z</updated>
     
@@ -182,15 +224,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>威廉指标</title>
-    <link href="https://queen999.github.io/2021/09/13/stock_13/"/>
-    <id>https://queen999.github.io/2021/09/13/stock_13/</id>
+    <link href="https://www.imqinhao.cn/2021/09/13/stock_13/"/>
+    <id>https://www.imqinhao.cn/2021/09/13/stock_13/</id>
     <published>2021-09-13T09:02:14.000Z</published>
     <updated>2021-09-26T04:36:43.383Z</updated>
     
@@ -203,15 +245,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>RSI指标</title>
-    <link href="https://queen999.github.io/2021/09/12/stock_12/"/>
-    <id>https://queen999.github.io/2021/09/12/stock_12/</id>
+    <link href="https://www.imqinhao.cn/2021/09/12/stock_12/"/>
+    <id>https://www.imqinhao.cn/2021/09/12/stock_12/</id>
     <published>2021-09-12T09:02:14.000Z</published>
     <updated>2021-09-26T01:09:51.608Z</updated>
     
@@ -224,15 +266,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>KDJ指标</title>
-    <link href="https://queen999.github.io/2021/09/11/stock_11/"/>
-    <id>https://queen999.github.io/2021/09/11/stock_11/</id>
+    <link href="https://www.imqinhao.cn/2021/09/11/stock_11/"/>
+    <id>https://www.imqinhao.cn/2021/09/11/stock_11/</id>
     <published>2021-09-11T09:02:14.000Z</published>
     <updated>2021-09-26T00:53:21.355Z</updated>
     
@@ -245,15 +287,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>MACD指标</title>
-    <link href="https://queen999.github.io/2021/09/10/stock_10/"/>
-    <id>https://queen999.github.io/2021/09/10/stock_10/</id>
+    <link href="https://www.imqinhao.cn/2021/09/10/stock_10/"/>
+    <id>https://www.imqinhao.cn/2021/09/10/stock_10/</id>
     <published>2021-09-10T09:02:14.000Z</published>
     <updated>2021-09-26T00:40:59.906Z</updated>
     
@@ -266,15 +308,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>缺口形态</title>
-    <link href="https://queen999.github.io/2021/09/09/stock_9/"/>
-    <id>https://queen999.github.io/2021/09/09/stock_9/</id>
+    <link href="https://www.imqinhao.cn/2021/09/09/stock_9/"/>
+    <id>https://www.imqinhao.cn/2021/09/09/stock_9/</id>
     <published>2021-09-09T09:02:14.000Z</published>
     <updated>2021-09-26T00:16:56.823Z</updated>
     
@@ -287,15 +329,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>矩形形态</title>
-    <link href="https://queen999.github.io/2021/09/08/stock_8/"/>
-    <id>https://queen999.github.io/2021/09/08/stock_8/</id>
+    <link href="https://www.imqinhao.cn/2021/09/08/stock_8/"/>
+    <id>https://www.imqinhao.cn/2021/09/08/stock_8/</id>
     <published>2021-09-08T09:02:14.000Z</published>
     <updated>2021-09-25T13:44:19.173Z</updated>
     
@@ -308,15 +350,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>三角形态</title>
-    <link href="https://queen999.github.io/2021/09/07/stock_7/"/>
-    <id>https://queen999.github.io/2021/09/07/stock_7/</id>
+    <link href="https://www.imqinhao.cn/2021/09/07/stock_7/"/>
+    <id>https://www.imqinhao.cn/2021/09/07/stock_7/</id>
     <published>2021-09-07T09:02:14.000Z</published>
     <updated>2021-09-25T13:25:24.013Z</updated>
     
@@ -329,15 +371,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>双重底形态</title>
-    <link href="https://queen999.github.io/2021/09/06/stock_6/"/>
-    <id>https://queen999.github.io/2021/09/06/stock_6/</id>
+    <link href="https://www.imqinhao.cn/2021/09/06/stock_6/"/>
+    <id>https://www.imqinhao.cn/2021/09/06/stock_6/</id>
     <published>2021-09-06T09:02:14.000Z</published>
     <updated>2021-09-25T12:57:44.643Z</updated>
     
@@ -350,15 +392,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>双重顶形态</title>
-    <link href="https://queen999.github.io/2021/09/05/stock_5/"/>
-    <id>https://queen999.github.io/2021/09/05/stock_5/</id>
+    <link href="https://www.imqinhao.cn/2021/09/05/stock_5/"/>
+    <id>https://www.imqinhao.cn/2021/09/05/stock_5/</id>
     <published>2021-09-05T09:02:14.000Z</published>
     <updated>2021-09-23T11:14:59.742Z</updated>
     
@@ -371,15 +413,15 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
   
   <entry>
     <title>头肩底形态</title>
-    <link href="https://queen999.github.io/2021/09/04/stock_4/"/>
-    <id>https://queen999.github.io/2021/09/04/stock_4/</id>
+    <link href="https://www.imqinhao.cn/2021/09/04/stock_4/"/>
+    <id>https://www.imqinhao.cn/2021/09/04/stock_4/</id>
     <published>2021-09-04T09:02:14.000Z</published>
     <updated>2021-09-23T10:50:44.102Z</updated>
     
@@ -392,53 +434,7 @@
     </summary>
     
     
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>头肩顶形态</title>
-    <link href="https://queen999.github.io/2021/09/03/stock_3/"/>
-    <id>https://queen999.github.io/2021/09/03/stock_3/</id>
-    <published>2021-09-03T09:02:14.000Z</published>
-    <updated>2021-09-10T10:34:58.723Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>头肩顶形态</p><p>头肩顶形态特征</p><p>如何判断头肩顶形态</p><a id="more"></a><h2 id="头肩顶形态"><a href="#头肩顶形态" class="headerlink" title="头肩顶形态"></a><center>头肩顶形态</center></h2><p>所谓头肩顶形态，就是从左往右看，股票价格从左肩处开始上涨至一定高度后跌回原位形成左肩，然后重新上涨超过左肩的高度形成头部后再度跌回原位经过整理后开始第三次上涨，达到左肩左右的位置形成右肩后开始第三次下跌。这次下跌的杀伤力较大，快速跌破整个形态的底部（颈位），是非常典型的下跌信号。</p><h2 id="头肩顶形态特征"><a href="#头肩顶形态特征" class="headerlink" title="头肩顶形态特征"></a><center>头肩顶形态特征</center></h2><ol><li>左肩与右肩高点大致相等。</li><li>成交量上：左肩最大，头部次之，右肩最小，呈阶梯状递减。</li><li>突破颈线不一定需要大成交量配合，但日后继续下跌时，成交量会放大。</li></ol><h2 id="如何判断头肩顶形态"><a href="#如何判断头肩顶形态" class="headerlink" title="如何判断头肩顶形态"></a><center>如何判断头肩顶形态</center></h2><p>要判断一个形态是否属于头肩顶形态，首先要看该形态是否出现在一波上升趋势的末端，其次则要符合头肩顶形态的三条特征。</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/1.jpg" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt=""></p><p>一旦头肩顶形成，股价下跌几乎成定局，止损离场才是最佳选择。</p><p>当头肩顶形态初步形成，但并未跌破颈线时，可先卖出手中的一部分股票，降低风险。</p><p>当股价有效跌破颈位线，头肩顶形态形成，卖出全部股票。如股价跌破颈线位未能及时卖出，如股价再次反弹到颈线附近时，应果断卖出。</p><p>周K线、月K线形成头肩顶形态，说明股价将出现一个较长时间的跌势。一般情况下，头肩顶形成后的最小下跌距离，等于头部到颈线的直线距离。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;头肩顶形态&lt;/p&gt;
-&lt;p&gt;头肩顶形态特征&lt;/p&gt;
-&lt;p&gt;如何判断头肩顶形态&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>怎样拥有良好的心态</title>
-    <link href="https://queen999.github.io/2021/09/02/stock_2/"/>
-    <id>https://queen999.github.io/2021/09/02/stock_2/</id>
-    <published>2021-09-02T09:02:14.000Z</published>
-    <updated>2021-09-10T10:07:28.899Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>炒股易亏之不良心态</p><p>如何避免不良心态</p><p>如何建立交易系统</p><a id="more"></a><h2 id="炒股易亏之不良心态"><a href="#炒股易亏之不良心态" class="headerlink" title="炒股易亏之不良心态"></a><center>炒股易亏之不良心态</center></h2><p>所谓<strong>炒股易亏之不良心态</strong>是指股民在买卖股票时，因为自身的种种不良心态而最终导致投资失败，比如<font color="red">贪婪、恐惧、随意、惰性依赖、投机赌博性、喜怒形于色以及在操作上的战战兢兢、畏首畏尾或者报复性的频繁操作</font>。</p><h2 id="如何避免不良心态"><a href="#如何避免不良心态" class="headerlink" title="如何避免不良心态"></a><center>如何避免不良心态</center></h2><ol><li>炒股要用<strong>闲钱</strong>，不要用生活必需的资金。</li><li>要建立一套适合自己的交易系统，包括买卖点、止盈止损点、仓位控制、适合交易的行情等一整套的系统，适合个人的较为固定的能够稳定获利的操作方法，并且严格执行，针对在什么情况下要如何操作做到胸有成竹。</li></ol><h2 id="如何建立交易系统"><a href="#如何建立交易系统" class="headerlink" title="如何建立交易系统"></a><center>如何建立交易系统</center></h2><p>建立一个适合自己的交易系统，需要学习更多的知识，积累更多的经验，并在个人的投资操作中不断的完善和改进。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;炒股易亏之不良心态&lt;/p&gt;
-&lt;p&gt;如何避免不良心态&lt;/p&gt;
-&lt;p&gt;如何建立交易系统&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="股票知识" scheme="https://queen999.github.io/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
+      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>

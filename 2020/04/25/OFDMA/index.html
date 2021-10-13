@@ -508,7 +508,7 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
           
             
 <div class='new-meta-item author'>
-  <a class='author' href="https://www.imqinhao.cn" target="_blank" rel="nofollow noopener">
+  <a class='author' href="https://www.imqinhao.cn" rel="nofollow">
     <img no-lazy src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/avatar-1.jpg">
     <p>覃浩</p>
   </a>
@@ -732,7 +732,7 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://queen999.github.io/2020/04/25/OFDMA/&title=OFDMA - 覃浩的博客&summary=TD-LTE核心技术
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/25/OFDMA/&title=OFDMA - 覃浩的博客&summary=TD-LTE核心技术
 频分多址技术之OFDMA/SC-FDMA"
           
           >
@@ -745,7 +745,7 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://queen999.github.io/2020/04/25/OFDMA/&title=OFDMA - 覃浩的博客&summary=TD-LTE核心技术
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/25/OFDMA/&title=OFDMA - 覃浩的博客&summary=TD-LTE核心技术
 频分多址技术之OFDMA/SC-FDMA"
           
           >
@@ -758,7 +758,7 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://queen999.github.io/2020/04/25/OFDMA/&title=OFDMA - 覃浩的博客&summary=TD-LTE核心技术
+          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/25/OFDMA/&title=OFDMA - 覃浩的博客&summary=TD-LTE核心技术
 频分多址技术之OFDMA/SC-FDMA"
           
           >
@@ -974,10 +974,10 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
     
       
         <i class="far fa-copyright" style="color: #333;">2019-2021</i>
-        <a href="https://imqinhao.cn/" target="_blank" style="color: #333;">
+        <a href="https://www.imqinhao.cn/" target="_blank" style="color: #333;">
           六特科技 </a>丨
         <img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/icp.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/icp.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
-        <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #333;">鄂ICP备19020398号-5</a> 丨
+        <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #333;">鄂ICP备2021017381号-1</a> 丨
         <!-- 网站运行时间 -->
         <span id="timeDate">正在载入...</span><span id="times"><span><i class="fa fa-spinner fa-spin"> </i></span></span>
         <script class="run">
@@ -1809,7 +1809,7 @@ function setSearchService() {
       // 请求 PV 并自增
       var pvCtn = document.querySelector('#lc-sv');
       if (pvCtn || enableIncr) {
-        var pvGetter = this.getRecord(Counter, 'https://queen999.github.io' + '/#lc-sv', 'Visits').then((record) => {
+        var pvGetter = this.getRecord(Counter, 'https://www.imqinhao.cn' + '/#lc-sv', 'Visits').then((record) => {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
@@ -1827,7 +1827,7 @@ function setSearchService() {
       // 请求 UV 并自增
       var uvCtn = document.querySelector('#lc-uv');
       if (uvCtn || enableIncr) {
-        var uvGetter = this.getRecord(Counter, 'https://queen999.github.io' + '/#lc-uv', 'Visitors').then((record) => {
+        var uvGetter = this.getRecord(Counter, 'https://www.imqinhao.cn' + '/#lc-uv', 'Visitors').then((record) => {
           var vuv = this.validUV();
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
@@ -1849,7 +1849,7 @@ function setSearchService() {
         for (i = 0; i < allPV.length; i++) {
           let pv = allPV[i];
           let title = pv.getAttribute('data-title');
-          var url = 'https://queen999.github.io' + pv.getAttribute('data-path');
+          var url = 'https://www.imqinhao.cn' + pv.getAttribute('data-path');
           if (url) {
             var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增
@@ -2184,4 +2184,5 @@ document.addEventListener("pjax:success", listennSidebarTOC);
  
 	  
     </div>
-  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+  </body>
+</html>
