@@ -3930,6 +3930,28 @@ img.lazyload:not(.placeholder):not(.loaded) {
 img.lazyload:not(.placeholder).loaded {
   filter: none;
 }
+.card-comment-item {
+  margin: 10px 0 10px 0;
+  border-bottom: 1px solid #e2dada;
+  padding-bottom: 5px;
+}
+.item-header-text {
+  color: #9a9a9a;
+}
+.item-text {
+  margin-top: 5px;
+  padding: 0;
+}
+a.newcomment {
+  font-weight: bold;
+  color: #444;
+}
+a.newcomment:hover {
+  color: #36ac91 !important;
+}
+a.comments-detail:hover {
+  color: #36ac91 !important;
+}
 .md >p {
   padding-top: 4px;
 }

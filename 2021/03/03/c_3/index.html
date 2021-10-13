@@ -110,50 +110,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
   </script>
 
-<script>
-window.oncontextmenu = function() {
-	event.preventDefault(); // 阻止默认事件行为
-    return false;
-}
-window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
-	// 判断是否按下F12，F12键码为123
-	if (event.keyCode === 123) {
-		event.preventDefault(); // 阻止默认事件行为
-        window.event.returnValue = false;
-	}
-}
-  </script>
-
-<script>
-  (function noDebuger(){
-    function testDebuger(){
-        var d=new Date();
-        debugger;
-        if(new Date()-d>10){
-            
-            return true;
-        }
-        return false;
-    }
- 
-    function start(){
-        while(testDebuger()){
-            testDebuger();
-        }
-    }
-    if(!testDebuger()) {
-        window.onblur = function(){
-            setTimeout(function(){
-                start();
-            },500)
-        }
-    }
-    else{
-        start();
-    }
- 
-})();
-</script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js'></script>
 
 <script>
   (function(){
@@ -1570,54 +1527,57 @@ var loadCSS = function( href, before, media, attributes ){
 
 
 
-  
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
+
   
 <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine/dist/Valine.min.js"></script>
 
+    
+              <script>
+                function emoji(path, idx, ext) {
+                  return path + "/" + path + "-" + idx + "." + ext;
+                }
+                var emojiMaps = {};
+                for (var i = 1; i <= 54; i++) {
+                  emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+                }
+                for (var i = 1; i <= 101; i++) {
+                  emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+                }
+                for (var i = 1; i <= 116; i++) {
+                  emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+                }
+                for (var i = 1; i <= 125; i++) {
+                  emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+                }
+                for (var i = 1; i <= 4; i++) {
+                  emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+                }
+                function pjax_valine() {
+                  if (!document.querySelectorAll("#valine_container")[0]) return;
+                  let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+                  let path = pdata.commentPath;
+                  if (path.length == 0) {
+                    let defaultPath = '';
+                    path = defaultPath || decodeURI(window.location.pathname);
+                  }
+                  var valine = new Valine();
+                  valine.init(Object.assign(, {
+                    el: '#valine_container',
+                    path: path,
+                    placeholder: pagePlaceholder,
+                    emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+                    emojiMaps: emojiMaps,
+                  }))
+                }
+                
 
-<script>
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-  function pjax_valine() {
-    if(!document.querySelectorAll("#valine_container")[0])return;
-    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
-    let path = pdata.commentPath;
-    if (path.length == 0) {
-      let defaultPath = '';
-      path = defaultPath || decodeURI(window.location.pathname);
-    }
-    var valine = new Valine();
-    valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/HCLonely/Valine/dist/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
-      el: '#valine_container',
-      path: path,
-      placeholder: pagePlaceholder,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-    }))
-  }
-  $(function () {
-    pjax_valine();
-  });
-  volantis.pjax.push(pjax_valine);
-</script>
-
+                $(function () {
+                  pjax_valine();
+                  newcomment();
+                });
+                volantis.pjax.push(pjax_valine);
+              </script>
 
 
 
@@ -2080,7 +2040,7 @@ document.addEventListener("pjax:success", listennSidebarTOC);
 
     document.addEventListener('pjax:send', function (e) {
       //window.stop(); // 相当于点击了浏览器的停止按钮
-
+      
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
@@ -2135,4 +2095,5 @@ document.addEventListener("pjax:success", listennSidebarTOC);
  
 	  
     </div>
-  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+  </body>
+</html>
