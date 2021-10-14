@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.imqinhao.cn/"/>
-  <updated>2021-10-13T00:46:54.951Z</updated>
+  <updated>2021-10-14T08:20:25.213Z</updated>
   <id>https://www.imqinhao.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>进程控制</title>
+    <link href="https://www.imqinhao.cn/2021/10/09/system9/"/>
+    <id>https://www.imqinhao.cn/2021/10/09/system9/</id>
+    <published>2021-10-09T05:14:20.000Z</published>
+    <updated>2021-10-14T08:20:25.213Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160859304.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160859304.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014160859304"></p><a id="more"></a><h2 id="什么是进程控制"><a href="#什么是进程控制" class="headerlink" title="什么是进程控制"></a><center>什么是进程控制</center></h2><blockquote><p>进程控制的主要功能是对操作系统中的所有进程实施有效的管理，它具有创建新进程、撤销已有进程、实现进程状态转换等功能。</p></blockquote><h2 id="怎么实现进程控制"><a href="#怎么实现进程控制" class="headerlink" title="怎么实现进程控制"></a><center>怎么实现进程控制</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014150233224.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014150233224.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014150233224"></p><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><strong>原语</strong>的执行具有<strong>原子性</strong>，即执行过程只能一气呵成，期间<strong>不允许被中断</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>可以用“<strong>关中断</strong>指令”和“<strong>开中断</strong>指令”这两个<strong>特权指令</strong>实现<strong>原子性</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>CPU执行了关中断指令之后，就不再例行检查中断信号，直到执行开中断指令之后才会恢复检查。</p></div></div></div><h2 id="进程控制相关的原语"><a href="#进程控制相关的原语" class="headerlink" title="进程控制相关的原语"></a><center>进程控制相关的原语</center></h2><h3 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a><center>进程的创建</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161555820.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161555820.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014161555820"></p><h3 id="进程的终止"><a href="#进程的终止" class="headerlink" title="进程的终止"></a><center>进程的终止</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161635040.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161635040.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014161635040"></p><h3 id="进程的阻塞和唤醒"><a href="#进程的阻塞和唤醒" class="headerlink" title="进程的阻塞和唤醒"></a><center>进程的阻塞和唤醒</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014154526058.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014154526058.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014154526058"></p><h3 id="进程的切换"><a href="#进程的切换" class="headerlink" title="进程的切换"></a><center>进程的切换</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160412155.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160412155.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014160412155"></p><blockquote><p>无论哪个进程控制原语，要做的无非三类事情：</p><ol><li>更新PCB中的信息（修改进程状态，保存/恢复运行环境）</li><li>将PCB插入合适的队列</li><li>分配/回收资源</li></ol></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160859304.png&quot; class=&quot;lazyload&quot; data-srcset=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160859304.png&quot; srcset=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=&quot; alt=&quot;image-20211014160859304&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>进程的状态与转换</title>
@@ -409,27 +430,6 @@
     <summary type="html">
     
       &lt;p&gt;双重顶形态由两个相邻高点构成，当股价攀升至某一价格水平时，成交量显著放大，股价却掉头回落。当回落至某一位置时，股价反弹至前高附近，但成交量较前一高峰略有萎缩。之后展开第二次下跌，并跌破第一次回落的低点，双重顶形成。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>头肩底形态</title>
-    <link href="https://www.imqinhao.cn/2021/09/04/stock_4/"/>
-    <id>https://www.imqinhao.cn/2021/09/04/stock_4/</id>
-    <published>2021-09-04T09:02:14.000Z</published>
-    <updated>2021-09-23T10:50:44.102Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>头肩底形态和头肩顶形态一样，是组合K线的形态之一。常在行情下跌的尾声中出现，是止跌反转的典型形态。</p><a id="more"></a><p>犹如倒置的两个肩膀扛一个头，股票价格从左肩处开始下跌至一定深度后弹回原味，重新下跌超过左肩的深度形成头部后再度反弹回原位。第三次下跌时，跌至左肩位置，形成右肩后开始第三次反弹，这次反弹的力度很大，很快穿过颈线并一路上扬。</p><h2 id="头肩底形态特征"><a href="#头肩底形态特征" class="headerlink" title="头肩底形态特征"></a><center>头肩底形态特征</center></h2><ol><li>头肩底形态向上突破颈位时，成交量必须明显放大，否则可能是假突破。</li><li>相比头肩顶，头肩底形态的形成时间较长且形态较为平缓。</li><li>在突破颈线后反抽的概率较大，原因是落袋为安的交易者比较多</li><li>形态的颈线常常向右方下倾，如果颈线向右方上倾，则意味着市场更加坚挺</li></ol><h2 id="买入时机"><a href="#买入时机" class="headerlink" title="买入时机"></a><center>买入时机</center></h2><p><font color="red">一旦头肩底形态形成后，如出现回抽</font>则是买入的好时机，适合<kbd>稳健</kbd>的投资者。</p><p>或者<font color="red">在突破颈线当天收市前买入</font>，则适合<kbd>较激进</kbd>的投资者，但<strong>需注意暂时套牢和假突破的风险</strong>。</p><p> 也可<font color="red">在头肩底的右肩形成时买入</font>，则适合<kbd>更为激进</kbd>的投资者，但同样<strong>需要承受形态构建失败和假突破的风险</strong>。</p><div class="note success"><p><strong>一般情况下，头肩底形成后的最少涨幅等于形态最低点与颈线之间的垂直距离。</strong></p></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;头肩底形态和头肩顶形态一样，是组合K线的形态之一。常在行情下跌的尾声中出现，是止跌反转的典型形态。&lt;/p&gt;
     
     </summary>
     

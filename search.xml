@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>进程控制</title>
+      <link href="/2021/10/09/system9/"/>
+      <url>/2021/10/09/system9/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160859304.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160859304.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014160859304"></p><a id="more"></a><h2 id="什么是进程控制"><a href="#什么是进程控制" class="headerlink" title="什么是进程控制"></a><center>什么是进程控制</center></h2><blockquote><p>进程控制的主要功能是对操作系统中的所有进程实施有效的管理，它具有创建新进程、撤销已有进程、实现进程状态转换等功能。</p></blockquote><h2 id="怎么实现进程控制"><a href="#怎么实现进程控制" class="headerlink" title="怎么实现进程控制"></a><center>怎么实现进程控制</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014150233224.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014150233224.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014150233224"></p><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><strong>原语</strong>的执行具有<strong>原子性</strong>，即执行过程只能一气呵成，期间<strong>不允许被中断</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>可以用“<strong>关中断</strong>指令”和“<strong>开中断</strong>指令”这两个<strong>特权指令</strong>实现<strong>原子性</strong>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>CPU执行了关中断指令之后，就不再例行检查中断信号，直到执行开中断指令之后才会恢复检查。</p></div></div></div><h2 id="进程控制相关的原语"><a href="#进程控制相关的原语" class="headerlink" title="进程控制相关的原语"></a><center>进程控制相关的原语</center></h2><h3 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a><center>进程的创建</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161555820.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161555820.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014161555820"></p><h3 id="进程的终止"><a href="#进程的终止" class="headerlink" title="进程的终止"></a><center>进程的终止</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161635040.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014161635040.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014161635040"></p><h3 id="进程的阻塞和唤醒"><a href="#进程的阻塞和唤醒" class="headerlink" title="进程的阻塞和唤醒"></a><center>进程的阻塞和唤醒</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014154526058.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014154526058.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014154526058"></p><h3 id="进程的切换"><a href="#进程的切换" class="headerlink" title="进程的切换"></a><center>进程的切换</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160412155.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211014160412155.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014160412155"></p><blockquote><p>无论哪个进程控制原语，要做的无非三类事情：</p><ol><li>更新PCB中的信息（修改进程状态，保存/恢复运行环境）</li><li>将PCB插入合适的队列</li><li>分配/回收资源</li></ol></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>进程的状态与转换</title>
       <link href="/2021/10/08/system8/"/>
       <url>/2021/10/08/system8/</url>
@@ -432,6 +451,25 @@
       <categories>
           
           <category> 股票知识 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>线性表的定义</title>
+      <link href="/2021/08/03/dataStructure-3/"/>
+      <url>/2021/08/03/dataStructure-3/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><a id="more"></a><h2 id="线性表的定义"><a href="#线性表的定义" class="headerlink" title="线性表的定义"></a>线性表的定义</h2><p>线性表是具有相同数据类型的n（n≥0）个数据元素的有限序列，其中n为表长，当n=0时线性表是一个空表。若用L命名线性表，则其一般表示为<br>$$<br>L=(a_1,a_2,…,a_i,a_{i + 1},…,a_n)<br>$$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
           
       </categories>
       

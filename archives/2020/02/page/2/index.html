@@ -110,7 +110,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
   </script>
 
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js'></script>
+<!-- <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js'></script> -->
 
 
 <script>
@@ -659,7 +659,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>119 篇</div>
+          <div>121 篇</div>
         </div>
       
 
@@ -681,7 +681,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>135.9k 字</div>
+          <div>136.2k 字</div>
         </div>
       
 
@@ -693,8 +693,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Wed Oct 13 2021 22:27:18 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-10-13 日</div>
+            <div id="last-update" style="display: none;">Thu Oct 14 2021 17:33:10 GMT+0800 (GMT+08:00)</div>
+            <div id="last-update-show">2021-10-14 日</div>
           
         </div>
         
@@ -744,7 +744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-10-13 日';
+            document.getElementById('last-update-show').innerHTML = '2021-10-14 日';
           }
         </script>
         
@@ -820,7 +820,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
             id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>操作系统</div><div class='badge'>(8)</div></a></li>
+            ><div class='name'>操作系统</div><div class='badge'>(9)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
@@ -830,7 +830,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
             id="categoriesE695B0E68DAEE7BB93E69E84"
-            ><div class='name'>数据结构</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>数据结构</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"
@@ -1591,57 +1591,54 @@ var loadCSS = function( href, before, media, attributes ){
 
 
 
-  <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
-
   
-<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine/dist/Valine.min.js"></script>
+  
+<script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
 
-    
-              <script>
-                function emoji(path, idx, ext) {
-                  return path + "/" + path + "-" + idx + "." + ext;
-                }
-                var emojiMaps = {};
-                for (var i = 1; i <= 54; i++) {
-                  emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-                }
-                for (var i = 1; i <= 101; i++) {
-                  emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-                }
-                for (var i = 1; i <= 116; i++) {
-                  emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-                }
-                for (var i = 1; i <= 125; i++) {
-                  emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-                }
-                for (var i = 1; i <= 4; i++) {
-                  emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-                }
-                function pjax_valine() {
-                  if (!document.querySelectorAll("#valine_container")[0]) return;
-                  let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
-                  let path = pdata.commentPath;
-                  if (path.length == 0) {
-                    let defaultPath = '';
-                    path = defaultPath || decodeURI(window.location.pathname);
-                  }
-                  var valine = new Valine();
-                  valine.init(Object.assign(, {
-                    el: '#valine_container',
-                    path: path,
-                    placeholder: pagePlaceholder,
-                    emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-                    emojiMaps: emojiMaps,
-                  }))
-                }
-                
 
-                $(function () {
-                  pjax_valine();
-                  newcomment();
-                });
-                volantis.pjax.push(pjax_valine);
-              </script>
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
 
 
 
