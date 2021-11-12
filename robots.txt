@@ -5,8 +5,7 @@ Disallow: .gif$
 Disallow: .png$
 Disallow: .bmp$
 
-User-agent: Baidus
-pider
+User-agent: Baiduspider
 Disallow: .jpg$
 Disallow: .jpeg$
 Disallow: .gif$
