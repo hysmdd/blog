@@ -4,17 +4,3 @@ Disallow: .jpeg$
 Disallow: .gif$
 Disallow: .png$
 Disallow: .bmp$
-
-User-agent: Baiduspider
-Disallow: .jpg$
-Disallow: .jpeg$
-Disallow: .gif$
-Disallow: .png$
-Disallow: .bmp$
-
-User-agent: *
-Disallow: .jpg$
-Disallow: .jpeg$
-Disallow: .gif$
-Disallow: .png$
-Disallow: .bmp$
