@@ -1,3 +1,5 @@
+https://www.imqinhao.cn/2021/10/11/system11/
+https://www.imqinhao.cn/2021/10/10/system10/
 https://www.imqinhao.cn/2021/10/09/system9/
 https://www.imqinhao.cn/2021/10/08/system8/
 https://www.imqinhao.cn/2021/10/07/system7/
@@ -96,5 +98,3 @@ https://www.imqinhao.cn/2020/03/25/IPSec_VPN/
 https://www.imqinhao.cn/2020/03/21/GRE-VPN/
 https://www.imqinhao.cn/2020/03/11/Python_basic_(1)/
 https://www.imqinhao.cn/2020/03/11/Linux_often_use/
-https://www.imqinhao.cn/2020/03/07/optical_transport_network_basic/
-https://www.imqinhao.cn/2020/03/07/IP_Bearer_Network_basic/

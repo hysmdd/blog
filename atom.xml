@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.imqinhao.cn/"/>
-  <updated>2021-10-14T08:20:25.213Z</updated>
+  <updated>2021-11-28T13:57:23.968Z</updated>
   <id>https://www.imqinhao.cn/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线程、多线程模型</title>
+    <link href="https://www.imqinhao.cn/2021/10/11/system11/"/>
+    <id>https://www.imqinhao.cn/2021/10/11/system11/</id>
+    <published>2021-10-10T22:11:18.000Z</published>
+    <updated>2021-11-28T13:57:23.968Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128215637872.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128215637872.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211128215637872"></p><a id="more"></a><h2 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a><center>什么是线程</center></h2><p>可以把线程理解为”轻量级进程“。</p><span class='p red'><strong>线程</strong></span>是一个<span class='p red'><strong>基本的CPU执行单元</strong></span>，也是<span class='p red'><strong>程序执行流的最小单位</strong></span>。<h2 id="为什么要引入线程"><a href="#为什么要引入线程" class="headerlink" title="为什么要引入线程"></a><center>为什么要引入线程</center></h2><p>还没引入进程之前，系统中的各个程序只能串行执行。</p><p>有的进程可能需要“同时”做很多事，而传统的进程只能串行地执行一系列程序。为此，引入了“线程”，来增加并发度。</p><p>引入了线程之后，不仅是进程之间可以并发，进程内的<span class='p red'><strong>各线程之间</strong></span>也可以<span class='p red'><strong>并发</strong></span>，从而进一步<span class='p red'><strong>提升了系统的并发度</strong></span>，使得一个进程内也可以并发处理各种任务。</p><p>引入线程后，<span class='p red'><strong>进程</strong></span>只作为<span class='p red'><strong>除CPU之外的系统资源的分配单元</strong></span>（如打印机、内存地址空间等都是分配给进程的）。</p><h2 id="引入线程机制的变化"><a href="#引入线程机制的变化" class="headerlink" title="引入线程机制的变化"></a><center>引入线程机制的变化</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128155520352.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128155520352.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="引入线程机制的变化"></p><h2 id="线程有哪些重要的属性"><a href="#线程有哪些重要的属性" class="headerlink" title="线程有哪些重要的属性"></a><center>线程有哪些重要的属性</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128155845780.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128155845780.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="线程的属性"></p><h2 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a><center>线程的实现方式</center></h2><h3 id="用户级线程"><a href="#用户级线程" class="headerlink" title="用户级线程"></a><center>用户级线程</center></h3><p>（User-Level  Thread,  ULT)</p><p>历史背景：早期的操作系统（如：早期Unix）只支持进程，不支持线程。当时的“线程”是由线程库实现的。</p><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>用户级线程由应用程序通过线程库实现，所有的<span class='p red'><strong>线程管理工作</strong></span>都由<span class='p red'><strong>应用程序负责</strong></span>（包括线程切换）</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>用户级线程中，<span class='p red'><strong>线程切换</strong></span>可以在<span class='p red'><strong>用户态下即可完成</strong></span>，无需操作系统干预。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>在用户看来，是有多个线程。但是在操作系统内核看来，并意识不到线程的存在。<span class='p red'><strong>“用户级线程”</strong></span>就是<span class='p red'><strong>“从用户视角看能看到的线程”</strong></span></p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><center>优缺点：</center><p><kbd>优点</kbd>：用户级线程的切换在用户空间即可完成，不需要切换到核心态，线程管理的系统开销小，效率高。</p><p><kbd>缺点</kbd>：当一个用户级线程被阻塞后，整个进程都会被阻塞，并发度不高。多个线程不可在多核处理机上并行运行。</p></div></div></div><h3 id="内核级线程"><a href="#内核级线程" class="headerlink" title="内核级线程"></a><center>内核级线程</center></h3><p>（Kernel-Level  Thread，KLT，又称“内核支持的线程”）</p><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p><span class='p red'><strong>内核级线程的管理工作</strong></span>由<span class='p red'><strong>操作系统内核</strong></span>完成</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>线程调度、切换等工作都由内核负责，因此<span class='p red'><strong>内核级线程的切换</strong></span>必然需要在<span class='p red'><strong>核心态</strong></span>下才能完成。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>操作系统会为每个内核级线程建立相应的TCB（Thread Control  Block，线程控制块），通过TCB对线程进行管理。<span class='p red'><strong>“内核级线程”</strong></span>就是<span class='p red'><strong>“从操作系统内核视角看能看到的线程”</strong></span></p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><center>优缺点：</center><p><kbd>优点</kbd> ：当一个线程被阻塞后，别的线程还可以继续执行，并发能力强。多线程可在多核处理机上并行执行。</p><p><kbd>缺点</kbd>：一个用户进程会占用多个内核级线程，线程切换由操作系统内核完成，需要切换到核心态，因此线程管理的成本高，开销大。</p></div></div></div><h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a><center>多线程模型</center></h2><h3 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a><center>一对一模型</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128163406368.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128163406368.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="一对一模型"></p><h3 id="多对一模型"><a href="#多对一模型" class="headerlink" title="多对一模型"></a><center>多对一模型</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128163833041.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128163833041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="多对一模型"></p><h3 id="多对多模型"><a href="#多对多模型" class="headerlink" title="多对多模型"></a><center>多对多模型</center></h3><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128214139117.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128214139117.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="多对多模型"></p><blockquote><p>内核级线程中可以运行任意一个有映射关系的用户级线程代码，只有两个内核级线程中正在运行的代码逻辑都阻塞时，这个进程才会阻塞。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128215637872.png&quot; class=&quot;lazyload&quot; data-srcset=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128215637872.png&quot; srcset=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=&quot; alt=&quot;image-20211128215637872&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>进程控制</title>
+    <link href="https://www.imqinhao.cn/2021/10/10/system10/"/>
+    <id>https://www.imqinhao.cn/2021/10/10/system10/</id>
+    <published>2021-10-09T22:11:18.000Z</published>
+    <updated>2021-11-28T05:59:46.403Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128135939624.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128135939624.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211128135939624"></p><a id="more"></a><h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a><center>进程通信</center></h2><p>顾名思义，进程通信就是指进程之间的信息交换。</p><p>进程是分配系统资源的单位（包括内存地址空间），因此<span class='p red'><strong>各进程</strong></span>拥有的<span class='p red'><strong>内存空间地址相互独立</strong></span>。</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128115242791.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128115242791.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211128115242791"></p><blockquote><p>为了保证安全，<span class='p red'><strong>一个进程不能直接访问另一个进程的地址空间</strong></span>。</p><p>但是进程之间的信息交换又是必须实现的。为了保证进程间的安全通信，操作系统提供了一些方法。</p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128115406053.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128115406053.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="进程通信"></p><h3 id="共享存储"><a href="#共享存储" class="headerlink" title="共享存储"></a><center>共享存储</center></h3><p>两个进程对共享空间的<span class='p red'><strong>访问</strong></span> 必须是<span class='p red'><strong>互斥的</strong></span>（互斥访问通过操作系统提供的工具实现）。</p><p>操作系统只负责提供共享空间和同步互斥工具（如P、V操作）。</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128120928972.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128120928972.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211128120928972"></p><div class="timeline"><div class="timenode"><div class="meta"><p><p>基于数据结构的共享</p></p></div><div class="body"><p>比如共享空间里只能放一个长度为10的数组。这种共享方式速度慢、限制多，是一种<span class='p red'><strong>低级通信</strong></span>方式。</p></div></div><div class="timenode"><div class="meta"><p><p>基于存储区的共享</p></p></div><div class="body"><p>在内存中画出一块共享存储区，数据的形式、存放位置都由进程控制，而不是操作系统。相比之下，这种共享方式速度更快，是一种<span class='p red'><strong>高级通信</strong></span>方式。</p></div></div></div><h3 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a><center>管道通信</center></h3><p>“管道”是指用于连接读写进程的一个共享文件，又名pipe文件。其实就是在内存中开辟一个大小固定的缓冲区。</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128131227617.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128131227617.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211128131227617"></p><div class="timeline"><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>管道只能采用<span class='p red'><strong>半双工通信</strong></span>，某一时间段内只能实现单向的传输。如果要实现<span class='p red'><strong>双向同时通信</strong></span>，则<span class='p red'><strong>需要设置两个管道</strong></span>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>各进程要<span class='p red'><strong>互斥</strong></span>地访问管道。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>数据以字符流的形式写入管道，当<span class='p red'><strong>管道写满</strong></span>时，<span class='p red'><strong>写进程</strong></span>的write()系统调用将被<span class='p red'><strong>阻塞</strong></span>，等待读进程将数据取走。当读进程将数据全部取走后，<span class='p red'><strong>管道变空</strong></span>，此时<span class='p red'><strong>读进程</strong></span>的read()系统调用将被<span class='p red'><strong>阻塞</strong></span>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>如果<span class='p red'><strong>没写满，就不允许读</strong></span>。如果<span class='p red'><strong>没读空，就不允许写</strong></span>。</p></div></div><div class="timenode"><div class="meta"><p></p></div><div class="body"><p>数据一旦被读出，就从管道中被抛弃，这就意味着<span class='p red'><strong>读进程最多只能有一个</strong></span>，否则可能会有读错数据的情况。</p></div></div></div><h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a><center>消息传递</center></h3><p>进程间的数据交换以<span class='p red'><strong>格式化的消息</strong></span>（Message）为单位。进程通过操作系统提供的“发送消息/接收消息”两个<span class='p red'><strong>原语</strong></span>进行数据交换。</p><div class="tabs" id="tab-id"><ul class="nav-tabs"><li class="tab active"><a class="#tab-id-1">消息头</a></li><li class="tab"><a class="#tab-id-2">消息体</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tab-id-1"><blockquote><p> 消息头包括：发送进程ID、接收进程ID、消息类型、消息长度等格式化的消息（计算机网络中发送的“报文”其实就是一种格式化的消息）。</p></blockquote></div><div class="tab-pane" id="tab-id-2"></div></div></div><div class="timeline"><div class="timenode"><div class="meta"><p><p>直接通信方式</p></p></div><div class="body"><p>消息直接挂到接收进程的消息缓冲队列上。</p></div></div><div class="timenode"><div class="meta"><p><p>间接通信方式</p></p></div><div class="body"><p>消息要先发送到中间实体（信箱）中，因此也称“信箱通信方式”。Eg：计算机网络中的电子邮件系统。</p></div></div></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128135939624.png&quot; class=&quot;lazyload&quot; data-srcset=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211128135939624.png&quot; srcset=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=&quot; alt=&quot;image-20211128135939624&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>进程控制</title>
@@ -388,48 +430,6 @@
     <summary type="html">
     
       &lt;p&gt;三角形态可分为对称三角形、上升三角形和下降三角形。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>双重底形态</title>
-    <link href="https://www.imqinhao.cn/2021/09/06/stock_6/"/>
-    <id>https://www.imqinhao.cn/2021/09/06/stock_6/</id>
-    <published>2021-09-06T09:02:14.000Z</published>
-    <updated>2021-09-25T12:57:44.643Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>双重底形态又叫双底或w底反转形态，是指股价在某段时间内，连续两次下跌至相近低点并随后上涨而形成的走势图形，是行情长期下跌的尾声中出现的止跌反转的典型形态。</p><a id="more"></a><h2 id="双重底形态的特征"><a href="#双重底形态的特征" class="headerlink" title="双重底形态的特征"></a><center>双重底形态的特征</center></h2><ol><li><strong>第一个低点的成交量大于第二个低点的成交量</strong>，尤其在<font color="red"><strong>向上突破颈线时成交量放大明显</strong></font>，否则可能是假突破。</li><li><strong>第二个底点较第一个底点稍高</strong>，反之双重底形态的可靠性减弱。</li><li>双重底形态的<strong>构筑时间越长可靠性也越高</strong>。</li><li>双重底形成时，<kbd>KDJ</kbd>、<kbd>RSI</kbd>、<kbd>MACD</kbd>等指标一般会同时出现<strong>价格创新低而指标却没有创新高</strong>的情况。</li></ol><div class="note radiation yellow"><p>在双重底形态中，当股价向上突破颈线时是一个较为可靠的买入点。</p></div><div class="note radiation yellow"><p>而在突破颈线后，如回抽并在颈线位止跌反弹则是第二个买入时机，回抽应伴随成交量缩小。</p></div><div class="note danger"><p>注意双重底的两个低点之间时间跨度如果太短，则有可能是假突破。</p></div><div class="note success"><p>一般情况下，双重底形成后的最小涨幅等于两个低点连线到颈线的垂直距离。</p></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;双重底形态又叫双底或w底反转形态，是指股价在某段时间内，连续两次下跌至相近低点并随后上涨而形成的走势图形，是行情长期下跌的尾声中出现的止跌反转的典型形态。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>双重顶形态</title>
-    <link href="https://www.imqinhao.cn/2021/09/05/stock_5/"/>
-    <id>https://www.imqinhao.cn/2021/09/05/stock_5/</id>
-    <published>2021-09-05T09:02:14.000Z</published>
-    <updated>2021-09-23T11:14:59.742Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>双重顶形态由两个相邻高点构成，当股价攀升至某一价格水平时，成交量显著放大，股价却掉头回落。当回落至某一位置时，股价反弹至前高附近，但成交量较前一高峰略有萎缩。之后展开第二次下跌，并跌破第一次回落的低点，双重顶形成。</p><a id="more"></a><p>双重顶形态一旦形成，股价下跌几乎成为定局，及时止损立场是最佳操作策略。但如果只是下影线刺穿颈线位置，不超过3%，则不算有效跌破颈线，不可断定为双重顶，可以继续持股观望。</p><h2 id="双重顶形态特征"><a href="#双重顶形态特征" class="headerlink" title="双重顶形态特征"></a><center>双重顶形态特征</center></h2><ol><li>双重顶两个高点应基本相同，但在实际K线中，两者相差少于3%是可以接受的范围。</li><li>在双重顶形成过程中左峰成交量较大，右峰成交量次之，成交量呈现递减趋势。</li><li>在双重顶形态形成后，股价在下跌过程中往往会出现反抽走势，但是反抽力度不够，颈线位置构成强阻力。</li></ol><div class="note success"><p>一旦跌破颈线没有及时止损，或是K线回抽至颈线附近没有果断出局的话，将后果惨重，最少跌幅将会与双顶最高点至颈线之间的垂直距离相同。</p></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;双重顶形态由两个相邻高点构成，当股价攀升至某一价格水平时，成交量显著放大，股价却掉头回落。当回落至某一位置时，股价反弹至前高附近，但成交量较前一高峰略有萎缩。之后展开第二次下跌，并跌破第一次回落的低点，双重顶形成。&lt;/p&gt;
     
     </summary>
     
