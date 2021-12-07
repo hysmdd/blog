@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>处理机调度</title>
+      <link href="/2021/10/12/system12/"/>
+      <url>/2021/10/12/system12/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207195638456.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207195638456.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207195638456"></p><a id="more"></a><h2 id="调度的基本概念"><a href="#调度的基本概念" class="headerlink" title="调度的基本概念"></a><center>调度的基本概念</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207185327219.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207185327219.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207185327219"></p><h2 id="高级调度"><a href="#高级调度" class="headerlink" title="高级调度"></a><center>高级调度</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207190642377.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207190642377.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207190642377"></p><blockquote><p><strong>简化理解：好几个程序需要启动，到底先启动哪个？</strong></p><span class='p red'>高级调度（作业调度）</span>。按一定的原则从外存的作业后备队列中挑选一个作业调入内存，并创建进程。<span class='p red'>每个作业只调入一次，调出一次</span>。作业调入时会建立PCB，调出时才撤销PCB。</blockquote><h2 id="低级调度"><a href="#低级调度" class="headerlink" title="低级调度"></a><center>低级调度</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207191626009.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207191626009.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207191626009"></p><span class='p red'>低级调度（进程调度/处理机调度）</span> —— 按照某种策略从就绪队列中选取一个进程，将处理机分配给它。<p>进程调度是操作系统中<span class='p red'>最基本的一种调度</span>，在一般的操作系统中都必须配置进程调度。进程调度的<span class='p red'>频率很高</span>，一般几十毫秒一次。</p><p>内存不够时，可将某些进程的数据调出外存。等内存空闲或者进程需要运行时再重新调入内存。</p><p>暂时调到外存等待的进程状态为挂起状态。被挂起的进程PCB会被组织成挂起队列。</p><span class='p red'>中级调度（内存调度）</span> —— 按照某种策略决定将哪个处于挂起状态的进程重新调入内存。<p>一个进程可能会被多次调出、调入内存，因此<span class='p red'>中级调度</span>发生的<span class='p red'>频率</span>要比高级调度<span class='p red'>更高</span>。</p><h2 id="进程的挂起态与七状态模型"><a href="#进程的挂起态与七状态模型" class="headerlink" title="进程的挂起态与七状态模型"></a><center>进程的挂起态与七状态模型</center></h2><p>暂时调到外存等待的进程状态为<span class='p red'>挂起状态（挂起态，suspend）</span></p><p>挂起态又可以进一步细分为<span class='p red'>就绪挂起、阻塞挂起</span>两种状态</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194747028.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194747028.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207194747028"></p><h2 id="三层调度的联系、对比"><a href="#三层调度的联系、对比" class="headerlink" title="三层调度的联系、对比"></a><center>三层调度的联系、对比</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194924558.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194924558.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207194924558"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>线程、多线程模型</title>
       <link href="/2021/10/11/system11/"/>
       <url>/2021/10/11/system11/</url>

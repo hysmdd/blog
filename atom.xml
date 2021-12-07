@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.imqinhao.cn/"/>
-  <updated>2021-11-28T13:57:23.968Z</updated>
+  <updated>2021-12-07T11:57:24.070Z</updated>
   <id>https://www.imqinhao.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>处理机调度</title>
+    <link href="https://www.imqinhao.cn/2021/10/12/system12/"/>
+    <id>https://www.imqinhao.cn/2021/10/12/system12/</id>
+    <published>2021-10-11T22:11:18.000Z</published>
+    <updated>2021-12-07T11:57:24.070Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207195638456.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207195638456.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207195638456"></p><a id="more"></a><h2 id="调度的基本概念"><a href="#调度的基本概念" class="headerlink" title="调度的基本概念"></a><center>调度的基本概念</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207185327219.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207185327219.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207185327219"></p><h2 id="高级调度"><a href="#高级调度" class="headerlink" title="高级调度"></a><center>高级调度</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207190642377.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207190642377.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207190642377"></p><blockquote><p><strong>简化理解：好几个程序需要启动，到底先启动哪个？</strong></p><span class='p red'>高级调度（作业调度）</span>。按一定的原则从外存的作业后备队列中挑选一个作业调入内存，并创建进程。<span class='p red'>每个作业只调入一次，调出一次</span>。作业调入时会建立PCB，调出时才撤销PCB。</blockquote><h2 id="低级调度"><a href="#低级调度" class="headerlink" title="低级调度"></a><center>低级调度</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207191626009.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207191626009.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207191626009"></p><span class='p red'>低级调度（进程调度/处理机调度）</span> —— 按照某种策略从就绪队列中选取一个进程，将处理机分配给它。<p>进程调度是操作系统中<span class='p red'>最基本的一种调度</span>，在一般的操作系统中都必须配置进程调度。进程调度的<span class='p red'>频率很高</span>，一般几十毫秒一次。</p><p>内存不够时，可将某些进程的数据调出外存。等内存空闲或者进程需要运行时再重新调入内存。</p><p>暂时调到外存等待的进程状态为挂起状态。被挂起的进程PCB会被组织成挂起队列。</p><span class='p red'>中级调度（内存调度）</span> —— 按照某种策略决定将哪个处于挂起状态的进程重新调入内存。<p>一个进程可能会被多次调出、调入内存，因此<span class='p red'>中级调度</span>发生的<span class='p red'>频率</span>要比高级调度<span class='p red'>更高</span>。</p><h2 id="进程的挂起态与七状态模型"><a href="#进程的挂起态与七状态模型" class="headerlink" title="进程的挂起态与七状态模型"></a><center>进程的挂起态与七状态模型</center></h2><p>暂时调到外存等待的进程状态为<span class='p red'>挂起状态（挂起态，suspend）</span></p><p>挂起态又可以进一步细分为<span class='p red'>就绪挂起、阻塞挂起</span>两种状态</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194747028.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194747028.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207194747028"></p><h2 id="三层调度的联系、对比"><a href="#三层调度的联系、对比" class="headerlink" title="三层调度的联系、对比"></a><center>三层调度的联系、对比</center></h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194924558.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207194924558.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211207194924558"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207195638456.png&quot; class=&quot;lazyload&quot; data-srcset=&quot;https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211207195638456.png&quot; srcset=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=&quot; alt=&quot;image-20211207195638456&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://www.imqinhao.cn/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>线程、多线程模型</title>
@@ -409,27 +430,6 @@
     <summary type="html">
     
       &lt;p&gt;矩形形态，又称箱型形态，是指股价在上下两条平行的水平线之间上下波动，做横向延伸运动的形态。矩形形态一般是中继形态，即经过整理后一般股价运行的趋势不改变。而矩形形成过程中，成交量一般从左往右逐步递减，当最终向上突破时需要大成交量的配合，向下突破则不需要。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="股票知识" scheme="https://www.imqinhao.cn/categories/%E8%82%A1%E7%A5%A8%E7%9F%A5%E8%AF%86/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>三角形态</title>
-    <link href="https://www.imqinhao.cn/2021/09/07/stock_7/"/>
-    <id>https://www.imqinhao.cn/2021/09/07/stock_7/</id>
-    <published>2021-09-07T09:02:14.000Z</published>
-    <updated>2021-09-25T13:25:24.013Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>三角形态可分为对称三角形、上升三角形和下降三角形。</p><a id="more"></a><h2 id="对称三角形概念"><a href="#对称三角形概念" class="headerlink" title="对称三角形概念"></a><center>对称三角形概念</center></h2><p>对称三角形是股价上升或下降途中的一种中继形态，因其变动幅度逐渐缩小，即每次变动的高点不断降低，低点不断抬高，呈现压缩图形。其上沿线为向下斜线，下沿线为向上倾线，把短期高点和低点分别以直线连接起来，就可以形成对称的三角形。</p><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20210925210613.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20210925210613.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="对称三角形"></p><h2 id="上升三角形和对称三角形的区别"><a href="#上升三角形和对称三角形的区别" class="headerlink" title="上升三角形和对称三角形的区别"></a><center>上升三角形和对称三角形的区别</center></h2><p>上升三角形上沿线为水平线</p><h2 id="下降三角形和对称三角形的区别"><a href="#下降三角形和对称三角形的区别" class="headerlink" title="下降三角形和对称三角形的区别"></a><center>下降三角形和对称三角形的区别</center></h2><p>下降三角形下沿线为水平线</p><h2 id="三角形态的特征"><a href="#三角形态的特征" class="headerlink" title="三角形态的特征"></a><center>三角形态的特征</center></h2><ol><li>三角形的形成必须要有<strong>明显的</strong><kbd>两个短期高点</kbd>和<kbd>两个短期低点</kbd>出现，即至少需要四个转折点，而一般需要6个转折点才能确认形态。</li><li>成交量从左到右逐步缩小，股价向上突破需要大成交量伴随，向下突破则不必。</li><li>三角形态可出现在股价上升和下降过程中，形态被突破后股价一般沿原先运行方向继续运行，出现反向运动的概率较小。</li></ol><h2 id="何时买入"><a href="#何时买入" class="headerlink" title="何时买入"></a><center>何时买入</center></h2><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>在三角形态形成过程中宜多看少动，等股价有效突破形态后再择机操作。</p>            </div><div class='checkbox red checked'><input type="checkbox" checked="checked"/>            <p>其中，上升三角形和对称三角形在形态向上突破时，是第一个买点。</p>            </div><div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>            <p>而在突破后如出现回调则是第二个买点。</p>            </div><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a><center>注意</center></h2><div class='checkbox red checked'><input type="checkbox" checked="checked"/>            <p>下降三角形和对称三角形形态一旦向下突破，卖出是较好的决策。</p>            </div><div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>            <p>股价通常在距三角形底边一半到四分之三处突破，越迟突破，突破的有效性和力量将愈小。</p>            </div><h2 id="三角形态中股价向上突破的概率"><a href="#三角形态中股价向上突破的概率" class="headerlink" title="三角形态中股价向上突破的概率"></a><center>三角形态中股价向上突破的概率</center></h2><div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>            <p>在三角形态中股价向上突破的概率由高向低排序分别是：上升三角形，对称三角形，下降三角形。</p>            </div><div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>            <p>向下突破的概率由高向低排列顺序与上述相反。</p>            </div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;三角形态可分为对称三角形、上升三角形和下降三角形。&lt;/p&gt;
     
     </summary>
     

@@ -1,3 +1,4 @@
+https://www.imqinhao.cn/2021/10/12/system12/
 https://www.imqinhao.cn/2021/10/11/system11/
 https://www.imqinhao.cn/2021/10/10/system10/
 https://www.imqinhao.cn/2021/10/09/system9/
@@ -97,4 +98,3 @@ https://www.imqinhao.cn/2020/03/29/FixedTools/
 https://www.imqinhao.cn/2020/03/25/IPSec_VPN/
 https://www.imqinhao.cn/2020/03/21/GRE-VPN/
 https://www.imqinhao.cn/2020/03/11/Python_basic_(1)/
-https://www.imqinhao.cn/2020/03/11/Linux_often_use/
