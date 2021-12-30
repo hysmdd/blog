@@ -178,7 +178,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/logo-2.png'/>
+            <img no-lazy class='logo' src='https://image.imqinhao.cn/image/logo-2.png'/>
           
           
           
@@ -473,7 +473,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
 <div class='new-meta-item author'>
   <a class='author' href="https://www.imqinhao.cn" rel="nofollow">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/avatar-1.jpg">
+    <img no-lazy src="https://image.imqinhao.cn/image/avatar-1.jpg">
     <p>覃浩</p>
   </a>
 </div>
@@ -671,7 +671,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>使用 <strong>字典</strong> 记录 <strong>每一张名片</strong> 的详细信息</li>
 <li>使用 <strong>列表</strong> 统一记录所有的 <strong>名片字典</strong></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20200707171312.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20200707171312.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="001_名片管理系统全局列表-w500"></p>
+<p><img src="https://image.imqinhao.cn/image/20200707171312.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200707171312.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200707171312"></p>
 <h3 id="定义名片列表变量"><a href="#定义名片列表变量" class="headerlink" title="定义名片列表变量"></a>定义名片列表变量</h3><ul>
 <li>在 <code>cards_tools</code> 文件的顶部增加一个 <strong>列表变量</strong></li>
 </ul>
@@ -788,7 +788,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <h3 id="cards-main代码"><a href="#cards-main代码" class="headerlink" title="cards_main代码"></a>cards_main代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cards_tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 由用户决定退出程序的时机</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 显示系统功能</span></span><br><span class="line">    cards_tools.show_menu()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 没有使用int转换用户输入，可以避免一旦用户输入的不是数字，导致程序运行出错</span></span><br><span class="line">    action_str = input(<span class="string">"请选择您希望执行的操作："</span>)</span><br><span class="line">    print(<span class="string">"您选择的操作是【&#123;&#125;】"</span>.format(action_str))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1,2,3对名片进行操作</span></span><br><span class="line">    <span class="comment"># 使用in针对列表判断，避免使用or拼接复杂的逻辑条件</span></span><br><span class="line">    <span class="keyword">if</span> action_str <span class="keyword">in</span> [<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>]:</span><br><span class="line">        <span class="comment"># 新增名片</span></span><br><span class="line">        <span class="keyword">if</span> action_str == <span class="string">"1"</span>:</span><br><span class="line">            print(<span class="string">"-"</span> * <span class="number">50</span>)</span><br><span class="line">            cards_tools.new_card()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 显示全部</span></span><br><span class="line">        <span class="keyword">if</span> action_str == <span class="string">"2"</span>:</span><br><span class="line">            print(<span class="string">"-"</span> * <span class="number">50</span>)</span><br><span class="line">            cards_tools.show_all()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 查询名片</span></span><br><span class="line">        <span class="keyword">if</span> action_str == <span class="string">"3"</span>:</span><br><span class="line">            print(<span class="string">"-"</span> * <span class="number">50</span>)</span><br><span class="line">            cards_tools.search_card()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果在开发程序的时候，不希望立刻编写分支内部的代码</span></span><br><span class="line">        <span class="comment"># 可以使用pass关键字，表示一个占位符，能够保证程序的代码结构正确</span></span><br><span class="line">        <span class="comment"># 程序运行时，pass关键字不会执行任何的操作</span></span><br><span class="line">        <span class="comment"># pass</span></span><br><span class="line">    <span class="comment"># 0表示退出系统</span></span><br><span class="line">    <span class="keyword">elif</span> action_str == <span class="string">"0"</span>:</span><br><span class="line">        print(<span class="string">"欢迎再次使用【名片管理系统】"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="comment"># 其他内容输入错误，需要提示用户</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"您输入的不正确，请重新选择"</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20200707181035.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/20200707181035.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt=""></p>
+<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p><img src="https://image.imqinhao.cn/image/20200707181035.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200707181035.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200707181035"></p>
 
   
   
@@ -811,10 +811,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-17T10:48:19+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-30T15:53:18+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年7月17日</p>
+    <p>更新于：2021年12月30日</p>
   </a>
 </div>
 
@@ -1294,7 +1294,7 @@ var loadCSS = function( href, before, media, attributes ){
 <script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
 
     <script type="text/javascript">
-        var imgs=["https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-21.jpg", "https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-23.jpg", "https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-24.jpg"];
+        var imgs=["https://image.imqinhao.cn/image/tttttt-21.jpg", "https://image.imqinhao.cn/image/tttttt-23.jpg", "https://image.imqinhao.cn/image/tttttt-24.jpg"];
         if ('true' == 'true') {
           function shuffle(arr){
             /*From countercurrent-time*/
@@ -2257,5 +2257,4 @@ document.addEventListener("pjax:success", listennSidebarTOC);
  
 	  
     </div>
-  </body>
-</html>
+  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

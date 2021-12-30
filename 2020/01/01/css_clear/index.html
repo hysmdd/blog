@@ -177,7 +177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/logo-2.png'/>
+            <img no-lazy class='logo' src='https://image.imqinhao.cn/image/logo-2.png'/>
           
           
           
@@ -472,7 +472,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
 <div class='new-meta-item author'>
   <a class='author' href="https://www.imqinhao.cn" rel="nofollow">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/avatar-1.jpg">
+    <img no-lazy src="https://image.imqinhao.cn/image/avatar-1.jpg">
     <p>覃浩</p>
   </a>
 </div>
@@ -574,7 +574,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#bfa</span>;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此时我们会发现网页是这样的！！！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003152527602.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003152527602.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003152527602"></p>
+<p><img src="https://image.imqinhao.cn/image/image-20211003152527602.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20211003152527602.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003152527602"></p>
 <p>这是为什么呢？我们虽然没有指定outer的高度，但是outer的高度不应该会被inner撑开吗，为什么会没有被撑开呢？</p>
 <blockquote>
 <p>这是因为我们给inner设置了浮动，子元素浮动后，它会完全脱离文档流 。脱离了文档流，导致无法撑起父元素的高度，导致父元素的高度丢失了。父元素高度丢失以后，其下的元素都会自动上移，导致页面的布局混乱。所以高度塌陷是浮动布局中比较常见的一个问题，这个问题我们必须要进行处理。</p>
@@ -597,18 +597,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid red;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以发现，高度是有了，但是宽度没有了，这真是拣了芝麻丢了西瓜，这很明显不符合我们的要求。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003154553490.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003154553490.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003154553490"></p>
+<p><img src="https://image.imqinhao.cn/image/image-20211003154553490.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20211003154553490.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003154553490"></p>
 <h2 id="方案2：display"><a href="#方案2：display" class="headerlink" title="方案2：display"></a><center>方案2：display</center></h2><p>我们加一个display：inline-block试试看：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid red;</span><br><span class="line">    <span class="comment">/* float: left; */</span></span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们发现：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003154905996.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003154905996.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt=""></p>
+<p><img src="https://image.imqinhao.cn/image/image-20211003154905996.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20211003154905996.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003154905996"></p>
 <p>这宽度还是没有了，也不行。</p>
 <h2 id="方案3：overflow"><a href="#方案3：overflow" class="headerlink" title="方案3：overflow"></a><center>方案3：overflow</center></h2><p>我们试试用overflow：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.outer &#123;</span><br><span class="line">	border: 10px solid red;</span><br><span class="line">	&#x2F;* float: left; *&#x2F;</span><br><span class="line">	&#x2F;* display: inline-block; *&#x2F;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>看看效果，emm，不错嘛，效果达到了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003155256438.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003155256438.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt=""></p>
+<p><img src="https://image.imqinhao.cn/image/image-20211003155256438.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20211003155256438.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003155256438"></p>
 <blockquote>
 <p>常用方式：为元素设置 overflow: hidden开启其BFC，以使其可以包含浮动元素。</p>
 </blockquote>
@@ -635,7 +635,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.box1 &#123;</span><br><span class="line">	border: 10px solid red;</span><br><span class="line">&#125;</span><br><span class="line">.box2 &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: #bfa;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br><span class="line">.box1::after &#123;</span><br><span class="line">    content: &quot;&quot;;</span><br><span class="line">    clear: both;</span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>效果：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003155745395.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/image-20211003155745395.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003155745395"></p>
+<p><img src="https://image.imqinhao.cn/image/image-20211003155745395.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20211003155745395.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211003155745395"></p>
 
   
   
@@ -658,10 +658,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-10-03T17:29:00+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-30T14:49:17+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年10月3日</p>
+    <p>更新于：2021年12月30日</p>
   </a>
 </div>
 
@@ -1123,7 +1123,7 @@ var loadCSS = function( href, before, media, attributes ){
 <script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
 
     <script type="text/javascript">
-        var imgs=["https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-21.jpg", "https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-23.jpg", "https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/tttttt-24.jpg"];
+        var imgs=["https://image.imqinhao.cn/image/tttttt-21.jpg", "https://image.imqinhao.cn/image/tttttt-23.jpg", "https://image.imqinhao.cn/image/tttttt-24.jpg"];
         if ('true' == 'true') {
           function shuffle(arr){
             /*From countercurrent-time*/
@@ -2086,5 +2086,4 @@ document.addEventListener("pjax:success", listennSidebarTOC);
  
 	  
     </div>
-  </body>
-</html>
+  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

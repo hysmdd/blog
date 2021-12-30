@@ -97,4 +97,4 @@ https://www.imqinhao.cn/2020/03/30/GRE-over-IPSec/
 https://www.imqinhao.cn/2020/03/29/FixedTools/
 https://www.imqinhao.cn/2020/03/25/IPSec_VPN/
 https://www.imqinhao.cn/2020/03/21/GRE-VPN/
-https://www.imqinhao.cn/2020/03/11/Python_basic_(1)/
+https://www.imqinhao.cn/2020/03/11/Python_basic/
