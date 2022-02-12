@@ -1,0 +1,132 @@
+<h1 id="Fancyapps-UI"><a href="#Fancyapps-UI" class="headerlink" title="Fancyapps UI"></a>Fancyapps UI</h1><p>Collection of task-oriented components that will make you more productive. Packed full of features that you and your clients will love.</p>
+<p>Full docs with examples: <a href="https://fancyapps.com/docs/ui/quick-start/" target="_blank" rel="noopener">https://fancyapps.com/docs/ui/quick-start/</a>.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><p>Use either <code>npm</code> or <code>yarn</code> as follows:</p>
+<pre><code class="bash">npm install @fancyapps/ui
+// or
+yarn add  @fancyapps/ui</code></pre>
+<p>Import one or more components:</p>
+<pre><code class="jsx"><span class="keyword">import</span> { Fancybox, Carousel, Panzoom } <span class="keyword">from</span> <span class="string">"@fancyapps/ui"</span>;</code></pre>
+<p>Import the appropriate CSS file, example:</p>
+<pre><code class="jsx"><span class="keyword">import</span> <span class="string">"@fancyapps/ui/dist/fancybox.css"</span>;</code></pre>
+<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>A pre-bundled scripts that contain components are available on <a href="https://www.jsdelivr.com/package/npm/@fancyapps/ui?path=dist" target="_blank" rel="noopener">CDN</a>.</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> Because Fancybox is build on top of both Carousel and Panzoom components, you only have to include <code>fancybox.umd.js</code> and all 3 components will be available through the <code>window</code> object.</p>
+</blockquote>
+<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<p>Or use ES6 import:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span>&gt;</span>
+<span class="javascript">  <span class="keyword">import</span> { Fancybox } <span class="keyword">from</span> <span class="string">"https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.esm.js"</span>;</span>
+<span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<p>Remember to include the appropriate CSS file, example:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css"</span> /&gt;</span></code></pre>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Fancybox"><a href="#Fancybox" class="headerlink" title="Fancybox"></a>Fancybox</h3><p>There are two ways to use Fancybox.</p>
+<h4 id="Declarative"><a href="#Declarative" class="headerlink" title="Declarative"></a>Declarative</h4><p>Add a <code>data-fancybox</code> attribute to any element to enable Fancybox. Galleries are created by adding the same attribute <code>data-fancybox</code> value to multiple elements. Use <code>data-src</code> or <code>href</code> attribute to specify the source of the content. Add a <code>data-caption</code> attribute if you want to show a caption under the content.</p>
+<pre><code class="jsx">&lt;a href=<span class="string">"https://lipsum.app/id/1/1024x768"</span> data-fancybox=<span class="string">"gallery"</span> data-caption=<span class="string">"Optional caption"</span>&gt;
+  Image
+&lt;<span class="regexp">/a&gt;</span></code></pre>
+<pre><code class="jsx">&lt;a href=<span class="string">"http://media.w3.org/2010/05/sintel/trailer.mp4"</span> data-fancybox&gt;
+  Video
+&lt;<span class="regexp">/a&gt;</span></code></pre>
+<pre><code class="jsx">&lt;a
+  href=<span class="string">"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10500.902039411158!2d2.2913514905137315!3d48.85391001859112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1slv!2slv!4v1622011463926!5m2!1slv!2slv"</span>
+  data-fancybox
+  data-type=<span class="string">"iframe"</span>
+  data-preload=<span class="string">"false"</span>
+  data-width=<span class="string">"640"</span>
+  data-height=<span class="string">"480"</span>
+&gt;
+  Iframe
+&lt;<span class="regexp">/a&gt;</span></code></pre>
+<pre><code class="jsx">&lt;button data-fancybox data-src=<span class="string">"#dialog-content"</span>&gt;
+  HTML element
+&lt;<span class="regexp">/button&gt;</span>
+<span class="regexp"></span>
+<span class="regexp">&lt;div id="dialog-content" style="display:none;"&gt;</span>
+<span class="regexp">  &lt;h2&gt;Hello, world!&lt;/</span>h2&gt;
+  &lt;p&gt;
+    &lt;input type=<span class="string">"text"</span> value=<span class="string">"See if changes remain after closing the dialog"</span> /&gt;
+  &lt;<span class="regexp">/p&gt;</span>
+<span class="regexp">&lt;/</span>div&gt;</code></pre>
+<p>Customize options:</p>
+<pre><code class="js">Fancybox.bind(<span class="string">"[data-fancybox]"</span>, {
+  <span class="comment">// Your options go here</span>
+});</code></pre>
+<h4 id="Programmatic"><a href="#Programmatic" class="headerlink" title="Programmatic"></a>Programmatic</h4><pre><code class="js"><span class="comment">// Image gallery</span>
+<span class="keyword">var</span> gallery = [
+  {
+    src: <span class="string">"https://lipsum.app/id/2/800x600"</span>,
+    thumb: <span class="string">"https://lipsum.app/id/2/80x80"</span>,
+    caption: <span class="string">"First image"</span>,
+  },
+  {
+    src: <span class="string">"https://lipsum.app/id/3/800x600"</span>,
+    thumb: <span class="string">"https://lipsum.app/id/3/80x80"</span>,
+    caption: <span class="string">"Second image"</span>,
+  },
+  {
+    src: <span class="string">"https://lipsum.app/id/4/800x600"</span>,
+    thumb: <span class="string">"https://lipsum.app/id/4/80x80"</span>,
+    caption: <span class="string">"Third image"</span>,
+  },
+];
+
+Fancybox.show(gallery, {
+  <span class="comment">// Your options go here</span>
+});
+
+<span class="comment">// HTML element</span>
+Fancybox.show([{ <span class="attr">src</span>: <span class="string">"#dialog-content"</span>, <span class="attr">type</span>: <span class="string">"inline"</span> }]);
+
+<span class="comment">// A copy of HTML element</span>
+Fancybox.show([{ <span class="attr">src</span>: <span class="string">"#dialog-content"</span>, <span class="attr">type</span>: <span class="string">"clone"</span> }]);
+
+<span class="comment">// Any HTML content</span>
+Fancybox.show([{ <span class="attr">src</span>: <span class="string">"&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;"</span>, <span class="attr">type</span>: <span class="string">"html"</span> }]);</code></pre>
+<h3 id="Carousel"><a href="#Carousel" class="headerlink" title="Carousel"></a>Carousel</h3><p>Add HTML markup</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myCarousel"</span> <span class="attr">class</span>=<span class="string">"carousel"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel__slide"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel__slide"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel__slide"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
+<p>Initialise Carousel</p>
+<pre><code class="js"><span class="keyword">const</span> myCarousel = <span class="keyword">new</span> Carousel(<span class="built_in">document</span>.querySelector(<span class="string">"#myCarousel"</span>), {
+  <span class="comment">// Your options go here</span>
+});</code></pre>
+<p>Optionally, use CSS to customize container, navigation elements and slides</p>
+<pre><code class="css"><span class="selector-class">.carousel</span> {
+  <span class="attribute">color</span>: <span class="number">#170724</span>;
+
+  <span class="attribute">--carousel-button-bg</span>: <span class="number">#fff</span>;
+  <span class="attribute">--carousel-button-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">1px</span> -<span class="number">1px</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">20%</span>), <span class="number">0</span> <span class="number">1px</span> <span class="number">1px</span> <span class="number">0</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">14%</span>), <span class="number">0</span> <span class="number">1px</span> <span class="number">3px</span> <span class="number">0</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">12%</span>);
+
+  <span class="attribute">--carousel-button-svg-width</span>: <span class="number">20px</span>;
+  <span class="attribute">--carousel-button-svg-height</span>: <span class="number">20px</span>;
+  <span class="attribute">--carousel-button-svg-stroke-width</span>: <span class="number">2.5</span>;
+}
+
+<span class="selector-class">.carousel__slide</span> {
+  <span class="attribute">display</span>: flex;
+  <span class="attribute">align-items</span>: center;
+  <span class="attribute">justify-content</span>: center;
+
+  <span class="attribute">width</span>: <span class="number">80%</span>;
+  <span class="attribute">height</span>: <span class="number">160px</span>;
+  <span class="attribute">margin-right</span>: <span class="number">6px</span>;
+
+  <span class="attribute">background-color</span>: <span class="number">#eee</span>;
+  <span class="attribute">border-radius</span>: <span class="number">6px</span>;
+}</code></pre>
+<h3 id="Panzoom"><a href="#Panzoom" class="headerlink" title="Panzoom"></a>Panzoom</h3><p>Add HTML markup</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myPanzoom"</span> <span class="attr">class</span>=<span class="string">"panzoom"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"panzoom__content"</span> <span class="attr">src</span>=<span class="string">"https://lipsum.app/id/3/2000x1500"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
+<p>Initialise Panzoom</p>
+<pre><code class="js"><span class="keyword">const</span> myPanzoom = <span class="keyword">new</span> Panzoom(<span class="built_in">document</span>.querySelector(<span class="string">"#myPanzoom"</span>), {
+  <span class="comment">// Your options go here</span>
+});</code></pre>
+<p>Optionally, use CSS to customize container</p>
+<pre><code class="css"><span class="selector-class">.panzoom</span> {
+  <span class="attribute">width</span>: <span class="number">400px</span>;
+  <span class="attribute">height</span>: <span class="number">300px</span>;
+}</code></pre>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>This is commercial software. See <a href="LICENSE.md">LICENSE.md</a> for more info.</p>
