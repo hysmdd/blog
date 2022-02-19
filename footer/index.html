@@ -6,7 +6,6 @@
         width: 100%;
         margin-top: 50px;
     </style>
-<link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
 </head>
 <body>
 <div id="reward">
@@ -37,35 +36,35 @@
     var WeChatPayOR = 'https://www.zhengyuanyuan520.cn/images/Wechat.png';
     var QQPayOR = 'https://www.zhengyuanyuan520.cn/images/QQPay.png';
 
-<pre><code>function showQR(QR) {
-  if (QR) {
+<pre><code>function showQR(QR) &#123;
+  if (QR) &#123;
     MainBox.css(&apos;background-image&apos;, &apos;url(&apos; + QR + &apos;)&apos;);
-  }
+  &#125;
   $(&apos;#RewardText,#RewardBox,#github&apos;).addClass(&apos;blur&apos;);
-  QRBox.fadeIn(300, function (argument) {
+  QRBox.fadeIn(300, function (argument) &#123;
     MainBox.addClass(&apos;showQR&apos;);
-  });
-}
+  &#125;);
+&#125;
 
-$(&apos;#RewardBox&gt;li&apos;).click(function (event) {
+$(&apos;#RewardBox&gt;li&apos;).click(function (event) &#123;
   var thisID = $(this).attr(&apos;id&apos;);
-  if (thisID === &apos;AliPayOR&apos;) {
+  if (thisID === &apos;AliPayOR&apos;) &#123;
     showQR(AliPayOR);
-  } else if (thisID === &apos;WeChatPayOR&apos;) {
+  &#125; else if (thisID === &apos;WeChatPayOR&apos;) &#123;
     showQR(WeChatPayOR);
-  } else if (thisID === &apos;QQPayOR&apos;) {
+  &#125; else if (thisID === &apos;QQPayOR&apos;) &#123;
     showQR(QQPayOR);
-  }
-});
+  &#125;
+&#125;);
 
-MainBox.click(function (event) {
+MainBox.click(function (event) &#123;
   MainBox.removeClass(&apos;showQR&apos;).addClass(&apos;hideQR&apos;);
-  setTimeout(function (a) {
-    QRBox.fadeOut(300, function (argument) {
+  setTimeout(function (a) &#123;
+    QRBox.fadeOut(300, function (argument) &#123;
       MainBox.removeClass(&apos;hideQR&apos;);
-    });
+    &#125;);
     $(&apos;#RewardText,#RewardBox,#github&apos;).removeClass(&apos;blur&apos;);
-  }, 600);
+  &#125;, 600);
 
-});</code></pre><p>  });<br></script></p>
+&#125;);</code></pre><p>  });<br></script></p>
 </body>

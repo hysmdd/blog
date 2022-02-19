@@ -31,7 +31,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -78,7 +78,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -99,7 +99,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -513,13 +513,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Python/">Python</a>
-    </a>
-  </div>
-
 
           
         
@@ -581,14 +574,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   <p>学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示<kbd>ModuleNotFoundError: No module named 'pip'</kbd>。</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;e:\python\lib\runpy.py&quot;, line 193, in _run_module_as_main</span><br><span class="line">    return _run_code(code, main_globals, None,</span><br><span class="line">  File &quot;e:\python\lib\runpy.py&quot;, line 86, in _run_code</span><br><span class="line">    exec(code, run_globals)</span><br><span class="line">  File &quot;E:\python\Scripts\pip.exe\__main__.py&quot;, line 5, in &lt;module&gt;</span><br><span class="line">ModuleNotFoundError: No module named &#39;pip&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;e:\python\lib\runpy.py&quot;, line 193, in _run_module_as_main</span><br><span class="line">    return _run_code(code, main_globals, None,</span><br><span class="line">  File &quot;e:\python\lib\runpy.py&quot;, line 86, in _run_code</span><br><span class="line">    exec(code, run_globals)</span><br><span class="line">  File &quot;E:\python\Scripts\pip.exe\__main__.py&quot;, line 5, in &lt;module&gt;</span><br><span class="line">ModuleNotFoundError: No module named &#x27;pip&#x27;</span><br></pre></td></tr></table></figure>
 
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python -m ensurepip</span><br></pre></td></tr></table></figure>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python -m ensurepip</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://image.imqinhao.cn/image/20200519210256.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200519210256.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200519210256"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://image.imqinhao.cn/image/20200519210329.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200519210329.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200519210329"></p>
 <div class="note success"><p>至此，pip命令修复完成，又可以正常使用了</p></div>
@@ -633,9 +626,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/05/19/No-module-named-pip/&title=解决pip异常:No module named 'pip' - 覃浩的博客&summary=学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示ModuleNotFoundError: No module named 'pip'。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/05/19/No-module-named-pip/&title=解决pip异常:No module named 'pip' - 覃浩的博客&summary=学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示ModuleNotFoundError: No module named 'pip'。"
           
           >
           
@@ -645,9 +638,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/05/19/No-module-named-pip/&title=解决pip异常:No module named 'pip' - 覃浩的博客&summary=学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示ModuleNotFoundError: No module named 'pip'。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/05/19/No-module-named-pip/&title=解决pip异常:No module named 'pip' - 覃浩的博客&summary=学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示ModuleNotFoundError: No module named 'pip'。"
           
           >
           
@@ -657,9 +650,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/05/19/No-module-named-pip/&title=解决pip异常:No module named 'pip' - 覃浩的博客&summary=学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示ModuleNotFoundError: No module named 'pip'。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/05/19/No-module-named-pip/&title=解决pip异常:No module named 'pip' - 覃浩的博客&summary=学习Python过程中，pip安装模块的时候提示我有新版本更新，更新之后不知道为什么就无法使用pip命令了，一直提示ModuleNotFoundError: No module named 'pip'。"
           
           >
           
@@ -749,7 +742,7 @@ PCManager管理功能，启动、关闭、服务控制等。
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li></ol>
     </div>
   </section>
 
@@ -1503,7 +1496,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

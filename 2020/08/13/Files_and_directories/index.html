@@ -35,7 +35,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -82,7 +82,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -103,7 +103,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -517,13 +517,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Linux/">Linux</a>
-    </a>
-  </div>
-
 
           
         
@@ -589,7 +582,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>创建和删除操作</p>
 <p>拷贝和移动文件</p>
 <p>查看文件内容</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>查看目录内容<ul>
@@ -1102,9 +1095,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/08/13/Files_and_directories/&title=文件和目录常用命令 - 覃浩的博客&summary=查看目录内容
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/08/13/Files_and_directories/&title=文件和目录常用命令 - 覃浩的博客&summary=查看目录内容
 切换目录
 创建和删除操作
 拷贝和移动文件
@@ -1118,9 +1111,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/08/13/Files_and_directories/&title=文件和目录常用命令 - 覃浩的博客&summary=查看目录内容
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/08/13/Files_and_directories/&title=文件和目录常用命令 - 覃浩的博客&summary=查看目录内容
 切换目录
 创建和删除操作
 拷贝和移动文件
@@ -1134,9 +1127,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/08/13/Files_and_directories/&title=文件和目录常用命令 - 覃浩的博客&summary=查看目录内容
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/08/13/Files_and_directories/&title=文件和目录常用命令 - 覃浩的博客&summary=查看目录内容
 切换目录
 创建和删除操作
 拷贝和移动文件
@@ -1231,7 +1224,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01-查看目录内容"><span class="toc-text">01. 查看目录内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-终端实用技巧"><span class="toc-text">1.1 终端实用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-gt-自动补全"><span class="toc-text">1&gt; 自动补全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gt-曾经使用过的命令"><span class="toc-text">2&gt; 曾经使用过的命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-ls-命令说明"><span class="toc-text">1.2 ls 命令说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-下文件和目录的特点"><span class="toc-text">Linux 下文件和目录的特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-ls-常用选项"><span class="toc-text">1.3 ls 常用选项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计算机中文件大小的表示方式（科普）"><span class="toc-text">计算机中文件大小的表示方式（科普）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-ls-通配符的使用"><span class="toc-text">1.4 ls 通配符的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-切换目录"><span class="toc-text">02. 切换目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-cd"><span class="toc-text">2.1 cd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-相对路径和绝对路径"><span class="toc-text">2.2 相对路径和绝对路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-创建和删除操作"><span class="toc-text">03. 创建和删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-touch"><span class="toc-text">3.1 touch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-mkdir"><span class="toc-text">3.2 mkdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-rm"><span class="toc-text">3.3 rm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-拷贝和移动文件"><span class="toc-text">04. 拷贝和移动文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-tree"><span class="toc-text">4.1 tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-cp"><span class="toc-text">4.2 cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-mv"><span class="toc-text">4.3 mv</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-查看文件内容"><span class="toc-text">05. 查看文件内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-cat"><span class="toc-text">5.1 cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-more"><span class="toc-text">5.2 more</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-grep"><span class="toc-text">5.3 grep</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-其他"><span class="toc-text">06. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-echo-文字内容"><span class="toc-text">6.1 echo 文字内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-重定向-gt-和-gt-gt"><span class="toc-text">6.2 重定向 &gt; 和 &gt;&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-管道"><span class="toc-text">6.3 管道 |</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9"><span class="toc-text">01. 查看目录内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-text">1.1 终端实用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-gt-%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="toc-text">1&gt; 自动补全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gt-%E6%9B%BE%E7%BB%8F%E4%BD%BF%E7%94%A8%E8%BF%87%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-text">2&gt; 曾经使用过的命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-ls-%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="toc-text">1.2 ls 命令说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-%E4%B8%8B%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">Linux 下文件和目录的特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-ls-%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-text">1.3 ls 常用选项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F%EF%BC%88%E7%A7%91%E6%99%AE%EF%BC%89"><span class="toc-text">计算机中文件大小的表示方式（科普）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-ls-%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">1.4 ls 通配符的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95"><span class="toc-text">02. 切换目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-cd"><span class="toc-text">2.1 cd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-text">2.2 相对路径和绝对路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">03. 创建和删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-touch"><span class="toc-text">3.1 touch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-mkdir"><span class="toc-text">3.2 mkdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-rm"><span class="toc-text">3.3 rm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E6%8B%B7%E8%B4%9D%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">04. 拷贝和移动文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-tree"><span class="toc-text">4.1 tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-cp"><span class="toc-text">4.2 cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-mv"><span class="toc-text">4.3 mv</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-text">05. 查看文件内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-cat"><span class="toc-text">5.1 cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-more"><span class="toc-text">5.2 more</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-grep"><span class="toc-text">5.3 grep</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-%E5%85%B6%E4%BB%96"><span class="toc-text">06. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-echo-%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9"><span class="toc-text">6.1 echo 文字内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E9%87%8D%E5%AE%9A%E5%90%91-gt-%E5%92%8C-gt-gt"><span class="toc-text">6.2 重定向 &gt; 和 &gt;&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E7%AE%A1%E9%81%93"><span class="toc-text">6.3 管道 |</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1985,7 +1978,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

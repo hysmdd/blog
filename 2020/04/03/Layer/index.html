@@ -33,7 +33,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -80,7 +80,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -101,7 +101,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -515,13 +515,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Photoshop/">Photoshop</a>
-    </a>
-  </div>
-
 
           
         
@@ -585,15 +578,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <p>图层链接</p>
 <p>图层编组</p>
 <p>图层剪贴蒙版</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<h2 id="图层的锁定"><a href="#图层的锁定" class="headerlink" title="图层的锁定"></a>图层的锁定</h2><h3 id="锁定透明像素"><a href="#锁定透明像素" class="headerlink" title="锁定透明像素"></a>锁定透明像素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止对透明区域进行操作。</span><br></pre></td></tr></table></figure>
+<h2 id="图层的锁定"><a href="#图层的锁定" class="headerlink" title="图层的锁定"></a>图层的锁定</h2><h3 id="锁定透明像素"><a href="#锁定透明像素" class="headerlink" title="锁定透明像素"></a>锁定透明像素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止对透明区域进行操作。</span><br></pre></td></tr></table></figure>
 
-<h3 id="锁定图像像素"><a href="#锁定图像像素" class="headerlink" title="锁定图像像素"></a>锁定图像像素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止编辑图像，但可以移动变换。</span><br></pre></td></tr></table></figure>
+<h3 id="锁定图像像素"><a href="#锁定图像像素" class="headerlink" title="锁定图像像素"></a>锁定图像像素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止编辑图像，但可以移动变换。</span><br></pre></td></tr></table></figure>
 
-<h3 id="锁定位置"><a href="#锁定位置" class="headerlink" title="锁定位置"></a>锁定位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止移动变换。</span><br></pre></td></tr></table></figure>
+<h3 id="锁定位置"><a href="#锁定位置" class="headerlink" title="锁定位置"></a>锁定位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止移动变换。</span><br></pre></td></tr></table></figure>
 
-<h3 id="锁定全部"><a href="#锁定全部" class="headerlink" title="锁定全部"></a>锁定全部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止一切操作。</span><br></pre></td></tr></table></figure>
+<h3 id="锁定全部"><a href="#锁定全部" class="headerlink" title="锁定全部"></a>锁定全部</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">禁止一切操作。</span><br></pre></td></tr></table></figure>
 
 
 
@@ -603,36 +596,36 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>图层链接后统一移动变换，但图层仍属独立编辑。</p>
 <h2 id="图层整合形式"><a href="#图层整合形式" class="headerlink" title="图层整合形式"></a>图层整合形式</h2><p>图层整合以后，图层群们是否具有统一的操作属性，详见此表：</p>
 <p><img src="https://image.imqinhao.cn/image/20200402191637.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200402191637.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200402191637"></p>
-<h2 id="图层编组"><a href="#图层编组" class="headerlink" title="图层编组"></a>图层编组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">图层编组可以整合管理，并具有多种统一属性。</span><br></pre></td></tr></table></figure>
+<h2 id="图层编组"><a href="#图层编组" class="headerlink" title="图层编组"></a>图层编组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">图层编组可以整合管理，并具有多种统一属性。</span><br></pre></td></tr></table></figure>
 
 
 
 <p>选中要加入组的图层，按住Shift键，点击创建新组按钮，即可将选择的图层加入到组中。</p>
-<h3 id="创建空白组"><a href="#创建空白组" class="headerlink" title="创建空白组"></a>创建空白组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择【图层】--&gt;【新建】--&gt;【组】，弹出【创建组】对话框。</span><br></pre></td></tr></table></figure>
+<h3 id="创建空白组"><a href="#创建空白组" class="headerlink" title="创建空白组"></a>创建空白组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择【图层】--&gt;【新建】--&gt;【组】，弹出【创建组】对话框。</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://image.imqinhao.cn/image/20200402192628.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200402192628.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200402192628"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">名称：可根据需求随意填写。</span><br><span class="line">颜色：组在图层栏里面的颜色标记。</span><br><span class="line">模式：默认为穿透模式，一般不需要更改。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">名称：可根据需求随意填写。</span><br><span class="line">颜色：组在图层栏里面的颜色标记。</span><br><span class="line">模式：默认为穿透模式，一般不需要更改。</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="从图层创建组"><a href="#从图层创建组" class="headerlink" title="从图层创建组"></a>从图层创建组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择【图层】--&gt;【新建】--&gt;【从图层创建组】，弹出【从图层创建组】对话框。</span><br></pre></td></tr></table></figure>
+<h3 id="从图层创建组"><a href="#从图层创建组" class="headerlink" title="从图层创建组"></a>从图层创建组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择【图层】--&gt;【新建】--&gt;【从图层创建组】，弹出【从图层创建组】对话框。</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://image.imqinhao.cn/image/20200402193213.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200402193213.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200402193213"></p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">常用的编组快捷键操作：Ctrl + G</span><br><span class="line">取消编组：Ctrl + Shift + G</span><br></pre></td></tr></table></figure>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">常用的编组快捷键操作：Ctrl + G</span><br><span class="line">取消编组：Ctrl + Shift + G</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="图层拼合"><a href="#图层拼合" class="headerlink" title="图层拼合"></a>图层拼合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + E，Ctrl + Alt + E，图层合并命令简介。</span><br></pre></td></tr></table></figure>
+<h2 id="图层拼合"><a href="#图层拼合" class="headerlink" title="图层拼合"></a>图层拼合</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + E，Ctrl + Alt + E，图层合并命令简介。</span><br></pre></td></tr></table></figure>
 
-<h3 id="盖印图层"><a href="#盖印图层" class="headerlink" title="盖印图层"></a>盖印图层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">所有可见图层拼合效果的新图层。</span><br><span class="line"></span><br><span class="line">快捷键：Ctrl + Shift + Alt + E</span><br><span class="line"></span><br><span class="line">盖印选择图层快捷键：Ctrl + Alt + E</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="图层复合"><a href="#图层复合" class="headerlink" title="图层复合"></a>图层复合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">保存当前图层的位置，可见性，样式信息。</span><br></pre></td></tr></table></figure>
+<h3 id="盖印图层"><a href="#盖印图层" class="headerlink" title="盖印图层"></a>盖印图层</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">所有可见图层拼合效果的新图层。</span><br><span class="line"></span><br><span class="line">快捷键：Ctrl + Shift + Alt + E</span><br><span class="line"></span><br><span class="line">盖印选择图层快捷键：Ctrl + Alt + E</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="图层剪贴蒙版"><a href="#图层剪贴蒙版" class="headerlink" title="图层剪贴蒙版"></a>图层剪贴蒙版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上方图层进入下方图层形状。</span><br><span class="line"></span><br><span class="line">快捷键：Ctrl + Alt + G</span><br></pre></td></tr></table></figure>
+<h2 id="图层复合"><a href="#图层复合" class="headerlink" title="图层复合"></a>图层复合</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">保存当前图层的位置，可见性，样式信息。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="图层剪贴蒙版"><a href="#图层剪贴蒙版" class="headerlink" title="图层剪贴蒙版"></a>图层剪贴蒙版</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上方图层进入下方图层形状。</span><br><span class="line"></span><br><span class="line">快捷键：Ctrl + Alt + G</span><br></pre></td></tr></table></figure>
 
 
   
@@ -676,9 +669,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/03/Layer/&title=图层进阶知识 - 覃浩的博客&summary=图层链接
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/03/Layer/&title=图层进阶知识 - 覃浩的博客&summary=图层链接
 图层编组
 图层剪贴蒙版"
           
@@ -690,9 +683,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/03/Layer/&title=图层进阶知识 - 覃浩的博客&summary=图层链接
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/03/Layer/&title=图层进阶知识 - 覃浩的博客&summary=图层链接
 图层编组
 图层剪贴蒙版"
           
@@ -704,9 +697,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/03/Layer/&title=图层进阶知识 - 覃浩的博客&summary=图层链接
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/03/Layer/&title=图层进阶知识 - 覃浩的博客&summary=图层链接
 图层编组
 图层剪贴蒙版"
           
@@ -798,7 +791,7 @@ CMYK模式
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图层的锁定"><span class="toc-text">图层的锁定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#锁定透明像素"><span class="toc-text">锁定透明像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锁定图像像素"><span class="toc-text">锁定图像像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锁定位置"><span class="toc-text">锁定位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锁定全部"><span class="toc-text">锁定全部</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层链接"><span class="toc-text">图层链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层整合形式"><span class="toc-text">图层整合形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层编组"><span class="toc-text">图层编组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建空白组"><span class="toc-text">创建空白组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从图层创建组"><span class="toc-text">从图层创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-text">快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层拼合"><span class="toc-text">图层拼合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#盖印图层"><span class="toc-text">盖印图层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层复合"><span class="toc-text">图层复合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图层剪贴蒙版"><span class="toc-text">图层剪贴蒙版</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E7%9A%84%E9%94%81%E5%AE%9A"><span class="toc-text">图层的锁定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81%E5%AE%9A%E9%80%8F%E6%98%8E%E5%83%8F%E7%B4%A0"><span class="toc-text">锁定透明像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81%E5%AE%9A%E5%9B%BE%E5%83%8F%E5%83%8F%E7%B4%A0"><span class="toc-text">锁定图像像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81%E5%AE%9A%E4%BD%8D%E7%BD%AE"><span class="toc-text">锁定位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81%E5%AE%9A%E5%85%A8%E9%83%A8"><span class="toc-text">锁定全部</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E9%93%BE%E6%8E%A5"><span class="toc-text">图层链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E6%95%B4%E5%90%88%E5%BD%A2%E5%BC%8F"><span class="toc-text">图层整合形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E7%BC%96%E7%BB%84"><span class="toc-text">图层编组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%A9%BA%E7%99%BD%E7%BB%84"><span class="toc-text">创建空白组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%9B%BE%E5%B1%82%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">从图层创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E6%8B%BC%E5%90%88"><span class="toc-text">图层拼合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%96%E5%8D%B0%E5%9B%BE%E5%B1%82"><span class="toc-text">盖印图层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E5%A4%8D%E5%90%88"><span class="toc-text">图层复合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%B1%82%E5%89%AA%E8%B4%B4%E8%92%99%E7%89%88"><span class="toc-text">图层剪贴蒙版</span></a></li></ol>
     </div>
   </section>
 
@@ -1552,7 +1545,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

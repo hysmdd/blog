@@ -34,7 +34,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -81,7 +81,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -102,7 +102,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -516,13 +516,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a>
-    </a>
-  </div>
-
 
           
         
@@ -587,7 +580,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>类型</p>
 <p>变量与常用类型说明符</p>
 <p>运算符与表达式</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h2><blockquote>
 <p>标记（token）是具有唯一含义的语言的最小单位，分为五种：<kbd>关键字（keyword）</kbd>、<kbd>标识符（identifier）</kbd>、<kbd>常量（constant）</kbd>、<kbd>串字面量（string  literal）</kbd>以及<kbd>标点符号（punctuator）</kbd>。</p>
@@ -673,7 +666,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>十进制整数常量由 0~9 组成，且以非零数字开头，如 123 、 1000 。</p>
 <p>八进制整数常量由 0~7 组成，且以 0 开头，或者只有一个0，如 017 、 0 。</p>
 <p>十六进制整数常量由 0<del>9 、A</del>F（或 a~f ）组成，且以 0x 或 0X 开头，如0x1a 、 0XD5 。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sum = %d \n"</span>,<span class="number">123</span> + <span class="number">012</span> + <span class="number">0x12</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;sum = %d \n&quot;</span>,<span class="number">123</span> + <span class="number">012</span> + <span class="number">0x12</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h4 id="浮点常量"><a href="#浮点常量" class="headerlink" title="浮点常量"></a>浮点常量</h4><p>计算机中的浮点数只能<font color="red">近似地表示值在某个范围之内的有理数和一些特殊值</font>，如NAN（非数值）、+INF（正无穷大）、-INF（负无穷大）等。</p>
@@ -690,10 +683,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 <blockquote>
 <p>第一种形式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">十进制整数常量E符号位		十进制整数常量</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">十进制整数常量E符号位		十进制整数常量</span><br></pre></td></tr></table></figure>
 
 <p>第二种形式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浮点常量的小数表示法E符号位		十进制整数常量</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浮点常量的小数表示法E符号位		十进制整数常量</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><font color="red">其中，E 也可以写成 e ， “符号位” 即正负号是可选的。</font></p>
 <hr>
@@ -702,7 +695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <hr>
 <h4 id="字符常量"><a href="#字符常量" class="headerlink" title="字符常量"></a>字符常量</h4><p>字符常量分为整数字符常量和宽字符常量。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d %d %d\n"</span>, <span class="string">'A'</span> , <span class="string">'b'</span> + <span class="number">2</span> , <span class="string">'0'</span> , <span class="string">'1'</span> + <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %d %d %d\n&quot;</span>, <span class="string">&#x27;A&#x27;</span> , <span class="string">&#x27;b&#x27;</span> + <span class="number">2</span> , <span class="string">&#x27;0&#x27;</span> , <span class="string">&#x27;1&#x27;</span> + <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>分析 ASCII 码表，可以得出四条规则：</p>
@@ -829,10 +822,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>一元减运算符 - 是单目运算符，表达式的值是运算对象的相反数。</p>
 <hr>
 <p>整数提权实例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> ch;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sizeof +ch = %d\n"</span>,<span class="keyword">sizeof</span> +ch);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sizeof ch = %d\n"</span>,<span class="keyword">sizeof</span> ch);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sizeof -ch = %d\n"</span>,<span class="keyword">sizeof</span> -ch);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sizeof ch = %d\n"</span>,<span class="keyword">sizeof</span> ch);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">        <span class="type">char</span> ch;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;sizeof +ch = %d\n&quot;</span>,<span class="keyword">sizeof</span> +ch);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;sizeof ch = %d\n&quot;</span>,<span class="keyword">sizeof</span> ch);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;sizeof -ch = %d\n&quot;</span>,<span class="keyword">sizeof</span> -ch);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;sizeof ch = %d\n&quot;</span>,<span class="keyword">sizeof</span> ch);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sizeof +ch &#x3D; 4</span><br><span class="line">sizeof ch &#x3D; 1</span><br><span class="line">sizeof -ch &#x3D; 4</span><br><span class="line">sizeof ch &#x3D; 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sizeof +ch = 4</span><br><span class="line">sizeof ch = 1</span><br><span class="line">sizeof -ch = 4</span><br><span class="line">sizeof ch = 1</span><br></pre></td></tr></table></figure>
 
 <p><font color="red">变量 ch 是 char 类型，在内存中占 1 个字节，整数提升将 ch 的值转换为 int 类型的值，因此，表达式 +ch 和 -ch 的类型都是 int ，在内存中占 4 个字节。</font></p>
 <blockquote>
@@ -886,9 +879,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2021/03/02/c_2/&title=标记、类型与表达式 - 覃浩的博客&summary=标记
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2021/03/02/c_2/&title=标记、类型与表达式 - 覃浩的博客&summary=标记
 类型
 变量与常用类型说明符
 运算符与表达式"
@@ -901,9 +894,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2021/03/02/c_2/&title=标记、类型与表达式 - 覃浩的博客&summary=标记
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2021/03/02/c_2/&title=标记、类型与表达式 - 覃浩的博客&summary=标记
 类型
 变量与常用类型说明符
 运算符与表达式"
@@ -916,9 +909,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2021/03/02/c_2/&title=标记、类型与表达式 - 覃浩的博客&summary=标记
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2021/03/02/c_2/&title=标记、类型与表达式 - 覃浩的博客&summary=标记
 类型
 变量与常用类型说明符
 运算符与表达式"
@@ -1016,7 +1009,7 @@ C语言程序总是从main函数开始...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#标记"><span class="toc-text">标记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字"><span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标识符"><span class="toc-text">标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常量"><span class="toc-text">常量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#整数常量"><span class="toc-text">整数常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#浮点常量"><span class="toc-text">浮点常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#枚举常量"><span class="toc-text">枚举常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符常量"><span class="toc-text">字符常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#串字面量"><span class="toc-text">串字面量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型"><span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类型"><span class="toc-text">基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举类型"><span class="toc-text">枚举类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空类型"><span class="toc-text">空类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#派生类型"><span class="toc-text">派生类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量与常用类型说明符"><span class="toc-text">变量与常用类型说明符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用类型"><span class="toc-text">常用类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算符与表达式"><span class="toc-text">运算符与表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表达式"><span class="toc-text">表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乘法类运算符"><span class="toc-text">乘法类运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加法类运算符"><span class="toc-text">加法类运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sizeof运算符"><span class="toc-text">sizeof运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一元加运算符与一元减运算符"><span class="toc-text">一元加运算符与一元减运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用算术转换"><span class="toc-text">常用算术转换</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0"><span class="toc-text">标记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-text">标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%B8%B8%E9%87%8F"><span class="toc-text">整数常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E5%B8%B8%E9%87%8F"><span class="toc-text">浮点常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F"><span class="toc-text">枚举常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F"><span class="toc-text">字符常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-text">串字面量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-text">基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-text">枚举类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E7%B1%BB%E5%9E%8B"><span class="toc-text">空类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E5%9E%8B"><span class="toc-text">派生类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E%E7%AC%A6"><span class="toc-text">变量与常用类型说明符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text">常用类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">运算符与表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%98%E6%B3%95%E7%B1%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">乘法类运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%E7%B1%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">加法类运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sizeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">sizeof运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E5%8A%A0%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E4%B8%80%E5%85%83%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">一元加运算符与一元减运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AE%97%E6%9C%AF%E8%BD%AC%E6%8D%A2"><span class="toc-text">常用算术转换</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1770,7 +1763,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

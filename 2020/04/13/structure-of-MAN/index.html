@@ -35,7 +35,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -82,7 +82,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -103,7 +103,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -517,13 +517,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%89%E7%BA%A7/">计算机三级</a>
-    </a>
-  </div>
-
 
           
         
@@ -589,7 +582,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>管理和运营宽带城域网的关键技术</p>
 <p>构建宽带城域网的基本技术与方案</p>
 <p>网络接入技术与方法</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="宽带城域网的逻辑结构"><a href="#宽带城域网的逻辑结构" class="headerlink" title="宽带城域网的逻辑结构"></a>宽带城域网的逻辑结构</h2><p>完整的宽带城域网主要包括网络平台、业务平台、管理平台3个平台与城市宽带一个出口。</p>
 <p><img src="https://image.imqinhao.cn/image/20200413090441.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200413090441.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200413090441"></p>
@@ -612,14 +605,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>B.    根据接入层的用户流量进行本地路由、过滤、流量均衡</p>
 <p>C.    提供城市的宽带IP数据出口</p>
 <p>D.    解决“最后一公里”问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">答案：C</span><br><span class="line">解析：A选项将多个接入层连接起来的是汇聚层而不是核心交换层，故A选项错误；B选项根据接入层的用户流量进行本地路由、过滤、流量均衡的是汇聚层，故B选项错误；D选项解决“最后一公里”的是接入层的任务，故D选项错误。核心交换层实现与主干网络的互联， 提供城市的宽带IP数据出口，故C选项正确。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">答案：C</span><br><span class="line">解析：A选项将多个接入层连接起来的是汇聚层而不是核心交换层，故A选项错误；B选项根据接入层的用户流量进行本地路由、过滤、流量均衡的是汇聚层，故B选项错误；D选项解决“最后一公里”的是接入层的任务，故D选项错误。核心交换层实现与主干网络的互联， 提供城市的宽带IP数据出口，故C选项正确。</span><br></pre></td></tr></table></figure>
 
 <p>[单选]  下列关于宽带城域网<red>汇聚层</red>基本功能的描述中，<red>错误</red>的是（            ）。</p>
 <p>A.    提供用户访问Internet所需要的路由服务</p>
 <p>B.    根据处理结果把用户流量转发到核心交换机</p>
 <p>C.    汇聚接入层的用户流量，进行数据转发与交换</p>
 <p>D.    根据接入层的用户流量，进行流量均衡、安全控制等处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">答案：A</span><br><span class="line">解析：提供用户访问Internet所需要的路由服务是核心层的基本功能，故A选项错误。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">答案：A</span><br><span class="line">解析：提供用户访问Internet所需要的路由服务是核心层的基本功能，故A选项错误。</span><br></pre></td></tr></table></figure>
 
 <h2 id="易错提示"><a href="#易错提示" class="headerlink" title="易错提示"></a>易错提示</h2><p>要熟练掌握每个网络平台各层的主要功能，差异化的记忆。</p>
 <p><img src="https://image.imqinhao.cn/image/20200413094251.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/20200413094251.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="20200413094251"></p>
@@ -666,9 +659,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/13/structure-of-MAN/&title=宽带城域网的结构 - 覃浩的博客&summary=常考知识点：
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/13/structure-of-MAN/&title=宽带城域网的结构 - 覃浩的博客&summary=常考知识点：
 宽带城域网的结构
 管理和运营宽带城域网的关键技术
 构建宽带城域网的基本技术与方案
@@ -682,9 +675,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/13/structure-of-MAN/&title=宽带城域网的结构 - 覃浩的博客&summary=常考知识点：
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/13/structure-of-MAN/&title=宽带城域网的结构 - 覃浩的博客&summary=常考知识点：
 宽带城域网的结构
 管理和运营宽带城域网的关键技术
 构建宽带城域网的基本技术与方案
@@ -698,9 +691,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/13/structure-of-MAN/&title=宽带城域网的结构 - 覃浩的博客&summary=常考知识点：
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/13/structure-of-MAN/&title=宽带城域网的结构 - 覃浩的博客&summary=常考知识点：
 宽带城域网的结构
 管理和运营宽带城域网的关键技术
 构建宽带城域网的基本技术与方案
@@ -803,7 +796,7 @@ RAN网络架构变迁
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#宽带城域网的逻辑结构"><span class="toc-text">宽带城域网的逻辑结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宽带城域网网络平台各层的主要功能"><span class="toc-text">宽带城域网网络平台各层的主要功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心交换层的基本功能"><span class="toc-text">核心交换层的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汇聚层的基本功能"><span class="toc-text">汇聚层的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接入层的基本功能"><span class="toc-text">接入层的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三层结构思想"><span class="toc-text">三层结构思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#真考试题"><span class="toc-text">真考试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#易错提示"><span class="toc-text">易错提示</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%BD%E5%B8%A6%E5%9F%8E%E5%9F%9F%E7%BD%91%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-text">宽带城域网的逻辑结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%BD%E5%B8%A6%E5%9F%8E%E5%9F%9F%E7%BD%91%E7%BD%91%E7%BB%9C%E5%B9%B3%E5%8F%B0%E5%90%84%E5%B1%82%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">宽带城域网网络平台各层的主要功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-text">核心交换层的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E8%81%9A%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-text">汇聚层的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%85%A5%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-text">接入层的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E7%BB%93%E6%9E%84%E6%80%9D%E6%83%B3"><span class="toc-text">三层结构思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%9F%E8%80%83%E8%AF%95%E9%A2%98"><span class="toc-text">真考试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%93%E9%94%99%E6%8F%90%E7%A4%BA"><span class="toc-text">易错提示</span></a></li></ol>
     </div>
   </section>
 
@@ -1557,7 +1550,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

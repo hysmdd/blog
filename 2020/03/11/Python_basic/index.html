@@ -31,7 +31,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -78,7 +78,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -99,7 +99,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -513,13 +513,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/Python/">Python</a>
-    </a>
-  </div>
-
 
           
         
@@ -534,7 +527,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：5分钟</p>
+      <p>时长：6分钟</p>
     </a>
   </div>
 
@@ -581,31 +574,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   <p>Python学习基础部分笔记</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="第一行代码"><a href="#第一行代码" class="headerlink" title="第一行代码"></a>第一行代码</h2><p>尝试输入 1 + 1 Python会自动运算出结果。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> + <span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 <p>我们再输入点其他的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"Hello World!"</span>)</span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
 
 <p><red>注意：</red>    编程中需要输入英文符号，输入中文符号会报错。</p>
 <hr>
 <p>观察如下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">1</span> + <span class="number">1</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"1 + 1"</span>)</span><br><span class="line"><span class="number">1</span> + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="number">1</span> + <span class="number">1</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;1 + 1&quot;</span>)</span><br><span class="line"><span class="number">1</span> + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p>用引号引起来的内容，我们称之为字符串。将内容放进引号内，会将内容原样输出。</p>
 <p><red>注意：</red>引号可以是单引号，也可以是双引号，但是必须前后对应。</p>
 <hr>
 <p>打印多行文本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'''</span></span><br><span class="line"><span class="string">··· 我就吃两个</span></span><br><span class="line"><span class="string">··· 其他的都给你</span></span><br><span class="line"><span class="string">··· '''</span>)</span><br><span class="line"></span><br><span class="line">我就吃两个</span><br><span class="line">其他的都给你</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">··· 我就吃两个</span></span><br><span class="line"><span class="string">··· 其他的都给你</span></span><br><span class="line"><span class="string">··· &#x27;&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">我就吃两个</span><br><span class="line">其他的都给你</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>如果想打印多行文本，我们可以使用三个引号。</p>
 <hr>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Python 的数据类型有 int(整数)、float(浮点数)、字符串、布尔值、None、列表、元组、字典、集合等。</p>
-<h3 id="int-整数"><a href="#int-整数" class="headerlink" title="int - 整数"></a>int - 整数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数学意义上的证整数，可以是正整数或负整数，不带小数点。</span><br></pre></td></tr></table></figure>
+<h3 id="int-整数"><a href="#int-整数" class="headerlink" title="int - 整数"></a>int - 整数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数学意义上的证整数，可以是正整数或负整数，不带小数点。</span><br></pre></td></tr></table></figure>
 
-<h3 id="float-浮点数"><a href="#float-浮点数" class="headerlink" title="float - 浮点数"></a>float - 浮点数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浮点数，就是小数。在计算机中，所有数据都会被转换为二进制数值进行处理，处理完成后再转换成你想要的信息。转换过程可能造成精度的损失。</span><br></pre></td></tr></table></figure>
+<h3 id="float-浮点数"><a href="#float-浮点数" class="headerlink" title="float - 浮点数"></a>float - 浮点数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浮点数，就是小数。在计算机中，所有数据都会被转换为二进制数值进行处理，处理完成后再转换成你想要的信息。转换过程可能造成精度的损失。</span><br></pre></td></tr></table></figure>
 
 <p>尝试输入 1.1 + 2.2 ，观察结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1.1</span> + <span class="number">2.2</span></span><br><span class="line"><span class="number">3.3000000000000003</span></span><br></pre></td></tr></table></figure>
@@ -624,28 +617,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>左边是变量名，右边是数据，=代表的是赋值符。</p>
 <p><img src="https://image.imqinhao.cn/image/images20200311164513.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/images20200311164513.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="images20200311164513"></p>
 <p>变量的数据，除了可以是整数，还可以是一段文字。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>word = <span class="string">"Hello World!"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(word)</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>word = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(word)</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
 
 <p>右边的数据，也可以是变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; words &#x3D; word</span><br><span class="line">&gt;&gt;&gt; print(words)</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; words = word</span><br><span class="line">&gt;&gt;&gt; print(words)</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
 
 <h2 id="Input-函数"><a href="#Input-函数" class="headerlink" title="Input()函数"></a>Input()函数</h2><p>获取用户输入，比如我们需要用户输入姓名和年龄，然后将它们打印出来，代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = input(<span class="string">"请输入你的姓名："</span>)</span><br><span class="line">请输入你的姓名：浩哥	<span class="comment">#此处输入你的名字，然后回车，我们就完成了将你的名字赋值给name变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = input(<span class="string">"请输入你的年龄："</span>)</span><br><span class="line">请输入你的年龄：<span class="number">18</span>   <span class="comment">#同上，浩哥永远18岁</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"你的姓名是"</span> + name + <span class="string">",你的年龄是："</span> + age)</span><br><span class="line">你的姓名是浩哥，你的年龄是<span class="number">18</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的姓名：&quot;</span>)</span><br><span class="line">请输入你的姓名：浩哥	<span class="comment">#此处输入你的名字，然后回车，我们就完成了将你的名字赋值给name变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = <span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>)</span><br><span class="line">请输入你的年龄：<span class="number">18</span>   <span class="comment">#同上，浩哥永远18岁</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;你的姓名是&quot;</span> + name + <span class="string">&quot;,你的年龄是：&quot;</span> + age)</span><br><span class="line">你的姓名是浩哥，你的年龄是<span class="number">18</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>用引号包起来的就是字符串。如果字符串里面有引号，则应该使用转义符” \ “。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"He said \"It\'s mime\"”)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;He said \&quot;It\&#x27;s mime\&quot;”)</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>我们定义一个变量name，赋值haoge，我们可以取出第一个字母。需要注意的是，索引是从0开始的，并不是从1开始。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">"haoge"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(name[<span class="number">0</span>])</span><br><span class="line">q</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(name[<span class="number">1</span>])</span><br><span class="line">i</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">&quot;haoge&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name[<span class="number">0</span>])</span><br><span class="line">q</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name[<span class="number">1</span>])</span><br><span class="line">i</span><br></pre></td></tr></table></figure>
 
 <h3 id="format"><a href="#format" class="headerlink" title="format()"></a>format()</h3><p><red>format()</red>是专门用来格式化的函数。</p>
 <p>借用上面Input()的例子，我想要打印“你的姓名是xx，你的年龄是xx”，除了上面的方式，我们可以用format()函数来实现。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = input(<span class="string">"请输入你的姓名："</span>)</span><br><span class="line">请输入你的姓名：浩哥</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = input(<span class="string">"请输入你的年龄："</span>)</span><br><span class="line">请输入你的年龄：<span class="number">18</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"你的姓名是&#123;0&#125;,你的年龄是&#123;1&#125;"</span>.format(name,age))</span><br><span class="line">你的姓名是浩哥，你的年龄是<span class="number">18</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的姓名：&quot;</span>)</span><br><span class="line">请输入你的姓名：浩哥</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = <span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>)</span><br><span class="line">请输入你的年龄：<span class="number">18</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;你的姓名是&#123;0&#125;,你的年龄是&#123;1&#125;&quot;</span>.<span class="built_in">format</span>(name,age))</span><br><span class="line">你的姓名是浩哥，你的年龄是<span class="number">18</span></span><br></pre></td></tr></table></figure>
 
 <p>下图会让你有更好的理解</p>
 <p><img src="https://image.imqinhao.cn/image/images20200311182407.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/images20200311182407.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="images20200311182407"></p>
 <h3 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h3><p>假设3.1415926我们只想保留到小数点后两位，我们可以这样写：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"&#123;:.2f&#125;"</span>.format(<span class="number">3.1415926</span>))</span><br><span class="line"><span class="number">3.14</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;&#123;:.2f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>))</span><br><span class="line"><span class="number">3.14</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释可以帮助他人和自己阅读，理解，编写代码。注释不会被执行。单行注释常用#表示。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单行注释</span></span><br></pre></td></tr></table></figure>
@@ -842,9 +835,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/03/11/Python_basic/&title=Python基础知识(1) - 覃浩的博客&summary=Python学习基础部分笔记"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/03/11/Python_basic/&title=Python基础知识(1) - 覃浩的博客&summary=Python学习基础部分笔记"
           
           >
           
@@ -854,9 +847,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/03/11/Python_basic/&title=Python基础知识(1) - 覃浩的博客&summary=Python学习基础部分笔记"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/03/11/Python_basic/&title=Python基础知识(1) - 覃浩的博客&summary=Python学习基础部分笔记"
           
           >
           
@@ -866,9 +859,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/03/11/Python_basic/&title=Python基础知识(1) - 覃浩的博客&summary=Python学习基础部分笔记"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/03/11/Python_basic/&title=Python基础知识(1) - 覃浩的博客&summary=Python学习基础部分笔记"
           
           >
           
@@ -964,7 +957,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一行代码"><span class="toc-text">第一行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#int-整数"><span class="toc-text">int - 整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float-浮点数"><span class="toc-text">float - 浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔值"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#None"><span class="toc-text">None</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input-函数"><span class="toc-text">Input()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format"><span class="toc-text">format()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字格式化"><span class="toc-text">数字格式化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算符"><span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较运算符"><span class="toc-text">比较运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#赋值运算符"><span class="toc-text">赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑运算符"><span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-text">第一行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#int-%E6%95%B4%E6%95%B0"><span class="toc-text">int - 整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">float - 浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E5%80%BC"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#None"><span class="toc-text">None</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input-%E5%87%BD%E6%95%B0"><span class="toc-text">Input()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format"><span class="toc-text">format()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">数字格式化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">比较运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     </div>
   </section>
 
@@ -1718,7 +1711,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

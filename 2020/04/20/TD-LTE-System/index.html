@@ -34,7 +34,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -81,7 +81,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -102,7 +102,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -516,13 +516,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">通信技术</a>
-    </a>
-  </div>
-
 
           
         
@@ -537,7 +530,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：9分钟</p>
+      <p>时长：8分钟</p>
     </a>
   </div>
 
@@ -587,11 +580,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>理解TD-LTE的三个核心技术</p>
 <p>掌握物理层帧结构</p>
 <p>了解LTE的演进过程</p>
-<a id="more"></a>
+<span id="more"></span>
 
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2G的多址方式重点突出的是TDMA（时分多址）</span><br><span class="line"></span><br><span class="line">3G的多址方式重点突出的是CDMA（码分多址）</span><br><span class="line"></span><br><span class="line">3.9&#x2F;4G的多址方式重点突出的是OFDMA（正交频分多址）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2G的多址方式重点突出的是TDMA（时分多址）</span><br><span class="line"></span><br><span class="line">3G的多址方式重点突出的是CDMA（码分多址）</span><br><span class="line"></span><br><span class="line">3.9/4G的多址方式重点突出的是OFDMA（正交频分多址）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -640,7 +633,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tbody></table>
 <br>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4G峰值速率：500M～1Gbps</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4G峰值速率：500M～1Gbps</span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -649,15 +642,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <br>
 
 <p>同样是LTE的系统，为什么FDD的峰值速率比TDD的峰值速率要高呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、FDD是上下行对称的，TDD上下行是非对称的</span><br><span class="line"></span><br><span class="line">2、TDD有SA和SSP设置，FDD没有。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、FDD是上下行对称的，TDD上下行是非对称的</span><br><span class="line"></span><br><span class="line">2、TDD有SA和SSP设置，FDD没有。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">峰值速率要求：20M带宽下，下行速率能够达到100Mbps，上行速率能够达到50Mbps。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">峰值速率要求：20M带宽下，下行速率能够达到100Mbps，上行速率能够达到50Mbps。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">控制面的延迟从驻留状态到激活状态下的延迟需低于100ms。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">控制面的延迟从驻留状态到激活状态下的延迟需低于100ms。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -666,7 +659,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>速率：</strong></li>
 </ol>
 <p>$$<br>C = B·log_2（1+\frac{S}{N})<br>$$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B：信道带宽</span><br><span class="line">S：信号的平均功率</span><br><span class="line">N：噪声平均功率</span><br><span class="line">S&#x2F;N：信噪比</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B：信道带宽</span><br><span class="line">S：信号的平均功率</span><br><span class="line">N：噪声平均功率</span><br><span class="line">S/N：信噪比</span><br></pre></td></tr></table></figure>
 
 <p>提高用户速率有两种方法：</p>
 <ul>
@@ -736,7 +729,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tbody></table>
 <br>
 
-<h2 id="UE的两种状态"><a href="#UE的两种状态" class="headerlink" title="UE的两种状态"></a>UE的两种状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Idle态：RRC建立连接没有成功，则处于Idle态。</span><br><span class="line">connected态：RRC连接成功，UE就会进入连接态。</span><br></pre></td></tr></table></figure>
+<h2 id="UE的两种状态"><a href="#UE的两种状态" class="headerlink" title="UE的两种状态"></a>UE的两种状态</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Idle态：RRC建立连接没有成功，则处于Idle态。</span><br><span class="line">connected态：RRC连接成功，UE就会进入连接态。</span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -879,9 +872,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/20/TD-LTE-System/&title=TD-LTE系统概述 - 覃浩的博客&summary=了解LTE的系统架构
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2020/04/20/TD-LTE-System/&title=TD-LTE系统概述 - 覃浩的博客&summary=了解LTE的系统架构
 理解TD-LTE的三个核心技术
 掌握物理层帧结构
 了解LTE的演进过程"
@@ -894,9 +887,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/20/TD-LTE-System/&title=TD-LTE系统概述 - 覃浩的博客&summary=了解LTE的系统架构
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2020/04/20/TD-LTE-System/&title=TD-LTE系统概述 - 覃浩的博客&summary=了解LTE的系统架构
 理解TD-LTE的三个核心技术
 掌握物理层帧结构
 了解LTE的演进过程"
@@ -909,9 +902,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/20/TD-LTE-System/&title=TD-LTE系统概述 - 覃浩的博客&summary=了解LTE的系统架构
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2020/04/20/TD-LTE-System/&title=TD-LTE系统概述 - 覃浩的博客&summary=了解LTE的系统架构
 理解TD-LTE的三个核心技术
 掌握物理层帧结构
 了解LTE的演进过程"
@@ -1060,7 +1053,7 @@ IP地址分配与地址转换
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3G各种制式峰值速率及小区吞吐量"><span class="toc-text">3G各种制式峰值速率及小区吞吐量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9G各种制式峰值速率"><span class="toc-text">3.9G各种制式峰值速率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统容量和性能需求"><span class="toc-text">系统容量和性能需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UE的两种状态"><span class="toc-text">UE的两种状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统部署和无线资源管理需求"><span class="toc-text">系统部署和无线资源管理需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TD-LTE核心技术"><span class="toc-text">TD-LTE核心技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MIMO技术"><span class="toc-text">MIMO技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扁平网络"><span class="toc-text">扁平网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#频分多址系统"><span class="toc-text">频分多址系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#干扰抑制技术ICIC"><span class="toc-text">干扰抑制技术ICIC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-UTRAN扁平网络架构"><span class="toc-text">E-UTRAN扁平网络架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LTE网元功能"><span class="toc-text">LTE网元功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eNodeB"><span class="toc-text">eNodeB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MME"><span class="toc-text">MME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SGW"><span class="toc-text">SGW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PGW"><span class="toc-text">PGW</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LTE各种接口协议"><span class="toc-text">LTE各种接口协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#承载用户业务分类"><span class="toc-text">承载用户业务分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-UTRAN"><span class="toc-text">E-UTRAN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eNodeB功能划分"><span class="toc-text">eNodeB功能划分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EPC"><span class="toc-text">EPC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MME主要功能"><span class="toc-text">MME主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SGW主要功能"><span class="toc-text">SGW主要功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PGW主要功能"><span class="toc-text">PGW主要功能</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3G%E5%90%84%E7%A7%8D%E5%88%B6%E5%BC%8F%E5%B3%B0%E5%80%BC%E9%80%9F%E7%8E%87%E5%8F%8A%E5%B0%8F%E5%8C%BA%E5%90%9E%E5%90%90%E9%87%8F"><span class="toc-text">3G各种制式峰值速率及小区吞吐量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9G%E5%90%84%E7%A7%8D%E5%88%B6%E5%BC%8F%E5%B3%B0%E5%80%BC%E9%80%9F%E7%8E%87"><span class="toc-text">3.9G各种制式峰值速率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%B9%E9%87%8F%E5%92%8C%E6%80%A7%E8%83%BD%E9%9C%80%E6%B1%82"><span class="toc-text">系统容量和性能需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UE%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="toc-text">UE的两种状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E5%92%8C%E6%97%A0%E7%BA%BF%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E9%9C%80%E6%B1%82"><span class="toc-text">系统部署和无线资源管理需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TD-LTE%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-text">TD-LTE核心技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MIMO%E6%8A%80%E6%9C%AF"><span class="toc-text">MIMO技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%81%E5%B9%B3%E7%BD%91%E7%BB%9C"><span class="toc-text">扁平网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E5%88%86%E5%A4%9A%E5%9D%80%E7%B3%BB%E7%BB%9F"><span class="toc-text">频分多址系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B2%E6%89%B0%E6%8A%91%E5%88%B6%E6%8A%80%E6%9C%AFICIC"><span class="toc-text">干扰抑制技术ICIC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-UTRAN%E6%89%81%E5%B9%B3%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="toc-text">E-UTRAN扁平网络架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LTE%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD"><span class="toc-text">LTE网元功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eNodeB"><span class="toc-text">eNodeB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MME"><span class="toc-text">MME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SGW"><span class="toc-text">SGW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PGW"><span class="toc-text">PGW</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LTE%E5%90%84%E7%A7%8D%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE"><span class="toc-text">LTE各种接口协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BF%E8%BD%BD%E7%94%A8%E6%88%B7%E4%B8%9A%E5%8A%A1%E5%88%86%E7%B1%BB"><span class="toc-text">承载用户业务分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-UTRAN"><span class="toc-text">E-UTRAN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eNodeB%E5%8A%9F%E8%83%BD%E5%88%92%E5%88%86"><span class="toc-text">eNodeB功能划分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EPC"><span class="toc-text">EPC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MME%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">MME主要功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SGW%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">SGW主要功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PGW%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">PGW主要功能</span></a></li></ol>
     </div>
   </section>
 
@@ -1814,7 +1807,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,

@@ -38,7 +38,7 @@
 
   <!-- feed -->
   
-    <link rel="alternate" href="/atom.xml" title="覃浩的博客">
+    <link rel="alternate" href="/atom.xml" title="覃浩的博客" type="application/atom+xml">
   
 
   <!-- import meta -->
@@ -85,7 +85,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
         '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
         '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
-        '<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
     '</div>');
 </script>
 
@@ -106,7 +106,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="kill-noscript">
         <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
         <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
-        <a href="https://www.baidu.com/s?wd=启用JavaScript" target="_blank" rel="noopener"><strong>了解详情 ></strong></a>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
     </div>
 </noscript>
 
@@ -520,13 +520,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a>
-    </a>
-  </div>
-
 
           
         
@@ -595,7 +588,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>补码的意义</li>
 <li>数值溢出</li>
 </ol>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="计算机内存数值存储方式"><a href="#计算机内存数值存储方式" class="headerlink" title="计算机内存数值存储方式"></a><center><font color="#00ff00" size="7px">计算机内存数值存储方式</font></center></h2><h3 id="原码"><a href="#原码" class="headerlink" title="原码"></a><center><font color="#ee00e1" size="6px">原码</font></center></h3><p>一个数的原码(原始的二进制码)有如下特点：</p>
 <blockquote>
@@ -697,7 +690,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td>0000 0000</td>
 </tr>
 </tbody></table>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span>  a = <span class="number">-15</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%x\n"</span>, a);</span><br><span class="line">	<span class="comment">//结果为 fffffff1</span></span><br><span class="line">	<span class="comment">//fffffff1对应的二进制：1111 1111 1111 1111 1111 1111 1111 0001</span></span><br><span class="line">	<span class="comment">//符号位不变，其它取反：1000 0000 0000 0000 0000 0000 0000 1110</span></span><br><span class="line">	<span class="comment">//上面加1：1000 0000 0000 0000 0000 0000 0000 1111  最高位1代表负数，就是-15</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span>  a = <span class="number">-15</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%x\n&quot;</span>, a);</span><br><span class="line">	<span class="comment">//结果为 fffffff1</span></span><br><span class="line">	<span class="comment">//fffffff1对应的二进制：1111 1111 1111 1111 1111 1111 1111 0001</span></span><br><span class="line">	<span class="comment">//符号位不变，其它取反：1000 0000 0000 0000 0000 0000 0000 1110</span></span><br><span class="line">	<span class="comment">//上面加1：1000 0000 0000 0000 0000 0000 0000 1111  最高位1代表负数，就是-15</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="补码的意义"><a href="#补码的意义" class="headerlink" title="补码的意义"></a><center><font color="#ee00e1" size="6px">补码的意义</font></center></h3><p>示例1：用8位二进制数分别表示+0和-0</p>
 <table>
@@ -840,7 +833,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td>0 到 255(0 ~ 28-1)</td>
 </tr>
 </tbody></table>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//符号位溢出会导致数的正负发生改变</span></span><br><span class="line">	ch = <span class="number">0x7f</span> + <span class="number">2</span>; <span class="comment">//127+2</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ch);</span><br><span class="line">	<span class="comment">//	0111 1111</span></span><br><span class="line">	<span class="comment">//+2后 1000 0001，这是负数补码，其原码为 1111 1111，结果为-127</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//最高位的溢出会导致最高位丢失</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> ch2;</span><br><span class="line">	ch2 = <span class="number">0xff</span>+<span class="number">1</span>; <span class="comment">//255+1</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%u\n"</span>, ch2);</span><br><span class="line">	<span class="comment">//	  1111 1111</span></span><br><span class="line">	<span class="comment">//+1后 10000 0000， char只有8位最高位的溢出，结果为0000 0000，十进制为0</span></span><br><span class="line"></span><br><span class="line">	ch2 = <span class="number">0xff</span> + <span class="number">2</span>; <span class="comment">//255+1</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%u\n"</span>, ch2);</span><br><span class="line">	<span class="comment">//	  1111 1111</span></span><br><span class="line">	<span class="comment">//+1后 10000 0001， char只有8位最高位的溢出，结果为0000 0001，十进制为1</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> ch;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//符号位溢出会导致数的正负发生改变</span></span><br><span class="line">	ch = <span class="number">0x7f</span> + <span class="number">2</span>; <span class="comment">//127+2</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ch);</span><br><span class="line">	<span class="comment">//	0111 1111</span></span><br><span class="line">	<span class="comment">//+2后 1000 0001，这是负数补码，其原码为 1111 1111，结果为-127</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//最高位的溢出会导致最高位丢失</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> ch2;</span><br><span class="line">	ch2 = <span class="number">0xff</span>+<span class="number">1</span>; <span class="comment">//255+1</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%u\n&quot;</span>, ch2);</span><br><span class="line">	<span class="comment">//	  1111 1111</span></span><br><span class="line">	<span class="comment">//+1后 10000 0000， char只有8位最高位的溢出，结果为0000 0000，十进制为0</span></span><br><span class="line"></span><br><span class="line">	ch2 = <span class="number">0xff</span> + <span class="number">2</span>; <span class="comment">//255+1</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%u\n&quot;</span>, ch2);</span><br><span class="line">	<span class="comment">//	  1111 1111</span></span><br><span class="line">	<span class="comment">//+1后 10000 0001， char只有8位最高位的溢出，结果为0000 0001，十进制为1</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
   
@@ -884,9 +877,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2021/05/22/memory_save_number/&title=计算机内存数值存储方式 - 覃浩的博客&summary=计算机内存数值存储方式：
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/2021/05/22/memory_save_number/&title=计算机内存数值存储方式 - 覃浩的博客&summary=计算机内存数值存储方式：
 
 原码
 反码
@@ -903,9 +896,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2021/05/22/memory_save_number/&title=计算机内存数值存储方式 - 覃浩的博客&summary=计算机内存数值存储方式：
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/2021/05/22/memory_save_number/&title=计算机内存数值存储方式 - 覃浩的博客&summary=计算机内存数值存储方式：
 
 原码
 反码
@@ -922,9 +915,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2021/05/22/memory_save_number/&title=计算机内存数值存储方式 - 覃浩的博客&summary=计算机内存数值存储方式：
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/2021/05/22/memory_save_number/&title=计算机内存数值存储方式 - 覃浩的博客&summary=计算机内存数值存储方式：
 
 原码
 反码
@@ -1077,7 +1070,7 @@ C语言如何表示相应进制数
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机内存数值存储方式"><span class="toc-text">计算机内存数值存储方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原码"><span class="toc-text">原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反码"><span class="toc-text">反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补码"><span class="toc-text">补码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补码的意义"><span class="toc-text">补码的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数值溢出"><span class="toc-text">数值溢出</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E5%AD%98%E6%95%B0%E5%80%BC%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">计算机内存数值存储方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81"><span class="toc-text">原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E7%A0%81"><span class="toc-text">反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81"><span class="toc-text">补码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">补码的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%BA%A2%E5%87%BA"><span class="toc-text">数值溢出</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1831,7 +1824,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"BjvSh3vMNuh6WyEVfUX5NGvD-gzGzoHsz","appKey":"tvRQuJAWPHtA7Xpddprw1wa8","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
+    valine.init(Object.assign({"js":"/utils/js/Valine.min.js","path":null,"placeholder":"快来评论吧~","appId":"QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI","appKey":"zEHjU1ckm8F2qLvNRVk0Uk6t","meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":true,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"serverURLs":"https://qeqeln3n.api.lncldglobal.com","tagMeta":["博主","小伙伴","访客"],"master":["5a7a0e16baeb6712004f489376e1d8bd"],"friends":["d5a5a0164ddee59a9214574887918c60"]}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,
