@@ -282,6 +282,72 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
           
           
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                  
+                  
+                  >
+                  <i class='fa fa-coffee fa-fw fa-fw'></i>娱乐
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/movies/
+                  
+                  
+                  
+                    id="movies"
+                  >
+                  <i class='fa fa-film fa-fw fa-fw'></i>影视
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/bangumis/
+                  
+                  
+                  
+                    id="bangumis"
+                  >
+                  <i class='fa-fw fa fa-tv fa-fw'></i>番剧
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/cinemas/
+                  
+                  
+                  
+                    id="cinemas"
+                  >
+                  <i class='fab fa-youtube fa-fw'></i>电影
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
 				</ul>
 			</div>
 
@@ -391,6 +457,72 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   >
                   <i class='fa fa-film fa-fw fa-fw'></i>影视
                 </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                  
+                  
+                  >
+                  <i class='fa fa-coffee fa-fw fa-fw'></i>娱乐
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/movies/
+                  
+                  
+                  
+                    id="movies"
+                  >
+                  <i class='fa fa-film fa-fw fa-fw'></i>影视
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/bangumis/
+                  
+                  
+                  
+                    id="bangumis"
+                  >
+                  <i class='fa-fw fa fa-tv fa-fw'></i>番剧
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/cinemas/
+                  
+                  
+                  
+                    id="cinemas"
+                  >
+                  <i class='fab fa-youtube fa-fw'></i>电影
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -516,6 +648,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">通信技术</a>
+    </a>
+  </div>
+
 
           
         
@@ -1773,7 +1912,8 @@ var loadCSS = function( href, before, media, attributes ){
 
 
 
-  
+  <script src="/utils/js/av-min.js"></script>
+
   
 <script src="/utils/js/Valine.min.js"></script>
 
@@ -1815,8 +1955,89 @@ var loadCSS = function( href, before, media, attributes ){
       emojiMaps: emojiMaps,
     }))
   }
+  
+  function newcomment() {
+
+    function queryLeanCloud(k) {
+      let root = this;
+      let len = arguments.length;
+      if (len == 1) {
+        let notExist = new AV.Query("Comment");
+        notExist.doesNotExist('rid');
+        let isEmpty = new AV.Query("Comment");
+        isEmpty.equalTo('rid', '');
+        let q = AV.Query.or(notExist, isEmpty);
+        if (k === '*') q.exists('url');
+        else q.equalTo('url', decodeURI(k));
+        q.addDescending('createdAt');
+        q.addDescending('insertedAt');
+        return q;
+      } else {
+        let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
+        let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
+        return AV.Query.doCloudQuery(cql)
+      }
+    }
+    var valine = new Valine({
+      el: 'blog',
+      app_id: 'QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI',
+      app_key: 'zEHjU1ckm8F2qLvNRVk0Uk6t',
+      placeholder: '',
+      serverURLs: 'https://qeqeln3n.api.lncldglobal.com'
+    });
+
+    //判断博主，heson改为自己的昵称
+    function bozhu(e){
+        if (e == "覃浩的博客" || e == "李诗情"){
+            nick = e + '[博主]'
+            return nick;
+        } else {
+          return e
+        }
+    }
+    
+    //获取头像
+    function getAvater(mail){
+      var a = mail.slice(-5,-6)
+      return '//v1.alapi.cn/api/avatar?email='+mail+'&size=100'
+    }
+
+    //判断网址
+    function wangzhi(e){
+        http = e.slice(0,4)
+        https = e.slice(0,5)
+        if (http == "http" || https == "https" ){
+            return e
+        } else if (e == "" || e == null || e == undefined){
+          return e
+        } else {
+          e = 'http://'+ e
+          return e
+        }
+    }
+
+    //查询评论
+    valine.Q('*').limit(7).find().then(function (comments) {
+      var hotComments = $("#hot-comments");
+      for (var i = 0; i < comments.length; i++) {
+        if (i === 0) {
+          console.log(comments[0]);
+        }
+        var nick = bozhu(comments[i]._serverData.nick);
+        var content = comments[i]._serverData.comment;
+        var newcontent = content.substring(0, 50).replace(/<[^>]+>/g,"");
+        var url = comments[i]._serverData.url;
+        var link = wangzhi(comments[i]._serverData.link);
+        var updatedAt = timeago(comments[i].updatedAt);
+        var commentId = '#' + comments[i].id;
+        hotComments.append('<div class="card-comment-item"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a>&nbsp;发表于' + updatedAt + '</div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div>');
+      }
+    });
+  };
+
   $(function () {
     pjax_valine();
+    newcomment();
   });
   volantis.pjax.push(pjax_valine);
 </script>

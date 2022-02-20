@@ -3869,6 +3869,28 @@ footer .github-badge .bg-lightgrey,
     max-width: 55vw;
   }
 }
+.card-comment-item {
+  margin: 10px 0 10px 0;
+  border-bottom: 1px solid #e2dada;
+  padding-bottom: 5px;
+}
+.item-header-text {
+  color: #9a9a9a;
+}
+.item-text {
+  margin-top: 5px;
+  padding: 0;
+}
+a.newcomment {
+  font-weight: bold;
+  color: #444;
+}
+a.newcomment:hover {
+  color: #36ac91 !important;
+}
+a.comments-detail:hover {
+  color: #36ac91 !important;
+}
 article#comments p[ct] {
   margin-top: 0;
   margin-bottom: 1em;
