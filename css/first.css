@@ -81,6 +81,7 @@ html >::-webkit-scrollbar-thumb:hover {
   background: #ff5722;
 }
 body {
+  cursor: url("/utils/cur/Hand-68.cur"), auto;
   background-color: var(--color-site-body);
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
