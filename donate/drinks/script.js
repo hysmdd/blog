@@ -12,14 +12,14 @@ var drinks_qrcode = $('#drinks-qrcode');
 var isMobile = /Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent);
 
 var GithubLink  =   "https://github.com/queen999";
-var PayPalLink  =   "https://imqinhao.cn";
+var PayPalLink  =   "https://www.imqinhao.cn";
 $('#paypal-donate>a').href = PayPalLink;
 $('#github-box>a').href = GithubLink;
 var qrcodes = {
-    'btc_donate'	:	'https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/qqPay.png',	// 二维码路径
-    'alipay_donate'	:	'https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/alipay.png',	// 支付宝二维码
-    'alipay_donate_link'   :   'https://qr.alipay.com/fkx10880vpnfqvmp47irlee',   // 支付宝二维码上的链接，必须换成自己的连接！！！手机点击会自动跳转到支付宝。
-    'wechat_donate'	:	'https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/Wechat.png'
+    'btc_donate'	:	'https://image.imqinhao.cn/image/qqPay.png',	// 二维码路径
+    'alipay_donate'	:	'https://image.imqinhao.cn/image/alipay.png',	// 支付宝二维码
+    'alipay_donate_link'   :   'https://qr.alipay.com/fkx15104ejahtnojqh6jaed',   // 支付宝二维码上的链接，必须换成自己的连接！！！手机点击会自动跳转到支付宝。
+    'wechat_donate'	:	'https://image.imqinhao.cn/image/wechat.png'
 };
 
 var drinks_an = new Object();

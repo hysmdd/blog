@@ -739,7 +739,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     </div>
   
   <div class='donate'>
-    <iframe src="https://imqinhao.cn/donate/drinks/" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
+    <iframe src="/donate/drinks/" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
   </div>
   
     
@@ -1646,7 +1646,7 @@ var loadCSS = function( href, before, media, attributes ){
   let APlayerController = new Object();
   APlayerController.id = '8173412219';  // 设定全局音乐播放ID
   APlayerController.volume = '0.7';
-  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  loadCSS("/utils/css/APlayer.min.css", window.volantis.loadcss);
   // APlayer 需要在  MetingJS 之前加载
   loadScript("/utils/js/APlayer.min.js")
   window.volantis.APlayerLoaded=0 // APlayer加载完成状态

@@ -1,9 +1,9 @@
 jQuery(document).ready(function() {
 	var QRBox	=	$('#QRBox');
 	var MainBox	=	$('#MainBox');
-	var BTCQR	=	'https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/qqPay.png';	// 二维码路径
-	var AliPayQR	=	'https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/alipay.png';
-	var WeChanQR	=	'https://cdn.jsdelivr.net/gh/queen999/ImageHosting/images/Wechat.png'; //
+	var BTCQR	=	'https://image.imqinhao.cn/image/EE959BD039B9F9EF8BA64D61126D2386.png';	// 二维码路径
+	var AliPayQR	=	'https://image.imqinhao.cn/image/1E1C59C4D774F9F89CD687FD54C3945F.png';
+	var WeChanQR	=	'https://image.imqinhao.cn/image/DF984F78AD880914E9CB6E92A637E472.png'; //
 
 	
 

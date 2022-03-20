@@ -590,22 +590,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   <!-- 引用 artitalk -->
-<script type="text/javascript" src="/utils/js/artitalk.js"></script>
-
+<script type="text/javascript" src="https://unpkg.com/artitalk"></script>
 <!-- 存放说说的容器 -->
-
 <div id="artitalk_main"></div>
 <script>
 new Artitalk({
     appId: 'QEqEln3NBho7u5e0rht5ibL7-MdYXbMMI', // Your LeanCloud appId
     appKey: 'zEHjU1ckm8F2qLvNRVk0Uk6t', // Your LeanCloud appKey
-    // serverURL: 'https://api.imqinhao.cn'
+    serverURL: 'https://avoscloud.com'
 })
 </script>
   
   
   <div class='donate'>
-    <iframe src="https://imqinhao.cn/donate/drinks/" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
+    <iframe src="/donate/drinks/" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
   </div>
   
     
@@ -615,10 +613,10 @@ new Artitalk({
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-18T20:31:48+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-20T10:11:46+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年3月18日</p>
+    <p>更新于：2022年3月20日</p>
   </a>
 </div>
 
@@ -1409,7 +1407,7 @@ var loadCSS = function( href, before, media, attributes ){
   let APlayerController = new Object();
   APlayerController.id = '8173412219';  // 设定全局音乐播放ID
   APlayerController.volume = '0.7';
-  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  loadCSS("/utils/css/APlayer.min.css", window.volantis.loadcss);
   // APlayer 需要在  MetingJS 之前加载
   loadScript("/utils/js/APlayer.min.js")
   window.volantis.APlayerLoaded=0 // APlayer加载完成状态
