@@ -22,9 +22,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>覃浩的博客</title>
+  <title>Spring的AOP简介 - 覃浩的博客</title>
+  
+    <meta name="keywords" content="Spring AOP">
   
 
+  
+    <meta name="description" content="AOP为Aspect Oriented Programming的缩写，意思为面向切面编程，是通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。">
   
 
   <!-- feed -->
@@ -506,7 +510,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper page dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -575,22 +579,211 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-page" id="page" itemscope itemprop="blogPost">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
 
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://image.imqinhao.cn/image/20220321161350.png'/>
+      </a>
+    </div>
   
   <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        Spring的AOP简介
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="https://www.imqinhao.cn" rel="nofollow">
+    <img no-lazy src="https://image.imqinhao.cn/image/avatar-1.jpg">
+    <p>覃浩</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年1月1日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Java/">Java</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.7k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：6分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+<div class="new-meta-item comments-count">
+  
+  <a href="/AOP_1/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/AOP_1/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+          
+        
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Spring的AOP简介" data-path="/AOP_1/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
     
   </div>
 
 
   
   
+  <h2 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP"></a>什么是AOP</h2><p><strong><font color="red">AOP</font></strong>为<strong><font color="red">A</font></strong>spect <strong><font color="red">O</font></strong>riented <strong><font color="red">P</font></strong>rogramming的缩写，意思为<strong><font color="red">面向切面编程</font></strong>，是通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。</p>
+<p>AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p>
+<h2 id="AOP的作用及其优势"><a href="#AOP的作用及其优势" class="headerlink" title="AOP的作用及其优势"></a>AOP的作用及其优势</h2><ul>
+<li>作用：在程序运行期间，在不修改源码的情况下对方法进行功能增强</li>
+<li>优势：减少重复代码，提高开发效率，并且便于维护</li>
+</ul>
+<h2 id="AOP的底层实现"><a href="#AOP的底层实现" class="headerlink" title="AOP的底层实现"></a>AOP的底层实现</h2><p>实际上，AOP的底层是通过Spring提供的的动态代理技术实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对象的方法，从而完成功能的增强。</p>
+<h2 id="AOP的动态代理技术"><a href="#AOP的动态代理技术" class="headerlink" title="AOP的动态代理技术"></a>AOP的动态代理技术</h2><p>常用的动态代理技术：</p>
+<ul>
+<li>JDK代理：基于接口的动态代理技术</li>
+</ul>
+<p><img src="https://image.imqinhao.cn/image/image-20220320120746302.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20220320120746302.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220320120746302"></p>
+<ul>
+<li>cglib代理：基于父类的动态代理技术</li>
+</ul>
+<p><img src="https://image.imqinhao.cn/image/image-20220320120904095.png" class="lazyload" data-srcset="https://image.imqinhao.cn/image/image-20220320120904095.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220320120904095"></p>
+<h3 id="JDK代理"><a href="#JDK代理" class="headerlink" title="JDK代理"></a>JDK代理</h3><p>因为JDK代理是基于接口的动态代理技术，所以我们需要先创建一个接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.jdk;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TargetInterface</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 保存方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>紧接着我们写实现类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.jdk;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Target</span> <span class="keyword">implements</span> <span class="title class_">TargetInterface</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;save running...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后写增强类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.jdk;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Advice</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;前置增强&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterReturning</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;后置增强&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们就可以测试了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.jdk;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.ProxyMethodInvocation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProxyTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 目标对象</span></span><br><span class="line">        <span class="type">Target</span> <span class="variable">target</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Target</span>();</span><br><span class="line">        <span class="comment">// 增强对象</span></span><br><span class="line">        <span class="type">Advice</span> <span class="variable">advice</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Advice</span>();</span><br><span class="line">        <span class="comment">// 返回值就是动态生成的代理对象</span></span><br><span class="line">        <span class="type">TargetInterface</span> <span class="variable">proxy</span> <span class="operator">=</span> (TargetInterface)Proxy.newProxyInstance(</span><br><span class="line">                target.getClass().getClassLoader(),     <span class="comment">// 目标对象类加载器</span></span><br><span class="line">                target.getClass().getInterfaces(),      <span class="comment">// 目标对象相同的接口字节码对象数组</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">InvocationHandler</span>() &#123;</span><br><span class="line">                    <span class="comment">// 调用代理对象的任何方法，实质执行的都是invoke方法</span></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                        advice.before();    <span class="comment">// 前置增强</span></span><br><span class="line">                        <span class="type">Object</span> <span class="variable">invoke</span> <span class="operator">=</span> method.invoke(target, args);    <span class="comment">// 执行目标方法</span></span><br><span class="line">                        advice.afterReturning();    <span class="comment">// 后置增强</span></span><br><span class="line">                        <span class="keyword">return</span> invoke;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 调用代理对象的方法</span></span><br><span class="line">        proxy.save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<blockquote>
+<p>前置增强<br>save running…<br>后置增强</p>
+</blockquote>
+<h3 id="cglib代理"><a href="#cglib代理" class="headerlink" title="cglib代理"></a>cglib代理</h3><p>要完成cglib代理，首先我们需要引入坐标，当然新版本spring-context帮我们继承了cglib，直接导入spring-context即可。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建目标对象类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.cglib;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Target</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;save running...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建增强类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.cglib;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Advice</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;前置增强&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterRunning</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;后置增强&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代理是否成功。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.proxy.cglib;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.Enhancer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.MethodInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.MethodProxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProxyTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 目标对象</span></span><br><span class="line">        <span class="type">Target</span> <span class="variable">target</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Target</span>();</span><br><span class="line">        <span class="comment">// 增强对象</span></span><br><span class="line">        <span class="type">Advice</span> <span class="variable">advice</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Advice</span>();</span><br><span class="line">        <span class="comment">// 返回值 就是动态生成的代理对象 基于cglib</span></span><br><span class="line">        <span class="comment">// 1.创建增强器</span></span><br><span class="line">        <span class="type">Enhancer</span> <span class="variable">enhancer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Enhancer</span>();</span><br><span class="line">        <span class="comment">// 2.设置父类（目标）</span></span><br><span class="line">        enhancer.setSuperclass(Target.class);</span><br><span class="line">        <span class="comment">// 3.设置回调</span></span><br><span class="line">        enhancer.setCallback(<span class="keyword">new</span> <span class="title class_">MethodInterceptor</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Object proxy, Method method, Object[] args, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                <span class="comment">// 前置增强</span></span><br><span class="line">                advice.before();</span><br><span class="line">                <span class="comment">// 执行目标</span></span><br><span class="line">                <span class="type">Object</span> <span class="variable">invoke</span> <span class="operator">=</span> method.invoke(target, args);</span><br><span class="line">                <span class="comment">// 后置增强</span></span><br><span class="line">                advice.afterRunning();</span><br><span class="line">                <span class="keyword">return</span> invoke;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 4.创建代理对象</span></span><br><span class="line">        <span class="type">Target</span> <span class="variable">proxy</span> <span class="operator">=</span> (Target) enhancer.create();</span><br><span class="line"></span><br><span class="line">        proxy.save();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<blockquote>
+<p>前置增强<br>save running…<br>后置增强</p>
+</blockquote>
+<h2 id="AOP相关概念"><a href="#AOP相关概念" class="headerlink" title="AOP相关概念"></a>AOP相关概念</h2><p>Spring的AOP实现底层就是对上面的动态代理的代码进行了封装，封装后我们只需要对需要关注的部分进行代码编写，并通过配置的方式完成指定目标的方法增强。</p>
+<p>在正式讲解AOP的操作之前，我们必须理解AOP的相关术语，常用的术语如下：</p>
+<ul>
+<li>Target(目标对象)︰代理的目标对象</li>
+<li>Proxy(代理):一个类被AOP织入增强后，就产生一个结果代理类</li>
+<li>Joinpoint(连接点)︰所谓连接点是指那些被拦截到的点。在spring中,这些点指的是方法，因为spring只支持方法类型的连接点</li>
+<li>Pointcut(切入点)︰所谓切入点是指我们要对哪些Joinpoint进行拦截的定义</li>
+<li>Advice(通知/增强)︰所谓通知是指拦截到Joinpoint之后所要做的事情就是通知</li>
+<li>Aspect (切面)︰是切入点和通知(引介)的结合</li>
+<li>Weaving (织入)∶是指把增强应用到目标对象来创建新的代理对象的过程。spring采用动态代理织入，而AspectJ采用编译期织入和类装载期织入</li>
+</ul>
+<h2 id="AOP开发明确的事项"><a href="#AOP开发明确的事项" class="headerlink" title="AOP开发明确的事项"></a>AOP开发明确的事项</h2><h3 id="需要编写的内容"><a href="#需要编写的内容" class="headerlink" title="需要编写的内容"></a>需要编写的内容</h3><ul>
+<li>编写核心业务代码(目标类的目标方法)</li>
+<li>编写切面类，切面类中有通知(增强功能方法)</li>
+<li>在配置文件中，配置织入关系，即将哪些通知与哪些连接点进行结合</li>
+</ul>
+<h3 id="AOP技术实现的内容"><a href="#AOP技术实现的内容" class="headerlink" title="AOP技术实现的内容"></a>AOP技术实现的内容</h3><p>Spring框架监控切入点方法的执行。一旦监控到切入点方法被运行，使用代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的对应位置，将通知对应的功能织入，完成完整的代码逻辑运行。</p>
+<h3 id="AOP底层使用哪种代理方式"><a href="#AOP底层使用哪种代理方式" class="headerlink" title="AOP底层使用哪种代理方式"></a>AOP底层使用哪种代理方式</h3><p>在spring中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。</p>
+<h2 id="知识要点"><a href="#知识要点" class="headerlink" title="知识要点"></a>知识要点</h2><ul>
+<li>AOP：面向切面编程</li>
+<li>AOP底层实现：基于JDK的动态代理 和 基于Cglib的动态代理</li>
+<li>AOP的重点概念：<ul>
+<li>PointCut（切入点）：被增强的方法</li>
+<li>Advice（通知/增强）：封装增强业务逻辑的方法</li>
+<li>Aspect（切面）：切点  +  通知</li>
+<li>Weaving（织入）：将切点与通知结合的过程</li>
+</ul>
+</li>
+<li>开发明确事项：<ul>
+<li>谁是切点（切点表达式配置）</li>
+<li>谁是通知（切面类中的增强方法）</li>
+<li>将切点和通知进行织入配置</li>
+</ul>
+</li>
+</ul>
+
   
   
+    
+    <div class='footer'>
+      
+      
+      
+      
+    </div>
   
   <div class='donate'>
     <iframe src="/donate/drinks/" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
@@ -603,10 +796,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-02-15T18:29:56+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-21T16:18:54+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年2月15日</p>
+    <p>更新于：2022年3月21日</p>
   </a>
 </div>
 
@@ -625,7 +818,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/gallery/%E7%99%BD%E6%95%AC%E4%BA%AD/index.html&title= - 覃浩的博客&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/AOP_1/&title=Spring的AOP简介 - 覃浩的博客&summary="
           
           >
           
@@ -637,7 +830,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/gallery/%E7%99%BD%E6%95%AC%E4%BA%AD/index.html&title= - 覃浩的博客&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/AOP_1/&title=Spring的AOP简介 - 覃浩的博客&summary="
           
           >
           
@@ -649,7 +842,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/gallery/%E7%99%BD%E6%95%AC%E4%BA%AD/index.html&title= - 覃浩的博客&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/AOP_1/&title=Spring的AOP简介 - 覃浩的博客&summary="
           
           >
           
@@ -676,6 +869,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/AOP_2/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>基于XML的AOP开发</p>
+          <p class='content'>快速入门
+导入AOP相关坐标
+
+12345678910&lt;dependency&gt;    &lt;groupId&gt;org.springframework&lt;/groupId&g...</p>
+        </a>
+      
+      
+        <a class='next' href='/system12/'>
+          <p class='title'>处理机调度<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+
+调度的基本概念
+高级调度
+
+简化理解：好几个程序需要启动，到底先启动哪个？
+高级调度（作业调度）。按一定的原则从外存的作业后备队列中挑选一个作业调入内存，并创建进程。每个作业只调入一次，调...</p>
+        </a>
+      
+    </div>
   
 </article>
 
@@ -705,6 +923,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFAOP"><span class="toc-text">什么是AOP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E7%9A%84%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E4%BC%98%E5%8A%BF"><span class="toc-text">AOP的作用及其优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-text">AOP的底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF"><span class="toc-text">AOP的动态代理技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK%E4%BB%A3%E7%90%86"><span class="toc-text">JDK代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cglib%E4%BB%A3%E7%90%86"><span class="toc-text">cglib代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">AOP相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E5%BC%80%E5%8F%91%E6%98%8E%E7%A1%AE%E7%9A%84%E4%BA%8B%E9%A1%B9"><span class="toc-text">AOP开发明确的事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E7%BC%96%E5%86%99%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">需要编写的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">AOP技术实现的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP%E5%BA%95%E5%B1%82%E4%BD%BF%E7%94%A8%E5%93%AA%E7%A7%8D%E4%BB%A3%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-text">AOP底层使用哪种代理方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9"><span class="toc-text">知识要点</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -719,8 +951,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Spring的AOP简介";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
@@ -1023,7 +1255,7 @@ var loadCSS = function( href, before, media, attributes ){
 <script src="/utils/js/jquery.backstretch.min.js"></script>
 
     <script type="text/javascript">
-        var imgs=["https://image.imqinhao.cn/image/008ihPv1ly1gyjftbpg3jj31hb0u0thu.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjftcu8ruj31hb0u0doj.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjfta0jcij31hb0u0q8s.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjft8osnuj31hb0u0qbo.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyibfzxrakj31hb0u0djz.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjft9a3uij31hb0u0gst.jpg", "https://image.imqinhao.cn/image/9511A0914AE3AD8407B4DBE9CB786A22.png", "https://image.imqinhao.cn/image/IMG_0056.jpg", "https://image.imqinhao.cn/image/IMG_0057.jpg", "https://image.imqinhao.cn/image/IMG_0097.jpg", "https://image.imqinhao.cn/image/IMG_0098.jpg", "https://image.imqinhao.cn/image/IMG_0111.jpg", "https://image.imqinhao.cn/image/IMG_0112.jpg", "https://image.imqinhao.cn/image/IMG_0114.jpg", "https://image.imqinhao.cn/image/IMG_0116.jpg", "https://image.imqinhao.cn/image/IMG_0117.jpg", "https://image.imqinhao.cn/image/IMG_0118.jpg", "https://image.imqinhao.cn/image/IMG_0124.jpg", "https://image.imqinhao.cn/image/IMG_0141.jpg", "https://image.imqinhao.cn/image/IMG_0153.jpg", "https://image.imqinhao.cn/image/IMG_0091.jpg", "https://image.imqinhao.cn/image/IMG_0058.jpg", "https://image.imqinhao.cn/image/IMG_0059.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyy09zebquj31hb0u018f.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gysicslqz1j31hb0u0468.jpg", "https://image.imqinhao.cn/image/4B9D8D2F93736DD5BA35E9E22996F8A8.png", "https://image.imqinhao.cn/image/8F204C1F3A88DF29DA47631372F27498.png", "https://image.imqinhao.cn/image/C4471C7DFD2DE86F456F63B6AE55ED8A.png", "https://image.imqinhao.cn/image/9BE40E79FC00EDFF130B8AE70E60C895.png", "https://image.imqinhao.cn/image/4A8B80093BF372BE1654BECF688F7733.png", "https://image.imqinhao.cn/image/9D30A7BD9611ABE0716A58DB6ED4EDD3.png", "https://image.imqinhao.cn/image/848657DE725343B7438F8AD8F979A3ED.png", "https://image.imqinhao.cn/image/687F45B395C97ED55375A45B3406B7FB.png", "https://image.imqinhao.cn/image/7d89f3d7ly1gyp6zn4nezj22c0340npg.jpg", "https://image.imqinhao.cn/image/7d89f3d7ly1gyp6zsrfcrj22c0340kjt.jpg", "https://image.imqinhao.cn/image/7d89f3d7ly1gzs8ufgjioj22c0340qv5.jpg", "https://image.imqinhao.cn/image/7d89f3d7ly1gzs8ukvkhqj22c0340u0x.jpg"];
+        var imgs=["https://image.imqinhao.cn/image/008ihPv1ly1gyjftbpg3jj31hb0u0thu.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjftcu8ruj31hb0u0doj.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjfta0jcij31hb0u0q8s.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjft9a3uij31hb0u0gst.jpg", "https://image.imqinhao.cn/image/9511A0914AE3AD8407B4DBE9CB786A22.png", "https://image.imqinhao.cn/image/IMG_0056.jpg", "https://image.imqinhao.cn/image/IMG_0098.jpg", "https://image.imqinhao.cn/image/IMG_0111.jpg", "https://image.imqinhao.cn/image/IMG_0112.jpg", "https://image.imqinhao.cn/image/IMG_0114.jpg", "https://image.imqinhao.cn/image/IMG_0116.jpg", "https://image.imqinhao.cn/image/IMG_0117.jpg", "https://image.imqinhao.cn/image/IMG_0118.jpg", "https://image.imqinhao.cn/image/IMG_0124.jpg", "https://image.imqinhao.cn/image/IMG_0141.jpg", "https://image.imqinhao.cn/image/IMG_0153.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyy09zebquj31hb0u018f.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gysicslqz1j31hb0u0468.jpg", "https://image.imqinhao.cn/image/4B9D8D2F93736DD5BA35E9E22996F8A8.png", "https://image.imqinhao.cn/image/8F204C1F3A88DF29DA47631372F27498.png", "https://image.imqinhao.cn/image/C4471C7DFD2DE86F456F63B6AE55ED8A.png"];
         if ('true' == 'true') {
           function shuffle(arr){
             /*From countercurrent-time*/
@@ -2068,4 +2300,5 @@ document.addEventListener("pjax:success", listennSidebarTOC);
  
 	  
     </div>
-  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+  </body>
+</html>

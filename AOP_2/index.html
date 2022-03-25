@@ -22,9 +22,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>覃浩的博客</title>
+  <title>基于XML的AOP开发 - 覃浩的博客</title>
+  
+    <meta name="keywords" content="Spring AOP">
   
 
+  
+    <meta name="description" content="① AOP织入的配置<br /> ② 通知的类型：前置通知、后置通知、环绕通知、异常抛出通知、最终通知<br /> ③ 切点表达式的写法">
   
 
   <!-- feed -->
@@ -506,7 +510,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper page dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -575,22 +579,219 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-page" id="page" itemscope itemprop="blogPost">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
 
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://image.imqinhao.cn/image/20220324220738.png'/>
+      </a>
+    </div>
   
   <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        基于XML的AOP开发
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="https://www.imqinhao.cn" rel="nofollow">
+    <img no-lazy src="https://image.imqinhao.cn/image/avatar-1.jpg">
+    <p>覃浩</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年1月2日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Java/">Java</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.3k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：6分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+<div class="new-meta-item comments-count">
+  
+  <a href="/AOP_2/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/AOP_2/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+          
+        
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="基于XML的AOP开发" data-path="/AOP_2/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
     
   </div>
 
 
   
   
+  <h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><ol>
+<li>导入AOP相关坐标</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建目标接口和目标类（内部有切点）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.aop;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TargetInterface</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.aop;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Target</span> <span class="keyword">implements</span> <span class="title class_">TargetInterface</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;save running...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>创建切面类（内部有增强方法）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.aop;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;前置增强...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>将目标类和切面类的对象创建权交给Spring</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">&quot;http://www.springframework.org/schema/aop&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--目标对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;target&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cn.imqinhao.aop.Target&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--切面对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myAspect&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cn.imqinhao.aop.MyAspect&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>在 applicationContext.xml 中配置织入关系</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">&quot;http://www.springframework.org/schema/aop&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--目标对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;target&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cn.imqinhao.aop.Target&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--切面对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myAspect&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cn.imqinhao.aop.MyAspect&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--配置织入：告诉Spring框架 哪些方法（切点）需要哪些增强（前置、后置...）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--声明切面--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;myAspect&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--切面：切点 + 通知--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">&quot;before&quot;</span> <span class="attr">pointcut</span>=<span class="string">&quot;execution(public void cn.imqinhao.aop.Target.save())&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.imqinhao.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.imqinhao.aop.Target;</span><br><span class="line"><span class="keyword">import</span> cn.imqinhao.aop.TargetInterface;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> qinhao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="meta">@ContextConfiguration(&quot;classpath:applicationContext.xml&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AopTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TargetInterface target;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">        target.save();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<blockquote>
+<p>前置增强…<br>save running…</p>
+</blockquote>
+<h2 id="AOP切点表达式的写法"><a href="#AOP切点表达式的写法" class="headerlink" title="AOP切点表达式的写法"></a>AOP切点表达式的写法</h2><p>表达式语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execution([修饰符] 返回值类型 包名.类名.方法名(参数))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问修饰符可以忽略</li>
+<li>返回值类型、包名、类名、方法名可以使用星号 * 代表任意</li>
+<li>包名与类名之间一个点 . 代表当前包下的类，两个点 .. 表示当前包及其子包下的类</li>
+<li>参数列表可以使用两个点 .. 代表任意个数，任意类型的参数列表</li>
+</ul>
+<p>所以，上面的applicationContext.xml文件的第21行我们可以修改一下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">&quot;before&quot;</span> <span class="attr">pointcut</span>=<span class="string">&quot;execution(* cn.imqinhao.aop.*.*(..))&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="通知的类型"><a href="#通知的类型" class="headerlink" title="通知的类型"></a>通知的类型</h2><p>通知的配置语法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:通知类型 method=&quot;切面类中方法名&quot; pointcut=&quot;切点表达式&quot;&gt;&lt;/aop:通知类型&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>标签</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前置通知</td>
+<td>&lt;aop:before&gt;</td>
+<td>用于配置前置通知。指定增强的方法在切入点方法之前执行。</td>
+</tr>
+<tr>
+<td>后置通知</td>
+<td>&lt;aop:after-returning&gt;</td>
+<td>用于配置后置通知。指定增强的方法在切入点方法之后执行。</td>
+</tr>
+<tr>
+<td>环绕通知</td>
+<td>&lt;aop:around&gt;</td>
+<td>用于配置环绕通知。指定增强的方法在切入点之前和之后都执行。</td>
+</tr>
+<tr>
+<td>异常抛出通知</td>
+<td>&lt;aop:throwing&gt;</td>
+<td>用于配置异常抛出通知。指定增强的方法在出现异常时执行。</td>
+</tr>
+<tr>
+<td>最终通知</td>
+<td>&lt;aop:after&gt;</td>
+<td>用于配置最终通知。无论增强方法执行是否有异常都会执行。</td>
+</tr>
+</tbody></table>
+<h2 id="切点表达式的抽取"><a href="#切点表达式的抽取" class="headerlink" title="切点表达式的抽取"></a>切点表达式的抽取</h2><p>当多个增强的切点表达式相同时，可以将切点表达式进行抽取，在增强中使用pointcut-ref属性代替pointcut属性来引用抽取后的切点表达式。</p>
+<p>接下来我们对 applicationContext.xml 进行优化：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">&quot;http://www.springframework.org/schema/aop&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--目标对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;target&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cn.imqinhao.aop.Target&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--切面对象--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myAspect&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cn.imqinhao.aop.MyAspect&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--配置织入：告诉Spring框架 哪些方法（切点）需要哪些增强（前置、后置...）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--声明切面--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;myAspect&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--抽取切点表达式--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">&quot;myPointCut&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;execution(* cn.imqinhao.aop.*.*(..))&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">&quot;around&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">method</span>=<span class="string">&quot;after&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<blockquote>
+<p>环绕前增强…<br>save running…<br>环绕后增强…<br>最终增强…</p>
+</blockquote>
+
   
   
+    
+    <div class='footer'>
+      
+      
+      
+      
+    </div>
   
   <div class='donate'>
     <iframe src="/donate/drinks/" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
@@ -603,10 +804,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-02-15T18:29:56+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-25T17:27:52+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年2月15日</p>
+    <p>更新于：2022年3月25日</p>
   </a>
 </div>
 
@@ -625,7 +826,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/gallery/%E8%B5%B5%E4%BB%8A%E9%BA%A6/index.html&title= - 覃浩的博客&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.imqinhao.cn/AOP_2/&title=基于XML的AOP开发 - 覃浩的博客&summary="
           
           >
           
@@ -637,7 +838,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/gallery/%E8%B5%B5%E4%BB%8A%E9%BA%A6/index.html&title= - 覃浩的博客&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.imqinhao.cn/AOP_2/&title=基于XML的AOP开发 - 覃浩的博客&summary="
           
           >
           
@@ -649,7 +850,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/gallery/%E8%B5%B5%E4%BB%8A%E9%BA%A6/index.html&title= - 覃浩的博客&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.imqinhao.cn/AOP_2/&title=基于XML的AOP开发 - 覃浩的博客&summary="
           
           >
           
@@ -676,6 +877,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/AOP_3/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>基于注解的AOP开发</p>
+          <p class='content'>快速入门基于注解的AOP开发步骤：
+
+创建目标接口和目标类(内部有切点)
+
+1234567891011package cn.imqinhao.anno;/** * @author qinhao ...</p>
+        </a>
+      
+      
+        <a class='next' href='/AOP_1/'>
+          <p class='title'>Spring的AOP简介<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>什么是AOPAOP为Aspect Oriented Programming的缩写，意思为面向切面编程，是通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。
+AOP是OOP的延续，是...</p>
+        </a>
+      
+    </div>
   
 </article>
 
@@ -705,6 +926,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E5%88%87%E7%82%B9%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-text">AOP切点表达式的写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%9F%A5%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">通知的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E7%82%B9%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%8A%BD%E5%8F%96"><span class="toc-text">切点表达式的抽取</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -719,8 +954,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="基于XML的AOP开发";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
@@ -1023,7 +1258,7 @@ var loadCSS = function( href, before, media, attributes ){
 <script src="/utils/js/jquery.backstretch.min.js"></script>
 
     <script type="text/javascript">
-        var imgs=["https://image.imqinhao.cn/image/008ihPv1ly1gyjftbpg3jj31hb0u0thu.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjftcu8ruj31hb0u0doj.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjfta0jcij31hb0u0q8s.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjft8osnuj31hb0u0qbo.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyibfzxrakj31hb0u0djz.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjft9a3uij31hb0u0gst.jpg", "https://image.imqinhao.cn/image/9511A0914AE3AD8407B4DBE9CB786A22.png", "https://image.imqinhao.cn/image/IMG_0056.jpg", "https://image.imqinhao.cn/image/IMG_0057.jpg", "https://image.imqinhao.cn/image/IMG_0097.jpg", "https://image.imqinhao.cn/image/IMG_0098.jpg", "https://image.imqinhao.cn/image/IMG_0111.jpg", "https://image.imqinhao.cn/image/IMG_0112.jpg", "https://image.imqinhao.cn/image/IMG_0114.jpg", "https://image.imqinhao.cn/image/IMG_0116.jpg", "https://image.imqinhao.cn/image/IMG_0117.jpg", "https://image.imqinhao.cn/image/IMG_0118.jpg", "https://image.imqinhao.cn/image/IMG_0124.jpg", "https://image.imqinhao.cn/image/IMG_0141.jpg", "https://image.imqinhao.cn/image/IMG_0153.jpg", "https://image.imqinhao.cn/image/IMG_0091.jpg", "https://image.imqinhao.cn/image/IMG_0058.jpg", "https://image.imqinhao.cn/image/IMG_0059.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyy09zebquj31hb0u018f.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gysicslqz1j31hb0u0468.jpg", "https://image.imqinhao.cn/image/4B9D8D2F93736DD5BA35E9E22996F8A8.png", "https://image.imqinhao.cn/image/8F204C1F3A88DF29DA47631372F27498.png", "https://image.imqinhao.cn/image/C4471C7DFD2DE86F456F63B6AE55ED8A.png", "https://image.imqinhao.cn/image/9BE40E79FC00EDFF130B8AE70E60C895.png", "https://image.imqinhao.cn/image/4A8B80093BF372BE1654BECF688F7733.png", "https://image.imqinhao.cn/image/9D30A7BD9611ABE0716A58DB6ED4EDD3.png", "https://image.imqinhao.cn/image/848657DE725343B7438F8AD8F979A3ED.png", "https://image.imqinhao.cn/image/687F45B395C97ED55375A45B3406B7FB.png", "https://image.imqinhao.cn/image/7d89f3d7ly1gyp6zn4nezj22c0340npg.jpg", "https://image.imqinhao.cn/image/7d89f3d7ly1gyp6zsrfcrj22c0340kjt.jpg", "https://image.imqinhao.cn/image/7d89f3d7ly1gzs8ufgjioj22c0340qv5.jpg", "https://image.imqinhao.cn/image/7d89f3d7ly1gzs8ukvkhqj22c0340u0x.jpg"];
+        var imgs=["https://image.imqinhao.cn/image/008ihPv1ly1gyjftbpg3jj31hb0u0thu.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjftcu8ruj31hb0u0doj.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjfta0jcij31hb0u0q8s.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyjft9a3uij31hb0u0gst.jpg", "https://image.imqinhao.cn/image/9511A0914AE3AD8407B4DBE9CB786A22.png", "https://image.imqinhao.cn/image/IMG_0056.jpg", "https://image.imqinhao.cn/image/IMG_0098.jpg", "https://image.imqinhao.cn/image/IMG_0111.jpg", "https://image.imqinhao.cn/image/IMG_0112.jpg", "https://image.imqinhao.cn/image/IMG_0114.jpg", "https://image.imqinhao.cn/image/IMG_0116.jpg", "https://image.imqinhao.cn/image/IMG_0117.jpg", "https://image.imqinhao.cn/image/IMG_0118.jpg", "https://image.imqinhao.cn/image/IMG_0124.jpg", "https://image.imqinhao.cn/image/IMG_0141.jpg", "https://image.imqinhao.cn/image/IMG_0153.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gyy09zebquj31hb0u018f.jpg", "https://image.imqinhao.cn/image/008ihPv1ly1gysicslqz1j31hb0u0468.jpg", "https://image.imqinhao.cn/image/4B9D8D2F93736DD5BA35E9E22996F8A8.png", "https://image.imqinhao.cn/image/8F204C1F3A88DF29DA47631372F27498.png", "https://image.imqinhao.cn/image/C4471C7DFD2DE86F456F63B6AE55ED8A.png"];
         if ('true' == 'true') {
           function shuffle(arr){
             /*From countercurrent-time*/
@@ -2068,4 +2303,5 @@ document.addEventListener("pjax:success", listennSidebarTOC);
  
 	  
     </div>
-  <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+  </body>
+</html>
