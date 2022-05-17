@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.imqinhao.cn/Python-3/</loc>
+    <lastmod>2022-05-17</lastmod>
+  </url>  <url>
+    <loc>https://www.imqinhao.cn/ssh/</loc>
+    <lastmod>2022-05-17</lastmod>
+  </url>  <url>
     <loc>https://www.imqinhao.cn/transactionManager/</loc>
     <lastmod>2022-03-27</lastmod>
   </url>  <url>
@@ -88,9 +94,6 @@
     <loc>https://www.imqinhao.cn/stock_3/</loc>
     <lastmod>2021-12-30</lastmod>
   </url>  <url>
-    <loc>https://www.imqinhao.cn/ssh/</loc>
-    <lastmod>2021-12-30</lastmod>
-  </url>  <url>
     <loc>https://www.imqinhao.cn/RedHat_setup_script/</loc>
     <lastmod>2021-12-30</lastmod>
   </url>  <url>
@@ -98,9 +101,6 @@
     <lastmod>2021-12-30</lastmod>
   </url>  <url>
     <loc>https://www.imqinhao.cn/Python-4/</loc>
-    <lastmod>2021-12-30</lastmod>
-  </url>  <url>
-    <loc>https://www.imqinhao.cn/Python-3/</loc>
     <lastmod>2021-12-30</lastmod>
   </url>  <url>
     <loc>https://www.imqinhao.cn/python-2/</loc>

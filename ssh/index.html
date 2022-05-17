@@ -693,9 +693,9 @@ Switch(config)# ip address 192.168.0.1 255.255.255.0    #配置IP地址和子网
 Switch(config)# no shutdown    #启用vlan 1接口</code></pre><h2 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h2><pre><code>Switch(config)# hostname MS1   #修改交换机的主机名，后期配置域名的主机名</code></pre><h2 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h2><pre><code>MS1(config)# ip domain-name qinhao.com   #配置域名</code></pre><h2 id="生成rsa秘钥"><a href="#生成rsa秘钥" class="headerlink" title="生成rsa秘钥"></a>生成rsa秘钥</h2><pre><code>MS1(config)# crypto key generate rsa   #生成rsa秘钥，默认长度为512，建议修改为1024</code></pre><h2 id="定义ssh远程的线路"><a href="#定义ssh远程的线路" class="headerlink" title="定义ssh远程的线路"></a>定义ssh远程的线路</h2><pre><code>MS1(config)# line vty 0  15  #进入vty端口模式
 MS1(config)# transport input ssh 
 MS1(config)# privilege level 15
-MS1(config)# login local</code></pre><h2 id="创建本地用户"><a href="#创建本地用户" class="headerlink" title="创建本地用户"></a>创建本地用户</h2><pre><code>MS1(config)# username qinhao password tttttt520</code></pre><h2 id="设置enable登录密码"><a href="#设置enable登录密码" class="headerlink" title="设置enable登录密码"></a>设置enable登录密码</h2><pre><code>MS1(config)# enable secret 123456   #进入管理员模式需要的密码</code></pre><h2 id="PC0通过ssh远程连接MS1"><a href="#PC0通过ssh远程连接MS1" class="headerlink" title="PC0通过ssh远程连接MS1"></a>PC0通过ssh远程连接MS1</h2><pre><code>pc&gt; ssh -l qinhao 192.168.0.1        #ssh用法：ssh -l 用户名 IP地址
+MS1(config)# login local</code></pre><h2 id="创建本地用户"><a href="#创建本地用户" class="headerlink" title="创建本地用户"></a>创建本地用户</h2><pre><code>MS1(config)# username qinhao password qinhao2299</code></pre><h2 id="设置enable登录密码"><a href="#设置enable登录密码" class="headerlink" title="设置enable登录密码"></a>设置enable登录密码</h2><pre><code>MS1(config)# enable secret 123456   #进入管理员模式需要的密码</code></pre><h2 id="PC0通过ssh远程连接MS1"><a href="#PC0通过ssh远程连接MS1" class="headerlink" title="PC0通过ssh远程连接MS1"></a>PC0通过ssh远程连接MS1</h2><pre><code>pc&gt; ssh -l qinhao 192.168.0.1        #ssh用法：ssh -l 用户名 IP地址
 open    #会提示我们开启
-Password: tttttt520    #输入ssh用户的密码</code></pre>
+Password: qinhao2299    #输入ssh用户的密码</code></pre>
   
   
     
@@ -717,10 +717,10 @@ Password: tttttt520    #输入ssh用户的密码</code></pre>
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-30T16:22:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-05-17T22:14:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年12月30日</p>
+    <p>更新于：2022年5月17日</p>
   </a>
 </div>
 
