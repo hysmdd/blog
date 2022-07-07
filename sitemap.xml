@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.imqinhao.cn/gallery/myphotos/index.html</loc>
+    
+    <lastmod>2022-07-07T14:01:46.933Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.imqinhao.cn/gallery/index.html</loc>
+    
+    <lastmod>2022-07-07T13:46:52.411Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.imqinhao.cn/Python-3/</loc>
     
     <lastmod>2022-05-17T14:27:58.102Z</lastmod>
@@ -40,20 +54,6 @@
     <loc>https://www.imqinhao.cn/AOP_2/</loc>
     
     <lastmod>2022-03-25T09:27:52.695Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.imqinhao.cn/gallery/myphotos/index.html</loc>
-    
-    <lastmod>2022-03-25T09:26:27.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.imqinhao.cn/gallery/index.html</loc>
-    
-    <lastmod>2022-03-25T09:16:26.316Z</lastmod>
     
   </url>
   
