@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.imqinhao.cn/artitalk/index.html</loc>
+    
+    <lastmod>2022-10-11T13:19:07.819Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.imqinhao.cn/Python-3/</loc>
     
     <lastmod>2022-05-17T14:27:58.102Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://www.imqinhao.cn/AOP_1/</loc>
     
     <lastmod>2022-03-21T08:18:54.391Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.imqinhao.cn/artitalk/index.html</loc>
-    
-    <lastmod>2022-03-20T03:01:00.049Z</lastmod>
     
   </url>
   
