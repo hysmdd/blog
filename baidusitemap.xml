@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.imqinhao.cn/transactionManager/</loc>
+    <lastmod>2022-12-03</lastmod>
+  </url>  <url>
     <loc>https://www.imqinhao.cn/Python-3/</loc>
     <lastmod>2022-05-17</lastmod>
   </url>  <url>
     <loc>https://www.imqinhao.cn/ssh/</loc>
     <lastmod>2022-05-17</lastmod>
-  </url>  <url>
-    <loc>https://www.imqinhao.cn/transactionManager/</loc>
-    <lastmod>2022-03-27</lastmod>
   </url>  <url>
     <loc>https://www.imqinhao.cn/PlatformTransactionManager/</loc>
     <lastmod>2022-03-25</lastmod>
