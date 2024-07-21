@@ -6046,7 +6046,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   flex-shrink: 0;
   position: sticky;
   position: -webkit-sticky;
-  --width-sidebar: calc(var(--gap-margin) * 2 + var(--gap-padding) * 2 + var(--side-content-width));
+  --width-sidebar: calc(var(--gap-margin) * 2 + var(--gap-padding) * 2 + 24px + var(--side-content-width));
   width: var(--width-sidebar);
 }
 .l_body .l_left {
