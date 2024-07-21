@@ -1,0 +1,624 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  
+  <title>MySQL多表&事务 - 覃浩的博客</title>
+
+  
+    <meta name="description" content="多表查询、事务、DCL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL多表&amp;事务">
+<meta property="og:url" content="https://imqinhao.cn/MySQL_transaction/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="多表查询、事务、DCL">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-11T12:13:16.000Z">
+<meta property="article:modified_time" content="2024-07-21T12:23:23.872Z">
+<meta property="article:author" content="覃浩">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.29.1">
+
+  
+
+  
+
+  <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaigbscreen.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaigbscreenr.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreenr.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo311o296edgc005n1v4rk1ocuoed2tl60?imageView2/2/w/540/format/webp|imageMogr2/strip2" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">覃浩的博客</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/notes/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/stock_15/"><span class="title">DDE和BBD指标</span></a><a class="item title" href="/stock_14/"><span class="title">支撑线、压力线和趋势线</span></a><a class="item title" href="/stock_13/"><span class="title">威廉指标</span></a><a class="item title" href="/stock_12/"><span class="title">RSI指标</span></a><a class="item title" href="/stock_11/"><span class="title">KDJ指标</span></a><a class="item title" href="/stock_10/"><span class="title">MACD指标</span></a><a class="item title" href="/stock_9/"><span class="title">缺口形态</span></a><a class="item title" href="/stock_8/"><span class="title">矩形形态</span></a><a class="item title" href="/stock_7/"><span class="title">三角形态</span></a><a class="item title" href="/stock_6/"><span class="title">双重底形态</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top"><img class="bg lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://p1.qhimg.com/bdm/1024_768_85/t0127b0c17047a52786.jpg">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2021-07-11T12:13:16.000Z">2021-07-11</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-07-21T12:23:23.872Z">2024-07-21</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>MySQL多表&事务</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">* 查询语法：</span><br><span class="line">    select</span><br><span class="line">        列名列表</span><br><span class="line">    from</span><br><span class="line">        表名列表</span><br><span class="line">    where....</span><br><span class="line">* 准备sql</span><br><span class="line">    # 创建部门表</span><br><span class="line">    CREATE TABLE dept(</span><br><span class="line">        id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">        NAME VARCHAR(20)</span><br><span class="line">    );</span><br><span class="line">    INSERT INTO dept (NAME) VALUES (&#x27;开发部&#x27;),(&#x27;市场部&#x27;),(&#x27;财务部&#x27;);</span><br><span class="line">    # 创建员工表</span><br><span class="line">    CREATE TABLE emp (</span><br><span class="line">        id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">        NAME VARCHAR(10),</span><br><span class="line">        gender CHAR(1), -- 性别</span><br><span class="line">        salary DOUBLE, -- 工资</span><br><span class="line">        join_date DATE, -- 入职日期</span><br><span class="line">        dept_id INT,</span><br><span class="line">        FOREIGN KEY (dept_id) REFERENCES dept(id) -- 外键，关联部门表(部门表的主键)</span><br><span class="line">    );</span><br><span class="line">    INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES(&#x27;孙悟空&#x27;,&#x27;男&#x27;,7200,&#x27;2013-02-24&#x27;,1);</span><br><span class="line">    INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES(&#x27;猪八戒&#x27;,&#x27;男&#x27;,3600,&#x27;2010-12-02&#x27;,2);</span><br><span class="line">    INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES(&#x27;唐僧&#x27;,&#x27;男&#x27;,9000,&#x27;2008-08-08&#x27;,2);</span><br><span class="line">    INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES(&#x27;白骨精&#x27;,&#x27;女&#x27;,5000,&#x27;2015-10-07&#x27;,3);</span><br><span class="line">    INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES(&#x27;蜘蛛精&#x27;,&#x27;女&#x27;,4500,&#x27;2011-03-14&#x27;,1);</span><br><span class="line">* 笛卡尔积：</span><br><span class="line">    * 有两个集合A,B .取这两个集合的所有组成情况。</span><br><span class="line">    * 要完成多表查询，需要消除无用的数据</span><br><span class="line">* 多表查询的分类：</span><br><span class="line">    1. 内连接查询：</span><br><span class="line">        1. 隐式内连接：使用where条件消除无用数据</span><br><span class="line">            * 例子：</span><br><span class="line">            -- 查询所有员工信息和对应的部门信息</span><br><span class="line"></span><br><span class="line">            SELECT * FROM emp,dept WHERE emp.`dept_id` = dept.`id`;</span><br><span class="line"></span><br><span class="line">            -- 查询员工表的名称，性别。部门表的名称</span><br><span class="line">            SELECT emp.name,emp.gender,dept.name FROM emp,dept WHERE emp.`dept_id` = dept.`id`;</span><br><span class="line"></span><br><span class="line">            SELECT </span><br><span class="line">                t1.name, -- 员工表的姓名</span><br><span class="line">                t1.gender,-- 员工表的性别</span><br><span class="line">                t2.name -- 部门表的名称</span><br><span class="line">            FROM</span><br><span class="line">                emp t1,</span><br><span class="line">                dept t2</span><br><span class="line">            WHERE </span><br><span class="line">                t1.`dept_id` = t2.`id`;</span><br><span class="line"></span><br><span class="line">        2. 显式内连接：</span><br><span class="line">            * 语法： select 字段列表 from 表名1 [inner] join 表名2 on 条件</span><br><span class="line">            * 例如：</span><br><span class="line">                * SELECT * FROM emp INNER JOIN dept ON emp.`dept_id` = dept.`id`;    </span><br><span class="line">                * SELECT * FROM emp JOIN dept ON emp.`dept_id` = dept.`id`;    </span><br><span class="line"></span><br><span class="line">        3. 内连接查询：</span><br><span class="line">            1. 从哪些表中查询数据</span><br><span class="line">            2. 条件是什么</span><br><span class="line">            3. 查询哪些字段</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    2. 外链接查询：</span><br><span class="line">        1. 左外连接：</span><br><span class="line">            * 语法：select 字段列表 from 表1 left [outer] join 表2 on 条件；</span><br><span class="line">            * 查询的是左表所有数据以及其交集部分。</span><br><span class="line">            * 例子：</span><br><span class="line">            -- 查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称</span><br><span class="line">            SELECT     t1.*,t2.`name` FROM emp t1 LEFT JOIN dept t2 ON t1.`dept_id` = t2.`id`;</span><br><span class="line">        2. 右外连接：</span><br><span class="line">            * 语法：select 字段列表 from 表1 right [outer] join 表2 on 条件；</span><br><span class="line">            * 查询的是右表所有数据以及其交集部分。</span><br><span class="line">            * 例子：</span><br><span class="line">                        SELECT     * FROM dept t2 RIGHT JOIN emp t1 ON t1.`dept_id` = t2.`id`;</span><br><span class="line">    3. 子查询：</span><br><span class="line">        * 概念：查询中嵌套查询，称嵌套查询为子查询。</span><br><span class="line">            -- 查询工资最高的员工信息</span><br><span class="line">            -- 1 查询最高的工资是多少 9000</span><br><span class="line">            SELECT MAX(salary) FROM emp;</span><br><span class="line">            -- 2 查询员工信息，并且工资等于9000的</span><br><span class="line">            SELECT * FROM emp WHERE emp.`salary` = 9000;</span><br><span class="line"></span><br><span class="line">            -- 一条sql就完成这个操作。子查询</span><br><span class="line">            SELECT * FROM emp WHERE emp.`salary` = (SELECT MAX(salary) FROM emp);</span><br><span class="line"></span><br><span class="line">        * 子查询不同情况</span><br><span class="line">            1. 子查询的结果是单行单列的：</span><br><span class="line">                * 子查询可以作为条件，使用运算符去判断。 运算符： &gt; &gt;= &lt; &lt;= =</span><br><span class="line">                * </span><br><span class="line">                -- 查询员工工资小于平均工资的人</span><br><span class="line">                SELECT * FROM emp WHERE emp.salary &lt; (SELECT AVG(salary) FROM emp);</span><br><span class="line">            2. 子查询的结果是多行单列的：</span><br><span class="line">                * 子查询可以作为条件，使用运算符in来判断</span><br><span class="line">                -- 查询&#x27;财务部&#x27;和&#x27;市场部&#x27;所有的员工信息</span><br><span class="line">                SELECT id FROM dept WHERE NAME = &#x27;财务部&#x27; OR NAME = &#x27;市场部&#x27;;</span><br><span class="line">                SELECT * FROM emp WHERE dept_id = 3 OR dept_id = 2;</span><br><span class="line">                -- 子查询</span><br><span class="line">                SELECT * FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE NAME = &#x27;财务部&#x27; OR NAME = &#x27;市场部&#x27;);</span><br><span class="line"></span><br><span class="line">            3. 子查询的结果是多行多列的：</span><br><span class="line">                * 子查询可以作为一张虚拟表参与查询</span><br><span class="line">                -- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息</span><br><span class="line">                -- 子查询</span><br><span class="line">                SELECT * FROM dept t1 ,(SELECT * FROM emp WHERE emp.`join_date` &gt; &#x27;2011-11-11&#x27;) t2</span><br><span class="line">                WHERE t1.id = t2.dept_id;</span><br><span class="line"></span><br><span class="line">                -- 普通内连接</span><br><span class="line">                SELECT * FROM emp t1,dept t2 WHERE t1.`dept_id` = t2.`id` AND t1.`join_date` &gt;  &#x27;2011-11-11&#x27;</span><br></pre></td></tr></table></figure>
+
+
+<p>​</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* 多表查询练习		-- 部门表		CREATE TABLE dept (		  id INT PRIMARY KEY PRIMARY KEY, -- 部门id		  dname VARCHAR(50), -- 部门名称		  loc VARCHAR(50) -- 部门所在地		);				-- 添加4个部门		INSERT INTO dept(id,dname,loc) VALUES 		(10,&#x27;教研部&#x27;,&#x27;北京&#x27;),		(20,&#x27;学工部&#x27;,&#x27;上海&#x27;),		(30,&#x27;销售部&#x27;,&#x27;广州&#x27;),		(40,&#x27;财务部&#x27;,&#x27;深圳&#x27;);		-- 职务表，职务名称，职务描述		CREATE TABLE job (		  id INT PRIMARY KEY,		  jname VARCHAR(20),		  description VARCHAR(50)		);				-- 添加4个职务		INSERT INTO job (id, jname, description) VALUES		(1, &#x27;董事长&#x27;, &#x27;管理整个公司，接单&#x27;),		(2, &#x27;经理&#x27;, &#x27;管理部门员工&#x27;),		(3, &#x27;销售员&#x27;, &#x27;向客人推销产品&#x27;),		(4, &#x27;文员&#x27;, &#x27;使用办公软件&#x27;);		-- 员工表		CREATE TABLE emp (		  id INT PRIMARY KEY, -- 员工id		  ename VARCHAR(50), -- 员工姓名		  job_id INT, -- 职务id		  mgr INT , -- 上级领导		  joindate DATE, -- 入职日期		  salary DECIMAL(7,2), -- 工资		  bonus DECIMAL(7,2), -- 奖金		  dept_id INT, -- 所在部门编号		  CONSTRAINT emp_jobid_ref_job_id_fk FOREIGN KEY (job_id) REFERENCES job (id),		  CONSTRAINT emp_deptid_ref_dept_id_fk FOREIGN KEY (dept_id) REFERENCES dept (id)		);				-- 添加员工		INSERT INTO emp(id,ename,job_id,mgr,joindate,salary,bonus,dept_id) VALUES 		(1001,&#x27;孙悟空&#x27;,4,1004,&#x27;2000-12-17&#x27;,&#x27;8000.00&#x27;,NULL,20),		(1002,&#x27;卢俊义&#x27;,3,1006,&#x27;2001-02-20&#x27;,&#x27;16000.00&#x27;,&#x27;3000.00&#x27;,30),		(1003,&#x27;林冲&#x27;,3,1006,&#x27;2001-02-22&#x27;,&#x27;12500.00&#x27;,&#x27;5000.00&#x27;,30),		(1004,&#x27;唐僧&#x27;,2,1009,&#x27;2001-04-02&#x27;,&#x27;29750.00&#x27;,NULL,20),		(1005,&#x27;李逵&#x27;,4,1006,&#x27;2001-09-28&#x27;,&#x27;12500.00&#x27;,&#x27;14000.00&#x27;,30),		(1006,&#x27;宋江&#x27;,2,1009,&#x27;2001-05-01&#x27;,&#x27;28500.00&#x27;,NULL,30),		(1007,&#x27;刘备&#x27;,2,1009,&#x27;2001-09-01&#x27;,&#x27;24500.00&#x27;,NULL,10),		(1008,&#x27;猪八戒&#x27;,4,1004,&#x27;2007-04-19&#x27;,&#x27;30000.00&#x27;,NULL,20),		(1009,&#x27;罗贯中&#x27;,1,NULL,&#x27;2001-11-17&#x27;,&#x27;50000.00&#x27;,NULL,10),		(1010,&#x27;吴用&#x27;,3,1006,&#x27;2001-09-08&#x27;,&#x27;15000.00&#x27;,&#x27;0.00&#x27;,30),		(1011,&#x27;沙僧&#x27;,4,1004,&#x27;2007-05-23&#x27;,&#x27;11000.00&#x27;,NULL,20),		(1012,&#x27;李逵&#x27;,4,1006,&#x27;2001-12-03&#x27;,&#x27;9500.00&#x27;,NULL,30),		(1013,&#x27;小白龙&#x27;,4,1004,&#x27;2001-12-03&#x27;,&#x27;30000.00&#x27;,NULL,20),		(1014,&#x27;关羽&#x27;,4,1007,&#x27;2002-01-23&#x27;,&#x27;13000.00&#x27;,NULL,10);		-- 工资等级表		CREATE TABLE salarygrade (		  grade INT PRIMARY KEY,   -- 级别		  losalary INT,  -- 最低工资		  hisalary INT -- 最高工资		);				-- 添加5个工资等级		INSERT INTO salarygrade(grade,losalary,hisalary) VALUES 		(1,7000,12000),		(2,12010,14000),		(3,14010,20000),		(4,20010,30000),		(5,30010,99990);</span><br><span class="line">-- 需求：		-- 1.查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述	/*		分析：			1.员工编号，员工姓名，工资，需要查询emp表  职务名称，职务描述 需要查询job表			2.查询条件 emp.job_id = job.id		*/	SELECT 		t1.`id`, -- 员工编号		t1.`ename`, -- 员工姓名		t1.`salary`,-- 工资		t2.`jname`, -- 职务名称		t2.`description` -- 职务描述	FROM 		emp t1, job t2	WHERE 		t1.`job_id` = t2.`id`;	</span><br><span class="line">-- 2.查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置			/*				分析：					1. 员工编号，员工姓名，工资 emp  职务名称，职务描述 job  部门名称，部门位置 dept					2. 条件： emp.job_id = job.id and emp.dept_id = dept.id			*/						SELECT 				t1.`id`, -- 员工编号				t1.`ename`, -- 员工姓名				t1.`salary`,-- 工资				t2.`jname`, -- 职务名称				t2.`description`, -- 职务描述				t3.`dname`, -- 部门名称				t3.`loc` -- 部门位置			FROM 				emp t1, job t2,dept t3			WHERE 				t1.`job_id` = t2.`id` AND t1.`dept_id` = t3.`id`;</span><br><span class="line">-- 3.查询员工姓名，工资，工资等级			/*				分析：					1.员工姓名，工资 emp  工资等级 salarygrade					2.条件 emp.salary &gt;= salarygrade.losalary and emp.salary &lt;= salarygrade.hisalary						emp.salary BETWEEN salarygrade.losalary and salarygrade.hisalary			*/			SELECT 				t1.ename ,				t1.`salary`,				t2.*			FROM emp t1, salarygrade t2			WHERE t1.`salary` BETWEEN t2.`losalary` AND t2.`hisalary`;</span><br><span class="line">-- 4.查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级/*	分析：		1. 员工姓名，工资 emp ， 职务名称，职务描述 job 部门名称，部门位置，dept  工资等级 salarygrade		2. 条件： emp.job_id = job.id and emp.dept_id = dept.id and emp.salary BETWEEN salarygrade.losalary and salarygrade.hisalary			*/SELECT 	t1.`ename`,	t1.`salary`,	t2.`jname`,	t2.`description`,	t3.`dname`,	t3.`loc`,	t4.`grade`FROM 	emp t1,job t2,dept t3,salarygrade t4WHERE 	t1.`job_id` = t2.`id` 	AND t1.`dept_id` = t3.`id`	AND t1.`salary` BETWEEN t4.`losalary` AND t4.`hisalary`;</span><br><span class="line">-- 5.查询出部门编号、部门名称、部门位置、部门人数/*	分析：		1.部门编号、部门名称、部门位置 dept 表。 部门人数 emp表		2.使用分组查询。按照emp.dept_id完成分组，查询count(id)		3.使用子查询将第2步的查询结果和dept表进行关联查询		*/SELECT 	t1.`id`,t1.`dname`,t1.`loc` , t2.totalFROM 	dept t1,	(SELECT		dept_id,COUNT(id) total	FROM 		emp	GROUP BY dept_id) t2WHERE t1.`id` = t2.dept_id;</span><br><span class="line">-- 6.查询所有员工的姓名及其直接上级的姓名,没有领导的员工也需要查询/*	分析：		1.姓名 emp， 直接上级的姓名 emp			* emp表的id 和 mgr 是自关联		2.条件 emp.id = emp.mgr		3.查询左表的所有数据，和 交集数据			* 使用左外连接查询	*//*select	t1.ename,	t1.mgr,	t2.`id`,	t2.enamefrom emp t1, emp t2where t1.mgr = t2.`id`;*/SELECT 	t1.ename,	t1.mgr,	t2.`id`,	t2.`ename`FROM emp t1LEFT JOIN emp t2ON t1.`mgr` = t2.`id`;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1. 事务的基本介绍	1. 概念：		*  如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。			2. 操作：		1. 开启事务： start transaction;		2. 回滚：rollback;		3. 提交：commit;	3. 例子：		CREATE TABLE account (			id INT PRIMARY KEY AUTO_INCREMENT,			NAME VARCHAR(10),			balance DOUBLE		);		-- 添加数据		INSERT INTO account (NAME, balance) VALUES (&#x27;zhangsan&#x27;, 1000), (&#x27;lisi&#x27;, 1000);		SELECT * FROM account;		UPDATE account SET balance = 1000;		-- 张三给李四转账 500 元				-- 0. 开启事务		START TRANSACTION;		-- 1. 张三账户 -500				UPDATE account SET balance = balance - 500 WHERE NAME = &#x27;zhangsan&#x27;;		-- 2. 李四账户 +500		-- 出错了...		UPDATE account SET balance = balance + 500 WHERE NAME = &#x27;lisi&#x27;;				-- 发现执行没有问题，提交事务		COMMIT;				-- 发现出问题了，回滚事务		ROLLBACK;	4. MySQL数据库中事务默认自动提交				* 事务提交的两种方式：			* 自动提交：				* mysql就是自动提交的				* 一条DML(增删改)语句会自动提交一次事务。			* 手动提交：				* Oracle 数据库默认是手动提交事务				* 需要先开启事务，再提交		* 修改事务的默认提交方式：			* 查看事务的默认提交方式：SELECT @@autocommit; -- 1 代表自动提交  0 代表手动提交			* 修改默认提交方式： set @@autocommit = 0;</span><br><span class="line">2. 事务的四大特征：</span><br><span class="line">    1. 原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</span><br><span class="line">    2. 持久性：当事务提交或回滚后，数据库会持久化的保存数据。</span><br><span class="line">    3. 隔离性：多个事务之间。相互独立。</span><br><span class="line">    4. 一致性：事务操作前后，数据总量不变</span><br><span class="line">3. 事务的隔离级别（了解）</span><br><span class="line">    * 概念：多个事务之间隔离的，相互独立的。但是如果多个事务操作同一批数据，则会引发一些问题，设置不同的隔离级别就可以解决这些问题。</span><br><span class="line">    * 存在问题：</span><br><span class="line">        1. 脏读：一个事务，读取到另一个事务中没有提交的数据</span><br><span class="line">        2. 不可重复读(虚读)：在同一个事务中，两次读取到的数据不一样。</span><br><span class="line">        3. 幻读：一个事务操作(DML)数据表中所有记录，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</span><br><span class="line">    * 隔离级别：</span><br><span class="line">        1. read uncommitted：读未提交</span><br><span class="line">            * 产生的问题：脏读、不可重复读、幻读</span><br><span class="line">        2. read committed：读已提交 （Oracle）</span><br><span class="line">            * 产生的问题：不可重复读、幻读</span><br><span class="line">        3. repeatable read：可重复读 （MySQL默认）</span><br><span class="line">            * 产生的问题：幻读</span><br><span class="line">        4. serializable：串行化</span><br><span class="line">            * 可以解决所有的问题</span><br><span class="line"></span><br><span class="line">        * 注意：隔离级别从小到大安全性越来越高，但是效率越来越低</span><br><span class="line">        * 数据库查询隔离级别：</span><br><span class="line">            * select @@tx_isolation;</span><br><span class="line">        * 数据库设置隔离级别：</span><br><span class="line">            * set global transaction isolation level  级别字符串;</span><br><span class="line"></span><br><span class="line">    * 演示：</span><br><span class="line">        set global transaction isolation level read uncommitted;</span><br><span class="line">        start transaction;</span><br><span class="line">        -- 转账操作</span><br><span class="line">        update account set balance = balance - 500 where id = 1;</span><br><span class="line">        update account set balance = balance + 500 where id = 2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">* SQL分类：</span><br><span class="line">    1. DDL：操作数据库和表</span><br><span class="line">    2. DML：增删改表中数据</span><br><span class="line">    3. DQL：查询表中数据</span><br><span class="line">    4. DCL：管理用户，授权</span><br><span class="line"></span><br><span class="line">* DBA：数据库管理员</span><br><span class="line"></span><br><span class="line">* DCL：管理用户，授权</span><br><span class="line">    1. 管理用户</span><br><span class="line">        1. 添加用户：</span><br><span class="line">            * 语法：CREATE USER &#x27;用户名&#x27;@&#x27;主机名&#x27; IDENTIFIED BY &#x27;密码&#x27;;</span><br><span class="line">        2. 删除用户：</span><br><span class="line">            * 语法：DROP USER &#x27;用户名&#x27;@&#x27;主机名&#x27;;</span><br><span class="line">        3. 修改用户密码：</span><br><span class="line"></span><br><span class="line">            UPDATE USER SET PASSWORD = PASSWORD(&#x27;新密码&#x27;) WHERE USER = &#x27;用户名&#x27;;</span><br><span class="line">            UPDATE USER SET PASSWORD = PASSWORD(&#x27;abc&#x27;) WHERE USER = &#x27;lisi&#x27;;</span><br><span class="line"></span><br><span class="line">            SET PASSWORD FOR &#x27;用户名&#x27;@&#x27;主机名&#x27; = PASSWORD(&#x27;新密码&#x27;);</span><br><span class="line">            SET PASSWORD FOR &#x27;root&#x27;@&#x27;localhost&#x27; = PASSWORD(&#x27;123&#x27;);</span><br><span class="line"></span><br><span class="line">            * mysql中忘记了root用户的密码？</span><br><span class="line">                1. cmd -- &gt; net stop mysql 停止mysql服务</span><br><span class="line">                    * 需要管理员运行该cmd</span><br><span class="line"></span><br><span class="line">                2. 使用无验证方式启动mysql服务： mysqld --skip-grant-tables</span><br><span class="line">                3. 打开新的cmd窗口,直接输入mysql命令，敲回车。就可以登录成功</span><br><span class="line">                4. use mysql;</span><br><span class="line">                5. update user set password = password(&#x27;你的新密码&#x27;) where user = &#x27;root&#x27;;</span><br><span class="line">                6. 关闭两个窗口</span><br><span class="line">                7. 打开任务管理器，手动结束mysqld.exe 的进程</span><br><span class="line">                8. 启动mysql服务</span><br><span class="line">                9. 使用新密码登录。</span><br><span class="line">        4. 查询用户：</span><br><span class="line">            -- 1. 切换到mysql数据库</span><br><span class="line">            USE myql;</span><br><span class="line">            -- 2. 查询user表</span><br><span class="line">            SELECT * FROM USER;</span><br><span class="line"></span><br><span class="line">            * 通配符： % 表示可以在任意主机使用用户登录数据库</span><br><span class="line"></span><br><span class="line">    2. 权限管理：</span><br><span class="line">        1. 查询权限：</span><br><span class="line">            -- 查询权限</span><br><span class="line">            SHOW GRANTS FOR &#x27;用户名&#x27;@&#x27;主机名&#x27;;</span><br><span class="line">            SHOW GRANTS FOR &#x27;lisi&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">        2. 授予权限：</span><br><span class="line">            -- 授予权限</span><br><span class="line">            grant 权限列表 on 数据库名.表名 to &#x27;用户名&#x27;@&#x27;主机名&#x27;;</span><br><span class="line">            -- 给张三用户授予所有权限，在任意数据库任意表上</span><br><span class="line"></span><br><span class="line">            GRANT ALL ON *.* TO &#x27;zhangsan&#x27;@&#x27;localhost&#x27;;</span><br><span class="line">        3. 撤销权限：</span><br><span class="line">            -- 撤销权限：</span><br><span class="line">            revoke 权限列表 on 数据库名.表名 from &#x27;用户名&#x27;@&#x27;主机名&#x27;;</span><br><span class="line">            REVOKE UPDATE ON db3.`account` FROM &#x27;lisi&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/JDBC/">JDBC</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/MySQL_constraint/">MySQL约束</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body waline'>
+      
+
+<div id="waline_container" class="waline_thread"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">覃浩</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">多表查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-text">事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DCL"><span class="toc-text">DCL</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js`,
+    marked: `https://cdn.jsdelivr.net/npm/marked@13.0.1/lib/marked.umd.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+
+<!-- required -->
+<script src="/js/main.js?v=1.29.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    applyThemeToGiscus(theme)
+  }
+
+  const applyThemeToGiscus = (theme) => {
+    theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    }
+  })()
+</script>
+
+
+<!-- optional -->
+
+  <script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+  const el = document.getElementById('waline_container');
+  util.viewportLazyload(el, load_waline, false);
+
+  function load_waline(){
+    if (!el) return;
+
+    utils.css('https://unpkg.com/@waline/client@v2/dist/waline.css');
+    utils.css('https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css');
+
+    const path = el.getAttribute('comment_id') ?? decodeURI(window.location.pathname);
+    const waline = init(Object.assign({"js":"https://unpkg.com/@waline/client@v3/dist/waline.js","css":"https://unpkg.com/@waline/client@v2/dist/waline.css","meta_css":"https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css","serverURL":"https://waline.imqinhao.cn/","commentCount":true,"pageview":false,"lang":"zh-CN","locale":{"placeholder":null},"emoji":["https://gcore.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs"]}, {
+      el: '#waline_container',
+      path: path,
+      
+    }));
+  }
+</script>
+
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
