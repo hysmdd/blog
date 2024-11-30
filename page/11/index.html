@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>覃浩的博客</title><meta name="author" content="覃浩"><meta name="copyright" content="覃浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个爱好编程、剪辑、音乐和鬼畜的普通人">
+<meta property="og:type" content="website">
+<meta property="og:title" content="覃浩的博客">
+<meta property="og:url" content="https://www.imqinhao.cn/page/11/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="一个爱好编程、剪辑、音乐和鬼畜的普通人">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg">
+<meta property="article:author" content="覃浩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.imqinhao.cn/page/11/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="5DI6HZ8chaGSyySQ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '覃浩的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/coderqin.css"><link rel="stylesheet" href="/css/aplayer.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(https://image.imqinhao.cn/image/202411292200535.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://image.imqinhao.cn/image/202411292100279.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覃浩的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">覃浩的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/06/c_6/" title="数组类型"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301230643.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数组类型"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/06/c_6/" title="数组类型">数组类型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-06T12:13:14.000Z" title="发表于 2020-03-06 20:13:14">2020-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="content">一维数组编程练习6.1输入 10 个数到数组 t 中，求最小值及最小值在数组 t 中的下标。 12345678910111213141516171819202122232425#include &lt;stdio.h&gt;int main(void)&#123;        printf(&quot;****************************** 编程练习6.1 ******************************\n&quot;);        int i;        int j;        int min;        int t[10];        printf(&quot;请输入10个数：\n&quot;);        for(i = 0;i &lt; 10;i ++)        &#123;                scanf(&quot;%d&quot;,&amp;t[i]);        &#125;        min = t[0];        for(i = 1;i &lt;= 10;i ++) ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/03/06/wireless_word/" title="移动通信术语"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301230942.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动通信术语"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/06/wireless_word/" title="移动通信术语">移动通信术语</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-06T07:00:00.000Z" title="发表于 2020-03-06 15:00:00">2020-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="content">无线侧术语频谱1一个时域的信号在频域下表示方式  频段1频谱中的某一区间  载频1载波或者载频(载波频率）是一个物理概念，其实就是一个特定频率的无线电波，单位Hz。在无线通信技术上我们使用载波传递信息，将数字信号调制到一个高频载波上然后再在空中发射和接收  速率单位1234561B = 1024bt1KB = 1024B1MB = 1024KB1GB = 1024MB1Mbps = 1024Kbps = 128KBps1Gbps = 1024Mbps = 128MBps  带宽12在模拟信号系统又叫频宽，是指在固定的时间可传输的资料数量，亦即在传输管道中可以传递数据的能力。通常以每秒传送周期或赫兹（Hz)来表示。1GHz = 1000MHz = 1000 000KHz = 1000 000...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/06/mobile_communication/" title="移动网络发展与技术笔记"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301230479.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动网络发展与技术笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/06/mobile_communication/" title="移动网络发展与技术笔记">移动网络发展与技术笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-06T05:30:11.000Z" title="发表于 2020-03-06 13:30:11">2020-03-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="content">第一代移动通信（1G)采用模拟技术的语言移动通信，提供9.6Kbit&#x2F;s的通信带宽，接入技术采用FDMA。 缺点12345- 频谱利用率低- 系统容量有限- 抗干扰能力差- 标准不统一，跨国漫游困难- 没有数字业务，不能与综合业务数字网(ISDN)兼容。    第二代移动通信（2G）采用数字技术的移动通信，以语音为主，低速数据传输。提供9.6Kbit&#x2F;s~28.8Kbit&#x2F;s的传输速率，接入技术是TDMA，CDMA。 优点1相比1G具有保密性强，频谱利用率高，标准化程度高的特点。  缺点123- 系统带宽有限，限制了数据业务的发展- 无法实现多媒体业务-...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/03/05/c_5/" title="循环结构"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301231112.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="循环结构"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/05/c_5/" title="循环结构">循环结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-05T12:13:14.000Z" title="发表于 2020-03-05 20:13:14">2020-03-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="content">for语句编程练习5.1降序输出 1 ~ 30 中所有的偶数。 123456789101112131415#include &lt;stdio.h&gt;int main(void)&#123;        // 降序输出1~30中的所有偶数        int i;        for(i = 30;i &gt;= 1;i --)        &#123;                if(i % 2 == 0)                &#123;                        printf(&quot;%d\t&quot;,i);                &#125;        &#125;        printf(&quot;\n&quot;);        return 0;&#125;  编程练习5.2输入10个分数，去掉最高分和最低分后求平均分，保留一位小数 1234567891011121314151617181920212223242526272829303132#include...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/04/c_4/" title="选择结构"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301232153.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="选择结构"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/04/c_4/" title="选择结构">选择结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-04T12:13:14.000Z" title="发表于 2020-03-04 20:13:14">2020-03-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="content">关系运算符和相等类运算符关系运算符   关系运算符 含义    &lt; 小于   &gt; 大于   &lt;&#x3D; 小于或等于   &gt;&#x3D; 大于或等于   表达关系式的类型是int。如果指定的关系为真，关系表达式的值是1；如果指定的关系为假，关系表达式的值是0。 相等类运算符   相等类运算符 含义    &#x3D;&#x3D; 等于   !&#x3D; 不等于   相等类表达式的类型是int。如果指定的关系为真，相等类表达式的值是1；如果指定的关系为假，相等类表达式的值是0。 逻辑运算符逻辑非运算符逻辑非运算符是 !...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/03/04/acl/" title="ACL配置练习"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301232199.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ACL配置练习"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/04/acl/" title="ACL配置练习">ACL配置练习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-04T04:30:11.000Z" title="发表于 2020-03-04 12:30:11">2020-03-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></span></div><div class="content">任务基础配置任务12（1）按图中所示配置各计算机、服务器、路由器对应端口的IP地址相关信息；（2）在路由器R0、R1、R2上启动rip v2协议，使得全网互通。  ACL配置任务12（1）禁止PC0 ping通外网，允许PC2 ping通外网；（标准acl，序号1）（2）禁止PC2访问服务器Server0的web服务，但可以ping通服务器Server0。（扩展acl，序号101）  实现步骤11、如图所示，全网由内网1、内网2及ISP（运营商网络：模拟互联网）组成，首先配置各计算机、服务器、路由器对应端口的IP地址相关信息，使用show ip...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/03/c_3/" title="顺序结构"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301233675.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="顺序结构"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/03/c_3/" title="顺序结构">顺序结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-03T12:13:14.000Z" title="发表于 2020-03-03 20:13:14">2020-03-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="content">编程练习编程练习3.4 使用转换说明%c输出以下图案（注：星号之间没有空格）  12345678910#include &lt;stdio.h&gt;int main(void)&#123;        printf(&quot;    %c    \n&quot;,&#x27;*&#x27;);        printf(&quot;   %c%c%c   \n&quot;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;);        printf(&quot;  %c%c%c%c%c  \n&quot;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;);        printf(&quot; %c%c%c%c%c%c%c \n&quot;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;); ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/03/02/c_2/" title="标记、类型与表达式"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301233622.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="标记、类型与表达式"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/02/c_2/" title="标记、类型与表达式">标记、类型与表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-02T12:13:14.000Z" title="发表于 2020-03-02 20:13:14">2020-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/01/c_1/" title="C语言绪论"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301234468.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言绪论"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/01/c_1/" title="C语言绪论">C语言绪论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-03-01T12:13:14.000Z" title="发表于 2020-03-01 20:13:14">2020-03-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><div class="content">C语言程序的基本结构 C语言程序是由函数构成的。一个C语言程序至少包含一个main函数。  C语言程序总是从main函数开始执行。  为了增强程序的可读性，通常书写C语言程序时应遵循以下规则：  一行内仅写一条语句 正反大括号分别各占一行 每对大括号上下对齐 语句采用缩进格式，错落有致   每条语句的最后必须有一个分号，分号是C语句的组成部分。  C语言本身没有输入&#x2F;输出语句，输入&#x2F;输出的操作由scanf和printf等函数来完成。  可以用&#x2F;* ····· *&#x2F; 或者 &#x2F;&#x2F; ······· 在C语言程序中加注释，以增强程序的可读性。   C语言程序的上机执行过程编写好的C语言程序要经过编辑（输入） ，编译 和 连接 后才能形成可执行的程序。 C语言程序的上机执行过程一般要经过四个步骤：编辑（Edit）、编译（compile）、连接（link） 和 运行...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/02/27/computer_network_basics/" title="计算机网络基础知识"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301234759.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络基础知识"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/02/27/computer_network_basics/" title="计算机网络基础知识">计算机网络基础知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-02-27T05:14:20.000Z" title="发表于 2020-02-27 13:14:20">2020-02-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="content">1IPv4中的v是英文version的缩写，表示版本。    1IP地址一共有32位，用点分十进制表示。    私有地址：123A类： 10.0.0.0/8B类： 172.16.0.0/12C类： 192.168.0.0/16    广播地址1网络位不变，主机位全1    Windows查看ip地址1ipconfig  Linux查看ip地址1ifconfig    专业术语123456Cable：线缆Physical  Layer：物理层Data Link  Layer：数据链路层Network Layer：网络层Transport Layer：传输层Application Layer：应用层    组播地址1组播IP地址以224段开头。    TCP与UDP1234567TCP/UDP工作在传输层。TCP特点：传输控制协议（TCP，Transmission Control...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/10/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/#content-inner">12</a><a class="extend next" rel="next" href="/page/12/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覃浩</div><div class="author-info-description">一个爱好编程、剪辑、音乐和鬼畜的普通人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hysmdd"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/05/transactionManager/" title="声明式事务控制"><img src="https://image.imqinhao.cn/image/202411301137630.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"/></a><div class="content"><a class="title" href="/2022/01/05/transactionManager/" title="声明式事务控制">声明式事务控制</a><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象"><img src="https://image.imqinhao.cn/image/202411301138184.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"/></a><div class="content"><a class="title" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发"><img src="https://image.imqinhao.cn/image/202411301139028.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发"><img src="https://image.imqinhao.cn/image/202411301239799.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/01/AOP_1/" title="Spring的AOP简介"><img src="https://image.imqinhao.cn/image/202411301239121.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"/></a><div class="content"><a class="title" href="/2022/01/01/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/C%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">C语言</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Photoshop/"><span class="card-category-list-name">Photoshop</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"><span class="card-category-list-name">交换机</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81/"><span class="card-category-list-name">华为认证</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">小技巧</span><span class="card-category-list-count">3</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 1.1em; color: #999">路由器</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.17em; color: #999c9f">数据结构</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">基础网络</a> <a href="/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/" style="font-size: 1.1em; color: #999">网站部署</a> <a href="/tags/Linux/" style="font-size: 1.2em; color: #999da3">Linux</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" style="font-size: 1.13em; color: #999a9c">网络技术</a> <a href="/tags/%E6%80%9D%E7%A7%91/" style="font-size: 1.23em; color: #999ea6">思科</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 1.1em; color: #999">华为</a> <a href="/tags/%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81/" style="font-size: 1.1em; color: #999">华为认证</a> <a href="/tags/VPN/" style="font-size: 1.1em; color: #999">VPN</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.1em; color: #999">运维</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">计算机网络</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 1.13em; color: #999a9c">小技巧</a> <a href="/tags/JDBC/" style="font-size: 1.17em; color: #999c9f">JDBC</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 1.4em; color: #99a5b6">编程</a> <a href="/tags/%E6%80%9D%E7%A7%91GRE/" style="font-size: 1.1em; color: #999">思科GRE</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/" style="font-size: 1.1em; color: #999">软件破解</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/" style="font-size: 1.47em; color: #99a8bc">移动通信</a> <a href="/tags/XML/" style="font-size: 1.1em; color: #999">XML</a> <a href="/tags/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/" style="font-size: 1.4em; color: #99a5b6">通信原理</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.1em; color: #999">设计模式</a> <a href="/tags/JAVA/" style="font-size: 1.1em; color: #999">JAVA</a> <a href="/tags/5G%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">5G网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%89%E7%BA%A7/" style="font-size: 1.13em; color: #999a9c">计算机三级</a> <a href="/tags/Java/" style="font-size: 1.37em; color: #99a4b2">Java</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 1.17em; color: #999c9f">图像处理</a> <a href="/tags/Spring/" style="font-size: 1.23em; color: #999ea6">Spring</a> <a href="/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E8%83%BD/" style="font-size: 1.1em; color: #999">实用技能</a> <a href="/tags/MYSQL/" style="font-size: 1.3em; color: #99a1ac">MYSQL</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.27em; color: #99a0a9">网络安全</a> <a href="/tags/Python/" style="font-size: 1.43em; color: #99a6b9">Python</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.43em; color: #99a6b9">C语言</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.4em; color: #99a5b6">操作系统</a> <a href="/tags/JavaWeb/" style="font-size: 1.1em; color: #999">JavaWeb</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.33em; color: #99a2af">数据库</a> <a href="/tags/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF/" style="font-size: 1.43em; color: #99a6b9">无线技术</a> <a href="/tags/AOP/" style="font-size: 1.17em; color: #999c9f">AOP</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 1.3em; color: #99a1ac">交换机</a> <a href="/tags/%E7%90%86%E8%B4%A2/" style="font-size: 1.5em; color: #99a9bf">理财</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/" title="查看更多"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2022/01/">
+          <span class="card-archive-list-date">一月 2022</span>
+          <span class="card-archive-list-count">5</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/10/">
+          <span class="card-archive-list-date">十月 2021</span>
+          <span class="card-archive-list-count">12</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/09/">
+          <span class="card-archive-list-date">九月 2021</span>
+          <span class="card-archive-list-count">15</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/08/">
+          <span class="card-archive-list-date">八月 2021</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/07/">
+          <span class="card-archive-list-date">七月 2021</span>
+          <span class="card-archive-list-count">11</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/06/">
+          <span class="card-archive-list-date">六月 2021</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/05/">
+          <span class="card-archive-list-date">五月 2021</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/04/">
+          <span class="card-archive-list-date">四月 2021</span>
+          <span class="card-archive-list-count">5</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">113</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2019-12-03T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">123.6k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-30T05:17:30.788Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 覃浩</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="https://image.imqinhao.cn/image/icp.png"><span>鄂ICP备2021017381号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["不要为打翻的牛奶而哭泣","贪财的风生水起，求爱的一事无成。"])
+  } else {
+    document.getElementById("subtitle").textContent = "不要为打翻的牛奶而哭泣"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code      
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}"></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'waline-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch('https://waline.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      btf.saveToLocal.set(keyName, JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray, ele)
+    } catch (err) {
+      console.error(err)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script async data-pjax src="/js/anzhiyu.js"></script><script async data-pjax src="/js/anzhiyufunction.js"></script><script async src="/js/anzhiyuOnlyOne.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="/css/APlayer.min.css" media="print" onload="this.media='all'"><script src="/js/APlayer.min.js"></script><script src="/js/Meting2.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="12338638293" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>华为应用开发学习笔记 | 覃浩的博客</title><meta name="author" content="覃浩"><meta name="copyright" content="覃浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="华为应用开发学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为应用开发学习笔记">
+<meta property="og:url" content="https://www.imqinhao.cn/2020/05/29/huawei-exam-application/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="华为应用开发学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.imqinhao.cn/image/202411301207605.png">
+<meta property="article:published_time" content="2020-05-29T12:13:14.000Z">
+<meta property="article:modified_time" content="2024-11-30T04:07:56.695Z">
+<meta property="article:author" content="覃浩">
+<meta property="article:tag" content="华为认证">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.imqinhao.cn/image/202411301207605.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.imqinhao.cn/2020/05/29/huawei-exam-application/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="5DI6HZ8chaGSyySQ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '华为应用开发学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/coderqin.css"><link rel="stylesheet" href="/css/aplayer.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(https://image.imqinhao.cn/image/202411292200535.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://image.imqinhao.cn/image/202411301207605.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覃浩的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">华为应用开发学习笔记</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">华为应用开发学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-05-29T12:13:14.000Z" title="发表于 2020-05-29 20:13:14">2020-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81/">华为认证</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">6.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="解压命令"><a href="#解压命令" class="headerlink" title="解压命令"></a>解压命令</h2><p><kbd>.tar</kbd> 用 <kbd>tar -xvf </kbd>解压</p>
+<p><kbd>.gz</kbd> 用 <kbd>gzip  -d</kbd> 或者 <kbd>gunzip</kbd> 解压</p>
+<p><kbd>.tar.gz</kbd> 和 <kbd>.tgz</kbd> 用 <kbd>tar  -xzf</kbd> 解压</p>
+<p><kbd>.bz2</kbd> 用 <kbd>bzip2  -d</kbd> 或者用 <kbd>bunzip2</kbd> 解压</p>
+<p><kbd>.tar.bz2</kbd>  用 <kbd>tar  -xjf</kbd> 解压</p>
+<p><kbd>.Z</kbd>  用 <kbd>uncompress</kbd> 解压</p>
+<p><kbd>.tar.Z</kbd> 用 <kbd>tar  -xZf</kbd> 解压</p>
+<p><kbd>.tar.xz</kbd> 用 <kbd>jxvf</kbd> 解压</p>
+<p><kbd>.rar</kbd> 用 <kbd>unrar  e </kbd> 解压</p>
+<p><kbd>.zip</kbd> 用 <kbd>unzip</kbd> 解压</p>
+<br>
+
+<p>使用<kbd>rpmbuild</kbd>命令将源码打包成rpm包。</p>
+<br>
+
+<p>公共镜像：常见的标准操作系统镜像。</p>
+<p>私有镜像：个人镜像，仅用户自己可见。</p>
+<p>共享镜像：由其他用户共享的私有镜像。</p>
+<p>市场镜像：提供预装操作系统、应用环境和各类软件的优质第三方镜像。</p>
+<br>
+
+<h2 id="Linux安装软件方式"><a href="#Linux安装软件方式" class="headerlink" title="Linux安装软件方式"></a>Linux安装软件方式</h2><h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><blockquote>
+<ul>
+<li>可以自定义安装目录和一些配置文件</li>
+<li>需要事先调整编译参数</li>
+</ul>
+</blockquote>
+<h3 id="yum安装软件"><a href="#yum安装软件" class="headerlink" title="yum安装软件"></a>yum安装软件</h3><blockquote>
+<ul>
+<li>全自动安装，自动安装依赖</li>
+<li>缺乏自主性，软件的功能和存放的位置均已设置好</li>
+</ul>
+</blockquote>
+<h3 id="RPM安装"><a href="#RPM安装" class="headerlink" title="RPM安装"></a>RPM安装</h3><blockquote>
+<ul>
+<li>自主制作的RPM包能够实现全自动安装，且可自动以安装路径等配置</li>
+<li>需提前识别依赖并手动安装</li>
+</ul>
+</blockquote>
+<h2 id="数据库配置文件"><a href="#数据库配置文件" class="headerlink" title="数据库配置文件"></a>数据库配置文件</h2><p><kbd>props.ora</kbd> ：<kbd>Oracle</kbd></p>
+<p><kbd>props.pg</kbd> ： <kbd>PostgreSQL</kbd></p>
+<p><kbd>Props.fb</kbd> ： <kbd>FireBirdSQL</kbd></p>
+<p><kbd>Props.gb</kbd> ： <kbd>GuassDB</kbd></p>
+<p><kbd>Props.percona</kbd> ： <kbd>percona</kbd></p>
+<h2 id="华为云服务中的鲲鹏云手机服务的特性"><a href="#华为云服务中的鲲鹏云手机服务的特性" class="headerlink" title="华为云服务中的鲲鹏云手机服务的特性"></a>华为云服务中的鲲鹏云手机服务的特性</h2><blockquote>
+<ul>
+<li>原生指令兼容性</li>
+<li>32&#x2F;64位应用全兼容</li>
+<li>ARM原生指令兼容性</li>
+<li>Monbox双OS共内核架构</li>
+<li>单台服务器超200路并发</li>
+<li>性能较模拟器提升10倍以上</li>
+<li>自研芯片及硬件底座</li>
+<li>华为鲲鹏916&#x2F;920芯片</li>
+<li>自研高性能GPU</li>
+</ul>
+</blockquote>
+<p>华为云鲲鹏云手机结合华为在操作系统、虚拟化以及容器等方面技术深厚积累，构建高密MonBox仿真软件架构，相比同等性能x86服务器构造方案，性能提升高达10倍以上，并完美兼容32位与64位的应用。</p>
+<h2 id="华为云服务器应用场景"><a href="#华为云服务器应用场景" class="headerlink" title="华为云服务器应用场景"></a>华为云服务器应用场景</h2><p><kbd>计算加速型</kbd>  ： AI训练、推理</p>
+<p><kbd>内存密集型KM1</kbd>  ：Redis、Cassandra内存数据库</p>
+<p><kbd>存储密集型KI1 </kbd>：分布式缓存数据库、大数据</p>
+<p><kbd>通用计算型KC1</kbd> ：建站、电商、游戏、视频、大数据、HPC等</p>
+<p><kbd>通用型KS1</kbd> ：大数据管理节点、NameNode、HPC等</p>
+<p><kbd>存储型KD1</kbd> ：大数据数据节点、DataNode、Kafka等</p>
+<br>
+
+<blockquote>
+<p><strong>openEuler1.0是一款开源操作系统，支持鲲鹏、至强及其他多种处理器，能充分释放计算芯片的潜能</strong></p>
+</blockquote>
+<br>
+
+<h2 id="iSula特点"><a href="#iSula特点" class="headerlink" title="iSula特点"></a>iSula特点</h2><p>iSula 通用容器引擎（iSulad）是一种新的容器解决方案，具有以下特点：</p>
+<ul>
+<li>快速灵活&amp;轻量级</li>
+<li>可信&amp;安全启动</li>
+<li>升级不中断业务</li>
+<li>增强安全性和调测特性</li>
+</ul>
+<h2 id="iSula部署模式"><a href="#iSula部署模式" class="headerlink" title="iSula部署模式"></a>iSula部署模式</h2><blockquote>
+<p>iSula 通用容器引擎（iSulad）是一种新的容器解决方案，提供统一的架构设计来满足CT和IT领域的不同需求。相比 Golang 编写的 Docker，轻量级容器具有轻、灵、巧、快的特点，不受硬件规格和架构的限制，底噪开销更小，可应用领域更为广泛。openEuler 1.0 中提供容器运行的基础平台iSula。</p>
+</blockquote>
+<p>容器根据部署模型可以分成三种模型：<kbd>应用容器</kbd>、<kbd>安全容器</kbd>、<kbd>系统容器</kbd>。</p>
+<h3 id="应用容器"><a href="#应用容器" class="headerlink" title="应用容器"></a>应用容器</h3><p>应用最广泛的容器形态，容器中仅运行客户定义的应用程序。openEuler 1.0 集成 moby 18.09 版本，并在版本基础上进行了 bugfix 和稳</p>
+<p>定性增强。</p>
+<h3 id="安全容器"><a href="#安全容器" class="headerlink" title="安全容器"></a>安全容器</h3><p>本质上是虚拟机，但是接口封装为容器接口；着重容器的隔离性缺陷。openEuler 1.0 集成 kata-container1.7 版本，在社区版本的基础</p>
+<p>上，进行了稳定性和可靠性加固，增加了异构计算支持，更适于生产环境的 Host CGroup 配置与 DPDK&#x2F;SPDK 高性能网络、存储支持。</p>
+<h3 id="系统容器"><a href="#系统容器" class="headerlink" title="系统容器"></a>系统容器</h3><p>本质上是容器，但是使用方式和虚拟机相同；着重解决虚拟机的厚重问题。iSula 容器平台支持创建系统容器，并能支持在系统容器内动</p>
+<p>态调整设备、运行资源，且提供更优秀的 user namespace 隔离。</p>
+<br>
+
+<p>华为鲲鹏920处理器内置了3大加速引擎：<kbd>ssl加速引擎</kbd>、<kbd>加解密加速引擎</kbd>、<kbd>压缩解压缩加速引擎</kbd>。</p>
+<br>
+
+<h2 id="华为计算服务适用场景"><a href="#华为计算服务适用场景" class="headerlink" title="华为计算服务适用场景"></a>华为计算服务适用场景</h2><p><kbd>高性能计算型</kbd>：可适用于基因工程、游戏动画、生物制药的计算和存储系统；渲染农场、动漫影视基地等公共渲染平台，以及影视等渲染</p>
+<p>平台；高性能前端集群、Web 服务器、高性能科学和工程应用、广告服务、视频编码和分布式分析等等</p>
+<p><kbd>计算加速型</kbd> ： AI训练、推理</p>
+<p><kbd>内存密集型KM1</kbd> ：Redis、Cassandra内存数据库</p>
+<p><kbd>存储密集型KI1</kbd>：分布式缓存数据库、大数据</p>
+<p><kbd>通用计算型KC1</kbd>：建站、电商、游戏、视频、大数据、HPC等</p>
+<p><kbd>通用型KS1</kbd>：大数据管理节点、NameNode、HPC等</p>
+<p><kbd>存储型KD1</kbd>：大数据数据节点、DataNode、Kafka等</p>
+<h2 id="TPCC衡量标准"><a href="#TPCC衡量标准" class="headerlink" title="TPCC衡量标准"></a>TPCC衡量标准</h2><p><kbd>tpmC（NewOrders）</kbd>:每分钟处理的订单个数</p>
+<p><kbd>tpmTOTAL（TPS）</kbd>：每分钟处理的总数</p>
+<h2 id="华为云通过的国际认证"><a href="#华为云通过的国际认证" class="headerlink" title="华为云通过的国际认证"></a>华为云通过的国际认证</h2><p>近日，全球权威标准机构BSI（英国标准协会）和CSA（云安全联盟）宣布，华为云顺利通过<kbd>ISO 27001</kbd>&amp; <kbd>ISO  27017</kbd>&amp;<kbd>ISO  27018</kbd>&amp;<kbd>CSA STAR</kbd>四个安全复审和认证。</p>
+<h2 id="容灾指标"><a href="#容灾指标" class="headerlink" title="容灾指标"></a>容灾指标</h2><p><kbd>业界领先</kbd>：跨AZ RPO&#x3D;0，RTO&lt; 30分钟，确保数据零丢失，业务快速恢复。</p>
+<p><kbd>最高等级</kbd>：快速构建云上两地三中心，同城双中心可达Tier5~Tier6容灾等级。</p>
+<p><kbd>专属安全</kbd>：物理隔离，满足安全合规要求，相比客户自建容灾中心免基础设施运维。</p>
+<h2 id="云计算的特征"><a href="#云计算的特征" class="headerlink" title="云计算的特征"></a>云计算的特征</h2><p>1.<kbd>按需自助服务</kbd>，消费者不需要或很少需要云服务提供商的协助，就可以单方面按需获取云端的计算资源。</p>
+<p>2.<kbd>广泛的网络接入</kbd>，消费者可以随时随地使用云终端设备接入网络并使用云端的计算资源。常见的云终端设备包括手机、平板、笔记本电</p>
+<p>脑、PDA掌上电脑和台式机等。</p>
+<p>3.<kbd>资源池化</kbd>，云端计算资源需要被池化，以便通过多租户形式共享给多个消费者，也只有池化才能根据消费者的需求动态分配或再分配各</p>
+<p>种物理的和虚拟的资源。消费者通常不知道自己正在使用的计算资源的确切位置，但是在自助申请时允许指定大概的区域范围（比如在哪</p>
+<p>个国家、哪个省或者哪个数据中心）。</p>
+<p>4.<kbd>快速弹性伸缩</kbd>。消费者能方便、快捷地按需获取和释放计算资源，也就是说，需要时能快速获取资源从而扩展计算能力，不需要时能迅</p>
+<p>速释放资源，以便降低计算能，从而减少资源的使用费用。对于消费者来说，云端的计算资源是无限的，可以随时申请并获取任何数量的</p>
+<p>计算资源。但是我我们一定要消除一个误解，那就是一个实际的云计算系统不一定是投资巨大的工程，也不一定要购买成千上万台计算</p>
+<p>机，也不一定具备超大规模的运算能力。其实一台计算机就可以组建一个最小的云端，云端建设方案务必采用可伸缩性策略，刚开始时采</p>
+<p>用几台计算机，然后根据用户数量规模来增减计算资源。</p>
+<p>5.<kbd>可计量服务</kbd>，消费者使用云端计算资源是要付费的，付费的计量方法有很多，比如根据某类资源（如存储、CPU、内存、网络带宽等）</p>
+<p>的使用量和时间长短计费，也可以按照每使用一次来计费。但不管如何计费，对消费者来说，价码要清楚，计量方法要明确，而云服务提</p>
+<p>供商需要监视和控制资源的使用情况，并及时输出各种资源的使用报表，做到供&#x2F;需双方费用结清清楚楚、明明白白。</p>
+<h2 id="云计算的四种部署模型"><a href="#云计算的四种部署模型" class="headerlink" title="云计算的四种部署模型"></a>云计算的四种部署模型</h2><h3 id="私有云"><a href="#私有云" class="headerlink" title="私有云"></a>私有云</h3><p>云端资源只给一个单位组织内的用户使用，这是私有云的核心特征。而云端的所有权、日程管理和操作的主体到底属于谁并没有严格的规</p>
+<p>定，可能是本单位，也可能是第三方机构，还可能是二者的联合。云端可能位于本单位内部，也可能托管在其他地方。</p>
+<h3 id="社区云"><a href="#社区云" class="headerlink" title="社区云"></a>社区云</h3><p>云端资源专门给固定的几个单位内的用户使用，而这些单位对云端具有相同的诉求（如安全要求、云端使命、规章制度、合规性要求</p>
+<p>等）。云端的所有权、日常管理的操作的主体可能是本社区内的一个或多个单位，也可能是社区外的第三方机构，还可能是二者的联合。</p>
+<p>云端可能部署在本地，也可能部署与他处。</p>
+<h3 id="公共云"><a href="#公共云" class="headerlink" title="公共云"></a>公共云</h3><p>云端资源开发给社会公众使用。云端的所有权、日常管理和操作的主体可以是一个商业组织、学术机构、政府部门或者它们其中的几个联</p>
+<p>合。云端可能部署在本地，也可能部署于其他地方，比如中山市民公共云的云端可能就建在中山，也可能建在深圳。</p>
+<h3 id="混合云"><a href="#混合云" class="headerlink" title="混合云"></a>混合云</h3><p>混合云由两个或两个以上不同类型的云（私有云、社区云、公共云）组成，它们各自独立，但用标准的或专有的技术将它们组合起点，而</p>
+<p>这些技术能实现云之间的数据和应用程序的平滑流转。由多个相同类型的云组合在一起，混合云属于多云的一种。私有云和公共云构成的</p>
+<p>混合云是目前最流行的——当私有云资源短暂性需求过大（称为云爆发，Cloud Bursting）时，自动租赁公共云资源来平抑私有云资源</p>
+<p>的需求峰值。例如，网店在节假日期间点击量巨大，这时就会临时使用公共云资源的应急。</p>
+<h2 id="云计算的3种服务模式"><a href="#云计算的3种服务模式" class="headerlink" title="云计算的3种服务模式"></a>云计算的3种服务模式</h2><h3 id="SaaS"><a href="#SaaS" class="headerlink" title="SaaS"></a>SaaS</h3><p><kbd>软件即服务（Software as a Service，SaaS）</kbd>,云服务提供商把IT系通中的应用软件层作为服务租出去，消费者不用自己安装应用软件，直</p>
+<p>接使用即可，这进一步降低了云服务消费者的技术门槛。</p>
+<h3 id="PaaS"><a href="#PaaS" class="headerlink" title="PaaS"></a>PaaS</h3><p><kbd>平台即服务（Platform as a Service，PaaS）</kbd>。云服务提供商把IT系统中的平台软件层作为服务租出去，消费者自己开发或者安装程序，</p>
+<p>并运行程序。</p>
+<h3 id="IaaS"><a href="#IaaS" class="headerlink" title="IaaS"></a>IaaS</h3><p><kbd>基础设施及服务（Infrastructure as a Service，IaaS）</kbd>。云服务提供商把IT系统的基础设施层作为服务租出去，由消费者自己安装操作系</p>
+<p>统、中间件、数据库和应用程序。</p>
+<h2 id="云硬盘的类型"><a href="#云硬盘的类型" class="headerlink" title="云硬盘的类型"></a>云硬盘的类型</h2><h3 id="普通IO"><a href="#普通IO" class="headerlink" title="普通IO"></a>普通IO</h3><p>该类型云硬盘的<kbd>最大IOPS为2200</kbd>，适用于<kbd>大容量</kbd>、<kbd>读写速率中等</kbd>、<kbd>事务性处理较少</kbd>的应用场景，例如企业的日常办公应用或者小型测试</p>
+<p>等</p>
+<h3 id="高速高IO"><a href="#高速高IO" class="headerlink" title="高速高IO"></a>高速高IO</h3><p>该类型云硬盘的<kbd>最大IOPS可达5000</kbd>，<kbd>最低读写时延为1 ms</kbd>，<kbd>适用于主流的高性能、高可靠应用场景</kbd>，例如企业应用、大型开发测试以及</p>
+<p>Web服务器日志等。</p>
+<h3 id="超高IO"><a href="#超高IO" class="headerlink" title="超高IO"></a>超高IO</h3><p>该类型云硬盘的<kbd>最大IOPS可达33000</kbd>，<kbd>最低读写时延为1 ms</kbd>，<kbd>适用于超高IO、超大带宽的读写密集型应用场景</kbd>，例如高性能计算应用场</p>
+<p>景，用来部署分布式文件系统，或者I&#x2F;O密集型应用场景，用来部署各类NoSQL&#x2F;关系型数据库。</p>
+<h3 id="超高IO-时延优化"><a href="#超高IO-时延优化" class="headerlink" title="超高IO (时延优化)"></a>超高IO (时延优化)</h3><p>该类型的云硬盘提供<kbd>低至1 ms的读写时延和高达1 GB/s的吞吐量</kbd>，可运行企业核心业务，如SAP HANA。</p>
+<h2 id="docker-ps-a显示标题含义"><a href="#docker-ps-a显示标题含义" class="headerlink" title="docker ps -a显示标题含义"></a>docker ps -a显示标题含义</h2><p><kbd>CONTAINER ID</kbd>：容器的唯一表示ID。</p>
+<p><kbd>IMAGE</kbd>：创建容器时使用的镜像。</p>
+<p><kbd>COMMAND</kbd>：容器最后运行的命令。</p>
+<p><kbd>CREATED</kbd>：创建容器的时间。</p>
+<p><kbd>STATUS</kbd>：容器状态。</p>
+<p><kbd>PORT</kbd>：:对外开放的端口。</p>
+<br>
+
+<p><strong>CPU性能和网络带宽都会影响HPC性能</strong></p>
+<br>
+
+<p><kbd>–mcpu=tsv110</kbd>是<kbd>GNU9编译器</kbd>对鲲鹏架构进行指定优化的参数。</p>
+<br>
+
+<h2 id="RPM常用命令"><a href="#RPM常用命令" class="headerlink" title="RPM常用命令"></a>RPM常用命令</h2><p><kbd>安装软件</kbd>：执行<kbd>rpm -ivh rpm包名</kbd>，如： #rpm -ivh apache-1.3.6.i386.rpm</p>
+<p><kbd>升级软件</kbd>：执行<kbd>rpm -Uvh rpm包名</kbd>。</p>
+<p><kbd>反安装</kbd>：执行<kbd>rpm -e rpm包名</kbd>。</p>
+<p><kbd>查询软件包的详细信息</kbd>：执行<kbd>rpm -qpi rpm包名</kbd>。</p>
+<p><kbd>查询某个文件是属于那个rpm包</kbd>：执行<kbd>rpm -qf rpm包名</kbd>。</p>
+<p><kbd>查该软件包会向系统里面写入哪些文件</kbd>：执行 <kbd>rpm -qpl rpm包名</kbd>。</p>
+<h2 id="TaiShan服务器适用场景"><a href="#TaiShan服务器适用场景" class="headerlink" title="TaiShan服务器适用场景"></a>TaiShan服务器适用场景</h2><blockquote>
+<ul>
+<li>TaiShan 5280：存储型服务器</li>
+<li>TaiShan 2280：均衡型服务器</li>
+<li>TaiShan X6000：高密型服务器</li>
+<li>TaiShan 2480： 2U4路高性能型</li>
+</ul>
+</blockquote>
+<h2 id="设置CPU的亲和性"><a href="#设置CPU的亲和性" class="headerlink" title="设置CPU的亲和性"></a>设置CPU的亲和性</h2><ul>
+<li><kbd>echo cpuMask>/proc/irq/smp affinity- list</kbd></li>
+<li><kbd>numactl命令</kbd></li>
+<li><kbd>C语言的sched setaffinity函数</kbd></li>
+</ul>
+<br>
+
+<p><strong>在从x86平台向鲲鹏处理器迁移软件时，技术分析阶段需要完成以下哪些活动?</strong></p>
+<ul>
+<li>软件栈分析（应用软件、OS、数据库、中间件组件等）</li>
+<li>编程语言&#x2F;代码、依赖库分析</li>
+<li>准备调试编译环境（准备测试样机服务器&#x2F;OpenLab线上服务器）</li>
+<li>成立项目组</li>
+<li>制定迁移计划</li>
+<li>协调相关人力&#x2F;物料资源</li>
+</ul>
+<p><strong>主要活动为</strong>：</p>
+<ul>
+<li>软件栈分析、制定迁移替换策略</li>
+<li>申请线上资源&#x2F;测试样机上架上电</li>
+<li>安装OS&#x2F;编译器&#x2F;JDK&#x2F;其他工具软件</li>
+</ul>
+<h2 id="GNU"><a href="#GNU" class="headerlink" title="GNU"></a>GNU</h2><p>1984年有Richard Stallman发起并创建，意在创造一个自由使用、自由学习和修改、自由分发、自由创建衍生版软件的环境。</p>
+<p>GNU目标是编写大量兼容于Unix系统的自由软件</p>
+<h2 id="GPL"><a href="#GPL" class="headerlink" title="GPL"></a>GPL</h2><ul>
+<li>通用性公开许可证，开源协议</li>
+<li>自由软件的通用许可证</li>
+<li>允许用户任意复制、传递、修改及再发布</li>
+<li>基于自由软件修改再次发布的软件，仍需遵循GPL</li>
+</ul>
+<h2 id="LGPL"><a href="#LGPL" class="headerlink" title="LGPL"></a>LGPL</h2><ul>
+<li>相对于GPL较为宽松，允许不公开全部源代码</li>
+<li>为基于Linux平台开发商业软件提供了更多空间</li>
+</ul>
+<h2 id="OpenEuler的技术特性"><a href="#OpenEuler的技术特性" class="headerlink" title="OpenEuler的技术特性"></a>OpenEuler的技术特性</h2><p><kbd>系统安装</kbd>：openEuler 1.0 改进了安装程序 Anaconda，并做了个性化定制和修改，方便用户安装。</p>
+<p><kbd>定制/剪裁</kbd>：openEuler 1.0 提供优化的 kiwi 工具对系统进行个性化的自定义修改。</p>
+<p><kbd>文件系统</kbd>：openEuler 1.0 中使用的默认文件系统是ext4，兼容ext3&#x2F;2文件系统。openEuler 1.0 支持高性能日志文件系统XFS。</p>
+<p><kbd>系统管理</kbd>：openEuler 1.0 使用 systemd 进行系统和服务的管理，systemd 与 SysV 和 Linux 标准的 init 脚本兼容。</p>
+<p><kbd>系统安全</kbd>：openEuler 1.0 提供多重安全手段，包括身份识别与认证、安全协议、强制访问控制、完整性保护、安全审计等安全机制，保</p>
+<p>障操作系统的安全性，为各类上层应用提供安全基础。</p>
+<p><kbd>系统调测</kbd>：openEuler 1.0 支持Perf性能调测工具和blktrace块设备I&#x2F;O跟踪工具。</p>
+<p><kbd>编译器</kbd>：openEuler 1.0 基于原生GCC进行了Bug修复、特性增强；同时openEuler 1.0提供Huawei Open JDK支持，相比较Open JDK，</p>
+<p>Huawei Open JDK作了优化、稳定性增强、安全增强等。</p>
+<p><kbd>内核</kbd>：openEuler 1.0 采用 kernel 版本 4.19。Linux Kernel 4.19 是一个 LTS 版本，提供长期支持并持续更新版本，以保障用户的 </p>
+<p>Linux 操作系统安全、可靠。</p>
+<h2 id="PostgreSQL常用命令"><a href="#PostgreSQL常用命令" class="headerlink" title="PostgreSQL常用命令"></a>PostgreSQL常用命令</h2><p>登陆数据库：&#x2F;home&#x2F;pgsql&#x2F;bin&#x2F;psql -U postgres</p>
+<p>初始化数据库： &#x2F;home&#x2F;pgsql&#x2F;bin&#x2F;initdb -D pgsql&#x2F;</p>
+<p>启动数据库： &#x2F;home&#x2F;pgsql&#x2F;bin&#x2F;pg_ctl -D pgsql&#x2F; -l logfile start</p>
+<h2 id="BenchmarkSQL配置文件参数"><a href="#BenchmarkSQL配置文件参数" class="headerlink" title="BenchmarkSQL配置文件参数"></a>BenchmarkSQL配置文件参数</h2><p><kbd>warehouse</kbd>：指定仓库数量。</p>
+<p><kbd>loadWorkers</kbd>：指定装载数据的并发数。</p>
+<p><kbd>Terminals</kbd>：指定并发用户数。</p>
+<p><kbd>runMins</kbd>：指定测试时间。</p>
+<p><kbd>runTxnsPerTerminal</kbd>：指定每个Terminal运行的事务数量，runMins必须等于0。</p>
+<p><kbd>limitTxnsPerMin</kbd>：指定每分钟总事务数。</p>
+<p><kbd>terminalWarehouseFixed</kbd>：指定每个终端是否绑定固定warehouse。</p>
+<h2 id="HCS-Online主打应用场景"><a href="#HCS-Online主打应用场景" class="headerlink" title="HCS  Online主打应用场景"></a>HCS  Online主打应用场景</h2><ul>
+<li><p>行业云场景</p>
+</li>
+<li><p>HCSO+HPC场景</p>
+</li>
+<li><p>HCSO+灾备场景</p>
+</li>
+<li><p>智能大数据场景</p>
+</li>
+<li><p>多级混合云场景</p>
+</li>
+</ul>
+<h2 id="鲲鹏处理器优点"><a href="#鲲鹏处理器优点" class="headerlink" title="鲲鹏处理器优点"></a>鲲鹏处理器优点</h2><ul>
+<li>采用ARM架构，同样功能性能占用的芯片面积小、功耗低、集成度更高，更多的硬件CPU核具备更好的并发性能。</li>
+<li>支持16位、32位、64位多种指令集，能很好的兼容从IoT、终端到云端的各类应用场景。</li>
+<li>大量使用寄存器，大多数数据操作都在寄存器中完成，指令执行速度更快。</li>
+<li>采用RISC指令集，指令长度固定，寻址方式灵活简单，执行效率高。</li>
+</ul>
+<h2 id="HiBench"><a href="#HiBench" class="headerlink" title="HiBench"></a>HiBench</h2><p>开源的大数据基准测试套件。</p>
+<p>用于<kbd>评估大数据框架的速度，吞吐量和系统资源利用率</kbd>。</p>
+<p>支持的框架：hadoopbench、sparkbench、stormbench、flinkbench、gearpumpbench。</p>
+<p>支持的开源版本组件：Hadoop、Spark、Storm、Kafka、Flink。</p>
+<p>目前使用较多的版本：HiBench-7.0。</p>
+<p>共计19个测试方向，可分为6种测试类别。</p>
+<h2 id="软件迁移过程"><a href="#软件迁移过程" class="headerlink" title="软件迁移过程"></a>软件迁移过程</h2><p><kbd>技术分析</kbd>-&gt;<kbd>编译迁移</kbd>-&gt;<kbd>功能验证</kbd>-&gt;<kbd>性能调优</kbd>-&gt;<kbd>规模商用</kbd></p>
+<h2 id="容灾"><a href="#容灾" class="headerlink" title="容灾"></a>容灾</h2><p>容灾系统是指在相隔较远的异地，建立两套或多套功能相同的IT系统，互相之间可以进行健康状态监视和功能切换，当一处系统因意外</p>
+<p>（如火灾、地震等）停止工作时，整个应用系统可以切换到另一处，使得该系统功能可以继续正常工作。容灾技术是系统的高可用性技术</p>
+<p>的一个组成部分，容灾系统恢复功能。</p>
+<h3 id="数据库容灾"><a href="#数据库容灾" class="headerlink" title="数据库容灾"></a>数据库容灾</h3><blockquote>
+<p>数据库容灾，即在异地部署一个一模一样的数据库，一个数据库所处的地理位置发生自然灾害了导致当前数据库发生灾难，另一个数据库会立马顶替工作。</p>
+</blockquote>
+<h3 id="冷备容灾"><a href="#冷备容灾" class="headerlink" title="冷备容灾"></a>冷备容灾</h3><blockquote>
+<p>每天备份一次数据库，保存在磁带或光盘上。</p>
+</blockquote>
+<h3 id="热备容灾"><a href="#热备容灾" class="headerlink" title="热备容灾"></a>热备容灾</h3><blockquote>
+<p>建立数据库灾备中心，与主库实时进行数据同步，同时应用系统保持文件实时同步，保证引用系统版本最新。</p>
+</blockquote>
+<h3 id="应用双活"><a href="#应用双活" class="headerlink" title="应用双活"></a>应用双活</h3><blockquote>
+<p>双活容灾即灾备系统中使主生产端数据库和备机端数据库同时在线运行，处于可读可查询的状态的技术。</p>
+</blockquote>
+<h2 id="SHARE78容灾备份标准等级"><a href="#SHARE78容灾备份标准等级" class="headerlink" title="SHARE78容灾备份标准等级"></a>SHARE78容灾备份标准等级</h2><p><strong>真正的容灾必须满足三个要素</strong></p>
+<ol>
+<li>系统中的部件</li>
+<li>数据都具有冗余性，即一个系统发生故障</li>
+<li>容灾系统要追求全部的数据复制，也称为容灾的”3R”（Redundance、Remote、Replication）</li>
+</ol>
+<blockquote>
+<p>​      从简单的仅在本地进行磁带备份，到将备份的磁带存储在异地，再到建立应用系统实时切换的异地备份系统，恢复时间也可以从</p>
+<p>几天到小时级到分钟级、秒级或零数据丢失等。目前针对这七个层次，都有相应的容灾方案，所以，用户在选择容灾方案时应重点区</p>
+<p>分它们各自的特点和适用范围，结合自己对容灾系统的要求判断选择哪个层次的方案。</p>
+</blockquote>
+<h3 id="零级-无异地备份"><a href="#零级-无异地备份" class="headerlink" title="零级 无异地备份"></a>零级 无异地备份</h3><blockquote>
+<p>零级容灾方案数据仅在本地进行备份，没有在异地备份数据，未制定灾难恢复计划。这种方式是成本低的灾难恢复解决方案，但不具</p>
+<p>备真正灾难恢复能力。</p>
+<p>特点：是用户投资较少，技术实现简单。</p>
+<p>缺点：是一旦本地发生毁灭性灾难，将丢失全部的本地备份数据，业务无法恢复。</p>
+</blockquote>
+<h3 id="一级-实现异地备份"><a href="#一级-实现异地备份" class="headerlink" title="一级 实现异地备份"></a>一级 实现异地备份</h3><blockquote>
+<p>进行本地数据备份，然后将备份介质送往异地存放。异地未建容灾备份中心，没有灾难恢复计划。</p>
+<p>该方案成本较低，运用本地备份管理软件，可以在本地发生毁灭性灾难后，恢复从异地运送过来的备份数据到本地，进行业务恢复，</p>
+<p>但难以管理。</p>
+</blockquote>
+<h3 id="二级-热备份站点备份"><a href="#二级-热备份站点备份" class="headerlink" title="二级 热备份站点备份"></a>二级 热备份站点备份</h3><blockquote>
+<p>将关键数据进行备份并存放到异地，制定有相应灾难恢复计划，具有热备份能力的站点灾难恢复。一旦发生灾难，利用热备份主机系</p>
+<p>统将数据恢复。</p>
+<p>该容灾方案由于备份介质是采用交通运输方式送往异地，异地热备中心保存的数据是上一次备份的数据，可能会有几天甚至几周的数</p>
+<p>据丢失。这对于关键数据的容灾是不能容忍的。</p>
+</blockquote>
+<h3 id="三级-在线数据恢复"><a href="#三级-在线数据恢复" class="headerlink" title="三级 在线数据恢复"></a><strong>三级 在线数据恢复</strong></h3><blockquote>
+<p>通过网络将关键数据进行备份并存放至异地，制定有相应灾难恢复计划，有备份中心，并配备部分数据处理系统及网络通信系统。特</p>
+<p>点：用电子数据传输取代交通工具传输备份数据，从而提高了灾难恢复的速度。</p>
+<p>该方案由于备份站点要保持持续运行，对网络的要求较高，因此成本相应有所增加。利用异地的备份管理软件将通过网络传送到异地</p>
+<p>的数据备份到主机系统。一旦灾难发生，需要的关键数据通过网络可迅速恢复，通过网络切换，关键应用恢复时间可降低到天（数量</p>
+<p>1）或小时级。</p>
+</blockquote>
+<h3 id="四级-定时数据备份"><a href="#四级-定时数据备份" class="headerlink" title="四级 定时数据备份"></a><strong>四级 定时数据备份</strong></h3><blockquote>
+<p>该方案是在第三级容灾方案的基础上，利用备份管理软件自动通过通信网络将部分关键数据定时备份至异地，并制定相应的灾难恢复</p>
+<p>计划。一旦灾难发生，利用备份中心已有资源及异地备份数据恢复关键业务系统运行。</p>
+<p>该方案由于对备份管理软件设备和网络设备的要求较高，因此投入成本也会增加。但由于该级别备份的特点，业务恢复时间和数据的</p>
+<p>丢失量还不能满足关键行业对关键数据容灾的要求。</p>
+</blockquote>
+<h3 id="五级-实时数据备份"><a href="#五级-实时数据备份" class="headerlink" title="五级 实时数据备份"></a><strong>五级 实时数据备份</strong></h3><blockquote>
+<p>在前面几个级别的基础上使用了硬件的镜像技术和软件的数据复制技术，可以实现在应用站点与备份站点的数据都被更新。数据在两</p>
+<p>个站点之间相互镜像，由远程异步提交来同步，因为关键应用使用了双重在线存储，所以在灾难发生时，仅仅很小部分的数据被丢</p>
+<p>失，恢复的时间被降低到了分钟级或秒级。</p>
+<p>由于对存储系统和数据复制软件的要求较高，所需成本也大大增加。该方案由于既能保证不影响当前交易的进行，又能实时复制交易</p>
+<p>产生的数据到异地，所以这一层次的方案是目前应用较常见的一类产品容灾解决方案。</p>
+</blockquote>
+<h3 id="六级-零数据丢失"><a href="#六级-零数据丢失" class="headerlink" title="六级 零数据丢失"></a><strong>六级 零数据丢失</strong></h3><blockquote>
+<p>该方案是灾难恢复中较昂贵的方式，也是速度较快的恢复方式，它是灾难恢复的级别中的佼佼者，利用专用的存储网络将关键数据同</p>
+<p>步镜像至备份中心，数据不仅在本地进行确认，而且需要在异地（备份）进行确认。</p>
+<p>因为，数据是镜像地写到两个站点，所以灾难发生时异地容灾系统保留了全部的数据，实现零数据丢失。要求实现远程实时备份，数</p>
+<p>据零丢失；备份中心具备与生产中心一致的处理能力，可实现业务的实时无缝切换，即业务接管。</p>
+</blockquote>
+<h2 id="鲲鹏通用计算型KC1"><a href="#鲲鹏通用计算型KC1" class="headerlink" title="鲲鹏通用计算型KC1"></a>鲲鹏通用计算型KC1</h2><blockquote>
+<ul>
+<li>CPU:MEM  &#x3D;  1:2&#x2F;1:4</li>
+<li>最高30G内网带宽</li>
+<li>400万PPS</li>
+</ul>
+</blockquote>
+<br>
+
+<blockquote>
+<p>Tai  Shan5280存储型服务器支持RAID  0&#x2F;1&#x2F;10&#x2F;1E&#x2F;5&#x2F;50&#x2F;6&#x2F;60</p>
+</blockquote>
+<br></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn">覃浩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn/2020/05/29/huawei-exam-application/">https://www.imqinhao.cn/2020/05/29/huawei-exam-application/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">此文章版权归 <a href="https://www.imqinhao.cn">覃浩</a> 所有，如有转载，请注明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81/">华为认证</a></div><div class="post-share"><div class="social-share" data-image="https://image.imqinhao.cn/image/202411301207605.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219649.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219649.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219021.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219021.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2020/06/01/Python-5/" title="政府工作报告词云示例"><img class="cover" src="https://image.imqinhao.cn/image/202411301207561.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">政府工作报告词云示例</div></div><div class="info-2"><div class="info-item-1">政府工作报告词云小练习 使用库： jieba库 wordcloud库   源代码123456789101112import jiebaimport wordcloudfrom imageio import imreadmask = imread(&quot;chinamap.png&quot;)f = open(&quot;新时代中国特色社会主义.txt&quot;,&quot;r&quot;, encoding=&quot;utf-8&quot;)t = f.read()f.close()ls = jieba.lcut(t)txt = &quot; &quot;.join(ls)w = wordcloud.WordCloud(width=1000,height=700,background_color=&quot;white&quot;,font_path=&quot;msyh.ttc&quot;,mask=mask)w.generate(txt)w.to_file(&quot;wordclouddemo3.png&quot;)  效果演示 </div></div></div></a><a class="pagination-related" href="/2020/05/25/Python-4/" title="Python实现《三国演义》人物出场次数统计"><img class="cover" src="https://image.imqinhao.cn/image/202411301208287.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Python实现《三国演义》人物出场次数统计</div></div><div class="info-2"><div class="info-item-1">代码123456789101112131415161718192021222324252627282930313233343536import jiebatxt = open(&quot;ThreeKingdoms.txt&quot;,&quot;r&quot;, encoding=&quot;gb18030&quot;).read()exclude = &#123;&quot;将军&quot;,&quot;却说&quot;,&quot;二人&quot;,&quot;不可&quot;,&quot;不能&quot;,&quot;如此&quot;,&quot;荆州&quot;,&quot;商议&quot;,&quot;如何&quot;,&quot;主公&quot;,\          ...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覃浩</div><div class="author-info-description">一个爱好编程、剪辑、音乐和鬼畜的普通人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hysmdd"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">解压命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">Linux安装软件方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">源码安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yum%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">yum安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPM%E5%AE%89%E8%A3%85"><span class="toc-number">2.3.</span> <span class="toc-text">RPM安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">数据库配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E4%B8%AD%E7%9A%84%E9%B2%B2%E9%B9%8F%E4%BA%91%E6%89%8B%E6%9C%BA%E6%9C%8D%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">华为云服务中的鲲鹏云手机服务的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">5.</span> <span class="toc-text">华为云服务器应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iSula%E7%89%B9%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">iSula特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iSula%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">iSula部署模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%B9%E5%99%A8"><span class="toc-number">7.1.</span> <span class="toc-text">应用容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%AE%B9%E5%99%A8"><span class="toc-number">7.2.</span> <span class="toc-text">安全容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%B9%E5%99%A8"><span class="toc-number">7.3.</span> <span class="toc-text">系统容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">8.</span> <span class="toc-text">华为计算服务适用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TPCC%E8%A1%A1%E9%87%8F%E6%A0%87%E5%87%86"><span class="toc-number">9.</span> <span class="toc-text">TPCC衡量标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%80%9A%E8%BF%87%E7%9A%84%E5%9B%BD%E9%99%85%E8%AE%A4%E8%AF%81"><span class="toc-number">10.</span> <span class="toc-text">华为云通过的国际认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E7%81%BE%E6%8C%87%E6%A0%87"><span class="toc-number">11.</span> <span class="toc-text">容灾指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-number">12.</span> <span class="toc-text">云计算的特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9A%84%E5%9B%9B%E7%A7%8D%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%9E%8B"><span class="toc-number">13.</span> <span class="toc-text">云计算的四种部署模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E4%BA%91"><span class="toc-number">13.1.</span> <span class="toc-text">私有云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BE%E5%8C%BA%E4%BA%91"><span class="toc-number">13.2.</span> <span class="toc-text">社区云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E4%BA%91"><span class="toc-number">13.3.</span> <span class="toc-text">公共云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E4%BA%91"><span class="toc-number">13.4.</span> <span class="toc-text">混合云</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9A%843%E7%A7%8D%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">云计算的3种服务模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SaaS"><span class="toc-number">14.1.</span> <span class="toc-text">SaaS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PaaS"><span class="toc-number">14.2.</span> <span class="toc-text">PaaS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IaaS"><span class="toc-number">14.3.</span> <span class="toc-text">IaaS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E7%A1%AC%E7%9B%98%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">15.</span> <span class="toc-text">云硬盘的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9AIO"><span class="toc-number">15.1.</span> <span class="toc-text">普通IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E9%80%9F%E9%AB%98IO"><span class="toc-number">15.2.</span> <span class="toc-text">高速高IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E9%AB%98IO"><span class="toc-number">15.3.</span> <span class="toc-text">超高IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E9%AB%98IO-%E6%97%B6%E5%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-number">15.4.</span> <span class="toc-text">超高IO (时延优化)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-ps-a%E6%98%BE%E7%A4%BA%E6%A0%87%E9%A2%98%E5%90%AB%E4%B9%89"><span class="toc-number">16.</span> <span class="toc-text">docker ps -a显示标题含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">17.</span> <span class="toc-text">RPM常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TaiShan%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">18.</span> <span class="toc-text">TaiShan服务器适用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AECPU%E7%9A%84%E4%BA%B2%E5%92%8C%E6%80%A7"><span class="toc-number">19.</span> <span class="toc-text">设置CPU的亲和性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU"><span class="toc-number">20.</span> <span class="toc-text">GNU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPL"><span class="toc-number">21.</span> <span class="toc-text">GPL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LGPL"><span class="toc-number">22.</span> <span class="toc-text">LGPL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenEuler%E7%9A%84%E6%8A%80%E6%9C%AF%E7%89%B9%E6%80%A7"><span class="toc-number">23.</span> <span class="toc-text">OpenEuler的技术特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostgreSQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">24.</span> <span class="toc-text">PostgreSQL常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BenchmarkSQL%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0"><span class="toc-number">25.</span> <span class="toc-text">BenchmarkSQL配置文件参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HCS-Online%E4%B8%BB%E6%89%93%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">26.</span> <span class="toc-text">HCS  Online主打应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%B2%B2%E9%B9%8F%E5%A4%84%E7%90%86%E5%99%A8%E4%BC%98%E7%82%B9"><span class="toc-number">27.</span> <span class="toc-text">鲲鹏处理器优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HiBench"><span class="toc-number">28.</span> <span class="toc-text">HiBench</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">29.</span> <span class="toc-text">软件迁移过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E7%81%BE"><span class="toc-number">30.</span> <span class="toc-text">容灾</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%B9%E7%81%BE"><span class="toc-number">30.1.</span> <span class="toc-text">数据库容灾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B7%E5%A4%87%E5%AE%B9%E7%81%BE"><span class="toc-number">30.2.</span> <span class="toc-text">冷备容灾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E5%A4%87%E5%AE%B9%E7%81%BE"><span class="toc-number">30.3.</span> <span class="toc-text">热备容灾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%8F%8C%E6%B4%BB"><span class="toc-number">30.4.</span> <span class="toc-text">应用双活</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHARE78%E5%AE%B9%E7%81%BE%E5%A4%87%E4%BB%BD%E6%A0%87%E5%87%86%E7%AD%89%E7%BA%A7"><span class="toc-number">31.</span> <span class="toc-text">SHARE78容灾备份标准等级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E7%BA%A7-%E6%97%A0%E5%BC%82%E5%9C%B0%E5%A4%87%E4%BB%BD"><span class="toc-number">31.1.</span> <span class="toc-text">零级 无异地备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7-%E5%AE%9E%E7%8E%B0%E5%BC%82%E5%9C%B0%E5%A4%87%E4%BB%BD"><span class="toc-number">31.2.</span> <span class="toc-text">一级 实现异地备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7-%E7%83%AD%E5%A4%87%E4%BB%BD%E7%AB%99%E7%82%B9%E5%A4%87%E4%BB%BD"><span class="toc-number">31.3.</span> <span class="toc-text">二级 热备份站点备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7-%E5%9C%A8%E7%BA%BF%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="toc-number">31.4.</span> <span class="toc-text">三级 在线数据恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7-%E5%AE%9A%E6%97%B6%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="toc-number">31.5.</span> <span class="toc-text">四级 定时数据备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E7%BA%A7-%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="toc-number">31.6.</span> <span class="toc-text">五级 实时数据备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E7%BA%A7-%E9%9B%B6%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1"><span class="toc-number">31.7.</span> <span class="toc-text">六级 零数据丢失</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%B2%B2%E9%B9%8F%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97%E5%9E%8BKC1"><span class="toc-number">32.</span> <span class="toc-text">鲲鹏通用计算型KC1</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/05/transactionManager/" title="声明式事务控制"><img src="https://image.imqinhao.cn/image/202411301137630.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"/></a><div class="content"><a class="title" href="/2022/01/05/transactionManager/" title="声明式事务控制">声明式事务控制</a><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象"><img src="https://image.imqinhao.cn/image/202411301138184.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"/></a><div class="content"><a class="title" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发"><img src="https://image.imqinhao.cn/image/202411301139028.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发"><img src="https://image.imqinhao.cn/image/202411301239799.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/01/AOP_1/" title="Spring的AOP简介"><img src="https://image.imqinhao.cn/image/202411301239121.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"/></a><div class="content"><a class="title" href="/2022/01/01/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 覃浩</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="https://image.imqinhao.cn/image/icp.png"><span>鄂ICP备2021017381号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = {"lang":"zh-CN"}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline.imqinhao.cn',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code      
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}"></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'waline-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch('https://waline.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      btf.saveToLocal.set(keyName, JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray, ele)
+    } catch (err) {
+      console.error(err)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script async data-pjax src="/js/anzhiyu.js"></script><script async data-pjax src="/js/anzhiyufunction.js"></script><script async src="/js/anzhiyuOnlyOne.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="/css/APlayer.min.css" media="print" onload="this.media='all'"><script src="/js/APlayer.min.js"></script><script src="/js/Meting2.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="12338638293" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>

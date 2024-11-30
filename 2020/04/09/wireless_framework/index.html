@@ -1,0 +1,478 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>5G无线网络架构演进 | 覃浩的博客</title><meta name="author" content="覃浩"><meta name="copyright" content="覃浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="了解移动通信网络发展、熟悉接入网架构演进策略、熟悉5G网元接口功能、掌握5G组网特性与应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5G无线网络架构演进">
+<meta property="og:url" content="https://www.imqinhao.cn/2020/04/09/wireless_framework/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="了解移动通信网络发展、熟悉接入网架构演进策略、熟悉5G网元接口功能、掌握5G组网特性与应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.imqinhao.cn/image/202411301217997.png">
+<meta property="article:published_time" content="2020-04-09T03:25:00.000Z">
+<meta property="article:modified_time" content="2024-11-30T04:17:50.460Z">
+<meta property="article:author" content="覃浩">
+<meta property="article:tag" content="移动通信">
+<meta property="article:tag" content="无线技术">
+<meta property="article:tag" content="通信原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.imqinhao.cn/image/202411301217997.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.imqinhao.cn/2020/04/09/wireless_framework/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="5DI6HZ8chaGSyySQ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '5G无线网络架构演进',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/coderqin.css"><link rel="stylesheet" href="/css/aplayer.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(https://image.imqinhao.cn/image/202411292200535.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://image.imqinhao.cn/image/202411301217997.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覃浩的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">5G无线网络架构演进</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">5G无线网络架构演进</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-04-09T03:25:00.000Z" title="发表于 2020-04-09 11:25:00">2020-04-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="移动通信发展历程"><a href="#移动通信发展历程" class="headerlink" title="移动通信发展历程"></a>移动通信发展历程</h2><h3 id="移动通信标准发展历程"><a href="#移动通信标准发展历程" class="headerlink" title="移动通信标准发展历程"></a>移动通信标准发展历程</h3><p><img src="https://image.imqinhao.cn/image/20200407095820.png"></p>
+<h3 id="RAN网络架构变迁"><a href="#RAN网络架构变迁" class="headerlink" title="RAN网络架构变迁"></a>RAN网络架构变迁</h3><p><img src="https://image.imqinhao.cn/image/20200408132416.png"></p>
+<h3 id="3G-4G的演进"><a href="#3G-4G的演进" class="headerlink" title="3G-4G的演进"></a>3G-4G的演进</h3><p><img src="https://image.imqinhao.cn/image/20200408132644.png"></p>
+<h3 id="4G-5G的演进"><a href="#4G-5G的演进" class="headerlink" title="4G-5G的演进"></a>4G-5G的演进</h3><p><img src="https://image.imqinhao.cn/image/20200408132814.png"></p>
+<h2 id="5G接入网架构演进"><a href="#5G接入网架构演进" class="headerlink" title="5G接入网架构演进"></a>5G接入网架构演进</h2><p><img src="https://image.imqinhao.cn/image/20200408133503.png"></p>
+<p><img src="https://image.imqinhao.cn/image/20200408133546.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">演进G的gNB，也可以是LTE  eNB升级后的ng-eNB。采用gNB与5GC组网时，对应架构Option  2。将LTE  eNB需升级到ng-eNB后连接到5G核心网，对应架构Option  5。</span><br><span class="line"></span><br><span class="line">对于拥有较丰富、优质的Sub-6GHz频谱资源作为覆盖，同时又有足够的高频频谱资源来增强容量的运营商，选择Option  2独立组网是一个比较好的选择。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://image.imqinhao.cn/image/20200408134106.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4G基站（eNB）和5G基站（gNB）公用4G核心网（EPC），LTE  eNB和5G gNB用户面可以直接连接到EPC，控制面则仅经由LTE eNB连接到EPC。用户面可以分别经由LTE eNB、EPC或者gNB进行分流。优势在于不需要新增5G核心网，利用运营商现有4G网络基础设施快速部署5G，抢占覆盖和热点。但是5G信令全走4G通道，有4G核心网信令过载风险，因此该阶段主要解决初期的5G覆盖。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.imqinhao.cn/image/20200408134927.png"></p>
+<p><img src="https://image.imqinhao.cn/image/20200408135117.png"></p>
+<h3 id="组网部署方式比较和运营商选择"><a href="#组网部署方式比较和运营商选择" class="headerlink" title="组网部署方式比较和运营商选择"></a>组网部署方式比较和运营商选择</h3><p><img src="https://image.imqinhao.cn/image/20200408135306.png"></p>
+<h3 id="5G接入网方案部署"><a href="#5G接入网方案部署" class="headerlink" title="5G接入网方案部署"></a>5G接入网方案部署</h3><p><img src="https://image.imqinhao.cn/image/20200408135831.png"></p>
+<h3 id="CU-DU划分"><a href="#CU-DU划分" class="headerlink" title="CU-DU划分"></a>CU-DU划分</h3><p><img src="https://image.imqinhao.cn/image/20200408140119.png"></p>
+<h3 id="CU-DU方案策略比较"><a href="#CU-DU方案策略比较" class="headerlink" title="CU-DU方案策略比较"></a>CU-DU方案策略比较</h3><p><img src="https://image.imqinhao.cn/image/20200408140304.png"></p>
+<h3 id="5G基站部署"><a href="#5G基站部署" class="headerlink" title="5G基站部署"></a>5G基站部署</h3><p><img src="https://image.imqinhao.cn/image/20200408140458.png"></p>
+<h3 id="5G传输部署"><a href="#5G传输部署" class="headerlink" title="5G传输部署"></a>5G传输部署</h3><p><img src="https://image.imqinhao.cn/image/20200408140706.png"></p>
+<p><img src="https://image.imqinhao.cn/image/20200408140804.png"></p>
+<h2 id="5G网元与接口功能"><a href="#5G网元与接口功能" class="headerlink" title="5G网元与接口功能"></a>5G网元与接口功能</h2><h3 id="5G接入网架构概述"><a href="#5G接入网架构概述" class="headerlink" title="5G接入网架构概述"></a>5G接入网架构概述</h3><p><img src="https://image.imqinhao.cn/image/20200408182932.png"></p>
+<h3 id="4G-5G共核心网网元与接口"><a href="#4G-5G共核心网网元与接口" class="headerlink" title="4G&#x2F;5G共核心网网元与接口"></a>4G&#x2F;5G共核心网网元与接口</h3><p><img src="https://image.imqinhao.cn/image/20200408183138.png"></p>
+<h3 id="网元功能-UPF"><a href="#网元功能-UPF" class="headerlink" title="网元功能-UPF"></a>网元功能-UPF</h3><p><img src="https://image.imqinhao.cn/image/20200408183404.png"></p>
+<h3 id="网元功能-SMF"><a href="#网元功能-SMF" class="headerlink" title="网元功能-SMF"></a>网元功能-SMF</h3><p><img src="https://image.imqinhao.cn/image/20200408183500.png"></p>
+<h3 id="网元功能-AMF"><a href="#网元功能-AMF" class="headerlink" title="网元功能-AMF"></a>网元功能-AMF</h3><p><img src="https://image.imqinhao.cn/image/20200408183558.png"></p>
+<h3 id="网元功能-gNB-en-gNB"><a href="#网元功能-gNB-en-gNB" class="headerlink" title="网元功能-gNB&#x2F;en-gNB"></a>网元功能-gNB&#x2F;en-gNB</h3><p><img src="https://image.imqinhao.cn/image/20200408183644.png"></p>
+<h3 id="接口概述-NG"><a href="#接口概述-NG" class="headerlink" title="接口概述-NG"></a>接口概述-NG</h3><p><img src="https://image.imqinhao.cn/image/20200408183824.png"></p>
+<h3 id="NG接口协议-总览"><a href="#NG接口协议-总览" class="headerlink" title="NG接口协议-总览"></a>NG接口协议-总览</h3><p><img src="https://image.imqinhao.cn/image/20200408184052.png"></p>
+<h3 id="接口NG-C协议与功能"><a href="#接口NG-C协议与功能" class="headerlink" title="接口NG-C协议与功能"></a>接口NG-C协议与功能</h3><p><img src="https://image.imqinhao.cn/image/20200408184414.png"></p>
+<h3 id="接口NG-U协议与功能"><a href="#接口NG-U协议与功能" class="headerlink" title="接口NG-U协议与功能"></a>接口NG-U协议与功能</h3><p><img src="https://image.imqinhao.cn/image/20200408184555.png"></p>
+<h3 id="接口概述-Xn"><a href="#接口概述-Xn" class="headerlink" title="接口概述-Xn"></a>接口概述-Xn</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接口定义：ng-eNB/gNB与ng-eNB/gNB之间的接口</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.imqinhao.cn/image/20200408184827.png"></p>
+<h3 id="Xn接口协议-总览"><a href="#Xn接口协议-总览" class="headerlink" title="Xn接口协议-总览"></a>Xn接口协议-总览</h3><p><img src="https://image.imqinhao.cn/image/20200408184915.png"></p>
+<h3 id="接口Xn-U协议与功能"><a href="#接口Xn-U协议与功能" class="headerlink" title="接口Xn-U协议与功能"></a>接口Xn-U协议与功能</h3><p><img src="https://image.imqinhao.cn/image/20200408185046.png"></p>
+<h3 id="接口概述-F1"><a href="#接口概述-F1" class="headerlink" title="接口概述-F1"></a>接口概述-F1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接口定义：gNB-CU与gNB-DU之间的接口，包括F1-C和F1-U。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.imqinhao.cn/image/20200408185232.png"></p>
+<h3 id="F1接口协议-总览"><a href="#F1接口协议-总览" class="headerlink" title="F1接口协议-总览"></a>F1接口协议-总览</h3><p><img src="https://image.imqinhao.cn/image/20200408185350.png"></p>
+<h3 id="接口F1-C协议与功能"><a href="#接口F1-C协议与功能" class="headerlink" title="接口F1-C协议与功能"></a>接口F1-C协议与功能</h3><p><img src="https://image.imqinhao.cn/image/20200408190004.png"></p>
+<h3 id="接口F1-U协议与功能"><a href="#接口F1-U协议与功能" class="headerlink" title="接口F1-U协议与功能"></a>接口F1-U协议与功能</h3><p><img src="https://image.imqinhao.cn/image/20200408190403.png"></p>
+<h3 id="接口概述-E1"><a href="#接口概述-E1" class="headerlink" title="接口概述-E1"></a>接口概述-E1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接口定义：gNB-CU-CP与gNB-CU-UP之间的接口，目前只有E1-C接口。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.imqinhao.cn/image/20200408190658.png"></p>
+<h3 id="接口E1-C协议与功能"><a href="#接口E1-C协议与功能" class="headerlink" title="接口E1-C协议与功能"></a>接口E1-C协议与功能</h3><p><img src="https://image.imqinhao.cn/image/20200408191240.png"></p>
+<h3 id="接口概述-Radio-UU"><a href="#接口概述-Radio-UU" class="headerlink" title="接口概述-Radio  UU"></a>接口概述-Radio  UU</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接口定义：UE与gNB及网络之间的接口。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.imqinhao.cn/image/20200408191547.png"></p>
+<h3 id="Radio-UU口控制面协议栈"><a href="#Radio-UU口控制面协议栈" class="headerlink" title="Radio  UU口控制面协议栈"></a>Radio  UU口控制面协议栈</h3><p><img src="https://image.imqinhao.cn/image/20200408191759.png"></p>
+<h2 id="5G无线组网与应用"><a href="#5G无线组网与应用" class="headerlink" title="5G无线组网与应用"></a>5G无线组网与应用</h2><h3 id="C-RAN概念演进"><a href="#C-RAN概念演进" class="headerlink" title="C-RAN概念演进"></a>C-RAN概念演进</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C-RAN的概念：“Centralization，Collaborative，Cloud，Clean”无线接入云网络架构。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.imqinhao.cn/image/20200408205638.png"></p>
+<h3 id="C-RAN推进目标"><a href="#C-RAN推进目标" class="headerlink" title="C-RAN推进目标"></a>C-RAN推进目标</h3><p>根据工作内容的独立性，可分为5个具体的工作组：</p>
+<p><img src="https://image.imqinhao.cn/image/20200408223223.png"></p>
+<h3 id="C-RAN部署的三种方式"><a href="#C-RAN部署的三种方式" class="headerlink" title="C-RAN部署的三种方式"></a>C-RAN部署的三种方式</h3><p>根据不同的业务和部署场景，C-RAN的架构总体可以分为CU和DU两级，但是实际部署可以出现CU、DU和RRU分离的三级配置，也可以出现RRU直接连入中心节点。</p>
+<p><img src="https://image.imqinhao.cn/image/20200408223602.png"></p>
+<h3 id="C-RAN场景部署-eMBB"><a href="#C-RAN场景部署-eMBB" class="headerlink" title="C-RAN场景部署-eMBB"></a>C-RAN场景部署-eMBB</h3><p>Case 1：基于多连接的部署用于网络容量和覆盖的提升。</p>
+<p><img src="https://image.imqinhao.cn/image/20200409132236.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">典型的部署场景包括：</span><br><span class="line">·一个宏站覆盖一个宏小区，一个微站覆盖一个微小区，一个宏站可以连接一个或多个微站。宏微小区可以同频或者异频。</span><br><span class="line">·对于宏基站，DU和AAU通常分离，但对于微站，DU和AAU可以分离也可以集成在一起；</span><br><span class="line">·对于宏站，CU、DU可以部署在一起，对于微站，CU和DU的连接一般需要专门的fronthaul连接，根据具体的技术应用对fronthaul的时延有不同的需求，如果无线承载需要合并，则时延要求一般小于5ms，否则需求可以放松一些。</span><br></pre></td></tr></table></figure>
+
+<p>Case  2：基于基站协同管理的服务与小区间干扰协调和高密度业务的需求</p>
+<p><img src="https://image.imqinhao.cn/image/20200409132058.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">相关的部署需求包括：</span><br><span class="line">·所有AAU需要和DU池通过直接光纤或高速传输网络连接，时延要求一般在微秒量级。</span><br><span class="line">·DU池支持的小区数目可以达到数十至数百个。</span><br><span class="line">·CU和DU的连接一般通过传输网络，时延要求则没有RU和DU的fronthaul连接严格。</span><br></pre></td></tr></table></figure>
+
+<p>Case  3：基于时延差异性的部署优化</p>
+<p><img src="https://image.imqinhao.cn/image/20200409132501.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">·高实时大带宽的业务如视频和虚拟现实业务：为了保证高效的时延控制，需要高速传输网络或光纤直连AAU，数据统一传输到中心机房进行处理，减少中间的流程，同时DU和CU则可以部署在同一位置，网络实体则合而为一。</span><br><span class="line">·低实时语音等一般业务：在这种场景下，带宽和实时性要求不高，实时功能DU可以部署在站点侧，多个DU通过fronthaul连接到一个CU，非实时功能CU可以部署在中心机房。</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-RAN场景部署-mMTC"><a href="#C-RAN场景部署-mMTC" class="headerlink" title="C-RAN场景部署-mMTC"></a>C-RAN场景部署-mMTC</h3><p>Case：垂直行业和机器通信需求-物联网的集中化管控</p>
+<p><img src="https://image.imqinhao.cn/image/20200409132728.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">物联网的集中化管控：可以让多个DU或者AAU连接到一个CU，由CU进行区域物联网的集中管控。由于物联网业务实时性要求不高，可以将CU和核心网进行共平台部署，减少无线网和核心网的信令的交互，减少机房的数量。</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-RAN场景部署-uRLLC"><a href="#C-RAN场景部署-uRLLC" class="headerlink" title="C-RAN场景部署-uRLLC"></a>C-RAN场景部署-uRLLC</h3><p>Case：低时延高可靠需求-车联网</p>
+<p><img src="https://image.imqinhao.cn/image/20200409132939.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">·基于高实时通信的自动驾驶：将RAN的实时处理DU和非实时处理功能单元CU部署在更加靠近用户的位置，并配置相应的服务器和业务网关，进而满足特定的时延和可靠性需求。</span><br><span class="line">·基于高可靠需求的公共安全应急通信：在涉及到公共安全的通信业务时，通常需要高可靠性，一般采取广播方式，多小区传送相同信息，因此多个DU需要连接相同的CU做重复的数据传输。</span><br><span class="line">·高移动性的业务支持：当UE处于高速移动时，比如在无人机控制场景，为了减少切换，可以让多个DU共享一个逻辑小区，CU对这个逻辑小区做集中控制，在DU间移动无需切换。</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-RAN场景部署总结"><a href="#C-RAN场景部署总结" class="headerlink" title="C-RAN场景部署总结"></a>C-RAN场景部署总结</h3><p>基于网络切片的三大场景部署</p>
+<p><img src="https://image.imqinhao.cn/image/20200409133235.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">从功能上,实时处理单元和非实时处理单元需要各有分工</span><br><span class="line">从实体上,RRU冋以部分和DU耦合,DU也可以和CU耦合,实现部分功能的转移</span><br><span class="line">从部署上,RRU、DU、CU的地理位置可以灵活部署</span><br><span class="line">从对业务的支持上,必须种统的架构去满足eMBB,MTC,URL等不同的业务特点</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn">覃浩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn/2020/04/09/wireless_framework/">https://www.imqinhao.cn/2020/04/09/wireless_framework/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">此文章版权归 <a href="https://www.imqinhao.cn">覃浩</a> 所有，如有转载，请注明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a><a class="post-meta__tags" href="/tags/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF/">无线技术</a><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">通信原理</a></div><div class="post-share"><div class="social-share" data-image="https://image.imqinhao.cn/image/202411301217997.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219649.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219649.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219021.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219021.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2020/04/13/structure-of-MAN/" title="宽带城域网的结构"><img class="cover" src="https://image.imqinhao.cn/image/202411301217900.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">宽带城域网的结构</div></div><div class="info-2"><div class="info-item-1">常考知识点： 宽带城域网的结构 管理和运营宽带城域网的关键技术 构建宽带城域网的基本技术与方案 网络接入技术与方法   宽带城域网的逻辑结构完整的宽带城域网主要包括网络平台、业务平台、管理平台3个平台与城市宽带一个出口。  宽带城域网网络平台各层的主要功能核心交换层的基本功能 核心交换层将多个汇聚层连接起来，为汇聚层的网络提供高速转发，为整个城域网提供一个高速、安全与具有QoS保障能力的数据传输环境。 核心交换层实现与主干网络的互联，...</div></div></div></a><a class="pagination-related" href="/2020/04/04/color/" title="色彩基础"><img class="cover" src="https://image.imqinhao.cn/image/202411301218093.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">色彩基础</div></div><div class="info-2"><div class="info-item-1">色彩的产生光是一种电磁波，人可以识别的电磁波波长是770-350nm之间。高于770的是红外线，低于350的是紫外线。 人眼能看到的波段：可见光。 光源光1太阳，电灯，显示屏，RGB模式。  反射光1234月亮，不发光物，CMYK模式。光滑表面形成直反射：镜子。粗糙表面形成漫反射：各种物    单色光1单色光：三基色光（红Red，绿Green，蓝Blue），一切色彩的基础。  复合光1复合光：色光融合，太阳光等其它可见光。    固有色1物体反射到人眼的常态日光，形成人对物体常态的颜色认知。  光源色1物体反射到人眼的目标光源光线，形成人对物体当前状态的颜色认知。    在RGB原色通道里，填充白色，即为本色光最强的发光。 吸管工具与颜色面板123快捷键：I，用于拾取色彩色值。吸管直接生成前景色；按住Alt键吸取，生成背景色。    RGB色值表达方式1234红色的RGB色值是255.0.0黑色的RGB色值是0.0.0绿色的RGB色值是0.255.0蓝色的RGB色值是0.0.255    在RGB通道创建色彩 123红色 + 绿色 = 黄色红色 + 蓝色 = 品红绿色 + 蓝色...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2020/03/07/3G/" title="3G系统概述"><img class="cover" src="https://image.imqinhao.cn/image/202411301228194.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">3G系统概述</div></div><div class="info-2"><div class="info-item-1">什么是3G13G是第三代移动通信技术，是指支持高速数据传输的蜂窝移动通讯技术。  3G的主要特点12345- 全球普及和全球无缝漫游- 具有支持多媒体业务的能力，特别是支持Internet的能力- 便于过渡和演进- 高频谱利用率-...</div></div></div></a><a class="pagination-related" href="/2020/03/07/GSM/" title="GSM系统概述"><img class="cover" src="https://image.imqinhao.cn/image/202411301228333.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">GSM系统概述</div></div><div class="info-2"><div class="info-item-1">什么是GSM1234567GSM(Global System for Mobile Communication)...</div></div></div></a><a class="pagination-related" href="/2020/05/12/ICIC/" title="ICIC"><img class="cover" src="https://image.imqinhao.cn/image/202411301214994.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-12</div><div class="info-item-2">ICIC</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2020/03/07/IP_Bearer_Network_basic/" title="IP承载网理论基础"><img class="cover" src="https://image.imqinhao.cn/image/202411301226069.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">IP承载网理论基础</div></div><div class="info-2"><div class="info-item-1">IP地址1互联网协议地址（Internet Protocol...</div></div></div></a><a class="pagination-related" href="/2020/05/11/MIMO/" title="MIMO"><img class="cover" src="https://image.imqinhao.cn/image/202411301214570.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-11</div><div class="info-item-2">MIMO</div></div><div class="info-2"><div class="info-item-1">多进多出（MIMO）是为极大地提高信道容量，在发送端和接收端都使用多根天线，在收发之间构成多个信道的天线系统。MIMO系统的一个明显特点就是具有极高的频谱利用效率，在对现有频谱资源充分利用的基础上通过利用空间资源来获取可靠性与有效性两方面增益，其代价是增加了发送端与接收端的处理复杂度。大规模MIMO技术采用大量天线来服务数量相对较少的用户，可以有效提高频谱效率。   MIMO的定义 多输入多输出 在多个天线上分别发送多个数据流 利用多径衰落，在不增加带宽和天线发射功率的情况下，提高信道容量及频谱利用率，或提高数据的传输质量。  MIMO的优点MIMO多种模式带来多种增益。  分集增益 波束赋形增益 空间复用增益  频谱效率 要求TD-LTE的下行频率速率达到5bps&#x2F;Hz（Rel-10为30bps&#x2F;Hz），上行频谱速率达到2.5bps&#x2F;Hz（Rel-10为15bps&#x2F;Hz）  - MIMO天线收发分集：提高通信质量。 - 发射分集技术提高系统下行链路性能。    -   ...</div></div></div></a><a class="pagination-related" href="/2020/03/07/NB-IoT/" title="NB-IoT技术架构"><img class="cover" src="https://image.imqinhao.cn/image/202411301227971.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">NB-IoT技术架构</div></div><div class="info-2"><div class="info-item-1">5G的发展方向123高速率，高带宽： LTE、LTE-A低速率、低成本、低功耗、广覆盖：物联网  频谱应用1主流的FDD频段都支持NB-IoT：900MHz、1800MHz、800MHz   NB-IoT网络架构 NB-IoT数据传输方案NB-IoT主要用于传送低速率的小数据包，从传输数据格式来看，可以传输三种数据类型：IP，Non-IP，SMS（短消息）。  NB-IoT是从LTE系统演进而来，为提升小数据的传输效率，NB-loT系统支持两种优化的传输方案，包括控制面优化传输方案（简称CP方案）和用户面优化传输方案（简称UP方案）。  3GPP  5G  NR协议标准 5G频率范围 5GNR常见的帧结构配置1以u=1,子载波间隔为30KHz为例，单个时隙长度为0.5ms    SS Block组成123一个SS block...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覃浩</div><div class="author-info-description">一个爱好编程、剪辑、音乐和鬼畜的普通人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hysmdd"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">移动通信发展历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E6%A0%87%E5%87%86%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">移动通信标准发展历程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAN%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E5%8F%98%E8%BF%81"><span class="toc-number">1.2.</span> <span class="toc-text">RAN网络架构变迁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3G-4G%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-number">1.3.</span> <span class="toc-text">3G-4G的演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4G-5G%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-number">1.4.</span> <span class="toc-text">4G-5G的演进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5G%E6%8E%A5%E5%85%A5%E7%BD%91%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B"><span class="toc-number">2.</span> <span class="toc-text">5G接入网架构演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83%E5%92%8C%E8%BF%90%E8%90%A5%E5%95%86%E9%80%89%E6%8B%A9"><span class="toc-number">2.1.</span> <span class="toc-text">组网部署方式比较和运营商选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5G%E6%8E%A5%E5%85%A5%E7%BD%91%E6%96%B9%E6%A1%88%E9%83%A8%E7%BD%B2"><span class="toc-number">2.2.</span> <span class="toc-text">5G接入网方案部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CU-DU%E5%88%92%E5%88%86"><span class="toc-number">2.3.</span> <span class="toc-text">CU-DU划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CU-DU%E6%96%B9%E6%A1%88%E7%AD%96%E7%95%A5%E6%AF%94%E8%BE%83"><span class="toc-number">2.4.</span> <span class="toc-text">CU-DU方案策略比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5G%E5%9F%BA%E7%AB%99%E9%83%A8%E7%BD%B2"><span class="toc-number">2.5.</span> <span class="toc-text">5G基站部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5G%E4%BC%A0%E8%BE%93%E9%83%A8%E7%BD%B2"><span class="toc-number">2.6.</span> <span class="toc-text">5G传输部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5G%E7%BD%91%E5%85%83%E4%B8%8E%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD"><span class="toc-number">3.</span> <span class="toc-text">5G网元与接口功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5G%E6%8E%A5%E5%85%A5%E7%BD%91%E6%9E%B6%E6%9E%84%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">5G接入网架构概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4G-5G%E5%85%B1%E6%A0%B8%E5%BF%83%E7%BD%91%E7%BD%91%E5%85%83%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.2.</span> <span class="toc-text">4G&#x2F;5G共核心网网元与接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD-UPF"><span class="toc-number">3.3.</span> <span class="toc-text">网元功能-UPF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD-SMF"><span class="toc-number">3.4.</span> <span class="toc-text">网元功能-SMF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD-AMF"><span class="toc-number">3.5.</span> <span class="toc-text">网元功能-AMF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD-gNB-en-gNB"><span class="toc-number">3.6.</span> <span class="toc-text">网元功能-gNB&#x2F;en-gNB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%BF%B0-NG"><span class="toc-number">3.7.</span> <span class="toc-text">接口概述-NG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NG%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE-%E6%80%BB%E8%A7%88"><span class="toc-number">3.8.</span> <span class="toc-text">NG接口协议-总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3NG-C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="toc-number">3.9.</span> <span class="toc-text">接口NG-C协议与功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3NG-U%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="toc-number">3.10.</span> <span class="toc-text">接口NG-U协议与功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%BF%B0-Xn"><span class="toc-number">3.11.</span> <span class="toc-text">接口概述-Xn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xn%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE-%E6%80%BB%E8%A7%88"><span class="toc-number">3.12.</span> <span class="toc-text">Xn接口协议-总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3Xn-U%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="toc-number">3.13.</span> <span class="toc-text">接口Xn-U协议与功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%BF%B0-F1"><span class="toc-number">3.14.</span> <span class="toc-text">接口概述-F1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F1%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE-%E6%80%BB%E8%A7%88"><span class="toc-number">3.15.</span> <span class="toc-text">F1接口协议-总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3F1-C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="toc-number">3.16.</span> <span class="toc-text">接口F1-C协议与功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3F1-U%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="toc-number">3.17.</span> <span class="toc-text">接口F1-U协议与功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%BF%B0-E1"><span class="toc-number">3.18.</span> <span class="toc-text">接口概述-E1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3E1-C%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="toc-number">3.19.</span> <span class="toc-text">接口E1-C协议与功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%BF%B0-Radio-UU"><span class="toc-number">3.20.</span> <span class="toc-text">接口概述-Radio  UU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Radio-UU%E5%8F%A3%E6%8E%A7%E5%88%B6%E9%9D%A2%E5%8D%8F%E8%AE%AE%E6%A0%88"><span class="toc-number">3.21.</span> <span class="toc-text">Radio  UU口控制面协议栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5G%E6%97%A0%E7%BA%BF%E7%BB%84%E7%BD%91%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">5G无线组网与应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E6%A6%82%E5%BF%B5%E6%BC%94%E8%BF%9B"><span class="toc-number">4.1.</span> <span class="toc-text">C-RAN概念演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E6%8E%A8%E8%BF%9B%E7%9B%AE%E6%A0%87"><span class="toc-number">4.2.</span> <span class="toc-text">C-RAN推进目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E9%83%A8%E7%BD%B2%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">4.3.</span> <span class="toc-text">C-RAN部署的三种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E5%9C%BA%E6%99%AF%E9%83%A8%E7%BD%B2-eMBB"><span class="toc-number">4.4.</span> <span class="toc-text">C-RAN场景部署-eMBB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E5%9C%BA%E6%99%AF%E9%83%A8%E7%BD%B2-mMTC"><span class="toc-number">4.5.</span> <span class="toc-text">C-RAN场景部署-mMTC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E5%9C%BA%E6%99%AF%E9%83%A8%E7%BD%B2-uRLLC"><span class="toc-number">4.6.</span> <span class="toc-text">C-RAN场景部署-uRLLC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-RAN%E5%9C%BA%E6%99%AF%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93"><span class="toc-number">4.7.</span> <span class="toc-text">C-RAN场景部署总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/05/transactionManager/" title="声明式事务控制"><img src="https://image.imqinhao.cn/image/202411301137630.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"/></a><div class="content"><a class="title" href="/2022/01/05/transactionManager/" title="声明式事务控制">声明式事务控制</a><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象"><img src="https://image.imqinhao.cn/image/202411301138184.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"/></a><div class="content"><a class="title" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发"><img src="https://image.imqinhao.cn/image/202411301139028.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发"><img src="https://image.imqinhao.cn/image/202411301239799.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/01/AOP_1/" title="Spring的AOP简介"><img src="https://image.imqinhao.cn/image/202411301239121.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"/></a><div class="content"><a class="title" href="/2022/01/01/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 覃浩</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="https://image.imqinhao.cn/image/icp.png"><span>鄂ICP备2021017381号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = {"lang":"zh-CN"}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline.imqinhao.cn',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code      
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}"></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'waline-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch('https://waline.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      btf.saveToLocal.set(keyName, JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray, ele)
+    } catch (err) {
+      console.error(err)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script async data-pjax src="/js/anzhiyu.js"></script><script async data-pjax src="/js/anzhiyufunction.js"></script><script async src="/js/anzhiyuOnlyOne.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="/css/APlayer.min.css" media="print" onload="this.media='all'"><script src="/js/APlayer.min.js"></script><script src="/js/Meting2.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="12338638293" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>

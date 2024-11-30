@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>覃浩的博客</title><meta name="author" content="覃浩"><meta name="copyright" content="覃浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个爱好编程、剪辑、音乐和鬼畜的普通人">
+<meta property="og:type" content="website">
+<meta property="og:title" content="覃浩的博客">
+<meta property="og:url" content="https://www.imqinhao.cn/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="一个爱好编程、剪辑、音乐和鬼畜的普通人">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg">
+<meta property="article:author" content="覃浩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.imqinhao.cn/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="5DI6HZ8chaGSyySQ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '覃浩的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/coderqin.css"><link rel="stylesheet" href="/css/aplayer.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(https://image.imqinhao.cn/image/202411292200535.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://image.imqinhao.cn/image/202411292100279.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覃浩的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">覃浩的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/01/05/transactionManager/" title="声明式事务控制"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301137630.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/05/transactionManager/" title="声明式事务控制">声明式事务控制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">什么是声明式事务控制Spring的声明式事务顾名思义就是采用声明的方式来处理事务。这里所说的声明，就是指在配置文件中声明，用在Spring配置文件中声明式的处理事务来代替代码式的处理事务。 声明式事务处理的作用 事务管理不侵入开发的组件。具体来说，业务逻辑对象就不会意识到正在事务管理之中，事实上也应该如此，因为事务管理是属于系统层面的服务，而不是业务逻辑的一部分，如果想要改变事务管理策划的话，也只需要在定义文件中重新配置即可 在不需要事务管理的时候，只要在设定文件上修改一下，即可移去事务管理服务，无需改变代码重新编译，这样维护起来极其方便  注意：Spring声明式事务控制底层就是AOP。 声明式事务控制的实现声明式事务控制明确事项：  谁是切点？ 谁是通知？ 配置切面？  声明式事务控制的配置要点 平台事务管理器配置  1234&lt;!--配置平台事务管理器--&gt;&lt;bean id=&quot;transactionManager&quot;...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301138184.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">PlatformTransactionManagerPlatformTransactionManager接口是spring 的事务管理器，它里面提供了我们常用的操作事务的方法。   TransactionDefinitionTransactionDefinition...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/01/03/AOP_3/" title="基于注解的AOP开发"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301139028.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">快速入门基于注解的AOP开发步骤：  创建目标接口和目标类(内部有切点)  1234567891011package cn.imqinhao.anno;/** * @author qinhao * @version 1.0 */public interface TargetInterface &#123;    public void save();&#125;  1234567891011121314package cn.imqinhao.anno;import org.springframework.stereotype.Component;/** * @author qinhao * @version 1.0 */public class Target implements TargetInterface &#123;    @Override    public void save() &#123;        System.out.println(&quot;save running...&quot;);   ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/01/02/AOP_2/" title="基于XML的AOP开发"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301239799.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">快速入门 导入AOP相关坐标  12345678910&lt;dependency&gt;    &lt;groupId&gt;org.springframework&lt;/groupId&gt;    &lt;artifactId&gt;spring-context&lt;/artifactId&gt;    &lt;version&gt;5.0.5.RELEASE&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt;    &lt;groupId&gt;org.aspectj&lt;/groupId&gt;    &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;    &lt;version&gt;1.8.13&lt;/version&gt;&lt;/dependency&gt;   创建目标接口和目标类（内部有切点）  1234567891011package cn.imqinhao.aop;/** * @author qinhao * @version 1.0...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/01/01/AOP_1/" title="Spring的AOP简介"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301239121.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/01/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">什么是AOPAOP为Aspect Oriented...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/10/12/system12/" title="处理机调度"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301140446.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="处理机调度"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/12/system12/" title="处理机调度">处理机调度</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-10-12T12:13:14.000Z" title="发表于 2021-10-12 20:13:14">2021-10-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="content">调度的基本概念 高级调度  简化理解：好几个程序需要启动，到底先启动哪个？ 高级调度（作业调度）。按一定的原则从外存的作业后备队列中挑选一个作业调入内存，并创建进程。。作业调入时会建立PCB，调出时才撤销PCB。  低级调度 低级调度（进程调度&#x2F;处理机调度） —— 按照某种策略从就绪队列中选取一个进程，将处理机分配给它。 内存不够时，可将某些进程的数据调出外存。等内存空闲或者进程需要运行时再重新调入内存。 暂时调到外存等待的进程状态为挂起状态。被挂起的进程PCB会被组织成挂起队列。 中级调度（内存调度） —— 按照某种策略决定将哪个处于挂起状态的进程重新调入内存。 一个进程可能会被多次调出、调入内存，因此中级调度发生的频率要比高级调度更高。 进程的挂起态与七状态模型暂时调到外存等待的进程状态为挂起状态（挂起态，suspend） 挂起态又可以进一步细分为就绪挂起、阻塞挂起两种状态  三层调度的联系、对比 </div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/10/11/system11/" title="线程、多线程模型"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301141408.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线程、多线程模型"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/11/system11/" title="线程、多线程模型">线程、多线程模型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-10-11T12:13:14.000Z" title="发表于 2021-10-11 20:13:14">2021-10-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="content">什么是线程可以把线程理解为”轻量级进程“。  线程是一个基本的CPU执行单元，也是程序执行流的最小单位。  为什么要引入线程还没引入进程之前，系统中的各个程序只能串行执行。 有的进程可能需要“同时”做很多事，而传统的进程只能串行地执行一系列程序。为此，引入了“线程”，来增加并发度。 引入了线程之后，不仅是进程之间可以并发，进程内的各线程之间也可以并发，从而进一步提升了系统的并发度，使得一个进程内也可以并发处理各种任务。 引入线程后，进程只作为除CPU之外的系统资源的分配单元（如打印机、内存地址空间等都是分配给进程的）。 引入线程机制的变化 线程有哪些重要的属性 线程的实现方式用户级线程（User-Level Thread,...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/10/10/system10/" title="进程通信"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301240772.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="进程通信"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/10/system10/" title="进程通信">进程通信</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-10-10T12:13:14.000Z" title="发表于 2021-10-10 20:13:14">2021-10-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="content">进程通信顾名思义，进程通信就是指进程之间的信息交换。 进程是分配系统资源的单位（包括内存地址空间），因此各进程拥有的内存空间地址相互独立。   为了保证安全，一个进程不能直接访问另一个进程的地址空间。 但是进程之间的信息交换又是必须实现的。为了保证进程间的安全通信，操作系统提供了一些方法。   共享存储两个进程对共享空间的访问...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/10/09/system9/" title="进程控制"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301241090.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="进程控制"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/09/system9/" title="进程控制">进程控制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-10-09T12:13:14.000Z" title="发表于 2021-10-09 20:13:14">2021-10-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="content">什么是进程控制 进程控制的主要功能是对操作系统中的所有进程实施有效的管理，它具有创建新进程、撤销已有进程、实现进程状态转换等功能。  怎么实现进程控制 原语的执行具有原子性，即执行过程只能一气呵成，期间不允许被中断。  可以用“关中断指令”和“开中断指令”这两个特权指令实现原子性。  CPU执行了关中断指令之后，就不再例行检查中断信号，直到执行开中断指令之后才会恢复检查。  进程控制相关的原语进程的创建 进程的终止 进程的阻塞和唤醒 进程的切换  无论哪个进程控制原语，要做的无非三类事情：  更新PCB中的信息（修改进程状态，保存&#x2F;恢复运行环境） 将PCB插入合适的队列 分配&#x2F;回收资源   </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/10/08/system8/" title="进程的状态与转换"><img class="post-bg" src="https://image.imqinhao.cn/image/202411301142175.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="进程的状态与转换"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/08/system8/" title="进程的状态与转换">进程的状态与转换</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-10-08T12:13:14.000Z" title="发表于 2021-10-08 20:13:14">2021-10-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="content">状态 进程PCB中，会有一个变量state来表示进程的当前状态。   为了对同一状态下的各个进程进行统一的管理，操作系统会将各个进程的PCB组织起来。   进程的整个生命周期中，大部分时间都处于三种基本状态。  运行态 当CPU空闲时，操作系统就会选择一个就绪进程，让它上处理机运行。  如果一个进程此时正在CPU上运行，那么这个进程处于“运行态”。CPU会执行该进程对应的程序（执行指令序列）  单CPU情况下，同一时刻只会有一个进程处于运行态，多核CPU情况下，可能有多个进程处于运行态。  就绪态 当进程创建完成后，便进入“就绪态”，处于就绪态的进程已经具备运行条件 ，但由于没有空闲CPU，就暂时不能运行。...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/#content-inner">12</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覃浩</div><div class="author-info-description">一个爱好编程、剪辑、音乐和鬼畜的普通人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hysmdd"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/05/transactionManager/" title="声明式事务控制"><img src="https://image.imqinhao.cn/image/202411301137630.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"/></a><div class="content"><a class="title" href="/2022/01/05/transactionManager/" title="声明式事务控制">声明式事务控制</a><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象"><img src="https://image.imqinhao.cn/image/202411301138184.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"/></a><div class="content"><a class="title" href="/2022/01/04/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发"><img src="https://image.imqinhao.cn/image/202411301139028.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/03/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发"><img src="https://image.imqinhao.cn/image/202411301239799.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"/></a><div class="content"><a class="title" href="/2022/01/02/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/01/AOP_1/" title="Spring的AOP简介"><img src="https://image.imqinhao.cn/image/202411301239121.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"/></a><div class="content"><a class="title" href="/2022/01/01/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/C%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">C语言</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Photoshop/"><span class="card-category-list-name">Photoshop</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BA%A4%E6%8D%A2%E6%9C%BA/"><span class="card-category-list-name">交换机</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81/"><span class="card-category-list-name">华为认证</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">小技巧</span><span class="card-category-list-count">3</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 1.1em; color: #999">路由器</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.17em; color: #999c9f">数据结构</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">基础网络</a> <a href="/tags/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/" style="font-size: 1.1em; color: #999">网站部署</a> <a href="/tags/Linux/" style="font-size: 1.2em; color: #999da3">Linux</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" style="font-size: 1.13em; color: #999a9c">网络技术</a> <a href="/tags/%E6%80%9D%E7%A7%91/" style="font-size: 1.23em; color: #999ea6">思科</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 1.1em; color: #999">华为</a> <a href="/tags/%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81/" style="font-size: 1.1em; color: #999">华为认证</a> <a href="/tags/VPN/" style="font-size: 1.1em; color: #999">VPN</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 1.1em; color: #999">运维</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">计算机网络</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 1.13em; color: #999a9c">小技巧</a> <a href="/tags/JDBC/" style="font-size: 1.17em; color: #999c9f">JDBC</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 1.4em; color: #99a5b6">编程</a> <a href="/tags/%E6%80%9D%E7%A7%91GRE/" style="font-size: 1.1em; color: #999">思科GRE</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/" style="font-size: 1.1em; color: #999">软件破解</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/" style="font-size: 1.47em; color: #99a8bc">移动通信</a> <a href="/tags/XML/" style="font-size: 1.1em; color: #999">XML</a> <a href="/tags/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/" style="font-size: 1.4em; color: #99a5b6">通信原理</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.1em; color: #999">设计模式</a> <a href="/tags/JAVA/" style="font-size: 1.1em; color: #999">JAVA</a> <a href="/tags/5G%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">5G网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%89%E7%BA%A7/" style="font-size: 1.13em; color: #999a9c">计算机三级</a> <a href="/tags/Java/" style="font-size: 1.37em; color: #99a4b2">Java</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 1.17em; color: #999c9f">图像处理</a> <a href="/tags/Spring/" style="font-size: 1.23em; color: #999ea6">Spring</a> <a href="/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E8%83%BD/" style="font-size: 1.1em; color: #999">实用技能</a> <a href="/tags/MYSQL/" style="font-size: 1.3em; color: #99a1ac">MYSQL</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.27em; color: #99a0a9">网络安全</a> <a href="/tags/Python/" style="font-size: 1.43em; color: #99a6b9">Python</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 1.43em; color: #99a6b9">C语言</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.4em; color: #99a5b6">操作系统</a> <a href="/tags/JavaWeb/" style="font-size: 1.1em; color: #999">JavaWeb</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.33em; color: #99a2af">数据库</a> <a href="/tags/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF/" style="font-size: 1.43em; color: #99a6b9">无线技术</a> <a href="/tags/AOP/" style="font-size: 1.17em; color: #999c9f">AOP</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 1.3em; color: #99a1ac">交换机</a> <a href="/tags/%E7%90%86%E8%B4%A2/" style="font-size: 1.5em; color: #99a9bf">理财</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/" title="查看更多"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2022/01/">
+          <span class="card-archive-list-date">一月 2022</span>
+          <span class="card-archive-list-count">5</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/10/">
+          <span class="card-archive-list-date">十月 2021</span>
+          <span class="card-archive-list-count">12</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/09/">
+          <span class="card-archive-list-date">九月 2021</span>
+          <span class="card-archive-list-count">15</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/08/">
+          <span class="card-archive-list-date">八月 2021</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/07/">
+          <span class="card-archive-list-date">七月 2021</span>
+          <span class="card-archive-list-count">11</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/06/">
+          <span class="card-archive-list-date">六月 2021</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/05/">
+          <span class="card-archive-list-date">五月 2021</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2021/04/">
+          <span class="card-archive-list-date">四月 2021</span>
+          <span class="card-archive-list-count">5</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">113</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2019-12-03T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">123.6k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-30T05:17:30.788Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 覃浩</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="https://image.imqinhao.cn/image/icp.png"><span>鄂ICP备2021017381号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["不要为打翻的牛奶而哭泣","贪财的风生水起，求爱的一事无成。"])
+  } else {
+    document.getElementById("subtitle").textContent = "不要为打翻的牛奶而哭泣"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code      
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}"></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'waline-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch('https://waline.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      btf.saveToLocal.set(keyName, JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray, ele)
+    } catch (err) {
+      console.error(err)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script async data-pjax src="/js/anzhiyu.js"></script><script async data-pjax src="/js/anzhiyufunction.js"></script><script async src="/js/anzhiyuOnlyOne.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="/css/APlayer.min.css" media="print" onload="this.media='all'"><script src="/js/APlayer.min.js"></script><script src="/js/Meting2.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="12338638293" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>
