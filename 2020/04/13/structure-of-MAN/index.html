@@ -240,7 +240,7 @@
   const initWaline = (Fn, el = document, path = window.location.pathname) => {
     const waline = Fn({
       el: el.querySelector('#waline-wrap'),
-      serverURL: 'https://waline.imqinhao.cn',
+      serverURL: 'https://pinglun.imqinhao.cn',
       pageview: false,
       dark: 'html[data-theme="dark"]',
       comment: false,
@@ -349,7 +349,7 @@
 
   const getComment = async (ele) => {
     try {
-      const res = await fetch('https://waline.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const res = await fetch('https://pinglun.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
       const result = await res.json()
       const walineArray = result.data.map(e => {
         return {
