@@ -1,0 +1,863 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>文件和目录常用命令 | 覃浩的博客</title><meta name="author" content="覃浩"><meta name="copyright" content="覃浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="查看目录内容、切换目录、创建和删除操作、拷贝和移动文件、查看文件内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件和目录常用命令">
+<meta property="og:url" content="https://www.imqinhao.cn/Files_and_directories/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="查看目录内容、切换目录、创建和删除操作、拷贝和移动文件、查看文件内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.imqinhao.cn/image/202411301204637.png">
+<meta property="article:published_time" content="2020-08-13T12:13:14.000Z">
+<meta property="article:modified_time" content="2024-11-30T04:05:10.489Z">
+<meta property="article:author" content="覃浩">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.imqinhao.cn/image/202411301204637.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.imqinhao.cn/Files_and_directories/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="5DI6HZ8chaGSyySQ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '文件和目录常用命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/coderqin.css"><link rel="stylesheet" href="/css/aplayer.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(/images/dengenxi00010.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://image.imqinhao.cn/image/202411301204637.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覃浩的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">文件和目录常用命令</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">文件和目录常用命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-08-13T12:13:14.000Z" title="发表于 2020-08-13 20:13:14">2020-08-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>查看目录内容<ul>
+<li><code>ls</code></li>
+</ul>
+</li>
+<li>切换目录<ul>
+<li><code>cd</code></li>
+</ul>
+</li>
+<li>创建和删除操作<ul>
+<li><code>touch</code></li>
+<li><code>rm</code></li>
+<li><code>mkdir</code></li>
+</ul>
+</li>
+<li>拷贝和移动文件<ul>
+<li><code>cp</code></li>
+<li><code>mv</code></li>
+</ul>
+</li>
+<li>查看文件内容<ul>
+<li><code>cat</code></li>
+<li><code>more</code></li>
+<li><code>grep</code></li>
+</ul>
+</li>
+<li>其他<ul>
+<li><code>echo</code></li>
+<li>重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></li>
+<li>管道 <code>|</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="01-查看目录内容"><a href="#01-查看目录内容" class="headerlink" title="01. 查看目录内容"></a>01. 查看目录内容</h2><h3 id="1-1-终端实用技巧"><a href="#1-1-终端实用技巧" class="headerlink" title="1.1 终端实用技巧"></a>1.1 终端实用技巧</h3><h4 id="1-自动补全"><a href="#1-自动补全" class="headerlink" title="1&gt; 自动补全"></a>1&gt; 自动补全</h4><ul>
+<li>在敲出 <code>文件</code>／<code>目录</code>／<code>命令</code> 的前几个字母之后，按下 <code>tab</code> 键<ul>
+<li>如果输入的没有歧义，系统会自动补全</li>
+<li>如果还存在其他 <code>文件</code>／<code>目录</code>／<code>命令</code>，再按一下 <code>tab</code> 键，系统会提示可能存在的命令</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-曾经使用过的命令"><a href="#2-曾经使用过的命令" class="headerlink" title="2&gt; 曾经使用过的命令"></a>2&gt; 曾经使用过的命令</h4><ul>
+<li>按 <code>上</code>／<code>下</code> 光标键可以在曾经使用过的命令之间来回切换</li>
+<li>如果想要退出选择，并且不想执行当前选中的命令，可以按 <code>ctrl + c</code></li>
+</ul>
+<h3 id="1-2-ls-命令说明"><a href="#1-2-ls-命令说明" class="headerlink" title="1.2 ls 命令说明"></a>1.2 <code>ls</code> 命令说明</h3><ul>
+<li><code>ls</code> 是英文单词 <strong>list</strong> 的简写，其功能为列出目录的内容，是用户最常用的命令之一，类似于 <strong>DOS</strong> 下的 <code>dir</code> 命令</li>
+</ul>
+<h4 id="Linux-下文件和目录的特点"><a href="#Linux-下文件和目录的特点" class="headerlink" title="Linux 下文件和目录的特点"></a>Linux 下文件和目录的特点</h4><ul>
+<li>Linux <strong>文件</strong> 或者 <strong>目录</strong> 名称最长可以有 <code>256</code> 个字符</li>
+<li>以 <code>.</code> 开头的文件为隐藏文件，需要用 -a 参数才能显示</li>
+<li><strong>.</strong> 代表当前目录</li>
+<li><strong>..</strong> 代表上一级目录</li>
+</ul>
+<h3 id="1-3-ls-常用选项"><a href="#1-3-ls-常用选项" class="headerlink" title="1.3 ls 常用选项"></a>1.3 ls 常用选项</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>显示指定目录下所有子目录与文件，包括隐藏文件</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以列表方式显示文件的详细信息</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>配合 -l 以人性化的方式显示文件大小</td>
+</tr>
+</tbody></table>
+<h4 id="计算机中文件大小的表示方式（科普）"><a href="#计算机中文件大小的表示方式（科普）" class="headerlink" title="计算机中文件大小的表示方式（科普）"></a>计算机中文件大小的表示方式（科普）</h4><table>
+<thead>
+<tr>
+<th>单位</th>
+<th>英文</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字节</td>
+<td>B（Byte）</td>
+<td>在计算机中作为一个数字单元，一般为 8 位二进制数</td>
+</tr>
+<tr>
+<td>千</td>
+<td>K（Kibibyte）</td>
+<td>1 KB &#x3D; 1024 B，千字节 （1024 &#x3D; 2 ** 10）</td>
+</tr>
+<tr>
+<td>兆</td>
+<td>M（Mebibyte）</td>
+<td>1 MB &#x3D; 1024 KB，百万字节</td>
+</tr>
+<tr>
+<td>千兆</td>
+<td>G（Gigabyte）</td>
+<td>1 GB &#x3D; 1024 MB，十亿字节，千兆字节</td>
+</tr>
+<tr>
+<td>太</td>
+<td>T（Terabyte）</td>
+<td>1 TB &#x3D; 1024 GB，万亿字节，太字节</td>
+</tr>
+<tr>
+<td>拍</td>
+<td>P（Petabyte）</td>
+<td>1 PB &#x3D; 1024 TB，千万亿字节，拍字节</td>
+</tr>
+<tr>
+<td>艾</td>
+<td>E（Exabyte）</td>
+<td>1 EB &#x3D; 1024 PB，百亿亿字节，艾字节</td>
+</tr>
+<tr>
+<td>泽</td>
+<td>Z（Zettabyte）</td>
+<td>1 ZB &#x3D; 1024 EB，十万亿亿字节，泽字节</td>
+</tr>
+<tr>
+<td>尧</td>
+<td>Y（Yottabyte）</td>
+<td>1 YB &#x3D; 1024 ZB，一亿亿亿字节，尧字节</td>
+</tr>
+</tbody></table>
+<h3 id="1-4-ls-通配符的使用"><a href="#1-4-ls-通配符的使用" class="headerlink" title="1.4 ls 通配符的使用"></a>1.4 ls 通配符的使用</h3><table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>代表任意个数个字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>代表任意一个字符，至少 1 个</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>表示可以匹配字符组中的任一一个</td>
+</tr>
+<tr>
+<td>[abc]</td>
+<td>匹配 a、b、c 中的任意一个</td>
+</tr>
+<tr>
+<td>[a-f]</td>
+<td>匹配从 a 到 f 范围内的的任意一个字符</td>
+</tr>
+</tbody></table>
+<h2 id="02-切换目录"><a href="#02-切换目录" class="headerlink" title="02. 切换目录"></a>02. 切换目录</h2><h3 id="2-1-cd"><a href="#2-1-cd" class="headerlink" title="2.1 cd"></a>2.1 <code>cd</code></h3><ul>
+<li><code>cd</code> 是英文单词 <strong>change directory</strong> 的简写，其功能为更改当前的工作目录，也是用户最常用的命令之一</li>
+</ul>
+<blockquote>
+<p>注意：Linux 所有的 <strong>目录</strong> 和 <strong>文件名</strong> 都是大小写敏感的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd</td>
+<td>切换到当前用户的主目录(&#x2F;home&#x2F;用户目录)</td>
+</tr>
+<tr>
+<td>cd ~</td>
+<td>切换到当前用户的主目录(&#x2F;home&#x2F;用户目录)</td>
+</tr>
+<tr>
+<td>cd .</td>
+<td>保持在当前目录不变</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>切换到上级目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>可以在最近两次工作目录之间来回切换</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-相对路径和绝对路径"><a href="#2-2-相对路径和绝对路径" class="headerlink" title="2.2 相对路径和绝对路径"></a>2.2 相对路径和绝对路径</h3><ul>
+<li><strong>相对路径</strong> 在输入路径时，最前面不是 <strong>&#x2F;</strong> 或者 **~**，表示相对 <strong>当前目录</strong> 所在的目录位置</li>
+<li><strong>绝对路径</strong> 在输入路径时，最前面是 <strong>&#x2F;</strong> 或者 **~**，表示从 <strong>根目录&#x2F;家目录</strong> 开始的具体目录位置</li>
+</ul>
+<h2 id="03-创建和删除操作"><a href="#03-创建和删除操作" class="headerlink" title="03. 创建和删除操作"></a>03. 创建和删除操作</h2><h3 id="3-1-touch"><a href="#3-1-touch" class="headerlink" title="3.1 touch"></a>3.1 <code>touch</code></h3><ul>
+<li>创建文件或修改文件时间<ul>
+<li>如果文件 <strong>不存在</strong>，可以创建一个空白文件</li>
+<li>如果文件 <strong>已经存在</strong>，可以修改文件的末次修改日期</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-mkdir"><a href="#3-2-mkdir" class="headerlink" title="3.2 mkdir"></a>3.2 <code>mkdir</code></h3><ul>
+<li>创建一个新的目录</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-p</td>
+<td>可以递归创建目录</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>新建目录的名称</strong> 不能与当前目录中 <strong>已有的目录或文件</strong> 同名</p>
+</blockquote>
+<h3 id="3-3-rm"><a href="#3-3-rm" class="headerlink" title="3.3 rm"></a>3.3 <code>rm</code></h3><ul>
+<li>删除文件或目录</li>
+</ul>
+<blockquote>
+<p>使用 <code>rm</code> 命令要小心，因为文件删除后不能恢复</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-f</td>
+<td>强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归地删除目录下的内容，<strong>删除文件夹</strong> 时必须加此参数</td>
+</tr>
+</tbody></table>
+<h2 id="04-拷贝和移动文件"><a href="#04-拷贝和移动文件" class="headerlink" title="04. 拷贝和移动文件"></a>04. 拷贝和移动文件</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>tree [目录名]</td>
+<td>tree</td>
+<td>以树状图列出文件目录结构</td>
+</tr>
+<tr>
+<td>02</td>
+<td>cp 源文件 目标文件</td>
+<td>copy</td>
+<td>复制文件或者目录</td>
+</tr>
+<tr>
+<td>03</td>
+<td>mv 源文件 目标文件</td>
+<td>move</td>
+<td>移动文件或者目录／文件或者目录重命名</td>
+</tr>
+</tbody></table>
+<h3 id="4-1-tree"><a href="#4-1-tree" class="headerlink" title="4.1 tree"></a>4.1 <code>tree</code></h3><ul>
+<li><code>tree</code> 命令可以以树状图列出文件目录结构</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-d</td>
+<td>只显示目录</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-cp"><a href="#4-2-cp" class="headerlink" title="4.2 cp"></a>4.2 <code>cp</code></h3><ul>
+<li><code>cp</code> 命令的功能是将给出的 <strong>文件</strong> 或 <strong>目录</strong> 复制到另一个 <strong>文件</strong> 或 <strong>目录</strong> 中，相当于 <strong>DOS</strong> 下的 <code>copy</code> 命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>覆盖文件前提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-mv"><a href="#4-3-mv" class="headerlink" title="4.3 mv"></a>4.3 <code>mv</code></h3><ul>
+<li><code>mv</code> 命令可以用来 <strong>移动</strong> <strong>文件</strong> 或 <strong>目录</strong>，也可以给 <strong>文件或目录重命名</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>覆盖文件前提示</td>
+</tr>
+</tbody></table>
+<h2 id="05-查看文件内容"><a href="#05-查看文件内容" class="headerlink" title="05. 查看文件内容"></a>05. 查看文件内容</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>cat 文件名</td>
+<td>concatenate</td>
+<td>查看文件内容、创建文件、文件合并、追加文件内容等功能</td>
+</tr>
+<tr>
+<td>02</td>
+<td>more 文件名</td>
+<td>more</td>
+<td>分屏显示文件内容</td>
+</tr>
+<tr>
+<td>03</td>
+<td>grep 搜索文本 文件名</td>
+<td>grep</td>
+<td>搜索文本文件内容</td>
+</tr>
+</tbody></table>
+<h3 id="5-1-cat"><a href="#5-1-cat" class="headerlink" title="5.1 cat"></a>5.1 <code>cat</code></h3><ul>
+<li><code>cat</code> 命令可以用来 <strong>查看文件内容</strong>、<strong>创建文件</strong>、<strong>文件合并</strong>、<strong>追加文件内容</strong> 等功能</li>
+<li><code>cat</code> 会一次显示所有的内容，适合 <strong>查看内容较少</strong> 的文本文件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b</td>
+<td>对非空输出行编号</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>对输出的所有行编号</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Linux 中还有一个 <code>nl</code> 的命令和 <code>cat -b</code> 的效果等价</p>
+</blockquote>
+<h3 id="5-2-more"><a href="#5-2-more" class="headerlink" title="5.2 more"></a>5.2 <code>more</code></h3><ul>
+<li><code>more</code> 命令可以用于分屏显示文件内容，每次只显示一页内容</li>
+<li>适合于 <strong>查看内容较多</strong>的文本文件</li>
+</ul>
+<p>使用 <code>more</code> 的操作键：</p>
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter 键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>&#x2F;word</td>
+<td>搜索 <strong>word</strong> 字符串</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-grep"><a href="#5-3-grep" class="headerlink" title="5.3 grep"></a>5.3 <code>grep</code></h3><ul>
+<li>Linux 系统中 <code>grep</code> 命令是一种强大的文本搜索工具</li>
+<li><code>grep</code>允许对文本文件进行 <strong>模式</strong>查找，所谓模式查找，又被称为正则表达式，在就业班会详细讲解</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-n</td>
+<td>显示匹配行及行号</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示不包含匹配文本的所有行（相当于求反）</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略大小写</td>
+</tr>
+</tbody></table>
+<ul>
+<li>常用的两种模式查找</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^a</td>
+<td>行首，搜寻以 <strong>a</strong> 开头的行</td>
+</tr>
+<tr>
+<td>ke$</td>
+<td>行尾，搜寻以 <strong>ke</strong> 结束的行</td>
+</tr>
+</tbody></table>
+<h2 id="06-其他"><a href="#06-其他" class="headerlink" title="06. 其他"></a>06. 其他</h2><h3 id="6-1-echo-文字内容"><a href="#6-1-echo-文字内容" class="headerlink" title="6.1 echo 文字内容"></a>6.1 <code>echo 文字内容</code></h3><ul>
+<li><code>echo</code> 会在终端中显示参数指定的文字，通常会和 <strong>重定向</strong> 联合使用</li>
+</ul>
+<h3 id="6-2-重定向-和"><a href="#6-2-重定向-和" class="headerlink" title="6.2 重定向 &gt; 和 &gt;&gt;"></a>6.2 重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></h3><ul>
+<li>Linux 允许将命令执行结果 <strong>重定向</strong>到一个 <strong>文件</strong></li>
+<li>将本应显示在<strong>终端上的内容</strong> <strong>输出／追加</strong> 到<strong>指定文件中</strong></li>
+</ul>
+<p>其中</p>
+<ul>
+<li><code>&gt;</code> 表示输出，会覆盖文件原有的内容</li>
+<li><code>&gt;&gt;</code> 表示追加，会将内容追加到已有文件的末尾</li>
+</ul>
+<h3 id="6-3-管道"><a href="#6-3-管道" class="headerlink" title="6.3 管道 |"></a>6.3 管道 <code>|</code></h3><ul>
+<li>Linux 允许将 <strong>一个命令的输出</strong> 可以<strong>通过管道</strong> 做为 <strong>另一个命令的输入</strong></li>
+<li>可以理解现实生活中的管子，管子的一头塞东西进去，另一头取出来，这里 <code>|</code> 的左右分为两端，左端塞东西（写），右端取东西（读）</li>
+</ul>
+<p>常用的管道命令有：</p>
+<ul>
+<li><code>more</code>：分屏显示内容</li>
+<li><code>grep</code>：在命令执行结果的基础上查询指定的文本</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn">覃浩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn/Files_and_directories/">https://www.imqinhao.cn/Files_and_directories/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">此文章版权归 <a href="https://www.imqinhao.cn">覃浩</a> 所有，如有转载，请注明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-share"><div class="social-share" data-image="https://image.imqinhao.cn/image/202411301204637.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219649.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219649.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219021.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219021.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/system_info/" title="系统信息相关命令"><img class="cover" src="https://image.imqinhao.cn/image/202411301204378.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">系统信息相关命令</div></div><div class="info-2"><div class="info-item-1"> 本节内容主要是为了方便通过远程终端维护服务器时，查看服务器上当前 系统日期和时间 ／ 磁盘空间占用情况 ／ 程序执行情况 本小结学习的终端命令基本都是查询命令，通过这些命令对系统资源的使用情况有个了解    目标 时间和日期 date cal   磁盘和目录空间 df du   进程信息 ps top kill    01. 时间和日期   序号 命令 作用    01 date 查看系统时间   02 cal calendar 查看日历，-y 选项可以查看一年的日历   02. 磁盘信息   序号 命令 作用    01 df -h disk free 显示磁盘剩余空间   02 du -h [目录名] disk usage 显示目录下的文件大小    选项说明     参数 含义    -h 以人性化的方式显示文件大小   03. 进程信息 所谓 进程，通俗地说就是 当前正在执行的一个程序     序号 命令 作用    01 ps aux process status 查看进程的详细状况   02 top 动态显示运行中的进程并且排序   03 kill [-9]...</div></div></div></a><a class="pagination-related" href="/Python_variable/" title="Python基础之变量进阶"><img class="cover" src="https://image.imqinhao.cn/image/202411301205991.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Python基础之变量进阶</div></div><div class="info-2"><div class="info-item-1"> 变量的引用 可变和不可变类型 局部变量和全局变量    01. 变量的引用  变量 和 数据 都是保存在 内存 中的 在 Python 中 函数 的 参数传递 以及 返回值 都是靠 引用 传递的   1.1 引用的概念在 Python 中  变量 和 数据 是分开存储的 数据 保存在内存中的一个位置 变量 中保存着数据在内存中的地址 变量 中 记录数据的地址，就叫做 引用 使用 id() 函数可以查看变量中保存数据所在的 内存地址   注意：如果变量已经被定义，当给一个变量赋值的时候，本质上是 修改了数据的引用  变量 不再 对之前的数据引用 变量 改为 对新赋值的数据引用   1.2 变量引用 的示例在 Python 中，变量的名字类似于 便签纸 贴在 数据 上  定义一个整数变量 a，并且赋值为 1     代码 图示    a &#x3D; 1     将变量 a 赋值为 2     代码 图示    a &#x3D; 2     定义一个整数变量 b，并且将变量 a 的值赋值给 b     代码 图示    b &#x3D; a     变量 b 是第 2 个贴在数字...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Linux_often_use/" title="Linux常用操作"><img class="cover" src="https://image.imqinhao.cn/image/202411301224023.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-11</div><div class="info-item-2">Linux常用操作</div></div><div class="info-2"><div class="info-item-1">创建文件夹1mkdir 文件夹名称  创建多级目录1mkdir -p 一级目录/二级目录/三级目录  创建文件1touch 文件名  复制文件1cp 文件名  目录  复制目录1cp -r 目录名 目标目录名  删除文件1rm 文件名  删除目录和目录下所有文件1rm -r 目录名  移动文件1mv 文件名 目录名  重命名文件1mv 原文件名	目标文件名  查看文件内容1cat 文件名  带行号查看文件内容1cat -n 文件名  总结 </div></div></div></a><a class="pagination-related" href="/bitwarden/" title="centOS 7搭建Bitwarden密码服务器"><img class="cover" src="https://image.imqinhao.cn/image/202411301219262.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-31</div><div class="info-item-2">centOS 7搭建Bitwarden密码服务器</div></div><div class="info-2"><div class="info-item-1">安装Docker 安装所需的软件包。yum-utils提供了yum-config-manager 效用，并device-mapper-persistent-data和lvm2由需要 devicemapper存储驱动程序。  123$ sudo yum install -y yum-utils \  device-mapper-persistent-data \  lvm2  2.使用以下命令来设置稳定的存储库。 123$ sudo yum-config-manager \    --add-repo \    https://download.docker.com/linux/centos/docker-ce.repo  3.安装最新版本的Docker Engine-Community和containerd，或者转到下一步安装特定版本： 1$ sudo yum install docker-ce docker-ce-cli containerd.io  如果提示您接受GPG密钥，请验证指纹是否匹配 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B...</div></div></div></a><a class="pagination-related" href="/system_info/" title="系统信息相关命令"><img class="cover" src="https://image.imqinhao.cn/image/202411301204378.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-13</div><div class="info-item-2">系统信息相关命令</div></div><div class="info-2"><div class="info-item-1"> 本节内容主要是为了方便通过远程终端维护服务器时，查看服务器上当前 系统日期和时间 ／ 磁盘空间占用情况 ／ 程序执行情况 本小结学习的终端命令基本都是查询命令，通过这些命令对系统资源的使用情况有个了解    目标 时间和日期 date cal   磁盘和目录空间 df du   进程信息 ps top kill    01. 时间和日期   序号 命令 作用    01 date 查看系统时间   02 cal calendar 查看日历，-y 选项可以查看一年的日历   02. 磁盘信息   序号 命令 作用    01 df -h disk free 显示磁盘剩余空间   02 du -h [目录名] disk usage 显示目录下的文件大小    选项说明     参数 含义    -h 以人性化的方式显示文件大小   03. 进程信息 所谓 进程，通俗地说就是 当前正在执行的一个程序     序号 命令 作用    01 ps aux process status 查看进程的详细状况   02 top 动态显示运行中的进程并且排序   03 kill [-9]...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覃浩</div><div class="author-info-description">一个爱好编程、剪辑、音乐和鬼畜的普通人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hysmdd"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">01. 查看目录内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%BB%88%E7%AB%AF%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 终端实用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">1&gt; 自动补全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9B%BE%E7%BB%8F%E4%BD%BF%E7%94%A8%E8%BF%87%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">2&gt; 曾经使用过的命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-ls-%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 ls 命令说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-%E4%B8%8B%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.2.1.</span> <span class="toc-text">Linux 下文件和目录的特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-ls-%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 ls 常用选项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F%EF%BC%88%E7%A7%91%E6%99%AE%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">计算机中文件大小的表示方式（科普）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-ls-%E9%80%9A%E9%85%8D%E7%AC%A6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 ls 通配符的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95"><span class="toc-number">3.</span> <span class="toc-text">02. 切换目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-cd"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 cd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 相对路径和绝对路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">03. 创建和删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-touch"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 touch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-mkdir"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 mkdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-rm"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 rm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E6%8B%B7%E8%B4%9D%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">04. 拷贝和移动文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-tree"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-cp"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-mv"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 mv</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">6.</span> <span class="toc-text">05. 查看文件内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-cat"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-more"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 more</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-grep"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 grep</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-%E5%85%B6%E4%BB%96"><span class="toc-number">7.</span> <span class="toc-text">06. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-echo-%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 echo 文字内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E9%87%8D%E5%AE%9A%E5%90%91-%E5%92%8C"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 重定向 &gt; 和 &gt;&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E7%AE%A1%E9%81%93"><span class="toc-number">7.3.</span> <span class="toc-text">6.3 管道 |</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/transactionManager/" title="声明式事务控制"><img src="/images/dengenxi00310.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"/></a><div class="content"><a class="title" href="/transactionManager/" title="声明式事务控制">声明式事务控制</a><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/PlatformTransactionManager/" title="编程式事务控制三大对象"><img src="/images/dengenxi00391.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"/></a><div class="content"><a class="title" href="/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/AOP_3/" title="基于注解的AOP开发"><img src="/images/dengenxi00074.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"/></a><div class="content"><a class="title" href="/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/AOP_2/" title="基于XML的AOP开发"><img src="/images/dengenxi00376.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"/></a><div class="content"><a class="title" href="/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/AOP_1/" title="Spring的AOP简介"><img src="/images/dengenxi00398.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"/></a><div class="content"><a class="title" href="/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 覃浩</div><div class="footer_custom_text"><a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2021017381号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = {"lang":"zh-CN"}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://pinglun.imqinhao.cn',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code      
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}"></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'waline-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch('https://pinglun.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      btf.saveToLocal.set(keyName, JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray, ele)
+    } catch (err) {
+      console.error(err)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script async data-pjax src="/js/anzhiyu.js"></script><script async data-pjax src="/js/anzhiyufunction.js"></script><script async src="/js/anzhiyuOnlyOne.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="/css/APlayer.min.css" media="print" onload="this.media='all'"><script src="/js/APlayer.min.js"></script><script src="/js/Meting2.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="12338638293" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>

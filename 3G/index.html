@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>3G系统概述 | 覃浩的博客</title><meta name="author" content="覃浩"><meta name="copyright" content="覃浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="3G系统概述学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3G系统概述">
+<meta property="og:url" content="https://www.imqinhao.cn/3G/index.html">
+<meta property="og:site_name" content="覃浩的博客">
+<meta property="og:description" content="3G系统概述学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.imqinhao.cn/image/202411301228194.png">
+<meta property="article:published_time" content="2020-03-07T03:25:00.000Z">
+<meta property="article:modified_time" content="2024-11-30T11:12:17.599Z">
+<meta property="article:author" content="覃浩">
+<meta property="article:tag" content="移动通信">
+<meta property="article:tag" content="无线技术">
+<meta property="article:tag" content="通信原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.imqinhao.cn/image/202411301228194.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.imqinhao.cn/3G/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="5DI6HZ8chaGSyySQ"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '3G系统概述',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/coderqin.css"><link rel="stylesheet" href="/css/aplayer.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(/images/dengenxi00010.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://image.imqinhao.cn/image/202411301228194.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">覃浩的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">3G系统概述</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 博客</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/friends/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-coffee"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fab fa-youtube"></i><span> 影视</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fab fa-youtube"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/songs/"><i class="fa-fw fab fa-youtube"></i><span> 歌曲</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">3G系统概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-03-07T03:25:00.000Z" title="发表于 2020-03-07 11:25:00">2020-03-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">622</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="什么是3G"><a href="#什么是3G" class="headerlink" title="什么是3G"></a>什么是3G</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3G是第三代移动通信技术，是指支持高速数据传输的蜂窝移动通讯技术。</span><br></pre></td></tr></table></figure>
+
+<h2 id="3G的主要特点"><a href="#3G的主要特点" class="headerlink" title="3G的主要特点"></a>3G的主要特点</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 全球普及和全球无缝漫游</span><br><span class="line">- 具有支持多媒体业务的能力，特别是支持Internet的能力</span><br><span class="line">- 便于过渡和演进</span><br><span class="line">- 高频谱利用率</span><br><span class="line">- 能够传送高达2Mbit/s的高质量图象</span><br></pre></td></tr></table></figure>
+
+<h2 id="3G的三大主流标准比较"><a href="#3G的三大主流标准比较" class="headerlink" title="3G的三大主流标准比较"></a>3G的三大主流标准比较</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>WCDMA</th>
+<th>cdma2000</th>
+<th>TD-SCDMA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最小带宽需求</td>
+<td>5MHz</td>
+<td>3*1.25MHz</td>
+<td>1.6MHz</td>
+</tr>
+<tr>
+<td>双工方式</td>
+<td>FDD&#x2F;TDD</td>
+<td>FDD</td>
+<td>TDD</td>
+</tr>
+<tr>
+<td>信道间隔</td>
+<td>5MHz</td>
+<td>1.25&#x2F;5MHz</td>
+<td>1.6MHz</td>
+</tr>
+<tr>
+<td>码片速率</td>
+<td>3.84Mcps</td>
+<td>1.2288&#x2F;3.6864Mcps</td>
+<td>1.28Mcps</td>
+</tr>
+<tr>
+<td>帧长</td>
+<td>10ms</td>
+<td>20ms</td>
+<td>10ms</td>
+</tr>
+<tr>
+<td>基站间同步</td>
+<td>异步（不需GPS）</td>
+<td>同步（需GPS）</td>
+<td>同步(主从同步)</td>
+</tr>
+<tr>
+<td>调制方式</td>
+<td>QPSK&#x2F;BPSK</td>
+<td>QPSK&#x2F;BPSK</td>
+<td>QPSK&#x2F;8PSK</td>
+</tr>
+</tbody></table>
+<h2 id="WCDMA的组成"><a href="#WCDMA的组成" class="headerlink" title="WCDMA的组成"></a>WCDMA的组成</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WCDMA由核心网（CN）、UMTS陆地无线接入网（UTRAN）、用户设备（UE)三大部分组成</span><br></pre></td></tr></table></figure>
+
+<h2 id="WCDMA关键网元"><a href="#WCDMA关键网元" class="headerlink" title="WCDMA关键网元"></a>WCDMA关键网元</h2><p><img src="https://gitee.com/Martis-mm/dex520/raw/master/image/images20200307105839.png"></p>
+<h3 id="RNC"><a href="#RNC" class="headerlink" title="RNC"></a>RNC</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无线网络控制器（RNC）用于控制RAN的无线资源，主要功能有移动性管理、呼叫处理、链接管理、切换机制；逻辑位置上对应GSM网络中的基站控制器（BSC）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Node-B"><a href="#Node-B" class="headerlink" title="Node B"></a>Node B</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node B是WCDMA的基站（即无线收发信机），主要功能是扩频、调制、信道编码及解扩、解调、信道解码、还包括基带信号和射频信号的转化。</span><br></pre></td></tr></table></figure>
+
+<h3 id="UE"><a href="#UE" class="headerlink" title="UE"></a>UE</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3G网络中，用户终端就叫做UE，包含手机、智能终端、多媒体设备、流媒体设备等。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Iur接口"><a href="#Iur接口" class="headerlink" title="Iur接口"></a>Iur接口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是连接RNC之间的开放标准接口，用于对RAN中移动台的移动管理，支持软切换。</span><br></pre></td></tr></table></figure>
+
+<h2 id="WCDMA切换"><a href="#WCDMA切换" class="headerlink" title="WCDMA切换"></a>WCDMA切换</h2><p><img src="https://image.imqinhao.cn/image/images20200307110322.png"></p>
+<h3 id="软切换"><a href="#软切换" class="headerlink" title="软切换"></a>软切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不同基站之间的切换先连接，再断开。</span><br></pre></td></tr></table></figure>
+
+<h3 id="更软切换"><a href="#更软切换" class="headerlink" title="更软切换"></a>更软切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可看做是软切换的特例，与软切换的区别是更软切换是同一个基站不同小区之间的切换。在更软切换区，同时和UE保持联系的两个小区属于同一NodeB。不需要RNC参与。</span><br></pre></td></tr></table></figure>
+
+<h3 id="硬切换"><a href="#硬切换" class="headerlink" title="硬切换"></a>硬切换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">先断开，再切换。</span><br><span class="line"></span><br><span class="line">硬切换过程，在切换区，UE先中断和原服务小区的无线连接，再建立和新小区的连接。</span><br><span class="line"></span><br><span class="line">注意在切换过程中，首先建立RNC到NodeB2的链路，然后先断开UE和NodeB1小区的连接（此时NodeB1到RNC的链路保留）再建立NodeB2小区到UE的连接，连接成功后，再断开NodeB1到RNC的连接。</span><br><span class="line"></span><br><span class="line">在硬切换过程中，同一时刻，只有一个小区的UE连接。</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn">覃浩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.imqinhao.cn/3G/">https://www.imqinhao.cn/3G/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">此文章版权归 <a href="https://www.imqinhao.cn">覃浩</a> 所有，如有转载，请注明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/">移动通信</a><a class="post-meta__tags" href="/tags/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF/">无线技术</a><a class="post-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">通信原理</a></div><div class="post-share"><div class="social-share" data-image="https://image.imqinhao.cn/image/202411301228194.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219649.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219649.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://image.imqinhao.cn/image/202411292219021.jpg" target="_blank"><img class="post-qr-code-img" src="https://image.imqinhao.cn/image/202411292219021.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/wireless_radio/" title="LTE信道及协议栈分析"><img class="cover" src="https://image.imqinhao.cn/image/202411301227099.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">LTE信道及协议栈分析</div></div><div class="info-2"><div class="info-item-1">无线帧结构-FDD制式1234567891个无线帧Tf=207200Ts=10ms每个10ms无线帧被分为10个子帧每个子帧包含两个时隙，每时隙长0.5msTs=1/（15000*2048)是基本时间单元任何一个子帧即可以作为上行，也可以作为下行    无线帧结构-TDD制式1234567891个无线帧Tf=307200Ts=10ms每个10ms无线帧包括2个长度为5ms的半帧，每个半帧由4个数据子帧和1个特殊子帧组成特殊子帧包括3个特殊时隙：DWPTS，GP和UpPTS，总长度为1ms支持5ms和10ms上下行切换点子帧0、5和DWPTS总是用于下行发送    LTE信道及协议栈分析(物理层)RE1最小的资源单位，时域上为1个符号，频域上为1个子载波用（k,l）标记  RB1业务信道的资源单位，时域上为1个时隙，频域上为12个子载波  PCM的主要步骤1抽样、量化、编码  </div></div></div></a><a class="pagination-related" href="/GSM/" title="GSM系统概述"><img class="cover" src="https://image.imqinhao.cn/image/202411301228333.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">GSM系统概述</div></div><div class="info-2"><div class="info-item-1">什么是GSM1234567GSM(Global System for Mobile Communication)...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/GSM/" title="GSM系统概述"><img class="cover" src="https://image.imqinhao.cn/image/202411301228333.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">GSM系统概述</div></div><div class="info-2"><div class="info-item-1">什么是GSM1234567GSM(Global System for Mobile Communication)...</div></div></div></a><a class="pagination-related" href="/ICIC/" title="ICIC"><img class="cover" src="https://image.imqinhao.cn/image/202411301214994.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-12</div><div class="info-item-2">ICIC</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/IP_Bearer_Network_basic/" title="IP承载网理论基础"><img class="cover" src="https://image.imqinhao.cn/image/202411301226069.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">IP承载网理论基础</div></div><div class="info-2"><div class="info-item-1">IP地址1互联网协议地址（Internet Protocol...</div></div></div></a><a class="pagination-related" href="/MIMO/" title="MIMO"><img class="cover" src="https://image.imqinhao.cn/image/202411301214570.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-11</div><div class="info-item-2">MIMO</div></div><div class="info-2"><div class="info-item-1">多进多出（MIMO）是为极大地提高信道容量，在发送端和接收端都使用多根天线，在收发之间构成多个信道的天线系统。MIMO系统的一个明显特点就是具有极高的频谱利用效率，在对现有频谱资源充分利用的基础上通过利用空间资源来获取可靠性与有效性两方面增益，其代价是增加了发送端与接收端的处理复杂度。大规模MIMO技术采用大量天线来服务数量相对较少的用户，可以有效提高频谱效率。   MIMO的定义 多输入多输出 在多个天线上分别发送多个数据流 利用多径衰落，在不增加带宽和天线发射功率的情况下，提高信道容量及频谱利用率，或提高数据的传输质量。  MIMO的优点MIMO多种模式带来多种增益。  分集增益 波束赋形增益 空间复用增益  频谱效率 要求TD-LTE的下行频率速率达到5bps&#x2F;Hz（Rel-10为30bps&#x2F;Hz），上行频谱速率达到2.5bps&#x2F;Hz（Rel-10为15bps&#x2F;Hz）  - MIMO天线收发分集：提高通信质量。 - 发射分集技术提高系统下行链路性能。    -   ...</div></div></div></a><a class="pagination-related" href="/NB-IoT/" title="NB-IoT技术架构"><img class="cover" src="https://image.imqinhao.cn/image/202411301227971.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-07</div><div class="info-item-2">NB-IoT技术架构</div></div><div class="info-2"><div class="info-item-1">5G的发展方向123高速率，高带宽： LTE、LTE-A低速率、低成本、低功耗、广覆盖：物联网  频谱应用1主流的FDD频段都支持NB-IoT：900MHz、1800MHz、800MHz   NB-IoT网络架构 NB-IoT数据传输方案NB-IoT主要用于传送低速率的小数据包，从传输数据格式来看，可以传输三种数据类型：IP，Non-IP，SMS（短消息）。  NB-IoT是从LTE系统演进而来，为提升小数据的传输效率，NB-loT系统支持两种优化的传输方案，包括控制面优化传输方案（简称CP方案）和用户面优化传输方案（简称UP方案）。  3GPP  5G  NR协议标准 5G频率范围 5GNR常见的帧结构配置1以u=1,子载波间隔为30KHz为例，单个时隙长度为0.5ms    SS Block组成123一个SS block...</div></div></div></a><a class="pagination-related" href="/OFDMA/" title="OFDMA"><img class="cover" src="https://image.imqinhao.cn/image/202411301215899.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-25</div><div class="info-item-2">OFDMA</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/61cedc079b65e05ce4e2070a.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">覃浩</div><div class="author-info-description">一个爱好编程、剪辑、音乐和鬼畜的普通人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hysmdd"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF3G"><span class="toc-number">1.</span> <span class="toc-text">什么是3G</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3G%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">3G的主要特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3G%E7%9A%84%E4%B8%89%E5%A4%A7%E4%B8%BB%E6%B5%81%E6%A0%87%E5%87%86%E6%AF%94%E8%BE%83"><span class="toc-number">3.</span> <span class="toc-text">3G的三大主流标准比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WCDMA%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">WCDMA的组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WCDMA%E5%85%B3%E9%94%AE%E7%BD%91%E5%85%83"><span class="toc-number">5.</span> <span class="toc-text">WCDMA关键网元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RNC"><span class="toc-number">5.1.</span> <span class="toc-text">RNC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-B"><span class="toc-number">5.2.</span> <span class="toc-text">Node B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UE"><span class="toc-number">5.3.</span> <span class="toc-text">UE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iur%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.4.</span> <span class="toc-text">Iur接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WCDMA%E5%88%87%E6%8D%A2"><span class="toc-number">6.</span> <span class="toc-text">WCDMA切换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E5%88%87%E6%8D%A2"><span class="toc-number">6.1.</span> <span class="toc-text">软切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E8%BD%AF%E5%88%87%E6%8D%A2"><span class="toc-number">6.2.</span> <span class="toc-text">更软切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E5%88%87%E6%8D%A2"><span class="toc-number">6.3.</span> <span class="toc-text">硬切换</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/transactionManager/" title="声明式事务控制"><img src="/images/dengenxi00310.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="声明式事务控制"/></a><div class="content"><a class="title" href="/transactionManager/" title="声明式事务控制">声明式事务控制</a><time datetime="2022-01-05T12:13:14.000Z" title="发表于 2022-01-05 20:13:14">2022-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/PlatformTransactionManager/" title="编程式事务控制三大对象"><img src="/images/dengenxi00391.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程式事务控制三大对象"/></a><div class="content"><a class="title" href="/PlatformTransactionManager/" title="编程式事务控制三大对象">编程式事务控制三大对象</a><time datetime="2022-01-04T12:13:14.000Z" title="发表于 2022-01-04 20:13:14">2022-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/AOP_3/" title="基于注解的AOP开发"><img src="/images/dengenxi00074.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的AOP开发"/></a><div class="content"><a class="title" href="/AOP_3/" title="基于注解的AOP开发">基于注解的AOP开发</a><time datetime="2022-01-03T12:13:14.000Z" title="发表于 2022-01-03 20:13:14">2022-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/AOP_2/" title="基于XML的AOP开发"><img src="/images/dengenxi00376.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于XML的AOP开发"/></a><div class="content"><a class="title" href="/AOP_2/" title="基于XML的AOP开发">基于XML的AOP开发</a><time datetime="2022-01-02T12:13:14.000Z" title="发表于 2022-01-02 20:13:14">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/AOP_1/" title="Spring的AOP简介"><img src="/images/dengenxi00398.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring的AOP简介"/></a><div class="content"><a class="title" href="/AOP_1/" title="Spring的AOP简介">Spring的AOP简介</a><time datetime="2022-01-01T12:13:14.000Z" title="发表于 2022-01-01 20:13:14">2022-01-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 覃浩</div><div class="footer_custom_text"><a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2021017381号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = {"lang":"zh-CN"}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://pinglun.imqinhao.cn',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code      
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}"></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'waline-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = async (ele) => {
+    try {
+      const res = await fetch('https://pinglun.imqinhao.cn/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      btf.saveToLocal.set(keyName, JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray, ele)
+    } catch (err) {
+      console.error(err)
+      ele.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script async data-pjax src="/js/anzhiyu.js"></script><script async data-pjax src="/js/anzhiyufunction.js"></script><script async src="/js/anzhiyuOnlyOne.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="/css/APlayer.min.css" media="print" onload="this.media='all'"><script src="/js/APlayer.min.js"></script><script src="/js/Meting2.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="12338638293" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>
