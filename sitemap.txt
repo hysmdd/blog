@@ -1,3 +1,4 @@
+https://www.imqinhao.cn/3G/
 https://www.imqinhao.cn/ssh/
 https://www.imqinhao.cn/OLT_command/
 https://www.imqinhao.cn/MySQL8_basics/
@@ -11,7 +12,6 @@ https://www.imqinhao.cn/c_5/
 https://www.imqinhao.cn/mobile_communication/
 https://www.imqinhao.cn/wireless_word/
 https://www.imqinhao.cn/GSM/
-https://www.imqinhao.cn/3G/
 https://www.imqinhao.cn/wireless_radio/
 https://www.imqinhao.cn/NB-IoT/
 https://www.imqinhao.cn/IP_Bearer_Network_basic/

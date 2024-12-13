@@ -102,3 +102,33 @@
   --anzhiyu-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0);
   --anzhiyu-card-border: #42444a;
 }
+.footer_custom_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.footer_custom_text img {
+  width: 20px;
+  height: 20px;
+}
+.footer-beian {
+  display: flex;
+  flex-direction: column;
+}
+.footer_custom_text .icp {
+  display: flex;
+  align-items: center;
+}
+.icp img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.footer_custom_text .ga {
+  display: flex;
+  align-items: center;
+}
+.ga img {
+  margin-right: 10px;
+}
